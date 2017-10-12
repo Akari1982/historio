@@ -8,12 +8,13 @@
 #include "DebugDraw.h"
 #include "InputManager.h"
 #include "Logger.h"
-#include "../neuro/EntityManager.h"
-#include "../social/SocialManager.h"
 #include "Timer.h"
 #include "../Main.h"
 
 
+#include "../historio/Map.h"
+
+Map map;
 
 ConfigVar cv_debug_fps( "debug_fps", "Debug FPS", "false" );
 
@@ -98,18 +99,13 @@ GameFrameListener::frameStarted( const Ogre::FrameEvent& evt )
 
         if( console_active != true )
         {
-            //EntityManager::getSingleton().Input( input_event_array[ i ] );
-            SocialManager::getSingleton().Input( input_event_array[ i ] );
             CameraManager::getSingleton().Input( input_event_array[ i ] );
         }
     }
 
     Console::getSingleton().Update();
-
     CameraManager::getSingleton().Update();
-    //EntityManager::getSingleton().Update();
-    SocialManager::getSingleton().Update();
-
+map.DrawDebug();
     return true;
 }
 

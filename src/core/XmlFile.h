@@ -16,7 +16,6 @@ public:
 protected:
     bool m_NormalFile;
 
-    Ogre::String m_FileName;
     TiXmlDocument m_File;
 };
 

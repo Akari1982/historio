@@ -213,6 +213,51 @@ GetColourValue( TiXmlNode* node, const Ogre::String& tag, const Ogre::ColourValu
 
 
 
+void
+ParsePersent( float& value_percent, float& value, const Ogre::String& string )
+{
+    if( string.at( string.size() - 1 ) == '%' )
+    {
+        value_percent = Ogre::StringConverter::parseReal( string.substr( 0, string.size() - 1 ) );
+        value = 0;
+    }
+    else
+    {
+        Ogre::StringVector param = Ogre::StringUtil::split( string, "%" );
+        if( param.size() > 1 )
+        {
+            value_percent = Ogre::StringConverter::parseReal( param[ 0 ] );
+            value = Ogre::StringConverter::parseReal( param[ 1 ] );
+        }
+        else
+        {
+            value_percent = 0;
+            value = Ogre::StringConverter::parseReal( string );
+        }
+    }
+}
+
+
+
+float
+ParseKeyFrameTime( const float length, const Ogre::String& string )
+{
+    float res = 0;
+
+    if( string.at( string.size() - 1 ) == '%' )
+    {
+        res = length * Ogre::StringConverter::parseReal( string.substr( 0, string.size() - 1 ) ) / 100;
+    }
+    else
+    {
+        res = Ogre::StringConverter::parseReal( string );
+    }
+
+    return res;
+}
+
+
+
 const Ogre::String
 CreateAutoName(const Ogre::String prefix)
 {

@@ -32,8 +32,6 @@ public:
     void Line3d( const Ogre::Vector3& point1, const Ogre::Vector3& point2 );
     void Triangle3d( const Ogre::Vector3& point1, const Ogre::Vector3& point2, const Ogre::Vector3& point3 );
     void Quad( const float x1, const float y1, const float x2, const float y2, const float x3, const float y3, const float x4, const float y4 );
-    void Circle( const float x, const float y, const float radius );
-    void Disc( const float x, const float y, const float radius );
     void Text( const float x1, const float y1, const Ogre::String& text );
     void Text( const Ogre::Vector3& point, const float x, const float y, const Ogre::String& text );
 
@@ -48,10 +46,6 @@ private:
     void DestroyTriangle3dVertexBuffer();
     void CreateQuadVertexBuffer();
     void DestroyQuadVertexBuffer();
-    void CreateCircleVertexBuffer();
-    void DestroyCircleVertexBuffer();
-    void CreateDiscVertexBuffer();
-    void DestroyDiscVertexBuffer();
     void CreateTextVertexBuffer();
     void DestroyTextVertexBuffer();
 
@@ -78,16 +72,6 @@ private:
     Ogre::RenderOperation               m_QuadRenderOp;
     Ogre::HardwareVertexBufferSharedPtr m_QuadVertexBuffer;
     unsigned int                        m_QuadMaxVertexCount;
-
-    // circle
-    Ogre::RenderOperation               m_CircleRenderOp;
-    Ogre::HardwareVertexBufferSharedPtr m_CircleVertexBuffer;
-    unsigned int                        m_CircleMaxVertexCount;
-
-    // circle
-    Ogre::RenderOperation               m_DiscRenderOp;
-    Ogre::HardwareVertexBufferSharedPtr m_DiscVertexBuffer;
-    unsigned int                        m_DiscMaxVertexCount;
 
     // text
     Ogre::RenderOperation               m_TextRenderOp;

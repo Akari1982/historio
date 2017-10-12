@@ -2,7 +2,6 @@
 #define EVENT_H
 
 // add this include because this is only common file between everything that uses Input function.
-#include <OgreString.h>
 #include <OIS.h>
 
 

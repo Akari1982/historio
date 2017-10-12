@@ -13,8 +13,6 @@
 #include "core/InputManager.h"
 #include "core/Logger.h"
 #include "core/Timer.h"
-#include "neuro/EntityManager.h"
-#include "social/SocialManager.h"
 
 
 
@@ -23,14 +21,14 @@ QG_STATE  g_ApplicationState;
 
 
 int
-main( int argc, char *argv[] )
+main(int argc, char *argv[])
 {
     Ogre::Root* root;
     Ogre::RenderWindow* window;
     Ogre::SceneManager* scene_manager;
 
     Ogre::LogManager* log_manager = new Ogre::LogManager();
-    log_manager->createLog( "n-gears.log", true, true );
+    log_manager->createLog( "x-gears.log", true, true );
     log_manager->getDefaultLog()->setLogDetail( ( Ogre::LoggingLevel )3 );
 
     // init root early
@@ -83,8 +81,6 @@ main( int argc, char *argv[] )
 
     // create This earlier than DisplayFrameListener cause it can fire event there
     CameraManager* camera_manager = new CameraManager();
-    //EntityManager* entity_manager = new EntityManager();
-    SocialManager* entity_manager = new SocialManager();
     Console* console = new Console();
 
 
@@ -113,7 +109,6 @@ main( int argc, char *argv[] )
     // we must remove this first cause this can fire event to console
     root->removeFrameListener( frame_listener );
     delete frame_listener;
-    delete entity_manager;
     delete console;
     delete camera_manager;
     delete input_manager;

@@ -27,6 +27,9 @@ const Ogre::Matrix4       GetMatrix4( TiXmlNode* node, const Ogre::String& tag, 
 const Ogre::Quaternion    GetQuaternion( TiXmlNode* node, const Ogre::String& tag, const Ogre::Quaternion& def = Ogre::Quaternion::IDENTITY );
 const Ogre::ColourValue   GetColourValue( TiXmlNode* node, const Ogre::String& tag, const Ogre::ColourValue& def = Ogre::ColourValue::ZERO );
 
+void                      ParsePersent( float& value_percent, float& value, const Ogre::String& string );
+float                     ParseKeyFrameTime( const float length, const Ogre::String& string );
+
 
 
 const Ogre::String
