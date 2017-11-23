@@ -31,6 +31,7 @@ public:
 
     void AddTextToOutput( const Ogre::String& text, const Ogre::ColourValue& colour = Ogre::ColourValue::White );
     void ExecuteCommand( const Ogre::String& command );
+    void ExecuteScript();
     void CompleteInput();
     void ResetAutoCompletion();
     void AddInputToHistory();

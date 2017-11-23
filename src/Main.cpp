@@ -9,10 +9,14 @@
 #include "core/ConfigVarManager.h"
 #include "core/Console.h"
 #include "core/DebugDraw.h"
+#include "core/EntityManager.h"
 #include "core/GameFrameListner.h"
 #include "core/InputManager.h"
 #include "core/Logger.h"
+#include "core/ScriptManager.h"
+#include "core/TextManager.h"
 #include "core/Timer.h"
+#include "core/UiManager.h"
 
 
 
@@ -81,8 +85,13 @@ main(int argc, char *argv[])
 
     // create This earlier than DisplayFrameListener cause it can fire event there
     CameraManager* camera_manager = new CameraManager();
+    TextManager* text_manager = new TextManager();
+    UiManager* ui_manager = new UiManager();
+    EntityManager* entity_manager = new EntityManager();
     Console* console = new Console();
 
+    // init after game managers because it attach them to script
+    ScriptManager* script_manager = new ScriptManager();
 
 
     // set base listner for usual game moduls
@@ -99,6 +108,11 @@ main(int argc, char *argv[])
 
 
 
+    // init ui and run it scripts
+    ui_manager->Initialise();
+
+
+
     // run application cycle
     g_ApplicationState = QG_GAME;
     root->startRendering();
@@ -109,6 +123,11 @@ main(int argc, char *argv[])
     // we must remove this first cause this can fire event to console
     root->removeFrameListener( frame_listener );
     delete frame_listener;
+    // destroy before script manager because it removes things from it.
+    delete entity_manager;
+    delete ui_manager;
+    delete text_manager;
+    delete script_manager;
     delete console;
     delete camera_manager;
     delete input_manager;

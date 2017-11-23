@@ -6,15 +6,15 @@
 #include "ConfigVar.h"
 #include "Console.h"
 #include "DebugDraw.h"
+#include "EntityManager.h"
 #include "InputManager.h"
 #include "Logger.h"
+#include "ScriptManager.h"
 #include "Timer.h"
+#include "UiManager.h"
 #include "../Main.h"
 
 
-#include "../historio/Map.h"
-
-Map map;
 
 ConfigVar cv_debug_fps( "debug_fps", "Debug FPS", "false" );
 
@@ -99,13 +99,19 @@ GameFrameListener::frameStarted( const Ogre::FrameEvent& evt )
 
         if( console_active != true )
         {
+            EntityManager::getSingleton().Input( input_event_array[ i ] );
+            ScriptManager::getSingleton().Input( input_event_array[ i ] );
             CameraManager::getSingleton().Input( input_event_array[ i ] );
         }
     }
 
     Console::getSingleton().Update();
+
+    ScriptManager::getSingleton().Update( ScriptManager::SYSTEM );
+    UiManager::getSingleton().Update();
     CameraManager::getSingleton().Update();
-map.DrawDebug();
+    EntityManager::getSingleton().Update();
+
     return true;
 }
 
@@ -146,7 +152,9 @@ GameFrameListener::windowResized( Ogre::RenderWindow *rw )
     }
 
     Console::getSingleton().OnResize();
+    UiManager::getSingleton().OnResize();
     CameraManager::getSingleton().OnResize();
+    EntityManager::getSingleton().OnResize();
 }
 
 

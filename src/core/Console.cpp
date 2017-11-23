@@ -6,6 +6,7 @@
 #include "ConfigVarManager.h"
 #include "DebugDraw.h"
 #include "Logger.h"
+#include "ScriptManager.h"
 #include "Timer.h"
 #include "Utilites.h"
 
@@ -105,6 +106,10 @@ Console::Input( const Event& event )
 
                 ExecuteCommand( m_InputLine );
             }
+        }
+        else
+        {
+            ExecuteScript();
         }
 
         m_InputLine.clear();
@@ -574,6 +579,14 @@ Console::ExecuteCommand( const Ogre::String& command )
             AddTextToOutput( "Can't find command \"" + params[ 0 ] + "\".\n" );
         }
     }
+}
+
+
+
+void
+Console::ExecuteScript()
+{
+    ScriptManager::getSingleton().RunString( m_InputLine );
 }
 
 
