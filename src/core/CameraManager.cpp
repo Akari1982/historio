@@ -65,7 +65,7 @@ CameraManager::Input( const Event& event )
 
         if( event.type == ET_REPEAT && event.param1 == OIS::KC_W )
         {
-            m_Camera->moveRelative( Ogre::Vector3( 0, 0, -speed ) );
+            m_Camera->moveRelative( Ogre::Vector3( 0, speed, 0 ) );
         }
         else if( event.type == ET_REPEAT && event.param1 == OIS::KC_A )
         {
@@ -73,28 +73,15 @@ CameraManager::Input( const Event& event )
         }
         else if( event.type == ET_REPEAT && event.param1 == OIS::KC_S )
         {
-            m_Camera->moveRelative( Ogre::Vector3( 0, 0, speed ) );
+            m_Camera->moveRelative( Ogre::Vector3( 0, -speed, 0 ) );
         }
         else if( event.type == ET_REPEAT && event.param1 == OIS::KC_D )
         {
             m_Camera->moveRelative( Ogre::Vector3( speed, 0, 0 ) );
         }
-        else if( event.type == ET_REPEAT && event.param1 == OIS::KC_SPACE )
+        else if( event.type == ET_MOUSE_SCROLL )
         {
-            m_Camera->move( Ogre::Vector3( 0, -speed, 0 ) );
-        }
-        else if( event.type == ET_PRESS && event.param1 == OIS::MB_Right )
-        {
-            m_CameraFreeRotate = true;
-        }
-        else if( event.type == ET_RELEASE && event.param1 == OIS::MB_Right )
-        {
-            m_CameraFreeRotate = false;
-        }
-        else if( event.type == ET_MOUSE_MOVE && m_CameraFreeRotate == true )
-        {
-            m_Camera->rotate( Ogre::Vector3::UNIT_Y, Ogre::Radian( Ogre::Degree( event.param1 * 0.13 ) ) );
-            m_Camera->pitch( Ogre::Degree( -event.param2 * 0.13 ) );
+            m_Camera->moveRelative( Ogre::Vector3( 0, 0, -event.param1 / 10.0f ) );
         }
     }
 }

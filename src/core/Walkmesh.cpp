@@ -1,3 +1,4 @@
+#include "CameraManager.h"
 #include "Logger.h"
 #include "Walkmesh.h"
 
@@ -22,6 +23,7 @@ Walkmesh::Walkmesh()
     pass->setDepthCheckEnabled( true );
     pass->setDepthWriteEnabled( true );
     pass->setLightingEnabled( false );
+    //pass->setPolygonMode( Ogre::PolygonMode::PM_WIREFRAME );
     pass->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
     pass->setAlphaRejectFunction( Ogre::CMPF_GREATER );
     pass->setAlphaRejectValue( 0 );
@@ -32,15 +34,13 @@ Walkmesh::Walkmesh()
 
     m_SceneManager->addRenderQueueListener( this );
 
-    for( int i = 0; i < 10; ++i )
+    for( int i = 0; i < 100; ++i )
     {
-        for( int j = 0; j < 10; ++j )
+        for( int j = 0; j < 100; ++j )
         {
-            //Quad( i * 10, j * 10, i * 10 + 10, j * 10, i * 10 + 10, j * 10 + 10, i * 10, j * 10 + 10 );
+            Quad( i, j, 1, 1, Ogre::ColourValue( i / 100.0f, i / 100.0f, j / 100.0f, 1 ) );
         }
     }
-    Quad( 10, 10, 20, 10, 20, 20, 10, 20 );
-    Quad( 0, 0, 10, 0, 10, 10, 0, 10 );
 }
 
 
@@ -55,7 +55,7 @@ Walkmesh::~Walkmesh()
 
 
 void
-Walkmesh::Quad( const float x1, const float y1, const float x2, const float y2, const float x3, const float y3, const float x4, const float y4 )
+Walkmesh::Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour )
 {
     if( m_RenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
     {
@@ -63,72 +63,84 @@ Walkmesh::Quad( const float x1, const float y1, const float x2, const float y2, 
         return;
     }
 
-    float width = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" )->getViewport( 0 )->getActualWidth();
-    float height = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" )->getViewport( 0 )->getActualHeight();
+    float x1 = x;
+    float y1 = y;
+    float x2 = x + width;
+    float y2 = y;
+    float x3 = x + width;
+    float y3 = y + height;
+    float x4 = x;
+    float y4 = y + height;
+
+    float left = 0.0f;
+    float right = 0.0f;
+    float top = 0.0f;
+    float bottom = 0.0f;
 
     float m_Z = 0.5f;
-    Ogre::ColourValue m_Colour = Ogre::ColourValue::White;
-    bool m_ScreenSpace = true;
-
-    float new_x1 = ( m_ScreenSpace == true ) ? ( ( int ) x1 / width ) * 2 - 1 : x1;
-    float new_y1 = ( m_ScreenSpace == true ) ? -( ( ( int ) y1 / height ) * 2 - 1 ) : y1;
-    float new_x2 = ( m_ScreenSpace == true ) ? ( ( int ) x2 / width ) * 2 - 1 : x2;
-    float new_y2 = ( m_ScreenSpace == true ) ? -( ( y2 / height ) * 2 - 1 ) : y2;
-    float new_x3 = ( m_ScreenSpace == true ) ? ( ( int ) x3 / width ) * 2 - 1 : x3;
-    float new_y3 = ( m_ScreenSpace == true ) ? -( ( ( int ) y3 / height ) * 2 - 1 ) : y3;
-    float new_x4 = ( m_ScreenSpace == true ) ? ( ( int ) x4 / width ) * 2 - 1 : x4;
-    float new_y4 = ( m_ScreenSpace == true ) ? -( ( ( int ) y4 / height ) * 2 - 1 ) : y4;
 
     float* writeIterator = ( float* ) m_VertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
-    writeIterator += m_RenderOp.vertexData->vertexCount * 7;
+    writeIterator += m_RenderOp.vertexData->vertexCount * 9;
 
-    *writeIterator++ = new_x1;
-    *writeIterator++ = new_y1;
+    *writeIterator++ = x1;
+    *writeIterator++ = y1;
     *writeIterator++ = m_Z;
-    *writeIterator++ = m_Colour.r;
-    *writeIterator++ = m_Colour.g;
-    *writeIterator++ = m_Colour.b;
-    *writeIterator++ = m_Colour.a;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = left;
+    *writeIterator++ = top;
 
-    *writeIterator++ = new_x2;
-    *writeIterator++ = new_y2;
+    *writeIterator++ = x2;
+    *writeIterator++ = y2;
     *writeIterator++ = m_Z;
-    *writeIterator++ = m_Colour.r;
-    *writeIterator++ = m_Colour.g;
-    *writeIterator++ = m_Colour.b;
-    *writeIterator++ = m_Colour.a;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = right;
+    *writeIterator++ = top;
 
-    *writeIterator++ = new_x3;
-    *writeIterator++ = new_y3;
+    *writeIterator++ = x3;
+    *writeIterator++ = y3;
     *writeIterator++ = m_Z;
-    *writeIterator++ = m_Colour.r;
-    *writeIterator++ = m_Colour.g;
-    *writeIterator++ = m_Colour.b;
-    *writeIterator++ = m_Colour.a;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = right;
+    *writeIterator++ = bottom;
 
-    *writeIterator++ = new_x1;
-    *writeIterator++ = new_y1;
+    *writeIterator++ = x1;
+    *writeIterator++ = y1;
     *writeIterator++ = m_Z;
-    *writeIterator++ = m_Colour.r;
-    *writeIterator++ = m_Colour.g;
-    *writeIterator++ = m_Colour.b;
-    *writeIterator++ = m_Colour.a;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = left;
+    *writeIterator++ = top;
 
-    *writeIterator++ = new_x3;
-    *writeIterator++ = new_y3;
+    *writeIterator++ = x3;
+    *writeIterator++ = y3;
     *writeIterator++ = m_Z;
-    *writeIterator++ = m_Colour.r;
-    *writeIterator++ = m_Colour.g;
-    *writeIterator++ = m_Colour.b;
-    *writeIterator++ = m_Colour.a;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = right;
+    *writeIterator++ = bottom;
 
-    *writeIterator++ = new_x4;
-    *writeIterator++ = new_y4;
+    *writeIterator++ = x4;
+    *writeIterator++ = y4;
     *writeIterator++ = m_Z;
-    *writeIterator++ = m_Colour.r;
-    *writeIterator++ = m_Colour.g;
-    *writeIterator++ = m_Colour.b;
-    *writeIterator++ = m_Colour.a;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = left;
+    *writeIterator++ = bottom;
 
     m_RenderOp.vertexData->vertexCount += 6;
 
@@ -143,14 +155,8 @@ Walkmesh::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invoca
     if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
     {
         m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
-        m_RenderSystem->_setProjectionMatrix( Ogre::Matrix4::IDENTITY );
-
-        float width = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" )->getViewport( 0 )->getActualWidth();
-        float height = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" )->getViewport( 0 )->getActualHeight();
-        Ogre::Matrix4 view;
-        //view.makeTrans( Ogre::Vector3( m_PositionReal.x * 2 / width * height / 720.0f, -m_PositionReal.y * 2 / 720.0f, 0 ) );
-        //view.makeTrans( Ogre::Vector3( 0 * 2 / width * height / 720.0f, -20 * 2 / 720.0f, 0 ) );
-        m_RenderSystem->_setViewMatrix( view );
+        m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
+        m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
 
         if( m_RenderOp.vertexData->vertexCount != 0 )
         {
@@ -165,7 +171,7 @@ Walkmesh::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invoca
 void
 Walkmesh::CreateVertexBuffers()
 {
-    m_MaxVertexCount = 2048 * 6;
+    m_MaxVertexCount = 10000 * 6;
     m_RenderOp.vertexData = new Ogre::VertexData;
     m_RenderOp.vertexData->vertexStart = 0;
 

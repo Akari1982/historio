@@ -13,7 +13,7 @@ public:
     Walkmesh();
     virtual ~Walkmesh();
 
-    void Quad( const float x1, const float y1, const float x2, const float y2, const float x3, const float y3, const float x4, const float y4 );
+    void Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour );
 
     void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
 
