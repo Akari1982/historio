@@ -1,12 +1,11 @@
-#include "Entity.h"
-
-#include <OgreSceneNode.h>
-#include <OgreEntity.h>
-
+#include "CameraManager.h"
 #include "ConfigVar.h"
 #include "DebugDraw.h"
-#include "EntityManager.h"
+#include "Entity.h"
 #include "Logger.h"
+
+#include <OgreHardwareBufferManager.h>
+#include <OgreMaterialManager.h>
 
 
 
@@ -17,46 +16,36 @@ ConfigVar cv_debug_entity( "debug_entity", "Draw entity debug info", "0" );
 Entity::Entity( const Ogre::String& name, Ogre::SceneNode* node ):
     m_Name( name ),
     m_SceneNode( node ),
-    m_Model( NULL ),
-    m_SolidRadius( 0.25f ),
-    m_Solid( false ),
-    m_WalkmeshId( -1 ),
-    m_TriangleId( -1 ),
-    m_Player( false ),
-    m_Move( false ),
-    m_RotationY( Ogre::Degree( 0.0f ) ),
-    m_SizeY( 1.5f )
+    m_Rotation( Ogre::Degree( 0.0f ) )
 {
-    m_SceneNode->setPosition( Ogre::Vector3::ZERO );
+    m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
+    m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
 
-    m_SolidCollision = new EntityCollision();
-    m_SolidCollision->setMaterial( "entity/solid_collision" );
-    m_SolidCollisionNode = m_SceneNode->createChildSceneNode();
-    m_SolidCollisionNode->setScale( m_SolidRadius, -m_SizeY, m_SolidRadius );
-    m_SolidCollisionNode->attachObject( m_SolidCollision );
+    CreateVertexBuffers();
+    CreateMaterial();
 
-    m_Direction = new EntityDirection();
-    m_Direction->setMaterial( "entity/direction" );
-    m_DirectionNode = m_SceneNode->createChildSceneNode();
-    m_DirectionNode->attachObject( m_Direction );
+    UpdateGeometry();
 
-    LOG_TRIVIAL( "Entity \"" + m_Name + "\" created." );
+    m_SceneManager->addRenderQueueListener( this );
 }
 
 
 
 Entity::~Entity()
 {
-    delete m_SolidCollision;
-    delete m_Direction;
+    m_SceneManager->removeRenderQueueListener( this );
 
-    if( m_Model != NULL )
-    {
-        Ogre::Root::getSingleton().getSceneManager( "Scene" )->destroyEntity( m_Model );
-    }
-    m_SceneNode->removeAndDestroyAllChildren();
+    DestroyVertexBuffers();
+}
 
-    LOG_TRIVIAL( "Entity \"" + m_Name + "\" destroyed." );
+
+
+void
+Entity::SetImage( const Ogre::String& image )
+{
+    Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
+    Ogre::TextureUnitState* tex = pass->getTextureUnitState( 0 );
+    tex->setTextureName( image );
 }
 
 
@@ -64,10 +53,8 @@ Entity::~Entity()
 void
 Entity::UpdateDebug()
 {
+/*
     int debug = cv_debug_entity.GetI();
-
-    m_SolidCollisionNode->setVisible( m_Solid );
-    m_DirectionNode->setVisible( true );
 
     // debug output
     if( debug > 0 )
@@ -82,203 +69,181 @@ Entity::UpdateDebug()
         DEBUG_DRAW.Text( entity_pos, 0, 0, m_Name );
         DEBUG_DRAW.Text( entity_pos, 0, 24, Ogre::StringConverter::toString( entity_pos ) + " (" + Ogre::StringConverter::toString( m_TriangleId ) + ")" );
     }
+*/
 }
-
-
-
-const Ogre::String&
-Entity::GetName() const
-{
-    return m_Name;
-}
-
 
 
 void
-Entity::SetModel( const Ogre::String file_name )
+Entity::UpdateGeometry()
 {
-    Ogre::SceneManager* scene_manager;
-    scene_manager = Ogre::Root::getSingleton().getSceneManager( "Scene" );
-    m_Model = scene_manager->createEntity( m_Name, file_name );
-    m_Model->setVisible( true );
-
-    m_SceneNode->attachObject( m_Model );
-}
-
-
-
-void
-Entity::ScriptInitPC( const int character_id )
-{
-    m_Solid = true;
-    m_Player = true;
-    EntityManager::getSingleton().EntityToSpawnPoint( this, "0" );
-}
-
-
-
-void
-Entity::ScriptInitNPC( const int character_id )
-{
-    m_Solid = true;
-}
-
-
-
-void
-Entity::ScriptInput()
-{
-    if( m_Player == true )
+    if( m_RenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
     {
-        Ogre::Degree rotation = m_RotationY;
-        m_Move = EntityManager::getSingleton().InputToRotation( rotation );
-        SetRotation( rotation );
+        LOG_ERROR( "Map: Max number of quads reached. Can't create more than " + Ogre::StringConverter::toString( m_MaxVertexCount / 6 ) + " quads." );
+        return;
+    }
+
+    float x = 0;
+    float y = 0;
+    float width = 20;
+    float height = 10;
+
+    float x1 = x;
+    float y1 = y;
+    float x2 = x + width;
+    float y2 = y;
+    float x3 = x + width;
+    float y3 = y + height;
+    float x4 = x;
+    float y4 = y + height;
+
+    float left = 0.0f;
+    float right = 0.0f;
+    float top = 0.0f;
+    float bottom = 0.0f;
+
+    float m_Z = 0.5f;
+
+    float* writeIterator = ( float* ) m_VertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
+    writeIterator += m_RenderOp.vertexData->vertexCount * 9;
+
+    *writeIterator++ = x1;
+    *writeIterator++ = y1;
+    *writeIterator++ = m_Z;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = left;
+    *writeIterator++ = top;
+
+    *writeIterator++ = x2;
+    *writeIterator++ = y2;
+    *writeIterator++ = m_Z;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = right;
+    *writeIterator++ = top;
+
+    *writeIterator++ = x3;
+    *writeIterator++ = y3;
+    *writeIterator++ = m_Z;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = right;
+    *writeIterator++ = bottom;
+
+    *writeIterator++ = x1;
+    *writeIterator++ = y1;
+    *writeIterator++ = m_Z;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = left;
+    *writeIterator++ = top;
+
+    *writeIterator++ = x3;
+    *writeIterator++ = y3;
+    *writeIterator++ = m_Z;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = right;
+    *writeIterator++ = bottom;
+
+    *writeIterator++ = x4;
+    *writeIterator++ = y4;
+    *writeIterator++ = m_Z;
+    *writeIterator++ = colour.r;
+    *writeIterator++ = colour.g;
+    *writeIterator++ = colour.b;
+    *writeIterator++ = colour.a;
+    *writeIterator++ = left;
+    *writeIterator++ = bottom;
+
+    m_RenderOp.vertexData->vertexCount += 6;
+
+    m_VertexBuffer->unlock();
+}
+
+
+
+void
+Entity::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation )
+{
+    if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
+    {
+        m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
+        m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
+        m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
+
+        if( m_RenderOp.vertexData->vertexCount != 0 )
+        {
+            m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
+            m_RenderSystem->_render( m_RenderOp );
+        }
     }
 }
 
 
 
 void
-Entity::SetPosition( const Ogre::Vector3& position )
+Entity::CreateVertexBuffers()
 {
-    m_SceneNode->setPosition( position );
-}
+    m_MaxVertexCount = 10000 * 6;
+    m_RenderOp.vertexData = new Ogre::VertexData;
+    m_RenderOp.vertexData->vertexStart = 0;
 
+    Ogre::VertexDeclaration* vDecl = m_RenderOp.vertexData->vertexDeclaration;
 
+    size_t offset = 0;
+    vDecl->addElement( 0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION );
+    offset += Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT3 );
+    vDecl->addElement( 0, offset, Ogre::VET_FLOAT4, Ogre::VES_DIFFUSE );
+    offset += Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT4 );
+    vDecl->addElement( 0, offset, Ogre::VET_FLOAT2, Ogre::VES_TEXTURE_COORDINATES );
 
-const Ogre::Vector3
-Entity::GetPosition() const
-{
-    return m_SceneNode->getPosition();
-}
+    m_VertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), m_MaxVertexCount, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
 
-
-
-void
-Entity::SetRotation( const Ogre::Degree& rotation )
-{
-    m_RotationY = rotation;
-
-    float angle = rotation.valueDegrees() - Ogre::Math::Floor( rotation.valueDegrees() / 360.0f ) * 360.0f;
-    if( angle < 0 )
-    {
-        angle = 360 + angle;
-    }
-
-    Ogre::Quaternion q;
-    Ogre::Vector3 vec = Ogre::Vector3::UNIT_Y;
-    q.FromAngleAxis( Ogre::Radian( Ogre::Degree( angle ) ), vec );
-    m_SceneNode->setOrientation( q );
-}
-
-
-
-Ogre::Degree
-Entity::GetRotation() const
-{
-    return m_RotationY;
+    m_RenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_VertexBuffer );
+    m_RenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
+    m_RenderOp.useIndexes = false;
 }
 
 
 
 void
-Entity::SetVisible( const bool visible )
+Entity::DestroyVertexBuffers()
 {
-    if( m_Model != NULL )
-    {
-        m_Model->setVisible( visible );
-    }
-}
-
-
-
-bool
-Entity::IsVisible() const
-{
-    if( m_Model != NULL )
-    {
-        return m_Model->isVisible();
-    }
-    return false;
+    delete m_RenderOp.vertexData;
+    m_RenderOp.vertexData = 0;
+    m_VertexBuffer.setNull();
+    m_MaxVertexCount = 0;
 }
 
 
 
 void
-Entity::SetSolidRadius( const float radius )
+Entity::CreateMaterial()
 {
-    m_SolidRadius = radius;
-    m_SolidCollisionNode->setScale( m_SolidRadius, -m_SizeY, m_SolidRadius );
-}
-
-
-
-float
-Entity::GetSolidRadius() const
-{
-    return m_SolidRadius;
-}
-
-
-
-void
-Entity::SetSolid( const bool solid )
-{
-    m_Solid = solid;
-}
-
-
-
-bool
-Entity::IsSolid() const
-{
-    return m_Solid;
-}
-
-
-
-void
-Entity::SetWalkmeshId( const int walkmesh_id )
-{
-    m_WalkmeshId = walkmesh_id;
-}
-
-
-
-int
-Entity::GetWalkmeshId() const
-{
-    return m_WalkmeshId;
-}
-
-
-
-void
-Entity::SetTriangleId( const int triangle_id )
-{
-    m_TriangleId = triangle_id;
-}
-
-
-
-int
-Entity::GetTriangleId() const
-{
-    return m_TriangleId;
-}
-
-
-
-bool
-Entity::IsPlayer() const
-{
-    return m_Player;
-}
-
-
-
-bool
-Entity::IsMove() const
-{
-    return m_Move;
+    m_Material = Ogre::MaterialManager::getSingleton().create( "Entity", "General" );
+    Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
+    pass->setVertexColourTracking( Ogre::TVC_AMBIENT );
+    pass->setCullingMode( Ogre::CULL_NONE );
+    pass->setDepthCheckEnabled( true );
+    pass->setDepthWriteEnabled( true );
+    pass->setLightingEnabled( false );
+    //pass->setPolygonMode( Ogre::PolygonMode::PM_WIREFRAME );
+    pass->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
+    pass->setAlphaRejectFunction( Ogre::CMPF_GREATER );
+    pass->setAlphaRejectValue( 0 );
+    Ogre::TextureUnitState* tex = pass->createTextureUnitState();
+    tex->setTextureName( "system/blank.png" );
+    tex->setNumMipmaps( -1 );
+    tex->setTextureFiltering( Ogre::TFO_NONE );
 }

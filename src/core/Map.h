@@ -1,5 +1,5 @@
-#ifndef WALKMESH_H
-#define WALKMESH_H
+#ifndef MAP_H
+#define MAP_H
 
 #include <OgreHardwareVertexBuffer.h>
 #include <OgreRenderQueueListener.h>
@@ -7,19 +7,20 @@
 
 
 
-class Walkmesh : public Ogre::RenderQueueListener
+class Map : public Ogre::RenderQueueListener
 {
 public:
-    Walkmesh();
-    virtual ~Walkmesh();
-
-    void Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour );
+    Map();
+    virtual ~Map();
 
     void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
 
 private:
     void CreateVertexBuffers();
     void DestroyVertexBuffers();
+    void CreateMaterial();
+
+    void Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour );
 
 private:
     Ogre::SceneManager* m_SceneManager;
@@ -33,4 +34,4 @@ private:
 
 
 
-#endif // WALKMESH_H
+#endif // MAP_H

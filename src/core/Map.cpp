@@ -1,36 +1,19 @@
 #include "CameraManager.h"
 #include "Logger.h"
-#include "Walkmesh.h"
+#include "Map.h"
 
 #include <OgreHardwareBufferManager.h>
 #include <OgreMaterialManager.h>
 
 
 
-
-
-Walkmesh::Walkmesh()
+Map::Map()
 {
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
 
     CreateVertexBuffers();
-
-    m_Material = Ogre::MaterialManager::getSingleton().create( "Map", "General" );
-    Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
-    pass->setVertexColourTracking( Ogre::TVC_AMBIENT );
-    pass->setCullingMode( Ogre::CULL_NONE );
-    pass->setDepthCheckEnabled( true );
-    pass->setDepthWriteEnabled( true );
-    pass->setLightingEnabled( false );
-    //pass->setPolygonMode( Ogre::PolygonMode::PM_WIREFRAME );
-    pass->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
-    pass->setAlphaRejectFunction( Ogre::CMPF_GREATER );
-    pass->setAlphaRejectValue( 0 );
-    Ogre::TextureUnitState* tex = pass->createTextureUnitState();
-    tex->setTextureName( "system/blank.png" );
-    tex->setNumMipmaps( -1 );
-    tex->setTextureFiltering( Ogre::TFO_NONE );
+    CreateMaterial();
 
     m_SceneManager->addRenderQueueListener( this );
 
@@ -45,7 +28,7 @@ Walkmesh::Walkmesh()
 
 
 
-Walkmesh::~Walkmesh()
+Map::~Map()
 {
     m_SceneManager->removeRenderQueueListener( this );
 
@@ -55,11 +38,11 @@ Walkmesh::~Walkmesh()
 
 
 void
-Walkmesh::Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour )
+Map::Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour )
 {
     if( m_RenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
     {
-        LOG_ERROR( "Walkmesh: Max number of quads reached. Can't create more than " + Ogre::StringConverter::toString( m_MaxVertexCount / 6 ) + " quads." );
+        LOG_ERROR( "Map: Max number of quads reached. Can't create more than " + Ogre::StringConverter::toString( m_MaxVertexCount / 6 ) + " quads." );
         return;
     }
 
@@ -150,7 +133,7 @@ Walkmesh::Quad( const float x, const float y, const float width, const float hei
 
 
 void
-Walkmesh::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation )
+Map::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation )
 {
     if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
     {
@@ -169,7 +152,7 @@ Walkmesh::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invoca
 
 
 void
-Walkmesh::CreateVertexBuffers()
+Map::CreateVertexBuffers()
 {
     m_MaxVertexCount = 10000 * 6;
     m_RenderOp.vertexData = new Ogre::VertexData;
@@ -194,10 +177,32 @@ Walkmesh::CreateVertexBuffers()
 
 
 void
-Walkmesh::DestroyVertexBuffers()
+Map::DestroyVertexBuffers()
 {
     delete m_RenderOp.vertexData;
     m_RenderOp.vertexData = 0;
     m_VertexBuffer.setNull();
     m_MaxVertexCount = 0;
+}
+
+
+
+void
+Map::CreateMaterial()
+{
+    m_Material = Ogre::MaterialManager::getSingleton().create( "Map", "General" );
+    Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
+    pass->setVertexColourTracking( Ogre::TVC_AMBIENT );
+    pass->setCullingMode( Ogre::CULL_NONE );
+    pass->setDepthCheckEnabled( true );
+    pass->setDepthWriteEnabled( true );
+    pass->setLightingEnabled( false );
+    //pass->setPolygonMode( Ogre::PolygonMode::PM_WIREFRAME );
+    pass->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
+    pass->setAlphaRejectFunction( Ogre::CMPF_GREATER );
+    pass->setAlphaRejectValue( 0 );
+    Ogre::TextureUnitState* tex = pass->createTextureUnitState();
+    tex->setTextureName( "system/blank.png" );
+    tex->setNumMipmaps( -1 );
+    tex->setTextureFiltering( Ogre::TFO_NONE );
 }
