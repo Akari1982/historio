@@ -85,9 +85,6 @@
     <ClCompile Include="core\Utilites.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
-    <ClCompile Include="core\Walkmesh.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
     <ClCompile Include="core\XmlFile.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
@@ -95,12 +92,6 @@
       <Filter>X-Gears files</Filter>
     </ClCompile>
     <ClCompile Include="core\XmlFontsFile.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\XmlMapFile.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\XmlMapsFile.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
     <ClCompile Include="core\XmlPrototypesFile.cpp">
@@ -119,9 +110,6 @@
       <Filter>X-Gears files</Filter>
     </ClCompile>
     <ClCompile Include="core\XmlTextsFile.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\XmlWalkmeshFile.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
     <ClCompile Include="core\library\luabind\class.cpp">
@@ -277,22 +265,7 @@
     <ClCompile Include="core\library\tinyxml\tinyxmlparser.cpp">
       <Filter>X-Gears files\TinyXml</Filter>
     </ClCompile>
-    <ClCompile Include="core\Trigger.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\EntityCollision.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\EntityDirection.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\SpawnPoint.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\Sprite.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\XmlSpriteFile.cpp">
+    <ClCompile Include="core\Map.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -393,9 +366,6 @@
     <ClInclude Include="core\Utilites.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
-    <ClInclude Include="core\Walkmesh.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
     <ClInclude Include="core\XmlFile.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
@@ -403,12 +373,6 @@
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="core\XmlFontsFile.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\XmlMapFile.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\XmlMapsFile.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="core\XmlPrototypesFile.h">
@@ -427,9 +391,6 @@
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="core\XmlTextsFile.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\XmlWalkmeshFile.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="core\library\luabind\adopt_policy.hpp">
@@ -750,22 +711,7 @@
     <ClInclude Include="core\library\tinyxml\tinyxml.h">
       <Filter>X-Gears files\TinyXml</Filter>
     </ClInclude>
-    <ClInclude Include="core\Trigger.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\EntityCollision.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\EntityDirection.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\SpawnPoint.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\Sprite.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\XmlSpriteFile.h">
+    <ClInclude Include="core\Map.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
   </ItemGroup>

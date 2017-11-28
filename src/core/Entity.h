@@ -1,6 +1,9 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
+#include <OgreHardwareVertexBuffer.h>
+#include <OgreRenderQueueListener.h>
+#include <OgreRenderOperation.h>
 #include <OgreString.h>
 
 
@@ -19,7 +22,6 @@ public:
     void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
 
 private:
-    Entity();
     void CreateVertexBuffer();
     void DestroyVertexBuffer();
     void CreateMaterial();

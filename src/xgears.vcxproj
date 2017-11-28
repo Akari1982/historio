@@ -20,8 +20,6 @@
     <ClCompile Include="core\Console.cpp" />
     <ClCompile Include="core\DebugDraw.cpp" />
     <ClCompile Include="core\Entity.cpp" />
-    <ClCompile Include="core\EntityCollision.cpp" />
-    <ClCompile Include="core\EntityDirection.cpp" />
     <ClCompile Include="core\EntityManager.cpp" />
     <ClCompile Include="core\GameFrameListner.cpp" />
     <ClCompile Include="core\InputManager.cpp" />
@@ -76,12 +74,10 @@
     <ClCompile Include="core\library\tinyxml\tinyxml.cpp" />
     <ClCompile Include="core\library\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="core\library\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="core\Map.cpp" />
     <ClCompile Include="core\ScriptManager.cpp" />
-    <ClCompile Include="core\SpawnPoint.cpp" />
-    <ClCompile Include="core\Sprite.cpp" />
     <ClCompile Include="core\TextManager.cpp" />
     <ClCompile Include="core\Timer.cpp" />
-    <ClCompile Include="core\Trigger.cpp" />
     <ClCompile Include="core\UiAnimation.cpp" />
     <ClCompile Include="core\UiFont.cpp" />
     <ClCompile Include="core\UiManager.cpp" />
@@ -89,20 +85,15 @@
     <ClCompile Include="core\UiTextArea.cpp" />
     <ClCompile Include="core\UiWidget.cpp" />
     <ClCompile Include="core\Utilites.cpp" />
-    <ClCompile Include="core\Walkmesh.cpp" />
     <ClCompile Include="core\XmlFile.cpp" />
     <ClCompile Include="core\XmlFontFile.cpp" />
     <ClCompile Include="core\XmlFontsFile.cpp" />
-    <ClCompile Include="core\XmlMapFile.cpp" />
-    <ClCompile Include="core\XmlMapsFile.cpp" />
     <ClCompile Include="core\XmlPrototypesFile.cpp" />
     <ClCompile Include="core\XmlScreenFile.cpp" />
     <ClCompile Include="core\XmlScreensFile.cpp" />
     <ClCompile Include="core\XmlScriptsFile.cpp" />
-    <ClCompile Include="core\XmlSpriteFile.cpp" />
     <ClCompile Include="core\XmlTextFile.cpp" />
     <ClCompile Include="core\XmlTextsFile.cpp" />
-    <ClCompile Include="core\XmlWalkmeshFile.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -118,8 +109,6 @@
     <ClInclude Include="core\Console.h" />
     <ClInclude Include="core\DebugDraw.h" />
     <ClInclude Include="core\Entity.h" />
-    <ClInclude Include="core\EntityCollision.h" />
-    <ClInclude Include="core\EntityDirection.h" />
     <ClInclude Include="core\EntityManager.h" />
     <ClInclude Include="core\Event.h" />
     <ClInclude Include="core\GameFrameListner.h" />
@@ -232,15 +221,13 @@
     <ClInclude Include="core\library\tinyxml\tinystr.h" />
     <ClInclude Include="core\library\tinyxml\tinyxml.h" />
     <ClInclude Include="core\Logger.h" />
+    <ClInclude Include="core\Map.h" />
     <ClInclude Include="core\ScriptManager.h" />
     <ClInclude Include="core\ScriptManagerBinds.h" />
     <ClInclude Include="core\ScriptManagerCommands.h" />
-    <ClInclude Include="core\SpawnPoint.h" />
-    <ClInclude Include="core\Sprite.h" />
     <ClInclude Include="core\TextManager.h" />
     <ClInclude Include="core\TextManagerCommands.h" />
     <ClInclude Include="core\Timer.h" />
-    <ClInclude Include="core\Trigger.h" />
     <ClInclude Include="core\UiAnimation.h" />
     <ClInclude Include="core\UiFont.h" />
     <ClInclude Include="core\UiManager.h" />
@@ -248,20 +235,15 @@
     <ClInclude Include="core\UiTextArea.h" />
     <ClInclude Include="core\UiWidget.h" />
     <ClInclude Include="core\Utilites.h" />
-    <ClInclude Include="core\Walkmesh.h" />
     <ClInclude Include="core\XmlFile.h" />
     <ClInclude Include="core\XmlFontFile.h" />
     <ClInclude Include="core\XmlFontsFile.h" />
-    <ClInclude Include="core\XmlMapFile.h" />
-    <ClInclude Include="core\XmlMapsFile.h" />
     <ClInclude Include="core\XmlPrototypesFile.h" />
     <ClInclude Include="core\XmlScreenFile.h" />
     <ClInclude Include="core\XmlScreensFile.h" />
     <ClInclude Include="core\XmlScriptsFile.h" />
-    <ClInclude Include="core\XmlSpriteFile.h" />
     <ClInclude Include="core\XmlTextFile.h" />
     <ClInclude Include="core\XmlTextsFile.h" />
-    <ClInclude Include="core\XmlWalkmeshFile.h" />
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

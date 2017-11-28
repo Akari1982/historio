@@ -16,7 +16,6 @@ EntityManager::EntityManager()
 
     InitCmd();
 
-    m_Map = new Map();
     Entity* entity = new Entity();
     m_Entity.push_back( entity );
 }

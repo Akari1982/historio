@@ -5,8 +5,6 @@
 #include "Timer.h"
 #include "UiManager.h"
 #include "UiWidget.h"
-#include "XmlMapFile.h"
-#include "XmlMapsFile.h"
 
 
 
@@ -14,20 +12,6 @@ void
 ScriptPrint( const char* text )
 {
     Console::getSingleton().AddTextToOutput( text );
-}
-
-
-
-void
-ScriptMap( const char* text )
-{
-    EntityManager::getSingleton().Clear();
-
-    XmlMapsFile xml( "./data/maps.xml" );
-    Ogre::String file_name = xml.GetMapFileNameByName( text );
-
-    XmlMapFile xml_map( "./data/" + file_name );
-    xml_map.LoadMap();
 }
 
 
@@ -47,17 +31,7 @@ ScriptManager::InitBinds()
     luabind::module( m_LuaState )
     [
         luabind::def( "print", ( void( * )( const char* ) ) &ScriptPrint ),
-        luabind::def( "map", ( void( * )( const char* ) ) &ScriptMap ),
         luabind::def( "console", ( void( * )( const char* ) ) &ScriptConsole )
-    ];
-
-    // entity access
-    luabind::module( m_LuaState )
-    [
-        luabind::class_< Entity >( "Entity" )
-            .def( "init_pc", ( void( Entity::* )( const int ) ) &Entity::ScriptInitPC )
-            .def( "init_npc", ( void( Entity::* )( const int ) ) &Entity::ScriptInitNPC )
-            .def( "input", ( void( Entity::* )() ) &Entity::ScriptInput )
     ];
 
     // ui widget access

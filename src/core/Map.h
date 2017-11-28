@@ -3,7 +3,7 @@
 
 #include <OgreHardwareVertexBuffer.h>
 #include <OgreRenderQueueListener.h>
-#include <OgreRoot.h>
+#include <OgreRenderOperation.h>
 
 
 

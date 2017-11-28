@@ -13,15 +13,12 @@ ConfigVar cv_debug_entity( "debug_entity", "Draw entity debug info", "0" );
 
 
 
-Entity::Entity( const Ogre::String& name, Ogre::SceneNode* node ):
-    m_Name( name ),
-    m_SceneNode( node ),
-    m_Rotation( Ogre::Degree( 0.0f ) )
+Entity::Entity()
 {
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
 
-    CreateVertexBuffers();
+    CreateVertexBuffer();
     CreateMaterial();
 
     UpdateGeometry();
@@ -35,7 +32,7 @@ Entity::~Entity()
 {
     m_SceneManager->removeRenderQueueListener( this );
 
-    DestroyVertexBuffers();
+    DestroyVertexBuffer();
 }
 
 
@@ -76,12 +73,6 @@ Entity::UpdateDebug()
 void
 Entity::UpdateGeometry()
 {
-    if( m_RenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
-    {
-        LOG_ERROR( "Map: Max number of quads reached. Can't create more than " + Ogre::StringConverter::toString( m_MaxVertexCount / 6 ) + " quads." );
-        return;
-    }
-
     float x = 0;
     float y = 0;
     float width = 20;
@@ -103,8 +94,9 @@ Entity::UpdateGeometry()
 
     float m_Z = 0.5f;
 
+    Ogre::ColourValue colour = Ogre::ColourValue( 1, 1, 1, 1 );
+
     float* writeIterator = ( float* ) m_VertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
-    writeIterator += m_RenderOp.vertexData->vertexCount * 9;
 
     *writeIterator++ = x1;
     *writeIterator++ = y1;
@@ -193,9 +185,8 @@ Entity::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocati
 
 
 void
-Entity::CreateVertexBuffers()
+Entity::CreateVertexBuffer()
 {
-    m_MaxVertexCount = 10000 * 6;
     m_RenderOp.vertexData = new Ogre::VertexData;
     m_RenderOp.vertexData->vertexStart = 0;
 
@@ -208,7 +199,7 @@ Entity::CreateVertexBuffers()
     offset += Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT4 );
     vDecl->addElement( 0, offset, Ogre::VET_FLOAT2, Ogre::VES_TEXTURE_COORDINATES );
 
-    m_VertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), m_MaxVertexCount, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
+    m_VertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), 6, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
 
     m_RenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_VertexBuffer );
     m_RenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
@@ -218,12 +209,11 @@ Entity::CreateVertexBuffers()
 
 
 void
-Entity::DestroyVertexBuffers()
+Entity::DestroyVertexBuffer()
 {
     delete m_RenderOp.vertexData;
     m_RenderOp.vertexData = 0;
     m_VertexBuffer.setNull();
-    m_MaxVertexCount = 0;
 }
 
 

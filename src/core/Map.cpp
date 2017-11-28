@@ -4,6 +4,7 @@
 
 #include <OgreHardwareBufferManager.h>
 #include <OgreMaterialManager.h>
+#include <OgreRoot.h>
 
 
 
