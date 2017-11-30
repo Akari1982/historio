@@ -1,7 +1,6 @@
+#include "Entity.h"
 #include "EntityManager.h"
 #include "EntityManagerCommands.h"
-
-#include "ConfigVar.h"
 #include "Logger.h"
 
 
@@ -45,6 +44,11 @@ EntityManager::Input( const Event& event )
 void
 EntityManager::Update()
 {
+    for( size_t i = 0; i < m_Entity.size(); ++i )
+    {
+        m_Entity[ i ]->Update();
+    }
+
     UpdateDebug();
 }
 

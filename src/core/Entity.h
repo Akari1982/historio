@@ -1,37 +1,20 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include <OgreHardwareVertexBuffer.h>
-#include <OgreRenderQueueListener.h>
-#include <OgreRenderOperation.h>
-#include <OgreString.h>
+#include "Tile.h"
 
 
 
-class Entity : public Ogre::RenderQueueListener
+class Entity : public Tile
 {
 public:
     Entity();
     virtual ~Entity();
 
-    void UpdateDebug();
-
-    void SetImage( const Ogre::String& image );
-    void UpdateGeometry();
-
-    void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
-
-private:
-    void CreateVertexBuffer();
-    void DestroyVertexBuffer();
-    void CreateMaterial();
+    virtual void Update();
+    virtual void UpdateDebug();
 
 protected:
-    Ogre::MaterialPtr m_Material;
-    Ogre::SceneManager* m_SceneManager;
-    Ogre::RenderSystem* m_RenderSystem;
-    Ogre::RenderOperation m_RenderOp;
-    Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
 };
 
 
