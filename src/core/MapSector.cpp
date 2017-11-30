@@ -4,7 +4,8 @@
 
 
 
-MapSector::MapSector()
+MapSector::MapSector( Map* map ):
+    m_Map( map )
 {
     Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().create( "Map", "General" );
     Ogre::Pass* pass = material->getTechnique( 0 )->getPass( 0 );
@@ -29,7 +30,15 @@ MapSector::MapSector()
             Tile* tile = new Tile();
             tile->SetPosition( i, j );
             tile->SetSize( 1, 1 );
-            tile->SetColour( Ogre::ColourValue( i / 100.0f, i / 100.0f, j / 100.0f, 1 ) );
+            MapTile map_tile = m_Map->GetTile( i, j );
+            if( map_tile.type == MapTile::GRASS )
+            {
+                tile->SetColour( Ogre::ColourValue( 0, 1, 0, 1 ) );
+            }
+            else if( map_tile.type == MapTile::WATER )
+            {
+                tile->SetColour( Ogre::ColourValue( 0, 0, 1, 1 ) );
+            }
             tile->SetMaterial( material );
             tile->UpdateGeometry();
             m_Tiles.push_back( tile );
