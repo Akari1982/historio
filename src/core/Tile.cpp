@@ -1,9 +1,7 @@
 #include <OgreHardwareBufferManager.h>
 #include <OgreMaterialManager.h>
+#include <OgreRoot.h>
 
-#include "CameraManager.h"
-#include "DebugDraw.h"
-#include "Logger.h"
 #include "Tile.h"
 
 
@@ -19,16 +17,12 @@ Tile::Tile():
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
 
     CreateVertexBuffer();
-
-    m_SceneManager->addRenderQueueListener( this );
 }
 
 
 
 Tile::~Tile()
 {
-    m_SceneManager->removeRenderQueueListener( this );
-
     DestroyVertexBuffer();
 }
 
@@ -157,20 +151,10 @@ Tile::UpdateGeometry()
 
 
 void
-Tile::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation )
+Tile::Render()
 {
-    if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
-    {
-        m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
-        m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
-        m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
-
-        if( m_Material.isNull() == false )
-        {
-            m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
-            m_RenderSystem->_render( m_RenderOp );
-        }
-    }
+    m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
+    m_RenderSystem->_render( m_RenderOp );
 }
 
 

@@ -118,6 +118,5 @@ UiFont::GetCharData( const int char_code ) const
     }
 
     LOG_ERROR( "There is no char with char code " + Ogre::StringConverter::toString( char_code ) + " in font " + m_Name + "." );
-    UiCharData ret;
-    return ret;
+    return UiCharData();
 }

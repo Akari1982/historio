@@ -75,8 +75,10 @@
     <ClCompile Include="core\library\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="core\library\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="core\Map.cpp" />
+    <ClCompile Include="core\MapSector.cpp" />
     <ClCompile Include="core\ScriptManager.cpp" />
     <ClCompile Include="core\TextManager.cpp" />
+    <ClCompile Include="core\Tile.cpp" />
     <ClCompile Include="core\Timer.cpp" />
     <ClCompile Include="core\UiAnimation.cpp" />
     <ClCompile Include="core\UiFont.cpp" />
@@ -222,11 +224,13 @@
     <ClInclude Include="core\library\tinyxml\tinyxml.h" />
     <ClInclude Include="core\Logger.h" />
     <ClInclude Include="core\Map.h" />
+    <ClInclude Include="core\MapSector.h" />
     <ClInclude Include="core\ScriptManager.h" />
     <ClInclude Include="core\ScriptManagerBinds.h" />
     <ClInclude Include="core\ScriptManagerCommands.h" />
     <ClInclude Include="core\TextManager.h" />
     <ClInclude Include="core\TextManagerCommands.h" />
+    <ClInclude Include="core\Tile.h" />
     <ClInclude Include="core\Timer.h" />
     <ClInclude Include="core\UiAnimation.h" />
     <ClInclude Include="core\UiFont.h" />

@@ -2,13 +2,11 @@
 #define TILE_H
 
 #include <OgreHardwareVertexBuffer.h>
-#include <OgreRenderQueueListener.h>
 #include <OgreRenderOperation.h>
-#include <OgreString.h>
 
 
 
-class Tile : public Ogre::RenderQueueListener
+class Tile
 {
 public:
     Tile();
@@ -20,7 +18,7 @@ public:
     void SetColour( const Ogre::ColourValue& colour );
     void UpdateGeometry();
 
-    void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
+    void Render();
 
 private:
     void CreateVertexBuffer();
@@ -37,7 +35,7 @@ protected:
     float m_Y;
     float m_Width;
     float m_Height;
-    Ogre::ColourValue m_Colour
+    Ogre::ColourValue m_Colour;
 };
 
 

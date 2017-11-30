@@ -1,3 +1,6 @@
+#include <OgreMaterialManager.h>
+#include <OgreTechnique.h>
+
 #include "Entity.h"
 
 

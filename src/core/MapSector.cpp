@@ -1,4 +1,8 @@
+#include <OgreMaterialManager.h>
+#include <OgreTechnique.h>
+
 #include "Logger.h"
+#include "Map.h"
 #include "MapSector.h"
 #include "Tile.h"
 
@@ -55,4 +59,15 @@ MapSector::~MapSector()
         delete m_Tiles[ i ];
     }
     m_Tiles.clear();
+}
+
+
+
+void
+MapSector::Render()
+{
+    for( unsigned int i = 0; i < m_Tiles.size(); ++i )
+    {
+        m_Tiles[ i ]->Render();
+    }
 }

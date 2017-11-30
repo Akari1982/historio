@@ -268,6 +268,12 @@
     <ClCompile Include="core\Map.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
+    <ClCompile Include="core\MapSector.cpp">
+      <Filter>X-Gears files</Filter>
+    </ClCompile>
+    <ClCompile Include="core\Tile.cpp">
+      <Filter>X-Gears files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -712,6 +718,12 @@
       <Filter>X-Gears files\TinyXml</Filter>
     </ClInclude>
     <ClInclude Include="core\Map.h">
+      <Filter>X-Gears files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\MapSector.h">
+      <Filter>X-Gears files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\Tile.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
   </ItemGroup>
