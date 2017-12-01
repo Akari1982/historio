@@ -1,8 +1,6 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <OgreRenderQueueListener.h>
-
 #include "MapSector.h"
 
 
@@ -20,7 +18,7 @@ struct MapTile
 
 
 
-class Map : public Ogre::RenderQueueListener
+class Map
 {
 public:
     Map();
@@ -28,12 +26,9 @@ public:
 
     MapTile GetTile( const unsigned int x, const unsigned int y );
 
-    void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
+    void Render();
 
 private:
-    Ogre::SceneManager* m_SceneManager;
-    Ogre::RenderSystem* m_RenderSystem;
-
     MapTile m_MapData[ 10000 ];
     MapSector* m_MapSector;
 };

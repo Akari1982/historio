@@ -1,6 +1,7 @@
 #ifndef ENTITY_MANAGER_H
 #define ENTITY_MANAGER_H
 
+#include <OgreRenderQueueListener.h>
 #include <OgreSingleton.h>
 
 #include "Event.h"
@@ -9,7 +10,7 @@
 
 
 
-class EntityManager : public Ogre::Singleton< EntityManager >
+class EntityManager : public Ogre::Singleton< EntityManager >, public Ogre::RenderQueueListener
 {
 public:
     EntityManager();
@@ -22,11 +23,13 @@ public:
 
     void InitCmd();
 
+    void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
+
 private:
-    bool m_Paused;
+    Ogre::SceneManager* m_SceneManager;
+    Ogre::RenderSystem* m_RenderSystem;
 
     Map m_Map;
-
     std::vector< Entity* > m_Entity;
 };
 

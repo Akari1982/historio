@@ -1,3 +1,6 @@
+#include <OgreRoot.h>
+
+#include "CameraManager.h"
 #include "Entity.h"
 #include "EntityManager.h"
 #include "EntityManagerCommands.h"
@@ -17,6 +20,10 @@ EntityManager::EntityManager()
 
     Entity* entity = new Entity();
     m_Entity.push_back( entity );
+
+    m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
+    m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
+    m_SceneManager->addRenderQueueListener( this );
 }
 
 
@@ -28,6 +35,8 @@ EntityManager::~EntityManager()
         delete m_Entity[ i ];
     }
     m_Entity.clear();
+
+    m_SceneManager->removeRenderQueueListener( this );
 
     LOG_TRIVIAL( "EntityManager destroyed." );
 }
@@ -68,4 +77,22 @@ EntityManager::UpdateDebug()
 void
 EntityManager::OnResize()
 {
+}
+
+
+
+void
+EntityManager::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& skipThisInvocation )
+{
+    if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
+    {
+        m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
+        m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
+        m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
+        m_Map->Render();
+        for( size_t i = 0; i < m_Entity.size(); ++i )
+        {
+            m_Entity[ i ]->Render();
+        }
+    }
 }
