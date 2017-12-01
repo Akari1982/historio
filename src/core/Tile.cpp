@@ -7,10 +7,8 @@
 
 
 Tile::Tile():
-    m_X( 0 ),
-    m_Y( 0 ),
-    m_Width( 1 ),
-    m_Height( 1 ),
+    m_Position( Ogre::Vector2::ZERO ),
+    m_Size( Ogre::Vector2( 1, 1 ) ),
     m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) )
 {
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
@@ -37,19 +35,33 @@ Tile::SetMaterial( const Ogre::MaterialPtr material )
 
 
 void
-Tile::SetPosition( const float x, const float y )
+Tile::SetPosition( const Ogre::Vector2& position )
 {
-    m_X = x;
-    m_Y = y;
+    m_Position = position;
+}
+
+
+
+const Ogre::Vector2&
+Tile::GetPosition() const
+{
+    return m_Position;
 }
 
 
 
 void
-Tile::SetSize( const float width, const float height )
+Tile::SetSize( const Ogre::Vector2& size )
 {
-    m_Width = width;
-    m_Height = height;
+    m_Size = size;
+}
+
+
+
+const Ogre::Vector2&
+Tile::GetSize() const
+{
+    return m_Size;
 }
 
 
@@ -65,27 +77,25 @@ Tile::SetColour( const Ogre::ColourValue& colour )
 void
 Tile::UpdateGeometry()
 {
-    float x1 = m_X;
-    float y1 = m_Y;
-    float x2 = m_X + m_Width;
-    float y2 = m_Y;
-    float x3 = m_X + m_Width;
-    float y3 = m_Y + m_Height;
-    float x4 = m_X;
-    float y4 = m_Y + m_Height;
+    float x1 = m_Position.x;
+    float y1 = m_Position.y;
+    float x2 = m_Position.x + m_Size.x;
+    float y2 = m_Position.y;
+    float x3 = m_Position.x + m_Size.x;
+    float y3 = m_Position.y + m_Size.y;
+    float x4 = m_Position.x;
+    float y4 = m_Position.y + m_Size.y;
 
     float left = 0.0f;
     float right = 1.0f;
     float top = 0.0f;
     float bottom = 1.0f;
 
-    float m_Z = 0.5f;
-
     float* writeIterator = ( float* ) m_VertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
 
     *writeIterator++ = x1;
     *writeIterator++ = y1;
-    *writeIterator++ = m_Z;
+    *writeIterator++ = 0;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -95,7 +105,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x2;
     *writeIterator++ = y2;
-    *writeIterator++ = m_Z;
+    *writeIterator++ = 0;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -105,7 +115,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x3;
     *writeIterator++ = y3;
-    *writeIterator++ = m_Z;
+    *writeIterator++ = 0;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -115,7 +125,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x1;
     *writeIterator++ = y1;
-    *writeIterator++ = m_Z;
+    *writeIterator++ = 0;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -125,7 +135,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x3;
     *writeIterator++ = y3;
-    *writeIterator++ = m_Z;
+    *writeIterator++ = 0;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -135,7 +145,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x4;
     *writeIterator++ = y4;
-    *writeIterator++ = m_Z;
+    *writeIterator++ = 0;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;

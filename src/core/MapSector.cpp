@@ -32,16 +32,16 @@ MapSector::MapSector( Map* map ):
         for( int j = 0; j < 100; ++j )
         {
             Tile* tile = new Tile();
-            tile->SetPosition( i, j );
-            tile->SetSize( 1, 1 );
+            tile->SetTilePosition( i, j );
+            tile->SetTileSize( 1, 1 );
             MapTile map_tile = m_Map->GetTile( i, j );
             if( map_tile.type == MapTile::GRASS )
             {
-                tile->SetColour( Ogre::ColourValue( 0, 1, 0, 1 ) );
+                tile->SetTileColour( Ogre::ColourValue( 0, 1, 0, 1 ) );
             }
             else if( map_tile.type == MapTile::WATER )
             {
-                tile->SetColour( Ogre::ColourValue( 0, 0, 1, 1 ) );
+                tile->SetTileColour( Ogre::ColourValue( 0, 0, 1, 1 ) );
             }
             tile->SetMaterial( material );
             tile->UpdateGeometry();

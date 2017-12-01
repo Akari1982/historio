@@ -13,8 +13,6 @@ public:
 
     virtual void Update();
     virtual void UpdateDebug();
-
-protected:
 };
 
 

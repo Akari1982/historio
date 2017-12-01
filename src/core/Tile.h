@@ -13,8 +13,10 @@ public:
     virtual ~Tile();
 
     void SetMaterial( const Ogre::MaterialPtr material );
-    void SetPosition( const float x, const float y );
-    void SetSize( const float width, const float height );
+    void SetPosition( const Ogre::Vector2& position );
+    const Ogre::Vector2& GetPosition() const;
+    void SetSize( const Ogre::Vector2& size );
+    const Ogre::Vector2& GetSize() const;
     void SetColour( const Ogre::ColourValue& colour );
     void UpdateGeometry();
 
@@ -31,10 +33,8 @@ protected:
     Ogre::RenderOperation m_RenderOp;
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
 
-    float m_X;
-    float m_Y;
-    float m_Width;
-    float m_Height;
+    Ogre::Vector2 m_Position;
+    Ogre::Vector2 m_Size;
     Ogre::ColourValue m_Colour;
 };
 
