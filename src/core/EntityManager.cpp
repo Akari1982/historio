@@ -89,7 +89,7 @@ EntityManager::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& i
         m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
         m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
         m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
-        m_Map->Render();
+        m_Map.Render();
         for( size_t i = 0; i < m_Entity.size(); ++i )
         {
             m_Entity[ i ]->Render();

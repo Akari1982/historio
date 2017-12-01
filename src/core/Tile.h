@@ -3,6 +3,7 @@
 
 #include <OgreHardwareVertexBuffer.h>
 #include <OgreRenderOperation.h>
+#include <OgreVector2.h>
 
 
 

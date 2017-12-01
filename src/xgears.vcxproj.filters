@@ -274,6 +274,9 @@
     <ClCompile Include="core\Tile.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
+    <ClCompile Include="core\EntityBuilding.cpp">
+      <Filter>X-Gears files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -724,6 +727,9 @@
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="core\Tile.h">
+      <Filter>X-Gears files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\EntityBuilding.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
   </ItemGroup>
