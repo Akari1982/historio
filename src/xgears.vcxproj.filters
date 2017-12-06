@@ -274,7 +274,10 @@
     <ClCompile Include="core\Tile.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
-    <ClCompile Include="core\EntityBuilding.cpp">
+    <ClCompile Include="core\EntityMove.cpp">
+      <Filter>X-Gears files</Filter>
+    </ClCompile>
+    <ClCompile Include="core\EntityStand.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -729,7 +732,10 @@
     <ClInclude Include="core\Tile.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
-    <ClInclude Include="core\EntityBuilding.h">
+    <ClInclude Include="core\EntityMove.h">
+      <Filter>X-Gears files</Filter>
+    </ClInclude>
+    <ClInclude Include="core\EntityStand.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
   </ItemGroup>

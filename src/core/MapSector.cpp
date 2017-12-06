@@ -2,6 +2,8 @@
 #include <OgreMaterialManager.h>
 #include <OgreRoot.h>
 
+
+#include "CameraManager.h"
 #include "Logger.h"
 #include "Map.h"
 #include "MapSector.h"

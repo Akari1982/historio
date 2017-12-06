@@ -20,8 +20,9 @@
     <ClCompile Include="core\Console.cpp" />
     <ClCompile Include="core\DebugDraw.cpp" />
     <ClCompile Include="core\Entity.cpp" />
-    <ClCompile Include="core\EntityBuilding.cpp" />
     <ClCompile Include="core\EntityManager.cpp" />
+    <ClCompile Include="core\EntityMove.cpp" />
+    <ClCompile Include="core\EntityStand.cpp" />
     <ClCompile Include="core\GameFrameListner.cpp" />
     <ClCompile Include="core\InputManager.cpp" />
     <ClCompile Include="core\library\luabind\class.cpp" />
@@ -112,8 +113,9 @@
     <ClInclude Include="core\Console.h" />
     <ClInclude Include="core\DebugDraw.h" />
     <ClInclude Include="core\Entity.h" />
-    <ClInclude Include="core\EntityBuilding.h" />
     <ClInclude Include="core\EntityManager.h" />
+    <ClInclude Include="core\EntityMove.h" />
+    <ClInclude Include="core\EntityStand.h" />
     <ClInclude Include="core\Event.h" />
     <ClInclude Include="core\GameFrameListner.h" />
     <ClInclude Include="core\InputManager.h" />
