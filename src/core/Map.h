@@ -26,8 +26,6 @@ public:
 
     MapTile GetTile( const unsigned int x, const unsigned int y );
 
-    void Render();
-
 private:
     MapTile m_MapData[ 10000 ];
     MapSector* m_MapSector;

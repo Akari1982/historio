@@ -38,11 +38,3 @@ Map::GetTile( const unsigned int x, const unsigned int y )
 {
     return m_MapData[ y * 100 + x ];
 }
-
-
-
-void
-Map::Render()
-{
-    m_MapSector->Render();
-}
