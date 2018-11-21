@@ -19,6 +19,7 @@ public:
     void SetSize( const Ogre::Vector2& size );
     const Ogre::Vector2& GetSize() const;
     void SetColour( const Ogre::ColourValue& colour );
+    void SetDepth( const float depth );
     void UpdateGeometry();
 
     void Render();
@@ -37,6 +38,7 @@ protected:
     Ogre::Vector2 m_Position;
     Ogre::Vector2 m_Size;
     Ogre::ColourValue m_Colour;
+    float m_Depth;
 };
 
 

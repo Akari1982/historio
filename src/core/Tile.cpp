@@ -9,7 +9,8 @@
 Tile::Tile():
     m_Position( Ogre::Vector2::ZERO ),
     m_Size( Ogre::Vector2( 1, 1 ) ),
-    m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) )
+    m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) ),
+    m_Depth( 0.0f )
 {
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
@@ -75,6 +76,14 @@ Tile::SetColour( const Ogre::ColourValue& colour )
 
 
 void
+Tile::SetDepth( const float depth )
+{
+    m_Depth = depth;
+}
+
+
+
+void
 Tile::UpdateGeometry()
 {
     float x1 = m_Position.x;
@@ -95,7 +104,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x1;
     *writeIterator++ = y1;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_Depth;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -105,7 +114,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x2;
     *writeIterator++ = y2;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_Depth;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -115,7 +124,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x3;
     *writeIterator++ = y3;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_Depth;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -125,7 +134,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x1;
     *writeIterator++ = y1;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_Depth;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -135,7 +144,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x3;
     *writeIterator++ = y3;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_Depth;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;
@@ -145,7 +154,7 @@ Tile::UpdateGeometry()
 
     *writeIterator++ = x4;
     *writeIterator++ = y4;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_Depth;
     *writeIterator++ = m_Colour.r;
     *writeIterator++ = m_Colour.g;
     *writeIterator++ = m_Colour.b;

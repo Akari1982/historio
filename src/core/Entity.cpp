@@ -29,6 +29,8 @@ Entity::Entity()
 
     SetMaterial( material );
 
+    SetDepth( 10.0f );
+
     UpdateGeometry();
 }
 
