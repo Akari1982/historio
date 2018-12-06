@@ -76,8 +76,6 @@
     <ClCompile Include="core\library\tinyxml\tinyxml.cpp" />
     <ClCompile Include="core\library\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="core\library\tinyxml\tinyxmlparser.cpp" />
-    <ClCompile Include="core\Map.cpp" />
-    <ClCompile Include="core\MapSector.cpp" />
     <ClCompile Include="core\ScriptManager.cpp" />
     <ClCompile Include="core\TextManager.cpp" />
     <ClCompile Include="core\Tile.cpp" />
@@ -98,6 +96,9 @@
     <ClCompile Include="core\XmlScriptsFile.cpp" />
     <ClCompile Include="core\XmlTextFile.cpp" />
     <ClCompile Include="core\XmlTextsFile.cpp" />
+    <ClCompile Include="game\Map.cpp" />
+    <ClCompile Include="game\MapSector.cpp" />
+    <ClCompile Include="game\XmlMapFile.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -227,8 +228,6 @@
     <ClInclude Include="core\library\tinyxml\tinystr.h" />
     <ClInclude Include="core\library\tinyxml\tinyxml.h" />
     <ClInclude Include="core\Logger.h" />
-    <ClInclude Include="core\Map.h" />
-    <ClInclude Include="core\MapSector.h" />
     <ClInclude Include="core\ScriptManager.h" />
     <ClInclude Include="core\ScriptManagerBinds.h" />
     <ClInclude Include="core\ScriptManagerCommands.h" />
@@ -252,6 +251,9 @@
     <ClInclude Include="core\XmlScriptsFile.h" />
     <ClInclude Include="core\XmlTextFile.h" />
     <ClInclude Include="core\XmlTextsFile.h" />
+    <ClInclude Include="game\Map.h" />
+    <ClInclude Include="game\MapSector.h" />
+    <ClInclude Include="game\XmlMapFile.h" />
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

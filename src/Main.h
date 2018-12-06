@@ -15,7 +15,7 @@ extern QG_STATE g_ApplicationState;
 
 
 
-#define QG_VERSION_NAME "X-Gears v0.23 (Lahan all together)"
+#define QG_VERSION_NAME "Historio v0.01"
 
 
 

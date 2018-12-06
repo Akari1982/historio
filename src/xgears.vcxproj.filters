@@ -14,6 +14,9 @@
     <Filter Include="X-Gears files\TinyXml">
       <UniqueIdentifier>{2a8a35a0-cb85-40af-ad81-45906b03e636}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game">
+      <UniqueIdentifier>{e238af9c-ed19-47ad-95a1-1c37f7de8631}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -265,12 +268,6 @@
     <ClCompile Include="core\library\tinyxml\tinyxmlparser.cpp">
       <Filter>X-Gears files\TinyXml</Filter>
     </ClCompile>
-    <ClCompile Include="core\Map.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\MapSector.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
     <ClCompile Include="core\Tile.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
@@ -279,6 +276,15 @@
     </ClCompile>
     <ClCompile Include="core\EntityStand.cpp">
       <Filter>X-Gears files</Filter>
+    </ClCompile>
+    <ClCompile Include="game\XmlMapFile.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Map.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\MapSector.cpp">
+      <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -723,12 +729,6 @@
     <ClInclude Include="core\library\tinyxml\tinyxml.h">
       <Filter>X-Gears files\TinyXml</Filter>
     </ClInclude>
-    <ClInclude Include="core\Map.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\MapSector.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
     <ClInclude Include="core\Tile.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
@@ -737,6 +737,15 @@
     </ClInclude>
     <ClInclude Include="core\EntityStand.h">
       <Filter>X-Gears files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\XmlMapFile.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Map.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\MapSector.h">
+      <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
