@@ -4,9 +4,16 @@
 #include <OgreRenderQueueListener.h>
 #include <OgreSingleton.h>
 
-#include "Event.h"
+#include "../core/Event.h"
 #include "Entity.h"
-#include "../game/Map.h"
+#include "MapSector.h"
+
+struct EntityDesc
+{
+    Ogre::String name;
+    float width;
+    float height;
+}
 
 
 
@@ -16,12 +23,14 @@ public:
     EntityManager();
     virtual ~EntityManager();
 
+    void InitCmd();
+
     void Input( const Event& event );
     void Update();
     void UpdateDebug();
     void OnResize();
 
-    void InitCmd();
+    void AddEntityDesc( EntityDesc desc );
 
     void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
 
@@ -29,8 +38,9 @@ private:
     Ogre::SceneManager* m_SceneManager;
     Ogre::RenderSystem* m_RenderSystem;
 
-    Map m_Map;
-    std::vector< Entity* > m_Entity;
+    MapSector m_MapSector;
+    std::vector< EntityDesc > m_EntityDescs;
+    std::vector< Entity* > m_Entities;
 };
 
 

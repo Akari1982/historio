@@ -5,28 +5,24 @@
 #include <OgreRenderQueueListener.h>
 #include <OgreRenderOperation.h>
 
-class Map;
-
 
 
 class MapSector : public Ogre::RenderQueueListener
 {
 public:
-    MapSector( Map* map );
+    MapSector();
     virtual ~MapSector();
 
     void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
+
+    void Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour );
 
 private:
     void CreateVertexBuffers();
     void DestroyVertexBuffers();
     void CreateMaterial();
 
-    void Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour );
-
 private:
-    Map* m_Map;
-
     Ogre::SceneManager* m_SceneManager;
     Ogre::RenderSystem* m_RenderSystem;
 

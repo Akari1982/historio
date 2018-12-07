@@ -1,5 +1,5 @@
-#ifndef TILE_H
-#define TILE_H
+#ifndef ENTITY_TILE_H
+#define ENTITY_TILE_H
 
 #include <OgreHardwareVertexBuffer.h>
 #include <OgreRenderOperation.h>
@@ -7,11 +7,11 @@
 
 
 
-class Tile
+class EntityTile
 {
 public:
-    Tile();
-    virtual ~Tile();
+    EntityTile();
+    virtual ~EntityTile();
 
     void SetMaterial( const Ogre::MaterialPtr material );
     void SetPosition( const Ogre::Vector2& position );
@@ -43,4 +43,4 @@ protected:
 
 
 
-#endif // TILE_H
+#endif // ENTITY_TILE_H

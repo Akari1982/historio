@@ -1,32 +1,31 @@
-#include "XmlMapFile.h"
+#include "MapXmlFile.h"
 
 #include "../core/Logger.h"
-#include "../core/TextManager.h"
 #include "../core/Utilites.h"
 
 
 
-XmlMapFile::XmlMapFile( const Ogre::String& file ):
+MapXmlFile::MapXmlFile( const Ogre::String& file ):
     XmlFile( file )
 {
 }
 
 
 
-XmlMapFile::~XmlMapFile()
+MapXmlFile::~MapXmlFile()
 {
 }
 
 
 
 void
-XmlMapFile::LoadMap( Map* map )
+MapXmlFile::LoadMap( MapSector& map_sector )
 {
     TiXmlNode* node = m_File.RootElement();
 
     if( node == NULL || node->ValueStr() != "map" )
     {
-        LOG_ERROR( "Text Manager: " + m_File.ValueStr() + " is not a valid map file! No <map> in root." );
+        LOG_ERROR( "MapXmlFile: " + m_File.ValueStr() + " is not a valid map file! No <map> in root." );
         return;
     }
 
@@ -37,16 +36,14 @@ XmlMapFile::LoadMap( Map* map )
         if( node->Type() == TiXmlNode::TINYXML_ELEMENT && node->ValueStr() == "tile" )
         {
             Ogre::String type = GetString( node, "type" );
-            MapTile tile;
             if( type == "GRASS" )
             {
-                tile.type = MapTile::GRASS;
+                map_sector->Quad( order % 100, order / 100, 1, 1, Ogre::ColourValue( 0, 1, 0, 1 ) );
             }
-            else
+            else if( type == "WATER" )
             {
-                tile.type = MapTile::WATER;
+                map_sector->Quad( order % 100, order / 100, 1, 1, Ogre::ColourValue( 0, 0, 1, 1 ) );
             }
-            map->AddTile( order % 100, order / 100, tile );
             ++order;
         }
         node = node->NextSibling();

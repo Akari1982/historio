@@ -1,10 +1,11 @@
 #include <OgreRoot.h>
-
-#include "CameraManager.h"
+#include "../core/CameraManager.h"
+#include "../core/Logger.h"
 #include "Entity.h"
 #include "EntityManager.h"
 #include "EntityManagerCommands.h"
-#include "Logger.h"
+#include "EntityXmlFile.h"
+#include "MapXmlFile.h"
 
 
 
@@ -18,8 +19,16 @@ EntityManager::EntityManager()
 
     InitCmd();
 
+    EntityXmlFile* desc_file = new EntityXmlFile( "data/entity.xml" )
+    desc_file.LoadDesc();
+    delete desc_file;
+
+    MapXmlFile* map_loader = new MapXmlFile( "data/map/test.xml" );
+    map_loader->LoadMap( m_MapSector );
+    delete map_loader;
+
     Entity* entity = new Entity();
-    m_Entity.push_back( entity );
+    m_Entities.push_back( entity );
 
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
@@ -30,11 +39,10 @@ EntityManager::EntityManager()
 
 EntityManager::~EntityManager()
 {
-    for( unsigned int i = 0; i < m_Entity.size(); ++i )
+    for( unsigned int i = 0; i < m_Entities.size(); ++i )
     {
-        delete m_Entity[ i ];
+        delete m_Entities[ i ];
     }
-    m_Entity.clear();
 
     m_SceneManager->removeRenderQueueListener( this );
 
@@ -53,9 +61,9 @@ EntityManager::Input( const Event& event )
 void
 EntityManager::Update()
 {
-    for( size_t i = 0; i < m_Entity.size(); ++i )
+    for( size_t i = 0; i < m_Entities.size(); ++i )
     {
-        m_Entity[ i ]->Update();
+        m_Entities[ i ]->Update();
     }
 
     UpdateDebug();
@@ -66,9 +74,9 @@ EntityManager::Update()
 void
 EntityManager::UpdateDebug()
 {
-    for( size_t i = 0; i < m_Entity.size(); ++i )
+    for( size_t i = 0; i < m_Entities.size(); ++i )
     {
-        m_Entity[ i ]->UpdateDebug();
+        m_Entities[ i ]->UpdateDebug();
     }
 }
 
@@ -82,6 +90,14 @@ EntityManager::OnResize()
 
 
 void
+EntityManager::AddEntityDesc( EntityDesc desc )
+{
+    m_EntityDescs.push_back( desc );
+}
+
+
+
+void
 EntityManager::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& skipThisInvocation )
 {
     if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
@@ -89,9 +105,9 @@ EntityManager::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& i
         m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
         m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
         m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
-        for( size_t i = 0; i < m_Entity.size(); ++i )
+        for( size_t i = 0; i < m_Entities.size(); ++i )
         {
-            m_Entity[ i ]->Render();
+            m_Entities[ i ]->Render();
         }
     }
 }

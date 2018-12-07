@@ -1,17 +1,13 @@
 #include <OgreHardwareBufferManager.h>
 #include <OgreMaterialManager.h>
 #include <OgreRoot.h>
-
-
 #include "../core/CameraManager.h"
 #include "../core/Logger.h"
-#include "Map.h"
 #include "MapSector.h"
 
 
 
-MapSector::MapSector( Map* map ):
-    m_Map( map )
+MapSector::MapSector()
 {
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
@@ -20,22 +16,6 @@ MapSector::MapSector( Map* map ):
     CreateMaterial();
 
     m_SceneManager->addRenderQueueListener( this );
-
-    for( int i = 0; i < 100; ++i )
-    {
-        for( int j = 0; j < 100; ++j )
-        {
-            MapTile map_tile = m_Map->GetTile( i, j );
-            if( map_tile.type == MapTile::GRASS )
-            {
-                Quad( i, j, 1, 1, Ogre::ColourValue( 0, 1, 0, 1 ) );
-            }
-            else if( map_tile.type == MapTile::WATER )
-            {
-                Quad( i, j, 1, 1, Ogre::ColourValue( 0, 0, 1, 1 ) );
-            }
-        }
-    }
 }
 
 

@@ -2,11 +2,11 @@
 #include <OgreMaterialManager.h>
 #include <OgreRoot.h>
 
-#include "Tile.h"
+#include "EntityTile.h"
 
 
 
-Tile::Tile():
+EntityTile::EntityTile():
     m_Position( Ogre::Vector2::ZERO ),
     m_Size( Ogre::Vector2( 1, 1 ) ),
     m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) ),
@@ -20,7 +20,7 @@ Tile::Tile():
 
 
 
-Tile::~Tile()
+EntityTile::~EntityTile()
 {
     DestroyVertexBuffer();
 }
@@ -28,7 +28,7 @@ Tile::~Tile()
 
 
 void
-Tile::SetMaterial( const Ogre::MaterialPtr material )
+EntityTile::SetMaterial( const Ogre::MaterialPtr material )
 {
     m_Material = material;
 }
@@ -36,7 +36,7 @@ Tile::SetMaterial( const Ogre::MaterialPtr material )
 
 
 void
-Tile::SetPosition( const Ogre::Vector2& position )
+EntityTile::SetPosition( const Ogre::Vector2& position )
 {
     m_Position = position;
 }
@@ -44,7 +44,7 @@ Tile::SetPosition( const Ogre::Vector2& position )
 
 
 const Ogre::Vector2&
-Tile::GetPosition() const
+EntityTile::GetPosition() const
 {
     return m_Position;
 }
@@ -52,7 +52,7 @@ Tile::GetPosition() const
 
 
 void
-Tile::SetSize( const Ogre::Vector2& size )
+EntityTile::SetSize( const Ogre::Vector2& size )
 {
     m_Size = size;
 }
@@ -60,7 +60,7 @@ Tile::SetSize( const Ogre::Vector2& size )
 
 
 const Ogre::Vector2&
-Tile::GetSize() const
+EntityTile::GetSize() const
 {
     return m_Size;
 }
@@ -68,7 +68,7 @@ Tile::GetSize() const
 
 
 void
-Tile::SetColour( const Ogre::ColourValue& colour )
+EntityTile::SetColour( const Ogre::ColourValue& colour )
 {
     m_Colour = colour;
 }
@@ -76,7 +76,7 @@ Tile::SetColour( const Ogre::ColourValue& colour )
 
 
 void
-Tile::SetDepth( const float depth )
+EntityTile::SetDepth( const float depth )
 {
     m_Depth = depth;
 }
@@ -84,7 +84,7 @@ Tile::SetDepth( const float depth )
 
 
 void
-Tile::UpdateGeometry()
+EntityTile::UpdateGeometry()
 {
     float x1 = m_Position.x;
     float y1 = m_Position.y;
@@ -170,7 +170,7 @@ Tile::UpdateGeometry()
 
 
 void
-Tile::Render()
+EntityTile::Render()
 {
     m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
     m_RenderSystem->_render( m_RenderOp );
@@ -179,7 +179,7 @@ Tile::Render()
 
 
 void
-Tile::CreateVertexBuffer()
+EntityTile::CreateVertexBuffer()
 {
     m_RenderOp.vertexData = new Ogre::VertexData;
     m_RenderOp.vertexData->vertexStart = 0;
@@ -203,7 +203,7 @@ Tile::CreateVertexBuffer()
 
 
 void
-Tile::DestroyVertexBuffer()
+EntityTile::DestroyVertexBuffer()
 {
     delete m_RenderOp.vertexData;
     m_RenderOp.vertexData = 0;

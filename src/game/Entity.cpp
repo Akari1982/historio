@@ -8,7 +8,7 @@
 Entity::Entity()
 {
     SetPosition( Ogre::Vector2( 20, 30 ) );
-    SetSize( Ogre::Vector2( 5, 8 ) );
+    SetSize( Ogre::Vector2( 1, 1 ) );
     SetColour( Ogre::ColourValue( 1, 0, 0, 1 ) );
 
     Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().create( "Entity", "General" );

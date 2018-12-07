@@ -1,11 +1,11 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 
-#include "Tile.h"
+#include "EntityTile.h"
 
 
 
-class Entity : public Tile
+class Entity : public EntityTile
 {
 public:
     Entity();
