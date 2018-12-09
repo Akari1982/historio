@@ -21,7 +21,8 @@ public:
     virtual void Render();
     virtual void UpdateTransformation();
 
-    void SetImage( const Ogre::String& image );
+    void SetTexture( const Ogre::String& texture );
+    void SetUV( const float u1, const float v1, const float u2, const float v2, const float u3, const float v3, const float u4, const float v4 );
     void SetVertexShader( const Ogre::String& shader );
     void SetFragmentShader( const Ogre::String& shader );
     void UpdateGeometry();
@@ -35,6 +36,15 @@ private:
     Ogre::MaterialPtr                   m_Material;
     Ogre::SceneManager*                 m_SceneManager;
     Ogre::RenderSystem*                 m_RenderSystem;
+
+    float m_U1;
+    float m_V1;
+    float m_U2;
+    float m_V2;
+    float m_U3;
+    float m_V3;
+    float m_U4;
+    float m_V4;
 
     Ogre::RenderOperation               m_RenderOp;
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;

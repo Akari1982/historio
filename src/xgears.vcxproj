@@ -19,10 +19,6 @@
     <ClCompile Include="core\ConfigVarManager.cpp" />
     <ClCompile Include="core\Console.cpp" />
     <ClCompile Include="core\DebugDraw.cpp" />
-    <ClCompile Include="core\Entity.cpp" />
-    <ClCompile Include="core\EntityManager.cpp" />
-    <ClCompile Include="core\EntityMove.cpp" />
-    <ClCompile Include="core\EntityStand.cpp" />
     <ClCompile Include="core\GameFrameListner.cpp" />
     <ClCompile Include="core\InputManager.cpp" />
     <ClCompile Include="core\library\luabind\class.cpp" />
@@ -78,7 +74,6 @@
     <ClCompile Include="core\library\tinyxml\tinyxmlparser.cpp" />
     <ClCompile Include="core\ScriptManager.cpp" />
     <ClCompile Include="core\TextManager.cpp" />
-    <ClCompile Include="core\Tile.cpp" />
     <ClCompile Include="core\Timer.cpp" />
     <ClCompile Include="core\UiAnimation.cpp" />
     <ClCompile Include="core\UiFont.cpp" />
@@ -96,9 +91,14 @@
     <ClCompile Include="core\XmlScriptsFile.cpp" />
     <ClCompile Include="core\XmlTextFile.cpp" />
     <ClCompile Include="core\XmlTextsFile.cpp" />
-    <ClCompile Include="game\Map.cpp" />
+    <ClCompile Include="game\Entity.cpp" />
+    <ClCompile Include="game\EntityManager.cpp" />
+    <ClCompile Include="game\EntityMove.cpp" />
+    <ClCompile Include="game\EntityStand.cpp" />
+    <ClCompile Include="game\EntityTile.cpp" />
+    <ClCompile Include="game\EntityXmlFile.cpp" />
     <ClCompile Include="game\MapSector.cpp" />
-    <ClCompile Include="game\XmlMapFile.cpp" />
+    <ClCompile Include="game\MapXmlFile.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -113,10 +113,6 @@
     <ClInclude Include="core\ConfigVarManager.h" />
     <ClInclude Include="core\Console.h" />
     <ClInclude Include="core\DebugDraw.h" />
-    <ClInclude Include="core\Entity.h" />
-    <ClInclude Include="core\EntityManager.h" />
-    <ClInclude Include="core\EntityMove.h" />
-    <ClInclude Include="core\EntityStand.h" />
     <ClInclude Include="core\Event.h" />
     <ClInclude Include="core\GameFrameListner.h" />
     <ClInclude Include="core\InputManager.h" />
@@ -233,7 +229,6 @@
     <ClInclude Include="core\ScriptManagerCommands.h" />
     <ClInclude Include="core\TextManager.h" />
     <ClInclude Include="core\TextManagerCommands.h" />
-    <ClInclude Include="core\Tile.h" />
     <ClInclude Include="core\Timer.h" />
     <ClInclude Include="core\UiAnimation.h" />
     <ClInclude Include="core\UiFont.h" />
@@ -251,9 +246,15 @@
     <ClInclude Include="core\XmlScriptsFile.h" />
     <ClInclude Include="core\XmlTextFile.h" />
     <ClInclude Include="core\XmlTextsFile.h" />
-    <ClInclude Include="game\Map.h" />
+    <ClInclude Include="game\Entity.h" />
+    <ClInclude Include="game\EntityManager.h" />
+    <ClInclude Include="game\EntityManagerCommands.h" />
+    <ClInclude Include="game\EntityMove.h" />
+    <ClInclude Include="game\EntityStand.h" />
+    <ClInclude Include="game\EntityTile.h" />
+    <ClInclude Include="game\EntityXmlFile.h" />
     <ClInclude Include="game\MapSector.h" />
-    <ClInclude Include="game\XmlMapFile.h" />
+    <ClInclude Include="game\MapXmlFile.h" />
     <ClInclude Include="Main.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

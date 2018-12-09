@@ -6,7 +6,7 @@
 #include "ConfigVar.h"
 #include "Console.h"
 #include "DebugDraw.h"
-#include "EntityManager.h"
+#include "../game/EntityManager.h"
 #include "InputManager.h"
 #include "Logger.h"
 #include "ScriptManager.h"

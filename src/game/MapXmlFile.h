@@ -13,6 +13,7 @@ public:
     virtual ~MapXmlFile();
 
     void LoadMap( MapSector& map_sector );
+    void LoadEntities();
 };
 
 

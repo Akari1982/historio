@@ -5,11 +5,10 @@
 
 
 
-Entity::Entity()
+Entity::Entity():
+    m_MovePosition( Ogre::Vector2( 0, 0 ) )
 {
-    SetPosition( Ogre::Vector2( 20, 30 ) );
-    SetSize( Ogre::Vector2( 1, 1 ) );
-    SetColour( Ogre::ColourValue( 1, 0, 0, 1 ) );
+    SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
 
     Ogre::MaterialPtr material = Ogre::MaterialManager::getSingleton().create( "Entity", "General" );
     Ogre::Pass* pass = material->getTechnique( 0 )->getPass( 0 );
@@ -18,7 +17,6 @@ Entity::Entity()
     pass->setDepthCheckEnabled( true );
     pass->setDepthWriteEnabled( true );
     pass->setLightingEnabled( false );
-    //pass->setPolygonMode( Ogre::PolygonMode::PM_WIREFRAME );
     pass->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
     pass->setAlphaRejectFunction( Ogre::CMPF_GREATER );
     pass->setAlphaRejectValue( 0 );
@@ -28,8 +26,6 @@ Entity::Entity()
     tex->setTextureFiltering( Ogre::TFO_NONE );
 
     SetMaterial( material );
-
-    SetDepth( 10.0f );
 
     UpdateGeometry();
 }
@@ -52,4 +48,20 @@ Entity::Update()
 void
 Entity::UpdateDebug()
 {
+}
+
+
+
+void
+Entity::SetMovePosition( const Ogre::Vector2& target )
+{
+    m_MovePosition = target;
+}
+
+
+
+const Ogre::Vector2&
+Entity::GetMovePosition() const
+{
+    return m_MovePosition;
 }

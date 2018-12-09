@@ -14,23 +14,19 @@ MapSector::MapSector()
 
     CreateVertexBuffers();
     CreateMaterial();
-
-    m_SceneManager->addRenderQueueListener( this );
 }
 
 
 
 MapSector::~MapSector()
 {
-    m_SceneManager->removeRenderQueueListener( this );
-
     DestroyVertexBuffers();
 }
 
 
 
 void
-MapSector::Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour )
+MapSector::Quad( const float x, const float y, const float width, const float height, const float u, const float v, const float tw, const float th, const Ogre::ColourValue& colour )
 {
     if( m_RenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
     {
@@ -47,12 +43,12 @@ MapSector::Quad( const float x, const float y, const float width, const float he
     float x4 = x;
     float y4 = y + height;
 
-    float left = 0.0f;
-    float right = 0.0f;
-    float top = 0.0f;
-    float bottom = 0.0f;
+    float left = u;
+    float right = u + tw;
+    float top = v;
+    float bottom = v + th;
 
-    float m_Z = 0.5f;
+    float m_Z = 0.0f;
 
     float* writeIterator = ( float* ) m_VertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
     writeIterator += m_RenderOp.vertexData->vertexCount * 9;
@@ -125,19 +121,12 @@ MapSector::Quad( const float x, const float y, const float width, const float he
 
 
 void
-MapSector::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation )
+MapSector::Render()
 {
-    if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
+    if( m_RenderOp.vertexData->vertexCount != 0 )
     {
-        m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
-        m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
-        m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
-
-        if( m_RenderOp.vertexData->vertexCount != 0 )
-        {
-            m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
-            m_RenderSystem->_render( m_RenderOp );
-        }
+        m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
+        m_RenderSystem->_render( m_RenderOp );
     }
 }
 
@@ -189,12 +178,11 @@ MapSector::CreateMaterial()
     pass->setDepthCheckEnabled( true );
     pass->setDepthWriteEnabled( true );
     pass->setLightingEnabled( false );
-    //pass->setPolygonMode( Ogre::PolygonMode::PM_WIREFRAME );
     pass->setSceneBlending( Ogre::SBT_TRANSPARENT_ALPHA );
     pass->setAlphaRejectFunction( Ogre::CMPF_GREATER );
     pass->setAlphaRejectValue( 0 );
     Ogre::TextureUnitState* tex = pass->createTextureUnitState();
-    tex->setTextureName( "system/blank.png" );
+    tex->setTextureName( "Terrain.png" );
     tex->setNumMipmaps( -1 );
     tex->setTextureFiltering( Ogre::TFO_NONE );
 }

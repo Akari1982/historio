@@ -7,15 +7,15 @@
 
 
 
-class MapSector : public Ogre::RenderQueueListener
+class MapSector
 {
 public:
     MapSector();
     virtual ~MapSector();
 
-    void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
+    void Render();
 
-    void Quad( const float x, const float y, const float width, const float height, const Ogre::ColourValue& colour );
+    void Quad( const float x, const float y, const float width, const float height, const float u, const float v, const float tw, const float th, const Ogre::ColourValue& colour =  Ogre::ColourValue( 1, 1, 1, 1 ) );
 
 private:
     void CreateVertexBuffers();

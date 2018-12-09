@@ -1,4 +1,4 @@
 <entities>
-    <entity name="Test1" size="1 1" />
-    <entity name="Test2" size="3 1" />
+    <entity name="Test1" size="0.8 1" texture="Test1.png" />
+    <entity name="Test2" size="5 5" texture="Test2.png" />
 </entities>

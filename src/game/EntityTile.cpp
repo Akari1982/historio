@@ -39,6 +39,7 @@ void
 EntityTile::SetPosition( const Ogre::Vector2& position )
 {
     m_Position = position;
+    UpdateGeometry();
 }
 
 
@@ -63,6 +64,16 @@ const Ogre::Vector2&
 EntityTile::GetSize() const
 {
     return m_Size;
+}
+
+
+
+void
+EntityTile::SetTexture( const Ogre::String& texture )
+{
+    Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
+    Ogre::TextureUnitState* tex = pass->getTextureUnitState( 0 );
+    tex->setTextureName( texture );
 }
 
 

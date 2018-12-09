@@ -46,12 +46,6 @@
     <ClCompile Include="core\DebugDraw.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
-    <ClCompile Include="core\Entity.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\EntityManager.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
     <ClCompile Include="core\GameFrameListner.cpp">
       <Filter>X-Gears files</Filter>
     </ClCompile>
@@ -268,22 +262,28 @@
     <ClCompile Include="core\library\tinyxml\tinyxmlparser.cpp">
       <Filter>X-Gears files\TinyXml</Filter>
     </ClCompile>
-    <ClCompile Include="core\Tile.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\EntityMove.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="core\EntityStand.cpp">
-      <Filter>X-Gears files</Filter>
-    </ClCompile>
-    <ClCompile Include="game\XmlMapFile.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Map.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="game\MapSector.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Entity.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\EntityManager.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\EntityMove.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\EntityStand.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\EntityTile.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\EntityXmlFile.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\MapXmlFile.cpp">
       <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -322,12 +322,6 @@
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="core\DebugDraw.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\Entity.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\EntityManager.h">
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="core\Event.h">
@@ -729,22 +723,31 @@
     <ClInclude Include="core\library\tinyxml\tinyxml.h">
       <Filter>X-Gears files\TinyXml</Filter>
     </ClInclude>
-    <ClInclude Include="core\Tile.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\EntityMove.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="core\EntityStand.h">
-      <Filter>X-Gears files</Filter>
-    </ClInclude>
-    <ClInclude Include="game\XmlMapFile.h">
-      <Filter>game</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Map.h">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="game\MapSector.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Entity.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\EntityManager.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\EntityManagerCommands.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\EntityMove.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\EntityStand.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\EntityTile.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\EntityXmlFile.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\MapXmlFile.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>

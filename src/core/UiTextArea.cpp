@@ -942,7 +942,7 @@ UiTextArea::PrepareTextFromNode( TiXmlNode* node, const Ogre::ColourValue& colou
                                         Ogre::String image = GetString( sprites, "image" );
                                         if( image != "" )
                                         {
-                                            sprite->SetImage( image );
+                                            sprite->SetTexture( image );
                                         }
                                         Ogre::String y_str = GetString( sprites, "y" );
                                         if( y_str != "" )

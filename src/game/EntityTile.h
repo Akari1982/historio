@@ -18,6 +18,7 @@ public:
     const Ogre::Vector2& GetPosition() const;
     void SetSize( const Ogre::Vector2& size );
     const Ogre::Vector2& GetSize() const;
+    void SetTexture( const Ogre::String& texture );
     void SetColour( const Ogre::ColourValue& colour );
     void SetDepth( const float depth );
     void UpdateGeometry();

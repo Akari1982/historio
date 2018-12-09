@@ -105,7 +105,7 @@ XmlScreenFile::LoadScreenRecursive( TiXmlNode* node, const Ogre::String& base_na
                         Ogre::String image = GetString( node, "image" );
                         if( image != "" )
                         {
-                            ( ( UiSprite* )widget2 )->SetImage( image );
+                            ( ( UiSprite* )widget2 )->SetTexture( image );
                         }
 
                         Ogre::String vertex_shader = GetString( node, "vertex_shader" );

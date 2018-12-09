@@ -8,7 +8,15 @@
 
 
 UiSprite::UiSprite( const Ogre::String& name ):
-    UiWidget( name )
+    UiWidget( name ),
+    m_U1( 0.0f ),
+    m_V1( 0.0f ),
+    m_U2( 1.0f ),
+    m_V2( 0.0f ),
+    m_U3( 1.0f ),
+    m_V3( 1.0f ),
+    m_U4( 0.0f ),
+    m_V4( 1.0f )
 {
     Initialise();
 }
@@ -99,11 +107,26 @@ UiSprite::UpdateTransformation()
 
 
 void
-UiSprite::SetImage( const Ogre::String& image )
+UiSprite::SetTexture( const Ogre::String& texture )
 {
     Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
     Ogre::TextureUnitState* tex = pass->getTextureUnitState( 0 );
-    tex->setTextureName( image );
+    tex->setTextureName( texture );
+}
+
+
+
+void
+UiSprite::SetUV( const float u1, const float v1, const float u2, const float v2, const float u3, const float v3, const float u4, const float v4 )
+{
+    m_U1 = u1;
+    m_V1 = v1;
+    m_U2 = u2;
+    m_V2 = v2;
+    m_U3 = u3;
+    m_V3 = v3;
+    m_U4 = u4;
+    m_V4 = v4;
 }
 
 
@@ -193,8 +216,8 @@ UiSprite::UpdateGeometry()
     *writeIterator++ = m_Colour1.g;
     *writeIterator++ = m_Colour1.b;
     *writeIterator++ = m_Colour1.a;
-    *writeIterator++ = 0;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_U1;
+    *writeIterator++ = m_V1;
 
     *writeIterator++ = new_x2;
     *writeIterator++ = new_y2;
@@ -203,8 +226,8 @@ UiSprite::UpdateGeometry()
     *writeIterator++ = m_Colour2.g;
     *writeIterator++ = m_Colour2.b;
     *writeIterator++ = m_Colour2.a;
-    *writeIterator++ = 1;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_U2;
+    *writeIterator++ = m_V2;
 
     *writeIterator++ = new_x3;
     *writeIterator++ = new_y3;
@@ -213,8 +236,8 @@ UiSprite::UpdateGeometry()
     *writeIterator++ = m_Colour3.g;
     *writeIterator++ = m_Colour3.b;
     *writeIterator++ = m_Colour3.a;
-    *writeIterator++ = 1;
-    *writeIterator++ = 1;
+    *writeIterator++ = m_U3;
+    *writeIterator++ = m_V3;
 
     *writeIterator++ = new_x1;
     *writeIterator++ = new_y1;
@@ -223,8 +246,8 @@ UiSprite::UpdateGeometry()
     *writeIterator++ = m_Colour1.g;
     *writeIterator++ = m_Colour1.b;
     *writeIterator++ = m_Colour1.a;
-    *writeIterator++ = 0;
-    *writeIterator++ = 0;
+    *writeIterator++ = m_U1;
+    *writeIterator++ = m_V1;
 
     *writeIterator++ = new_x3;
     *writeIterator++ = new_y3;
@@ -233,8 +256,8 @@ UiSprite::UpdateGeometry()
     *writeIterator++ = m_Colour3.g;
     *writeIterator++ = m_Colour3.b;
     *writeIterator++ = m_Colour3.a;
-    *writeIterator++ = 1;
-    *writeIterator++ = 1;
+    *writeIterator++ = m_U3;
+    *writeIterator++ = m_V3;
 
     *writeIterator++ = new_x4;
     *writeIterator++ = new_y4;
@@ -243,8 +266,8 @@ UiSprite::UpdateGeometry()
     *writeIterator++ = m_Colour4.g;
     *writeIterator++ = m_Colour4.b;
     *writeIterator++ = m_Colour4.a;
-    *writeIterator++ = 0;
-    *writeIterator++ = 1;
+    *writeIterator++ = m_U4;
+    *writeIterator++ = m_V4;
 
     m_RenderOp.vertexData->vertexCount = 6;
 

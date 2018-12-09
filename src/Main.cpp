@@ -9,7 +9,7 @@
 #include "core/ConfigVarManager.h"
 #include "core/Console.h"
 #include "core/DebugDraw.h"
-#include "core/EntityManager.h"
+#include "game/EntityManager.h"
 #include "core/GameFrameListner.h"
 #include "core/InputManager.h"
 #include "core/Logger.h"

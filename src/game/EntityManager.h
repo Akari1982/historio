@@ -13,7 +13,8 @@ struct EntityDesc
     Ogre::String name;
     float width;
     float height;
-}
+    Ogre::String texture;
+};
 
 
 
@@ -30,7 +31,8 @@ public:
     void UpdateDebug();
     void OnResize();
 
-    void AddEntityDesc( EntityDesc desc );
+    void AddEntityByName( const Ogre::String& name, const float x, const float y );
+    void AddEntityDesc( const EntityDesc& desc );
 
     void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
 
