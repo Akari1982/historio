@@ -4,7 +4,8 @@
 #include <OgreRenderQueueListener.h>
 #include <OgreSingleton.h>
 #include "../core/Event.h"
-#include "Entity.h"
+#include "EntityMovable.h"
+#include "EntityStand.h"
 #include "HudManager.h"
 #include "MapSector.h"
 
@@ -12,6 +13,7 @@
 
 struct EntityDesc
 {
+    Ogre::String entity_class;
     Ogre::String name;
     float width;
     float height;
@@ -46,6 +48,7 @@ private:
     MapSector m_MapSector;
     std::vector< EntityDesc > m_EntityDescs;
     std::vector< Entity* > m_Entities;
+    std::vector< EntityMovable* > m_EntitiesMovable;
 };
 
 

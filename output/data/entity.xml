@@ -1,4 +1,4 @@
 <entities>
-    <entity name="Test1" size="0.8 1" texture="Test1.png" />
-    <entity name="Test2" size="5 5" texture="Test2.png" />
+    <entity class="Movable" name="Unit" size="0.8 1" texture="Test1.png" />
+    <entity class="Stand" name="House" size="5 5" texture="Test2.png" />
 </entities>

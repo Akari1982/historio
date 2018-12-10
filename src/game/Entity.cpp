@@ -5,8 +5,7 @@
 
 
 
-Entity::Entity():
-    m_MovePosition( Ogre::Vector2( 0, 0 ) )
+Entity::Entity()
 {
     SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
 
@@ -48,20 +47,4 @@ Entity::Update()
 void
 Entity::UpdateDebug()
 {
-}
-
-
-
-void
-Entity::SetMovePosition( const Ogre::Vector2& target )
-{
-    m_MovePosition = target;
-}
-
-
-
-const Ogre::Vector2&
-Entity::GetMovePosition() const
-{
-    return m_MovePosition;
 }

@@ -70,9 +70,12 @@ EntityManager::Update()
     for( size_t i = 0; i < m_Entities.size(); ++i )
     {
         m_Entities[ i ]->Update();
+    }
 
-        Ogre::Vector2 start = m_Entities[ i ]->GetPosition();
-        Ogre::Vector2 end = m_Entities[ i ]->GetMovePosition();
+    for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
+    {
+        Ogre::Vector2 start = m_EntitiesMovable[ i ]->GetPosition();
+        Ogre::Vector2 end = m_EntitiesMovable[ i ]->GetMovePosition();
 
         float speed = 2.0f;
 
@@ -84,11 +87,11 @@ EntityManager::Update()
 
             if( length < (end_start * speed * delta).length() )
             {
-                m_Entities[ i ]->SetPosition( end );
+                m_EntitiesMovable[ i ]->SetPosition( end );
             }
             else
             {
-                m_Entities[ i ]->SetPosition( start + end_start * speed * delta );
+                m_EntitiesMovable[ i ]->SetPosition( start + end_start * speed * delta );
             }
         }
     }
@@ -120,10 +123,26 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
     {
         if( m_EntityDescs[ i ].name == name )
         {
-            Entity* entity = new Entity();
+            Entity* entity;
+
+            if( m_EntityDescs[ i ].entity_class == "Movable" )
+            {
+                entity = new EntityMovable();
+                ( EntityMovable* )entity->SetMovePosition( Ogre::Vector2( x + 10, y ) );
+                m_EntitiesMovable.push_back( ( EntityMovable* )entity );
+            }
+            else if( m_EntityDescs[ i ].entity_class == "Stand" )
+            {
+                entity = new EntityStand();
+            }
+            else
+            {
+                LOG_ERROR( "EntityManager::AddEntityByName: entity class \"" + m_EntityDescs[ i ].entity_class + "\" not found." );
+                return;
+            }
+
             entity->SetSize( Ogre::Vector2( m_EntityDescs[ i ].width, m_EntityDescs[ i ].height ) );
             entity->SetPosition( Ogre::Vector2( x, y ) );
-            entity->SetMovePosition( Ogre::Vector2( x, y ) );
             entity->SetTexture( m_EntityDescs[ i ].texture );
             entity->UpdateGeometry();
             m_Entities.push_back( entity );
