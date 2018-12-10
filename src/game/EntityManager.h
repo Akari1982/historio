@@ -3,10 +3,12 @@
 
 #include <OgreRenderQueueListener.h>
 #include <OgreSingleton.h>
-
 #include "../core/Event.h"
 #include "Entity.h"
+#include "HudManager.h"
 #include "MapSector.h"
+
+
 
 struct EntityDesc
 {
@@ -29,7 +31,6 @@ public:
     void Input( const Event& event );
     void Update();
     void UpdateDebug();
-    void OnResize();
 
     void AddEntityByName( const Ogre::String& name, const float x, const float y );
     void AddEntityDesc( const EntityDesc& desc );
@@ -39,6 +40,8 @@ public:
 private:
     Ogre::SceneManager* m_SceneManager;
     Ogre::RenderSystem* m_RenderSystem;
+
+    HudManager* m_Hud;
 
     MapSector m_MapSector;
     std::vector< EntityDesc > m_EntityDescs;

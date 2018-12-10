@@ -115,40 +115,40 @@ private:
     void DestroyVertexBuffer();
 
 private:
-    Ogre::MaterialPtr                   m_Material;
-    Ogre::SceneManager*                 m_SceneManager;
-    Ogre::RenderSystem*                 m_RenderSystem;
+    Ogre::MaterialPtr m_Material;
+    Ogre::SceneManager* m_SceneManager;
+    Ogre::RenderSystem* m_RenderSystem;
 
-    unsigned int                        m_MaxLetters;
-    Ogre::RenderOperation               m_RenderOp;
+    unsigned int m_MaxLetters;
+    Ogre::RenderOperation m_RenderOp;
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
 
-    UiFont*                             m_Font;
-    TextAlign                           m_TextAlign;
+    UiFont* m_Font;
+    TextAlign m_TextAlign;
 
-    std::vector< TextChar >             m_Text;
-    float                               m_TextLimit;
-    float                               m_TextPrintSpeed;
-    float                               m_TextPrintSpeedMod;
-    TextState                           m_TextState;
-    std::vector< TextVariable >         m_TextVariable;
+    std::vector< TextChar > m_Text;
+    float m_TextLimit;
+    float m_TextPrintSpeed;
+    float m_TextPrintSpeedMod;
+    TextState m_TextState;
+    std::vector< TextVariable > m_TextVariable;
 
-    float                               m_TextScrollTime;
-    float                               m_TextYOffset;
-    float                               m_TextYOffsetTarget;
-    float                               m_PauseTime;
-    unsigned int                        m_NextPageStart;
+    float m_TextScrollTime;
+    float m_TextYOffset;
+    float m_TextYOffsetTarget;
+    float m_PauseTime;
+    unsigned int m_NextPageStart;
 
-    bool                                m_NextPressed;
-    bool                                m_NextRepeated;
+    bool m_NextPressed;
+    bool m_NextRepeated;
 
-    float                               m_PaddingTop;
-    float                               m_PaddingRight;
-    float                               m_PaddingBottom;
-    float                               m_PaddingLeft;
+    float m_PaddingTop;
+    float m_PaddingRight;
+    float m_PaddingBottom;
+    float m_PaddingLeft;
 
-    bool                                m_Timer;
-    int                                 m_TimerTime;
+    bool m_Timer;
+    int m_TimerTime;
 };
 
 

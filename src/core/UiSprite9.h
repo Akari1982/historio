@@ -5,6 +5,7 @@
 #include <OgreRenderQueueListener.h>
 #include <OgreRoot.h>
 
+#include "UiSprite.h"
 #include "UiWidget.h"
 
 
@@ -21,21 +22,23 @@ public:
     virtual void Render();
     virtual void UpdateTransformation();
 
-    void SetImage( const Ogre::String& image );
-    void UpdateGeometry();
+    void SetTexture( const Ogre::String& texture );
+    void SetUV( const float u1, const float u2, const float u3, const float u4, const float v1, const float v2, const float v3, const float v4 );
+    void SetBorderWidth( const float width );
 
 private:
     UiSprite9();
-    void CreateVertexBuffer();
-    void DestroyVertexBuffer();
 
 private:
-    Ogre::MaterialPtr m_Material;
-    Ogre::SceneManager* m_SceneManager;
-    Ogre::RenderSystem* m_RenderSystem;
-
-    Ogre::RenderOperation m_RenderOp;
-    Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
+    UiSprite* m_UpperLeft;
+    UiSprite* m_UpperCenter;
+    UiSprite* m_UpperRight;
+    UiSprite* m_MiddleLeft;
+    UiSprite* m_MiddleCenter;
+    UiSprite* m_MiddleRight;
+    UiSprite* m_BottomLeft;
+    UiSprite* m_BottomCenter;
+    UiSprite* m_BottomRight;
 };
 
 

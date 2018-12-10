@@ -77,7 +77,7 @@ Console::Input( const Event& event )
     if( m_Visible != true )
     {
         // add console
-        if( event.type == ET_PRESS && event.param1 == OIS::KC_GRAVE )
+        if( event.type == ET_PRESS && event.button == OIS::KC_GRAVE )
         {
             SetToVisible();
         }
@@ -86,7 +86,7 @@ Console::Input( const Event& event )
     }
 
     // input command
-    else if( event.type == ET_PRESS && event.param1 == OIS::KC_RETURN && m_InputLine.size() )
+    else if( event.type == ET_PRESS && event.button == OIS::KC_RETURN && m_InputLine.size() )
     {
         if( m_AutoCompletition.size() > 0 )
         {
@@ -116,17 +116,17 @@ Console::Input( const Event& event )
         m_CursorPosition = 0;
         ResetAutoCompletion();
     }
-    else if( event.type == ET_PRESS && event.param1 == OIS::KC_TAB )
+    else if( event.type == ET_PRESS && event.button == OIS::KC_TAB )
     {
         CompleteInput();
     }
     // remove console
-    else if( event.type == ET_PRESS && event.param1 == OIS::KC_GRAVE )
+    else if( event.type == ET_PRESS && event.button == OIS::KC_GRAVE )
     {
         SetToHide();
     }
     // history up
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_UP )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_UP )
     {
         if( m_HistoryLineCycleIndex < ( int )m_History.size() - 1 )
         {
@@ -135,7 +135,7 @@ Console::Input( const Event& event )
         }
     }
     // history down
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_DOWN )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_DOWN )
     {
         if( m_HistoryLineCycleIndex > 0 )
         {
@@ -161,7 +161,7 @@ Console::Input( const Event& event )
 
     }
     // scroll display to previous row
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_PGUP )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_PGUP )
     {
         if( m_DisplayLine > 0 )
         {
@@ -169,7 +169,7 @@ Console::Input( const Event& event )
         }
     }
     // scroll display to next row
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_PGDOWN )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_PGDOWN )
     {
         if( m_DisplayLine < m_OutputLine.size() )
         {
@@ -177,7 +177,7 @@ Console::Input( const Event& event )
         }
     }
     // delete character after cursor
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_DELETE )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_DELETE )
     {
         if( m_AutoCompletition.size() > 0 )
         {
@@ -192,7 +192,7 @@ Console::Input( const Event& event )
         }
     }
     // delete character before cursor
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_BACK )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_BACK )
     {
         if( m_AutoCompletition.size() > 0 )
         {
@@ -208,7 +208,7 @@ Console::Input( const Event& event )
         }
     }
     // move cursor to left
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_LEFT )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_LEFT )
     {
         if( m_AutoCompletition.size() > 0 )
         {
@@ -222,7 +222,7 @@ Console::Input( const Event& event )
         }
     }
     // move cursor to right
-    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.param1 == OIS::KC_RIGHT )
+    else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && event.button == OIS::KC_RIGHT )
     {
         if( m_AutoCompletition.size() > 0 )
         {
@@ -235,14 +235,14 @@ Console::Input( const Event& event )
             ++m_CursorPosition;
         }
     }
-    else if ( event.type == ET_PRESS && event.param1 == OIS::KC_ESCAPE )
+    else if ( event.type == ET_PRESS && event.button == OIS::KC_ESCAPE )
     {
         m_InputLine.clear();
         m_CursorPosition = 0;
         ResetAutoCompletion();
     }
     // move cursor to start of string
-    else if( event.type == ET_PRESS && event.param1 == OIS::KC_HOME )
+    else if( event.type == ET_PRESS && event.button == OIS::KC_HOME )
     {
         m_CursorPosition = 0;
 
@@ -253,7 +253,7 @@ Console::Input( const Event& event )
         }
     }
     // move cursor to end of string
-    else if( event.type == ET_PRESS && event.param1 == OIS::KC_END )
+    else if( event.type == ET_PRESS && event.button == OIS::KC_END )
     {
         if( m_AutoCompletition.size() > 0 )
         {
@@ -267,7 +267,7 @@ Console::Input( const Event& event )
     else if( ( event.type == ET_PRESS || event.type == ET_REPEAT_WAIT ) && m_InputLine.size() < m_LineWidth )
     {
         char legalchars[] = "ABCDEFGHIJKLMNOPQRSTUVWXUZabcdefghijklmnopqrstuvwxyz1234567890~!@#$%^&*()-_=+?{[]}|\\;:'\"<>,./? ";
-        char txt = event.param2;
+        char txt = event.param1;
         for( unsigned int c = 0; c < sizeof( legalchars ) - 1; ++c )
         {
             if( legalchars[ c ] == txt )

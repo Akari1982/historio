@@ -40,7 +40,7 @@ InputManager::Reset()
 
 
 void
-InputManager::ButtonPressed( int button, char text, bool down )
+InputManager::ButtonPressed( const int button, const char text, const bool down )
 {
     if( m_ButtonState[ button ] != down )
     {
@@ -49,8 +49,8 @@ InputManager::ButtonPressed( int button, char text, bool down )
 
         Event event;
         event.type = ( down == true ) ? ET_PRESS : ET_RELEASE;
-        event.param1 = button;
-        event.param2 = text;
+        event.button = button;
+        event.param1 = text;
         m_EventQueue.push_back( event );
 
         m_RepeatFirstWait = true;
@@ -74,30 +74,36 @@ InputManager::ButtonPressed( int button, char text, bool down )
 
 
 void
-InputManager::MousePressed( int button, bool down )
+InputManager::MousePressed( const int x, const int x_abs, const int y, const int y_abs, const int button, const bool down )
 {
     Event event;
     event.type = ( down == true ) ? ET_PRESS : ET_RELEASE;
-    event.param1 = button;
+    event.button = button;
+    event.param1 = x;
+    event.param2 = y;
+    event.param3 = x_abs;
+    event.param4 = y_abs;
     m_EventQueue.push_back( event );
 }
 
 
 
 void
-InputManager::MouseMoved( int x, int y )
+InputManager::MouseMoved( const int x, const int x_abs, const int y, const int y_abs )
 {
     Event event;
     event.type = ET_MOUSE_MOVE;
     event.param1 = x;
     event.param2 = y;
+    event.param3 = x_abs;
+    event.param4 = y_abs;
     m_EventQueue.push_back( event );
 }
 
 
 
 void
-InputManager::MouseScrolled( int value )
+InputManager::MouseScrolled( const int value )
 {
     Event event;
     event.type = ET_MOUSE_SCROLL;
@@ -120,8 +126,8 @@ InputManager::Update()
             {
                 Event event;
                 event.type = ET_REPEAT_WAIT;
-                event.param1 = button;
-                event.param2 = m_ButtonText[ button ];
+                event.button = button;
+                event.param1 = m_ButtonText[ button ];
                 m_EventQueue.push_back( event );
 
                 if( Console::getSingleton().IsVisible() != true )
@@ -141,8 +147,8 @@ InputManager::Update()
         {
             Event event;
             event.type = ET_REPEAT;
-            event.param1 = button;
-            event.param2 = m_ButtonText[ button ];
+            event.button = button;
+            event.param1 = m_ButtonText[ button ];
             m_EventQueue.push_back( event );
 
             if( Console::getSingleton().IsVisible() != true )
@@ -156,7 +162,7 @@ InputManager::Update()
 
 
 bool
-InputManager::IsButtonPressed( int button ) const
+InputManager::IsButtonPressed( const int button ) const
 {
     return m_ButtonState[ button ];
 }

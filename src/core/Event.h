@@ -23,15 +23,21 @@ struct Event
 {
     Event():
         type( ET_NULL ),
+        button( 0 ),
         param1( 0 ),
         param2( 0 ),
+        param3( 0 ),
+        param4( 0 ),
         event( "" )
     {
     };
 
     EventType type;
+    int button;
     float param1;
     float param2;
+    float param3;
+    float param4;
     Ogre::String event;
 };
 

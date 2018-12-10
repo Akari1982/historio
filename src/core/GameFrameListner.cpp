@@ -154,7 +154,6 @@ GameFrameListener::windowResized( Ogre::RenderWindow *rw )
     Console::getSingleton().OnResize();
     UiManager::getSingleton().OnResize();
     CameraManager::getSingleton().OnResize();
-    EntityManager::getSingleton().OnResize();
 }
 
 
@@ -178,7 +177,6 @@ bool
 GameFrameListener::keyPressed( const OIS::KeyEvent& event )
 {
     InputManager::getSingleton().ButtonPressed( event.key, event.text, true );
-
     return true;
 }
 
@@ -188,7 +186,6 @@ bool
 GameFrameListener::keyReleased( const OIS::KeyEvent& event )
 {
     InputManager::getSingleton().ButtonPressed( event.key, event.text, false );
-
     return true;
 }
 
@@ -203,9 +200,8 @@ GameFrameListener::mouseMoved( const OIS::MouseEvent& e )
     }
     else
     {
-        InputManager::getSingleton().MouseMoved( e.state.X.rel, e.state.Y.rel );
+        InputManager::getSingleton().MouseMoved( e.state.X.rel, e.state.X.abs, e.state.Y.rel, e.state.Y.abs );
     }
-
     return true;
 }
 
@@ -214,8 +210,7 @@ GameFrameListener::mouseMoved( const OIS::MouseEvent& e )
 bool
 GameFrameListener::mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID id )
 {
-    InputManager::getSingleton().MousePressed( id, true );
-
+    InputManager::getSingleton().MousePressed( e.state.X.rel, e.state.X.abs, e.state.Y.rel, e.state.Y.abs, id, true );
     return true;
 }
 
@@ -224,7 +219,6 @@ GameFrameListener::mousePressed( const OIS::MouseEvent& e, OIS::MouseButtonID id
 bool
 GameFrameListener::mouseReleased( const OIS::MouseEvent& e, OIS::MouseButtonID id )
 {
-    InputManager::getSingleton().MousePressed( id, false );
-
+    InputManager::getSingleton().MousePressed( e.state.X.rel, e.state.X.abs, e.state.Y.rel, e.state.Y.abs, id, false );
     return true;
 }

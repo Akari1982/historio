@@ -20,6 +20,8 @@ EntityManager::EntityManager()
 
     InitCmd();
 
+    m_Hud = new HudManager();
+
     EntityXmlFile* desc_file = new EntityXmlFile( "data/entity.xml" );
     desc_file->LoadDesc();
     delete desc_file;
@@ -45,6 +47,8 @@ EntityManager::~EntityManager()
 
     m_SceneManager->removeRenderQueueListener( this );
 
+    delete m_Hud;
+
     LOG_TRIVIAL( "EntityManager destroyed." );
 }
 
@@ -53,6 +57,7 @@ EntityManager::~EntityManager()
 void
 EntityManager::Input( const Event& event )
 {
+    m_Hud->Input();
 }
 
 
@@ -88,6 +93,8 @@ EntityManager::Update()
         }
     }
 
+    m_Hud->Update();
+
     UpdateDebug();
 }
 
@@ -100,13 +107,8 @@ EntityManager::UpdateDebug()
     {
         m_Entities[ i ]->UpdateDebug();
     }
-}
 
-
-
-void
-EntityManager::OnResize()
-{
+    m_Hud->UpdateDebug();
 }
 
 

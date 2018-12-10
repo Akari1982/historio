@@ -22,14 +22,14 @@ public:
                         InputManager();
     virtual             ~InputManager();
 
-    void                ButtonPressed( int button, char text, bool down );
-    void                MousePressed( int button, bool down );
-    void                MouseMoved( int x, int y );
-    void                MouseScrolled( int value );
+    void                ButtonPressed( const int button, const char text, const bool down );
+    void                MousePressed( const int x, const int x_abs, const int y, const int y_abs, const int button, const bool down );
+    void                MouseMoved( const int x, const int x_abs, const int y, const int y_abs );
+    void                MouseScrolled( const int value );
     void                Reset();
     void                Update();
 
-    bool                IsButtonPressed( int button ) const;
+    bool                IsButtonPressed( const int button ) const;
 
     void                GetInputEvents( InputEventArray& input_events );
 
