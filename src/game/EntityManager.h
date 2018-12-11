@@ -37,6 +37,8 @@ public:
     void AddEntityByName( const Ogre::String& name, const float x, const float y );
     void AddEntityDesc( const EntityDesc& desc );
 
+    void SetEntitySelection( const Ogre::Vector2 start, const Ogre::Vector2 end );
+
     void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
 
 private:
@@ -49,6 +51,7 @@ private:
     std::vector< EntityDesc > m_EntityDescs;
     std::vector< Entity* > m_Entities;
     std::vector< EntityMovable* > m_EntitiesMovable;
+    std::vector< EntityMovable* > m_EntitiesSelected;
 };
 
 

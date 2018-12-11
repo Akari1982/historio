@@ -31,6 +31,8 @@ DebugDraw::DebugDraw():
     CreateLineVertexBuffer();
     CreateLine3dVertexBuffer();
     CreateTriangle3dVertexBuffer();
+    CreateCircleVertexBuffer();
+    CreateDiscVertexBuffer();
     CreateQuadVertexBuffer();
     CreateTextVertexBuffer();
 
@@ -84,6 +86,8 @@ DebugDraw::~DebugDraw()
     DestroyLineVertexBuffer();
     DestroyLine3dVertexBuffer();
     DestroyTriangle3dVertexBuffer();
+    DestroyCircleVertexBuffer();
+    DestroyDiscVertexBuffer();
     DestroyQuadVertexBuffer();
     DestroyTextVertexBuffer();
 }
@@ -248,6 +252,174 @@ DebugDraw::Triangle3d( const Ogre::Vector3& point1, const Ogre::Vector3& point2,
     m_Triangle3dRenderOp.vertexData->vertexCount += 3;
 
     m_Triangle3dVertexBuffer->unlock();
+}
+
+
+
+void
+DebugDraw::Circle( const float x, const float y, const float radius )
+{
+    Ogre::RenderTarget* window  = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" );
+    if( ( Ogre::RenderWindow* )window->isActive() == false )
+    {
+        return;
+    }
+
+    if( m_CircleRenderOp.vertexData->vertexCount + 16 > m_CircleMaxVertexCount )
+    {
+        LOG_ERROR( "Max number of circles reached. Can't create more than " + Ogre::StringConverter::toString( m_CircleMaxVertexCount / 16 ) + " circles." );
+        return;
+    }
+
+    float width = window->getViewport( 0 )->getActualWidth();
+    float height = window->getViewport( 0 )->getActualHeight();
+
+    float radius23 = radius * ( 2.2f / 3.0f );
+
+    float x1 = x;
+    float y1 = y - radius;
+    float x2 = x + radius23;
+    float y2 = y - radius23;
+    float x3 = x + radius;
+    float y3 = y;
+    float x4 = x + radius23;
+    float y4 = y + radius23;
+    float x5 = x;
+    float y5 = y + radius;
+    float x6 = x - radius23;
+    float y6 = y + radius23;
+    float x7 = x - radius;
+    float y7 = y;
+    float x8 = x - radius23;
+    float y8 = y - radius23;
+
+    float new_x1 = ( m_ScreenSpace == true ) ? ( ( int ) x1 / width ) * 2 - 1 : x1;
+    float new_y1 = ( m_ScreenSpace == true ) ? -( ( ( int ) y1 / height ) * 2 - 1 ) : y1;
+    float new_x2 = ( m_ScreenSpace == true ) ? ( ( int ) x2 / width ) * 2 - 1 : x2;
+    float new_y2 = ( m_ScreenSpace == true ) ? -( ( ( int ) y2 / height ) * 2 - 1 ) : y2;
+    float new_x3 = ( m_ScreenSpace == true ) ? ( ( int ) x3 / width ) * 2 - 1 : x3;
+    float new_y3 = ( m_ScreenSpace == true ) ? -( ( ( int ) y3 / height ) * 2 - 1 ) : y3;
+    float new_x4 = ( m_ScreenSpace == true ) ? ( ( int ) x4 / width ) * 2 - 1 : x4;
+    float new_y4 = ( m_ScreenSpace == true ) ? -( ( ( int ) y4 / height ) * 2 - 1 ) : y4;
+    float new_x5 = ( m_ScreenSpace == true ) ? ( ( int ) x5 / width ) * 2 - 1 : x5;
+    float new_y5 = ( m_ScreenSpace == true ) ? -( ( ( int ) y5 / height ) * 2 - 1 ) : y5;
+    float new_x6 = ( m_ScreenSpace == true ) ? ( ( int ) x6 / width ) * 2 - 1 : x6;
+    float new_y6 = ( m_ScreenSpace == true ) ? -( ( ( int ) y6 / height ) * 2 - 1 ) : y6;
+    float new_x7 = ( m_ScreenSpace == true ) ? ( ( int ) x7 / width ) * 2 - 1 : x7;
+    float new_y7 = ( m_ScreenSpace == true ) ? -( ( ( int ) y7 / height ) * 2 - 1 ) : y7;
+    float new_x8 = ( m_ScreenSpace == true ) ? ( ( int ) x8 / width ) * 2 - 1 : x8;
+    float new_y8 = ( m_ScreenSpace == true ) ? -( ( ( int ) y8 / height ) * 2 - 1 ) : y8;
+
+    float* writeIterator = ( float* ) m_CircleVertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
+    writeIterator += m_CircleRenderOp.vertexData->vertexCount * 7;
+
+    *writeIterator++ = new_x1; *writeIterator++ = new_y1; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x2; *writeIterator++ = new_y2; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x2; *writeIterator++ = new_y2; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x3; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x3; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x4; *writeIterator++ = new_y4; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x4; *writeIterator++ = new_y4; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x5; *writeIterator++ = new_y5; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x5; *writeIterator++ = new_y5; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x6; *writeIterator++ = new_y6; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x6; *writeIterator++ = new_y6; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x7; *writeIterator++ = new_y7; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x7; *writeIterator++ = new_y7; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x8; *writeIterator++ = new_y8; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x8; *writeIterator++ = new_y8; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y1; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+
+    m_CircleRenderOp.vertexData->vertexCount += 16;
+    m_CircleVertexBuffer->unlock();
+}
+
+
+
+void
+DebugDraw::Disc( const float x, const float y, const float radius )
+{
+    Ogre::RenderTarget* window  = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" );
+    if( ( Ogre::RenderWindow* )window->isActive() == false )
+    {
+        return;
+    }
+
+    if( m_DiscRenderOp.vertexData->vertexCount + 24 > m_DiscMaxVertexCount )
+    {
+        LOG_ERROR( "Max number of discs reached. Can't create more than " + Ogre::StringConverter::toString( m_DiscMaxVertexCount / 24 ) + " discs." );
+        return;
+    }
+
+    float width = window->getViewport( 0 )->getActualWidth();
+    float height = window->getViewport( 0 )->getActualHeight();
+
+    float radius23 = radius * ( 2.2f / 3.0f );
+
+    float x1 = x;
+    float y1 = y - radius;
+    float x2 = x + radius23;
+    float y2 = y - radius23;
+    float x3 = x + radius;
+    float y3 = y;
+    float x4 = x + radius23;
+    float y4 = y + radius23;
+    float x5 = x;
+    float y5 = y + radius;
+    float x6 = x - radius23;
+    float y6 = y + radius23;
+    float x7 = x - radius;
+    float y7 = y;
+    float x8 = x - radius23;
+    float y8 = y - radius23;
+
+    float new_x1 = ( m_ScreenSpace == true ) ? ( ( int ) x1 / width ) * 2 - 1 : x1;
+    float new_y1 = ( m_ScreenSpace == true ) ? -( ( ( int ) y1 / height ) * 2 - 1 ) : y1;
+    float new_x2 = ( m_ScreenSpace == true ) ? ( ( int ) x2 / width ) * 2 - 1 : x2;
+    float new_y2 = ( m_ScreenSpace == true ) ? -( ( ( int ) y2 / height ) * 2 - 1 ) : y2;
+    float new_x3 = ( m_ScreenSpace == true ) ? ( ( int ) x3 / width ) * 2 - 1 : x3;
+    float new_y3 = ( m_ScreenSpace == true ) ? -( ( ( int ) y3 / height ) * 2 - 1 ) : y3;
+    float new_x4 = ( m_ScreenSpace == true ) ? ( ( int ) x4 / width ) * 2 - 1 : x4;
+    float new_y4 = ( m_ScreenSpace == true ) ? -( ( ( int ) y4 / height ) * 2 - 1 ) : y4;
+    float new_x5 = ( m_ScreenSpace == true ) ? ( ( int ) x5 / width ) * 2 - 1 : x5;
+    float new_y5 = ( m_ScreenSpace == true ) ? -( ( ( int ) y5 / height ) * 2 - 1 ) : y5;
+    float new_x6 = ( m_ScreenSpace == true ) ? ( ( int ) x6 / width ) * 2 - 1 : x6;
+    float new_y6 = ( m_ScreenSpace == true ) ? -( ( ( int ) y6 / height ) * 2 - 1 ) : y6;
+    float new_x7 = ( m_ScreenSpace == true ) ? ( ( int ) x7 / width ) * 2 - 1 : x7;
+    float new_y7 = ( m_ScreenSpace == true ) ? -( ( ( int ) y7 / height ) * 2 - 1 ) : y7;
+    float new_x8 = ( m_ScreenSpace == true ) ? ( ( int ) x8 / width ) * 2 - 1 : x8;
+    float new_y8 = ( m_ScreenSpace == true ) ? -( ( ( int ) y8 / height ) * 2 - 1 ) : y8;
+
+    float* writeIterator = ( float* ) m_DiscVertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
+    writeIterator += m_DiscRenderOp.vertexData->vertexCount * 7;
+
+    *writeIterator++ = new_x1; *writeIterator++ = new_y1; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x2; *writeIterator++ = new_y2; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x2; *writeIterator++ = new_y2; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x3; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x3; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x4; *writeIterator++ = new_y4; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x4; *writeIterator++ = new_y4; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x5; *writeIterator++ = new_y5; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x5; *writeIterator++ = new_y5; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x6; *writeIterator++ = new_y6; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x6; *writeIterator++ = new_y6; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x7; *writeIterator++ = new_y7; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x7; *writeIterator++ = new_y7; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x8; *writeIterator++ = new_y8; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x8; *writeIterator++ = new_y8; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y1; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+    *writeIterator++ = new_x1; *writeIterator++ = new_y3; *writeIterator++ = m_Z; *writeIterator++ = m_Colour.r; *writeIterator++ = m_Colour.g; *writeIterator++ = m_Colour.b; *writeIterator++ = m_Colour.a;
+
+    m_DiscRenderOp.vertexData->vertexCount += 24;
+    m_DiscVertexBuffer->unlock();
 }
 
 
@@ -494,6 +666,20 @@ DebugDraw::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invoc
             m_LineRenderOp.vertexData->vertexCount = 0;
         }
 
+        if( m_CircleRenderOp.vertexData->vertexCount != 0 )
+        {
+            m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
+            m_RenderSystem->_render( m_CircleRenderOp );
+            m_CircleRenderOp.vertexData->vertexCount = 0;
+        }
+
+        if( m_DiscRenderOp.vertexData->vertexCount != 0 )
+        {
+            m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
+            m_RenderSystem->_render( m_DiscRenderOp );
+            m_DiscRenderOp.vertexData->vertexCount = 0;
+        }
+
         if( m_QuadRenderOp.vertexData->vertexCount != 0 )
         {
             m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
@@ -628,6 +814,74 @@ DebugDraw::DestroyTriangle3dVertexBuffer()
     m_Triangle3dRenderOp.vertexData = 0;
     m_Triangle3dVertexBuffer.setNull();
     m_Triangle3dMaxVertexCount = 0;
+}
+
+
+
+void
+DebugDraw::CreateCircleVertexBuffer()
+{
+    m_CircleMaxVertexCount = 16384 * 16;
+    m_CircleRenderOp.vertexData = new Ogre::VertexData;
+    m_CircleRenderOp.vertexData->vertexStart = 0;
+
+    Ogre::VertexDeclaration* vDecl = m_CircleRenderOp.vertexData->vertexDeclaration;
+
+    size_t offset = 0;
+    vDecl->addElement( 0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION );
+    offset += Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT3 );
+    vDecl->addElement( 0, offset, Ogre::VET_FLOAT4, Ogre::VES_DIFFUSE );
+
+    m_CircleVertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), m_CircleMaxVertexCount, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
+
+    m_CircleRenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_CircleVertexBuffer );
+    m_CircleRenderOp.operationType = Ogre::RenderOperation::OT_LINE_LIST;
+    m_CircleRenderOp.useIndexes = false;
+}
+
+
+
+void
+DebugDraw::DestroyCircleVertexBuffer()
+{
+    delete m_CircleRenderOp.vertexData;
+    m_CircleRenderOp.vertexData = 0;
+    m_CircleVertexBuffer.setNull();
+    m_CircleMaxVertexCount = 0;
+}
+
+
+
+void
+DebugDraw::CreateDiscVertexBuffer()
+{
+    m_DiscMaxVertexCount = 16384 * 24;
+    m_DiscRenderOp.vertexData = new Ogre::VertexData;
+    m_DiscRenderOp.vertexData->vertexStart = 0;
+
+    Ogre::VertexDeclaration* vDecl = m_DiscRenderOp.vertexData->vertexDeclaration;
+
+    size_t offset = 0;
+    vDecl->addElement( 0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION );
+    offset += Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT3 );
+    vDecl->addElement( 0, offset, Ogre::VET_FLOAT4, Ogre::VES_DIFFUSE );
+
+    m_DiscVertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), m_DiscMaxVertexCount, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
+
+    m_DiscRenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_DiscVertexBuffer );
+    m_DiscRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
+    m_DiscRenderOp.useIndexes = false;
+}
+
+
+
+void
+DebugDraw::DestroyDiscVertexBuffer()
+{
+    delete m_DiscRenderOp.vertexData;
+    m_DiscRenderOp.vertexData = 0;
+    m_DiscVertexBuffer.setNull();
+    m_DiscMaxVertexCount = 0;
 }
 
 

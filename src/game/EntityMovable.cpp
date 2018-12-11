@@ -3,7 +3,7 @@
 
 
 EntityMovable::EntityMovable():
-    m_MovePosition( Ogre::Vector2( 0, 0 ) )
+    m_MovePosition( Ogre::Vector3::ZERO )
 {
 }
 
@@ -30,14 +30,14 @@ EntityMovable::UpdateDebug()
 
 
 void
-EntityMovable::SetMovePosition( const Ogre::Vector2& target )
+EntityMovable::SetMovePosition( const Ogre::Vector3& target )
 {
     m_MovePosition = target;
 }
 
 
 
-const Ogre::Vector2&
+const Ogre::Vector3&
 EntityMovable::GetMovePosition() const
 {
     return m_MovePosition;

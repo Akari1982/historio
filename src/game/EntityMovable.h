@@ -14,11 +14,11 @@ public:
     virtual void Update();
     virtual void UpdateDebug();
 
-    void SetMovePosition( const Ogre::Vector2& target );
-    const Ogre::Vector2& GetMovePosition() const;
+    void SetMovePosition( const Ogre::Vector3& target );
+    const Ogre::Vector3& GetMovePosition() const;
 
 private:
-    Ogre::Vector2 m_MovePosition;
+    Ogre::Vector3 m_MovePosition;
 };
 
 

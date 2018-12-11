@@ -7,7 +7,7 @@
 
 
 EntityTile::EntityTile():
-    m_Position( Ogre::Vector2::ZERO ),
+    m_Position( Ogre::Vector3::ZERO ),
     m_Size( Ogre::Vector2( 1, 1 ) ),
     m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) ),
     m_Depth( 0.0f )
@@ -36,7 +36,7 @@ EntityTile::SetMaterial( const Ogre::MaterialPtr material )
 
 
 void
-EntityTile::SetPosition( const Ogre::Vector2& position )
+EntityTile::SetPosition( const Ogre::Vector3& position )
 {
     m_Position = position;
     UpdateGeometry();
@@ -44,7 +44,7 @@ EntityTile::SetPosition( const Ogre::Vector2& position )
 
 
 
-const Ogre::Vector2&
+const Ogre::Vector3&
 EntityTile::GetPosition() const
 {
     return m_Position;

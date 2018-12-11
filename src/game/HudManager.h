@@ -17,9 +17,12 @@ public:
     void UpdateDebug();
 
 private:
+    Ogre::Camera* m_Camera;
+    Ogre::Viewport* m_Viewport;
+
     bool m_Selection;
     Ogre::Vector2 m_SelectionStart;
-    Ogre::Vector2 m_SelectionSize;
+    Ogre::Vector2 m_SelectionEnd;
 };
 
 

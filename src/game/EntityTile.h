@@ -14,8 +14,8 @@ public:
     virtual ~EntityTile();
 
     void SetMaterial( const Ogre::MaterialPtr material );
-    void SetPosition( const Ogre::Vector2& position );
-    const Ogre::Vector2& GetPosition() const;
+    void SetPosition( const Ogre::Vector3& position );
+    const Ogre::Vector3& GetPosition() const;
     void SetSize( const Ogre::Vector2& size );
     const Ogre::Vector2& GetSize() const;
     void SetTexture( const Ogre::String& texture );
@@ -36,7 +36,7 @@ protected:
     Ogre::RenderOperation m_RenderOp;
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
 
-    Ogre::Vector2 m_Position;
+    Ogre::Vector3 m_Position;
     Ogre::Vector2 m_Size;
     Ogre::ColourValue m_Colour;
     float m_Depth;

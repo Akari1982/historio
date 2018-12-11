@@ -117,3 +117,11 @@ CameraManager::GetCurrentCamera()
 {
     return m_Camera;
 }
+
+
+
+Ogre::Viewport*
+CameraManager::GetCurrentViewport()
+{
+    return m_Viewport;
+}

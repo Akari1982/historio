@@ -1,5 +1,6 @@
 #include <OgreRoot.h>
 #include "../core/CameraManager.h"
+#include "../core/DebugDraw.h"
 #include "../core/Logger.h"
 #include "../core/Timer.h"
 #include "Entity.h"
@@ -74,14 +75,14 @@ EntityManager::Update()
 
     for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
     {
-        Ogre::Vector2 start = m_EntitiesMovable[ i ]->GetPosition();
-        Ogre::Vector2 end = m_EntitiesMovable[ i ]->GetMovePosition();
+        Ogre::Vector3 start = m_EntitiesMovable[ i ]->GetPosition();
+        Ogre::Vector3 end = m_EntitiesMovable[ i ]->GetMovePosition();
 
         float speed = 2.0f;
 
         if( start != end )
         {
-            Ogre::Vector2 end_start = end - start;
+            Ogre::Vector3 end_start = end - start;
             float length = end_start.length();
             end_start.normalise();
 
@@ -109,6 +110,19 @@ EntityManager::UpdateDebug()
     for( size_t i = 0; i < m_Entities.size(); ++i )
     {
         m_Entities[ i ]->UpdateDebug();
+    }
+
+    for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
+    {
+        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
+        DEBUG_DRAW.Line3d( m_EntitiesMovable[ i ]->GetPosition(), m_EntitiesMovable[ i ]->GetMovePosition() );
+    }
+
+    for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
+    {
+        Ogre::Vector3 pos = CameraManager::getSingleton().GetCurrentCamera()->ProjectPointToScreen( m_EntitiesMovable[ i ]->GetPosition() );
+        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
+        DEBUG_DRAW.Disc( pos.x, pos.y, 1 );
     }
 
     m_Hud->UpdateDebug();
@@ -142,7 +156,7 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             }
 
             entity->SetSize( Ogre::Vector2( m_EntityDescs[ i ].width, m_EntityDescs[ i ].height ) );
-            entity->SetPosition( Ogre::Vector2( x, y ) );
+            entity->SetPosition( Ogre::Vector3( x, y, 0 ) );
             entity->SetTexture( m_EntityDescs[ i ].texture );
             entity->UpdateGeometry();
             m_Entities.push_back( entity );
@@ -166,6 +180,30 @@ EntityManager::AddEntityDesc( const EntityDesc& desc )
         }
     }
     m_EntityDescs.push_back( desc );
+}
+
+
+
+void
+EntityManager::SetEntitySelection( const Ogre::Vector3 start, const Ogre::Vector3 end )
+{
+    Ogre::Rectangle rect;
+    rect.left = start.x;
+    rect.top = start.y;
+    rect.right = end.x;
+    rect.bottom = end.y;
+
+    m_EntitiesSelected.clear();
+
+    for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
+    {
+        Ogre::Vector3 pos = m_EntitiesMovable[ i ]->GetPosition();
+
+        if( rect.inside( pos.x, pos.y ) )
+        {
+            m_EntitiesSelected.push_back( m_EntitiesMovable[ i ] );
+        }
+    }
 }
 
 

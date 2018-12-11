@@ -19,6 +19,7 @@ public:
     void OnResize();
 
     Ogre::Camera* GetCurrentCamera();
+    Ogre::Viewport* GetCurrentViewport();
     const Ogre::Vector3 ProjectPointToScreen( const Ogre::Vector3& point );
 
 private:
