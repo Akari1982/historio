@@ -54,19 +54,19 @@ CameraManager::Input( const Event& event )
         speed *= 4;
     }
 
-    if( event.type == ET_REPEAT && event.param1 == OIS::KC_W )
+    if( event.type == ET_REPEAT && event.button == OIS::KC_W )
     {
         m_Camera->moveRelative( Ogre::Vector3( 0, speed, 0 ) );
     }
-    else if( event.type == ET_REPEAT && event.param1 == OIS::KC_A )
+    else if( event.type == ET_REPEAT && event.button == OIS::KC_A )
     {
         m_Camera->moveRelative( Ogre::Vector3( -speed, 0, 0 ) );
     }
-    else if( event.type == ET_REPEAT && event.param1 == OIS::KC_S )
+    else if( event.type == ET_REPEAT && event.button == OIS::KC_S )
     {
         m_Camera->moveRelative( Ogre::Vector3( 0, -speed, 0 ) );
     }
-    else if( event.type == ET_REPEAT && event.param1 == OIS::KC_D )
+    else if( event.type == ET_REPEAT && event.button == OIS::KC_D )
     {
         m_Camera->moveRelative( Ogre::Vector3( speed, 0, 0 ) );
     }

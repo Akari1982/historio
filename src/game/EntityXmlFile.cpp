@@ -38,7 +38,7 @@ EntityXmlFile::LoadDesc()
             Ogre::Vector2 size = GetVector2( node, "size", Ogre::Vector2( 1, 1 ) );
 
             EntityDesc desc;
-            desc.entity_class = GetString( node, "class" )
+            desc.entity_class = GetString( node, "class" );
             desc.name = GetString( node, "name" );
             desc.width = size.x;
             desc.height = size.y;

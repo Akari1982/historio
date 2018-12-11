@@ -79,6 +79,7 @@
     <ClCompile Include="core\UiFont.cpp" />
     <ClCompile Include="core\UiManager.cpp" />
     <ClCompile Include="core\UiSprite.cpp" />
+    <ClCompile Include="core\UiSprite9.cpp" />
     <ClCompile Include="core\UiTextArea.cpp" />
     <ClCompile Include="core\UiWidget.cpp" />
     <ClCompile Include="core\Utilites.cpp" />
@@ -93,10 +94,11 @@
     <ClCompile Include="core\XmlTextsFile.cpp" />
     <ClCompile Include="game\Entity.cpp" />
     <ClCompile Include="game\EntityManager.cpp" />
-    <ClCompile Include="game\EntityMove.cpp" />
+    <ClCompile Include="game\EntityMovable.cpp" />
     <ClCompile Include="game\EntityStand.cpp" />
     <ClCompile Include="game\EntityTile.cpp" />
     <ClCompile Include="game\EntityXmlFile.cpp" />
+    <ClCompile Include="game\HudManager.cpp" />
     <ClCompile Include="game\MapSector.cpp" />
     <ClCompile Include="game\MapXmlFile.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -234,6 +236,7 @@
     <ClInclude Include="core\UiFont.h" />
     <ClInclude Include="core\UiManager.h" />
     <ClInclude Include="core\UiSprite.h" />
+    <ClInclude Include="core\UiSprite9.h" />
     <ClInclude Include="core\UiTextArea.h" />
     <ClInclude Include="core\UiWidget.h" />
     <ClInclude Include="core\Utilites.h" />
@@ -249,10 +252,11 @@
     <ClInclude Include="game\Entity.h" />
     <ClInclude Include="game\EntityManager.h" />
     <ClInclude Include="game\EntityManagerCommands.h" />
-    <ClInclude Include="game\EntityMove.h" />
+    <ClInclude Include="game\EntityMovable.h" />
     <ClInclude Include="game\EntityStand.h" />
     <ClInclude Include="game\EntityTile.h" />
     <ClInclude Include="game\EntityXmlFile.h" />
+    <ClInclude Include="game\HudManager.h" />
     <ClInclude Include="game\MapSector.h" />
     <ClInclude Include="game\MapXmlFile.h" />
     <ClInclude Include="Main.h" />

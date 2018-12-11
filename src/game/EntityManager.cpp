@@ -57,7 +57,7 @@ EntityManager::~EntityManager()
 void
 EntityManager::Input( const Event& event )
 {
-    m_Hud->Input();
+    m_Hud->Input( event );
 }
 
 
@@ -128,7 +128,7 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             if( m_EntityDescs[ i ].entity_class == "Movable" )
             {
                 entity = new EntityMovable();
-                ( EntityMovable* )entity->SetMovePosition( Ogre::Vector2( x + 10, y ) );
+                (( EntityMovable* )entity)->SetMovePosition( Ogre::Vector2( x + 10, y ) );
                 m_EntitiesMovable.push_back( ( EntityMovable* )entity );
             }
             else if( m_EntityDescs[ i ].entity_class == "Stand" )

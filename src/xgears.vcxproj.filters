@@ -271,9 +271,6 @@
     <ClCompile Include="game\EntityManager.cpp">
       <Filter>game</Filter>
     </ClCompile>
-    <ClCompile Include="game\EntityMove.cpp">
-      <Filter>game</Filter>
-    </ClCompile>
     <ClCompile Include="game\EntityStand.cpp">
       <Filter>game</Filter>
     </ClCompile>
@@ -284,6 +281,15 @@
       <Filter>game</Filter>
     </ClCompile>
     <ClCompile Include="game\MapXmlFile.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\HudManager.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
+    <ClCompile Include="core\UiSprite9.cpp">
+      <Filter>X-Gears files</Filter>
+    </ClCompile>
+    <ClCompile Include="game\EntityMovable.cpp">
       <Filter>game</Filter>
     </ClCompile>
   </ItemGroup>
@@ -735,9 +741,6 @@
     <ClInclude Include="game\EntityManagerCommands.h">
       <Filter>game</Filter>
     </ClInclude>
-    <ClInclude Include="game\EntityMove.h">
-      <Filter>game</Filter>
-    </ClInclude>
     <ClInclude Include="game\EntityStand.h">
       <Filter>game</Filter>
     </ClInclude>
@@ -748,6 +751,15 @@
       <Filter>game</Filter>
     </ClInclude>
     <ClInclude Include="game\MapXmlFile.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\HudManager.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="core\UiSprite9.h">
+      <Filter>X-Gears files</Filter>
+    </ClInclude>
+    <ClInclude Include="game\EntityMovable.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>
