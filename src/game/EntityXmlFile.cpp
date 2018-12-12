@@ -35,13 +35,11 @@ EntityXmlFile::LoadDesc()
     {
         if( node->Type() == TiXmlNode::TINYXML_ELEMENT && node->ValueStr() == "entity" )
         {
-            Ogre::Vector2 size = GetVector2( node, "size", Ogre::Vector2( 1, 1 ) );
-
             EntityDesc desc;
             desc.entity_class = GetString( node, "class" );
             desc.name = GetString( node, "name" );
-            desc.width = size.x;
-            desc.height = size.y;
+            desc.collision_box = GetVector4( node, "collision_box", Ogre::Vector4( 0, 0, 1, 1 ) );
+            desc.draw_box = GetVector4( node, "draw_box", Ogre::Vector4( 0, 0, 1, 1 ) );
             desc.texture = GetString( node, "texture" );
             EntityManager::getSingleton().AddEntityDesc( desc );
         }

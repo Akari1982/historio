@@ -117,17 +117,16 @@ EntityManager::UpdateDebug()
         Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetPosition() );
         Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetMovePosition() );
 
-        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
+        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 1 ) );
         DEBUG_DRAW.Line( pos_s.x, pos_s.y, pos_e.x, pos_e.y );
     }
 
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
-        Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetPosition() );
-        Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetPosition() + Ogre::Vector3( 1, 1, 0 ) );
+        Ogre::Vector4 col = m_EntitiesMovable[ i ]->GetCollisionBox();
 
         DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
-        DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+        DEBUG_DRAW.Quad( col.x, col.y, col.z, col.y, col.z, col.w, col.x, col.w );
     }
 
     m_Hud->UpdateDebug();
@@ -160,8 +159,10 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
                 return;
             }
 
-            entity->SetSize( Ogre::Vector2( m_EntityDescs[ i ].width, m_EntityDescs[ i ].height ) );
             entity->SetPosition( Ogre::Vector3( x, y, 0 ) );
+            entity->SetCollisionBox( m_EntityDescs[ i ].collision_box );
+            entity->SetDrawBox( m_EntityDescs[ i ].draw_box );
+            entity->SetSize( Ogre::Vector2( m_EntityDescs[ i ].width, m_EntityDescs[ i ].height ) );
             entity->SetTexture( m_EntityDescs[ i ].texture );
             entity->UpdateGeometry();
             m_Entities.push_back( entity );
@@ -199,11 +200,19 @@ EntityManager::SetEntitySelection( const Ogre::Vector3& start, const Ogre::Vecto
     for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
     {
         Ogre::Vector3 pos = m_EntitiesMovable[ i ]->GetPosition();
-        float left = ( start.x < end.x ) ? start.x : end.x;
-        float right = ( start.x < end.x ) ? end.x : start.x;
-        float top = ( start.y < end.y ) ? start.y : end.y;
-        float bottom = ( start.y < end.y ) ? end.y : start.y;
-        if( pos.x >= left && pos.x <= right && pos.y >= top && pos.y <= bottom )
+        Ogre::Vector4 col = m_EntitiesMovable[ i ]->GetCollisionBox();
+
+        float lhs_left = ( start.x < end.x ) ? start.x : end.x;
+        float lhs_right = ( start.x < end.x ) ? end.x : start.x;
+        float lhs_top = ( start.y < end.y ) ? start.y : end.y;
+        float lhs_bottom = ( start.y < end.y ) ? end.y : start.y;
+
+        float rhs_left = pos.x + col.x;
+        float rhs_right = pos.x + col.z;
+        float rhs_top = pos.y + col.y;
+        float rhs_bottom = pos.y + col.w;
+
+        if( rhs_left > lhs_right || rhs_right < lhs_left || rhs_top > lhs_bottom || rhs_bottom < lhs_top )
         {
             //LOG_ERROR( "Found: " + Ogre::StringConverter::toString( pos ) );
             m_EntitiesSelected.push_back( m_EntitiesMovable[ i ] );

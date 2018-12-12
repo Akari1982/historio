@@ -15,8 +15,8 @@ struct EntityDesc
 {
     Ogre::String entity_class;
     Ogre::String name;
-    float width;
-    float height;
+    Ogre::Vector4 collision_box;
+    Ogre::Vector4 draw_box;
     Ogre::String texture;
 };
 

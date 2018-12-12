@@ -53,17 +53,33 @@ EntityTile::GetPosition() const
 
 
 void
-EntityTile::SetSize( const Ogre::Vector2& size )
+EntityTile::SetCollisionBox( const Ogre::Vector4& collision_box )
 {
-    m_Size = size;
+    m_CollisionBox = collision_box;
 }
 
 
 
-const Ogre::Vector2&
-EntityTile::GetSize() const
+const Ogre::Vector4&
+EntityTile::GetCollisionBox() const
 {
-    return m_Size;
+    return m_CollisionBox;
+}
+
+
+
+void
+EntityTile::SetDrawBox( const Ogre::Vector4& draw_box )
+{
+    m_DrawBox = draw_box;
+}
+
+
+
+const Ogre::Vector4&
+EntityTile::GetDrawBox() const
+{
+    return m_DrawBox;
 }
 
 
@@ -97,14 +113,14 @@ EntityTile::SetDepth( const float depth )
 void
 EntityTile::UpdateGeometry()
 {
-    float x1 = m_Position.x;
-    float y1 = m_Position.y;
-    float x2 = m_Position.x + m_Size.x;
-    float y2 = m_Position.y;
-    float x3 = m_Position.x + m_Size.x;
-    float y3 = m_Position.y + m_Size.y;
-    float x4 = m_Position.x;
-    float y4 = m_Position.y + m_Size.y;
+    float x1 = m_Position.x + m_DrawBox.x;
+    float y1 = m_Position.y + m_DrawBox.y;
+    float x2 = m_Position.x + m_DrawBox.z;
+    float y2 = m_Position.y + m_DrawBox.y;
+    float x3 = m_Position.x + m_DrawBox.z;
+    float y3 = m_Position.y + m_DrawBox.w;
+    float x4 = m_Position.x + m_DrawBox.x;
+    float y4 = m_Position.y + m_DrawBox.w;
 
     float left = 0.0f;
     float right = 1.0f;
