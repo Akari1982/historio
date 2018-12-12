@@ -28,8 +28,8 @@ CameraManager::CameraManager()
     m_Camera = Ogre::Root::getSingleton().getSceneManager( "Scene" )->createCamera( "Camera" );
     m_Camera->setNearClipDistance( 0.001f );
     m_Camera->setFarClipDistance( 1000.0f );
-    m_Camera->setPosition( Ogre::Vector3( 50, 50, -100 ) );
-    m_Camera->lookAt( Ogre::Vector3( 50, 50, 0 ) );
+    m_Camera->setPosition( Ogre::Vector3( 10, 10, -50 ) );
+    m_Camera->lookAt( Ogre::Vector3( 10, 10, 0 ) );
     m_Camera->roll( Ogre::Degree( 180 ) );
     m_Viewport = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" )->addViewport( m_Camera, 0 );
     m_Viewport->setBackgroundColour( Ogre::ColourValue( 0, 0, 0 ) );

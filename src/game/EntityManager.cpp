@@ -123,10 +123,13 @@ EntityManager::UpdateDebug()
 
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
-        Ogre::Vector4 col = m_EntitiesMovable[ i ]->GetCollisionBox();
+        Ogre::Vector4 col = m_EntitiesSelected[ i ]->GetCollisionBox();
+        Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetPosition();
+        Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.x, col.y, 0 ) );
+        Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.z, col.w, 0 ) );
 
         DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
-        DEBUG_DRAW.Quad( col.x, col.y, col.z, col.y, col.z, col.w, col.x, col.w );
+        DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
     }
 
     m_Hud->UpdateDebug();
@@ -146,7 +149,7 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             if( m_EntityDescs[ i ].entity_class == "Movable" )
             {
                 entity = new EntityMovable();
-                (( EntityMovable* )entity)->SetMovePosition( Ogre::Vector3( x + 10, y, 0 ) );
+                (( EntityMovable* )entity)->SetMovePosition( Ogre::Vector3( x, y, 0 ) );
                 m_EntitiesMovable.push_back( ( EntityMovable* )entity );
             }
             else if( m_EntityDescs[ i ].entity_class == "Stand" )
@@ -162,7 +165,6 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             entity->SetPosition( Ogre::Vector3( x, y, 0 ) );
             entity->SetCollisionBox( m_EntityDescs[ i ].collision_box );
             entity->SetDrawBox( m_EntityDescs[ i ].draw_box );
-            entity->SetSize( Ogre::Vector2( m_EntityDescs[ i ].width, m_EntityDescs[ i ].height ) );
             entity->SetTexture( m_EntityDescs[ i ].texture );
             entity->UpdateGeometry();
             m_Entities.push_back( entity );
@@ -212,7 +214,7 @@ EntityManager::SetEntitySelection( const Ogre::Vector3& start, const Ogre::Vecto
         float rhs_top = pos.y + col.y;
         float rhs_bottom = pos.y + col.w;
 
-        if( rhs_left > lhs_right || rhs_right < lhs_left || rhs_top > lhs_bottom || rhs_bottom < lhs_top )
+        if( rhs_left < lhs_right && rhs_right > lhs_left && rhs_top < lhs_bottom && rhs_bottom > lhs_top )
         {
             //LOG_ERROR( "Found: " + Ogre::StringConverter::toString( pos ) );
             m_EntitiesSelected.push_back( m_EntitiesMovable[ i ] );
@@ -229,7 +231,6 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
     {
         m_EntitiesSelected[ i ]->SetMovePosition( move );
     }
-    m_EntitiesSelected.clear();
 }
 
 

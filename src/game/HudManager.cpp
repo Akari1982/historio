@@ -42,8 +42,16 @@ HudManager::Input( const Event& event )
         m_Selection = true;
         m_SelectionStart = point;
         m_SelectionEnd = point;
+    }
+    else if( event.type == ET_PRESS && event.button == OIS::MB_Right )
+    {
+        Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
+        Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
+        std::pair< bool, Ogre::Real > res = ray.intersects( plane );
+        Ogre::Vector3 point = ray.getPoint( res.second );
 
-        EntityManager::getSingleton().SetEntitySelectionMove( m_SelectionStart );
+        // set coords rounded to integer
+        EntityManager::getSingleton().SetEntitySelectionMove( Ogre::Vector3( std::floor( point.x + 0.5f ), std::floor( point.y + 0.5f ), 0 ) );
     }
     else if( event.type == ET_RELEASE && event.button == OIS::MB_Left )
     {

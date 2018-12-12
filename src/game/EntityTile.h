@@ -4,7 +4,7 @@
 #include <OgreHardwareVertexBuffer.h>
 #include <OgreRenderOperation.h>
 #include <OgreVector3.h>
-#include <OgreVector2.h>
+#include <OgreVector4.h>
 
 
 

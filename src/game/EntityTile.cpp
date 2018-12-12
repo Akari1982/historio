@@ -1,14 +1,14 @@
 #include <OgreHardwareBufferManager.h>
 #include <OgreMaterialManager.h>
 #include <OgreRoot.h>
-
 #include "EntityTile.h"
 
 
 
 EntityTile::EntityTile():
     m_Position( Ogre::Vector3::ZERO ),
-    m_Size( Ogre::Vector2( 1, 1 ) ),
+    m_CollisionBox( Ogre::Vector4::ZERO ),
+    m_DrawBox( Ogre::Vector4::ZERO ),
     m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) ),
     m_Depth( 0.0f )
 {
