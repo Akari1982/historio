@@ -34,14 +34,14 @@ MapSector::Quad( const float x, const float y, const float width, const float he
         return;
     }
 
-    float x1 = x;
-    float y1 = y;
-    float x2 = x + width;
-    float y2 = y;
-    float x3 = x + width;
-    float y3 = y + height;
-    float x4 = x;
-    float y4 = y + height;
+    float x1 = x - width / 2;
+    float y1 = y - height / 2;
+    float x2 = x + width / 2;
+    float y2 = y - height / 2;
+    float x3 = x + width / 2;
+    float y3 = y + height / 2;
+    float x4 = x - width / 2;
+    float y4 = y + height / 2;
 
     float left = u;
     float right = u + tw;
