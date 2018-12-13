@@ -23,7 +23,7 @@ EntityManager::EntityManager()
 
     m_Hud = new HudManager();
 
-    EntityXmlFile* desc_file = new EntityXmlFile( "data/entity.xml" );
+    EntityXmlFile* desc_file = new EntityXmlFile( "data/entities.xml" );
     desc_file->LoadDesc();
     delete desc_file;
 
@@ -33,8 +33,13 @@ EntityManager::EntityManager()
     delete map_loader;
 
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
+
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
     m_SceneManager->addRenderQueueListener( this );
+
+    m_SceneNode = m_SceneManager->getRootSceneNode()->createChildSceneNode( "EntityManager" );
+    Ogre::SceneNode* node = m_SceneNode->createChildSceneNode( "Map" );
+    node->attachObject( &m_MapSector );
 }
 
 
@@ -47,6 +52,8 @@ EntityManager::~EntityManager()
     }
 
     m_SceneManager->removeRenderQueueListener( this );
+
+    m_SceneManager->getRootSceneNode()->removeAndDestroyChild( "EntityManager" );
 
     delete m_Hud;
 
@@ -130,6 +137,15 @@ EntityManager::UpdateDebug()
 
         DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
         DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+    }
+
+    Ogre::SceneNode::ChildNodeIterator node = m_SceneNode->getChildIterator();
+    int row = 0;
+    DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
+    while( node.hasMoreElements() )
+    {
+        Ogre::SceneNode* n = node.getNext();
+        DEBUG_DRAW.Text( 10, 10 + row * 20, n.getName() );
     }
 
     m_Hud->UpdateDebug();
@@ -243,8 +259,6 @@ EntityManager::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& i
         m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
         m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
         m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
-
-        m_MapSector.Render();
 
         for( size_t i = 0; i < m_Entities.size(); ++i )
         {

@@ -19,7 +19,8 @@ template<>CameraManager* Ogre::Singleton< CameraManager >::msSingleton = NULL;
 
 
 
-CameraManager::CameraManager()
+CameraManager::CameraManager():
+    m_Z( -50.0f )
 {
     LOG_TRIVIAL( "CameraManager started." );
 
@@ -28,7 +29,7 @@ CameraManager::CameraManager()
     m_Camera = Ogre::Root::getSingleton().getSceneManager( "Scene" )->createCamera( "Camera" );
     m_Camera->setNearClipDistance( 0.001f );
     m_Camera->setFarClipDistance( 1000.0f );
-    m_Camera->setPosition( Ogre::Vector3( 10, 10, -50 ) );
+    m_Camera->setPosition( Ogre::Vector3( 10, 10, m_Z ) );
     m_Camera->lookAt( Ogre::Vector3( 10, 10, 0 ) );
     m_Camera->roll( Ogre::Degree( 180 ) );
     m_Viewport = Ogre::Root::getSingleton().getRenderTarget( "QGearsWindow" )->addViewport( m_Camera, 0 );
@@ -72,7 +73,10 @@ CameraManager::Input( const Event& event )
     }
     else if( event.type == ET_MOUSE_SCROLL )
     {
-        m_Camera->moveRelative( Ogre::Vector3( 0, 0, -event.param1 / 20.0f ) );
+        m_Z -= event.param1 / 20.0f;
+        m_Z = ( m_Z > 100.0f ) ? 100.0f : m_Z;
+        m_Z = ( m_Z < 5.0f ) ? 5.0f : m_Z;
+        m_Camera->moveRelative( Ogre::Vector3( 0, 0, m_Z ) );
     }
 }
 

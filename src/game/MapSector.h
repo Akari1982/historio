@@ -1,21 +1,35 @@
 #ifndef MAP_SECTOR_H
 #define MAP_SECTOR_H
 
+#include <OgreCamera.h>
 #include <OgreHardwareVertexBuffer.h>
 #include <OgreRenderQueueListener.h>
 #include <OgreRenderOperation.h>
+#include <OgreSimpleRenderable.h>
 
 
 
-class MapSector
+struct MapTileDesc
+{
+    Ogre::String name;
+    Ogre::ColourValue colour;
+    Ogre::Vector4 texture_coords;
+};
+
+
+
+class MapSector : public Ogre::SimpleRenderable
 {
 public:
     MapSector();
     virtual ~MapSector();
 
-    void Render();
+    Ogre::Real getSquaredViewDepth( const Ogre::Camera* cam ) const;
+    Ogre::Real getBoundingRadius() const;
 
-    void Quad( const float x, const float y, const float width, const float height, const float u, const float v, const float tw, const float th, const Ogre::ColourValue& colour =  Ogre::ColourValue( 1, 1, 1, 1 ) );
+    void AddMapTileDesc( const MapTileDesc& desc );
+
+    void Quad( const float x, const float y, const float width, const float height, const Ogre::String& name );
 
 private:
     void CreateVertexBuffers();
@@ -26,7 +40,8 @@ private:
     Ogre::SceneManager* m_SceneManager;
     Ogre::RenderSystem* m_RenderSystem;
 
-    Ogre::RenderOperation m_RenderOp;
+    std::vector< MapTileDesc > m_MapTileDescs;
+
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
     unsigned int m_MaxVertexCount;
     Ogre::MaterialPtr m_Material;

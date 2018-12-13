@@ -45,6 +45,7 @@ public:
 private:
     Ogre::SceneManager* m_SceneManager;
     Ogre::RenderSystem* m_RenderSystem;
+    Ogre::SceneNode* m_SceneNode;
 
     HudManager* m_Hud;
 

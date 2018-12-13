@@ -4,16 +4,25 @@
 #include "../core/CameraManager.h"
 #include "../core/Logger.h"
 #include "MapSector.h"
+#include "MapTileXmlFile.h"
 
 
 
 MapSector::MapSector()
 {
+    MapTileXmlFile* tile_file = new MapTileXmlFile( "data/map_tiles.xml" );
+    tile_file->LoadDesc();
+    delete tile_file;
+
     m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
     m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
 
     CreateVertexBuffers();
     CreateMaterial();
+
+    Ogre::AxisAlignedBox aabb;
+    aabb.setInfinite();
+    setBoundingBox( aabb );
 }
 
 
@@ -25,10 +34,42 @@ MapSector::~MapSector()
 
 
 
-void
-MapSector::Quad( const float x, const float y, const float width, const float height, const float u, const float v, const float tw, const float th, const Ogre::ColourValue& colour )
+Ogre::Real
+MapSector::getSquaredViewDepth( const Ogre::Camera* cam ) const
 {
-    if( m_RenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
+    return 0;
+}
+
+
+
+Ogre::Real
+MapSector::getBoundingRadius() const
+{
+    return 0;
+}
+
+
+
+void
+MapSector::AddMapTileDesc( const MapTileDesc& desc )
+{
+    for( size_t i = 0; i < m_MapTileDescs.size(); ++i )
+    {
+        if( m_MapTileDescs[ i ].name == desc.name )
+        {
+            m_MapTileDescs[ i ] = desc;
+            return;
+        }
+    }
+    m_MapTileDescs.push_back( desc );
+}
+
+
+
+void
+MapSector::Quad( const float x, const float y, const float width, const float height, const float u, const Ogre::String& name )
+{
+    if( mRenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
     {
         LOG_ERROR( "MapSector: Max number of quads reached. Can't create more than " + Ogre::StringConverter::toString( m_MaxVertexCount / 6 ) + " quads." );
         return;
@@ -43,15 +84,29 @@ MapSector::Quad( const float x, const float y, const float width, const float he
     float x4 = x - width / 2;
     float y4 = y + height / 2;
 
-    float left = u;
-    float right = u + tw;
-    float top = v;
-    float bottom = v + th;
+    float left = 0.0f;
+    float right = 1.0f;
+    float top = 0.0f;
+    float bottom = 1.0f;
+    Ogre::ColourValue colour = Ogre::ColourValue( 1, 1, 1, 1 );
+
+    for( size_t i = 0; i < m_MapTileDescs.size(); ++i )
+    {
+        if( m_MapTileDescs[ i ].name == name )
+        {
+            Ogre::Vector4 coord = m_MapTileDescs[ i ].texture_coords;
+            left = coord.x;
+            right = coord.z;
+            top = coord.y;
+            bottom = coord.w;
+            colour = m_MapTileDescs[ i ].colour;
+        }
+    }
 
     float m_Z = 0.0f;
 
     float* writeIterator = ( float* ) m_VertexBuffer->lock( Ogre::HardwareBuffer::HBL_NORMAL );
-    writeIterator += m_RenderOp.vertexData->vertexCount * 9;
+    writeIterator += mRenderOp.vertexData->vertexCount * 9;
 
     *writeIterator++ = x1;
     *writeIterator++ = y1;
@@ -113,21 +168,9 @@ MapSector::Quad( const float x, const float y, const float width, const float he
     *writeIterator++ = left;
     *writeIterator++ = bottom;
 
-    m_RenderOp.vertexData->vertexCount += 6;
+    mRenderOp.vertexData->vertexCount += 6;
 
     m_VertexBuffer->unlock();
-}
-
-
-
-void
-MapSector::Render()
-{
-    if( m_RenderOp.vertexData->vertexCount != 0 )
-    {
-        m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
-        m_RenderSystem->_render( m_RenderOp );
-    }
 }
 
 
@@ -136,10 +179,10 @@ void
 MapSector::CreateVertexBuffers()
 {
     m_MaxVertexCount = 10000 * 6;
-    m_RenderOp.vertexData = new Ogre::VertexData;
-    m_RenderOp.vertexData->vertexStart = 0;
+    mRenderOp.vertexData = new Ogre::VertexData;
+    mRenderOp.vertexData->vertexStart = 0;
 
-    Ogre::VertexDeclaration* vDecl = m_RenderOp.vertexData->vertexDeclaration;
+    Ogre::VertexDeclaration* vDecl = mRenderOp.vertexData->vertexDeclaration;
 
     size_t offset = 0;
     vDecl->addElement( 0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION );
@@ -150,9 +193,9 @@ MapSector::CreateVertexBuffers()
 
     m_VertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), m_MaxVertexCount, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
 
-    m_RenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_VertexBuffer );
-    m_RenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
-    m_RenderOp.useIndexes = false;
+    mRenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_VertexBuffer );
+    mRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
+    mRenderOp.useIndexes = false;
 }
 
 
@@ -160,8 +203,8 @@ MapSector::CreateVertexBuffers()
 void
 MapSector::DestroyVertexBuffers()
 {
-    delete m_RenderOp.vertexData;
-    m_RenderOp.vertexData = 0;
+    delete mRenderOp.vertexData;
+    mRenderOp.vertexData = 0;
     m_VertexBuffer.setNull();
     m_MaxVertexCount = 0;
 }

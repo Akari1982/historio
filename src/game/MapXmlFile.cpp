@@ -34,15 +34,8 @@ MapXmlFile::LoadMap( MapSector& map_sector )
     {
         if( node->Type() == TiXmlNode::TINYXML_ELEMENT && node->ValueStr() == "tile" )
         {
-            Ogre::String type = GetString( node, "type" );
-            if( type == "GRASS" )
-            {
-                map_sector.Quad( order % 100, order / 100, 1, 1, 0.5f, 0.0f, 0.5f, 1.0f );
-            }
-            else if( type == "WATER" )
-            {
-                map_sector.Quad( order % 100, order / 100, 1, 1, 0.0f, 0.0f, 0.5f, 1.0f );
-            }
+            Ogre::String name = GetString( node, "name" );
+            map_sector.Quad( order % 100, order / 100, 1, 1, name );
             ++order;
         }
         node = node->NextSibling();

@@ -29,6 +29,8 @@ private:
 private:
     Ogre::Camera* m_Camera;
     Ogre::Viewport* m_Viewport;
+
+    float m_Z;
 };
 
 

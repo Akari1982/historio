@@ -32,41 +32,49 @@ HudManager::~HudManager()
 void
 HudManager::Input( const Event& event )
 {
-    if( event.type == ET_PRESS && event.button == OIS::MB_Left )
+    if( m_Selection == false )
     {
-        Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
-        Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
-        std::pair< bool, Ogre::Real > res = ray.intersects( plane );
-        Ogre::Vector3 point = ray.getPoint( res.second );
+        if( event.type == ET_PRESS && event.button == OIS::MB_Left )
+        {
+            Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
+            Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
+            std::pair< bool, Ogre::Real > res = ray.intersects( plane );
+            Ogre::Vector3 point = ray.getPoint( res.second );
 
-        m_Selection = true;
-        m_SelectionStart = point;
-        m_SelectionEnd = point;
+            m_Selection = true;
+            m_SelectionStart = point;
+            m_SelectionEnd = point;
+        }
+        else if( event.type == ET_PRESS && event.button == OIS::MB_Right )
+        {
+            Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
+            Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
+            std::pair< bool, Ogre::Real > res = ray.intersects( plane );
+            Ogre::Vector3 point = ray.getPoint( res.second );
+
+            // set coords rounded to integer
+            EntityManager::getSingleton().SetEntitySelectionMove( Ogre::Vector3( std::floor( point.x + 0.5f ), std::floor( point.y + 0.5f ), 0 ) );
+        }
     }
-    else if( event.type == ET_PRESS && event.button == OIS::MB_Right )
+    else
     {
-        Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
-        Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
-        std::pair< bool, Ogre::Real > res = ray.intersects( plane );
-        Ogre::Vector3 point = ray.getPoint( res.second );
+        if( event.type == ET_RELEASE && event.button == OIS::MB_Left )
+        {
+            EntityManager::getSingleton().SetEntitySelection( m_SelectionStart, m_SelectionEnd );
 
-        // set coords rounded to integer
-        EntityManager::getSingleton().SetEntitySelectionMove( Ogre::Vector3( std::floor( point.x + 0.5f ), std::floor( point.y + 0.5f ), 0 ) );
-    }
-    else if( event.type == ET_RELEASE && event.button == OIS::MB_Left )
-    {
-        EntityManager::getSingleton().SetEntitySelection( m_SelectionStart, m_SelectionEnd );
+            m_Selection = false;
+        }
+        else if(
+            event.type == ET_MOUSE_MOVE ||
+            event.type == ET_MOUSE_SCROLL || (
+            event.type == ET_REPEAT && ( event.button == OIS::KC_W || event.button == OIS::KC_A || event.button == OIS::KC_S || event.button == OIS::KC_D ))
+        {
+            Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
+            Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
+            std::pair< bool, Ogre::Real > res = ray.intersects( plane );
+            Ogre::Vector3 point = ray.getPoint( res.second );
 
-        m_Selection = false;
-    }
-    else if( event.type == ET_MOUSE_MOVE && m_Selection == true )
-    {
-        Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
-        Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
-        std::pair< bool, Ogre::Real > res = ray.intersects( plane );
-        Ogre::Vector3 point = ray.getPoint( res.second );
-
-        m_SelectionEnd = point;
+            m_SelectionEnd = point;
     }
 }
 
