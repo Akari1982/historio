@@ -8,7 +8,7 @@
 class EntityStand : public Entity
 {
 public:
-    EntityStand();
+    EntityStand( Ogre::SceneNode* node );
     virtual ~EntityStand();
 
     virtual void Update();

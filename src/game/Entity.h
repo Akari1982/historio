@@ -8,7 +8,7 @@
 class Entity : public EntityTile
 {
 public:
-    Entity();
+    Entity( Ogre::SceneNode* node );
     virtual ~Entity();
 
     virtual void Update();

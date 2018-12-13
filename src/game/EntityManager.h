@@ -1,7 +1,6 @@
 #ifndef ENTITY_MANAGER_H
 #define ENTITY_MANAGER_H
 
-#include <OgreRenderQueueListener.h>
 #include <OgreSingleton.h>
 #include "../core/Event.h"
 #include "EntityMovable.h"
@@ -22,7 +21,7 @@ struct EntityDesc
 
 
 
-class EntityManager : public Ogre::Singleton< EntityManager >, public Ogre::RenderQueueListener
+class EntityManager : public Ogre::Singleton< EntityManager >
 {
 public:
     EntityManager();
@@ -40,11 +39,8 @@ public:
     void SetEntitySelection( const Ogre::Vector3& start, const Ogre::Vector3& end );
     void SetEntitySelectionMove( const Ogre::Vector3& move );
 
-    void renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& repeatThisInvocation );
-
 private:
     Ogre::SceneManager* m_SceneManager;
-    Ogre::RenderSystem* m_RenderSystem;
     Ogre::SceneNode* m_SceneNode;
 
     HudManager* m_Hud;

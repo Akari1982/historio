@@ -19,7 +19,7 @@ MapTilesXmlFile::~MapTilesXmlFile()
 
 
 void
-MapTilesXmlFile::LoadDesc()
+MapTilesXmlFile::LoadDesc( MapSector* map_sector )
 {
     TiXmlNode* node = m_File.RootElement();
 
@@ -38,7 +38,7 @@ MapTilesXmlFile::LoadDesc()
             desc.name = GetString( node, "name" );
             desc.colour = GetColourValue( node, "colour" );
             desc.texture_coords = GetVector4( node, "texture_coords", Ogre::Vector4( 0, 0, 1, 1 ) );
-            EntityManager::getSingleton().AddMapTileDesc( desc );
+            map_sector->AddMapTileDesc( desc );
         }
         node = node->NextSibling();
     }

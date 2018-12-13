@@ -20,7 +20,7 @@ template<>CameraManager* Ogre::Singleton< CameraManager >::msSingleton = NULL;
 
 
 CameraManager::CameraManager():
-    m_Z( -50.0f )
+    m_Z( -20.0f )
 {
     LOG_TRIVIAL( "CameraManager started." );
 
@@ -50,33 +50,30 @@ void
 CameraManager::Input( const Event& event )
 {
     float speed = cv_cam_speed.GetF();
-    if( InputManager::getSingleton().IsButtonPressed( OIS::KC_RSHIFT ) || InputManager::getSingleton().IsButtonPressed( OIS::KC_LSHIFT ) )
-    {
-        speed *= 4;
-    }
 
     if( event.type == ET_REPEAT && event.button == OIS::KC_W )
     {
-        m_Camera->moveRelative( Ogre::Vector3( 0, speed, 0 ) );
+        m_Camera->moveRelative( Ogre::Vector3( 0, -speed * m_Z, 0 ) );
     }
     else if( event.type == ET_REPEAT && event.button == OIS::KC_A )
     {
-        m_Camera->moveRelative( Ogre::Vector3( -speed, 0, 0 ) );
+        m_Camera->moveRelative( Ogre::Vector3( speed * m_Z, 0, 0 ) );
     }
     else if( event.type == ET_REPEAT && event.button == OIS::KC_S )
     {
-        m_Camera->moveRelative( Ogre::Vector3( 0, -speed, 0 ) );
+        m_Camera->moveRelative( Ogre::Vector3( 0, speed * m_Z, 0 ) );
     }
     else if( event.type == ET_REPEAT && event.button == OIS::KC_D )
     {
-        m_Camera->moveRelative( Ogre::Vector3( speed, 0, 0 ) );
+        m_Camera->moveRelative( Ogre::Vector3( -speed * m_Z, 0, 0 ) );
     }
     else if( event.type == ET_MOUSE_SCROLL )
     {
-        m_Z -= event.param1 / 20.0f;
-        m_Z = ( m_Z > 100.0f ) ? 100.0f : m_Z;
-        m_Z = ( m_Z < 5.0f ) ? 5.0f : m_Z;
-        m_Camera->moveRelative( Ogre::Vector3( 0, 0, m_Z ) );
+        m_Z += event.param1 / 50.0f;
+        m_Z = ( m_Z > -15.0f ) ? -15.0f : m_Z;
+        m_Z = ( m_Z < -50.0f ) ? -50.0f : m_Z;
+        Ogre::Vector3 pos = m_Camera->getPosition();
+        m_Camera->setPosition( Ogre::Vector3( pos.x, pos.y, m_Z ) );
     }
 }
 

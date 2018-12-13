@@ -1,21 +1,20 @@
 #include <OgreHardwareBufferManager.h>
 #include <OgreMaterialManager.h>
 #include <OgreRoot.h>
-#include "../core/CameraManager.h"
 #include "../core/Logger.h"
 #include "MapSector.h"
-#include "MapTileXmlFile.h"
+#include "MapTilesXmlFile.h"
 
 
 
 MapSector::MapSector()
 {
-    MapTileXmlFile* tile_file = new MapTileXmlFile( "data/map_tiles.xml" );
-    tile_file->LoadDesc();
+    MapTilesXmlFile* tile_file = new MapTilesXmlFile( "data/map_tiles.xml" );
+    tile_file->LoadDesc( this );
     delete tile_file;
 
-    m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
-    m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
+    //mUseIdentityProjection = true;
+    //mUseIdentityView = true;
 
     CreateVertexBuffers();
     CreateMaterial();
@@ -67,7 +66,7 @@ MapSector::AddMapTileDesc( const MapTileDesc& desc )
 
 
 void
-MapSector::Quad( const float x, const float y, const float width, const float height, const float u, const Ogre::String& name )
+MapSector::Quad( const float x, const float y, const float width, const float height, const Ogre::String& name )
 {
     if( mRenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
     {
@@ -88,7 +87,7 @@ MapSector::Quad( const float x, const float y, const float width, const float he
     float right = 1.0f;
     float top = 0.0f;
     float bottom = 1.0f;
-    Ogre::ColourValue colour = Ogre::ColourValue( 1, 1, 1, 1 );
+    Ogre::ColourValue colour = Ogre::ColourValue( 1, 1, 1, 0 );
 
     for( size_t i = 0; i < m_MapTileDescs.size(); ++i )
     {
@@ -179,7 +178,7 @@ void
 MapSector::CreateVertexBuffers()
 {
     m_MaxVertexCount = 10000 * 6;
-    mRenderOp.vertexData = new Ogre::VertexData;
+    mRenderOp.vertexData = new Ogre::VertexData();
     mRenderOp.vertexData->vertexStart = 0;
 
     Ogre::VertexDeclaration* vDecl = mRenderOp.vertexData->vertexDeclaration;
@@ -191,7 +190,7 @@ MapSector::CreateVertexBuffers()
     offset += Ogre::VertexElement::getTypeSize( Ogre::VET_FLOAT4 );
     vDecl->addElement( 0, offset, Ogre::VET_FLOAT2, Ogre::VES_TEXTURE_COORDINATES );
 
-    m_VertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), m_MaxVertexCount, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
+    m_VertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), m_MaxVertexCount, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY );
 
     mRenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_VertexBuffer );
     mRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
@@ -214,8 +213,8 @@ MapSector::DestroyVertexBuffers()
 void
 MapSector::CreateMaterial()
 {
-    m_Material = Ogre::MaterialManager::getSingleton().create( "Map", "General" );
-    Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
+    mMaterial = Ogre::MaterialManager::getSingleton().create( "Map", "General" );
+    Ogre::Pass* pass = mMaterial->getTechnique( 0 )->getPass( 0 );
     pass->setVertexColourTracking( Ogre::TVC_AMBIENT );
     pass->setCullingMode( Ogre::CULL_NONE );
     pass->setDepthCheckEnabled( true );

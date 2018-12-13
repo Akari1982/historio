@@ -8,7 +8,7 @@
 class EntityMovable : public Entity
 {
 public:
-    EntityMovable();
+    EntityMovable( Ogre::SceneNode* node );
     virtual ~EntityMovable();
 
     virtual void Update();

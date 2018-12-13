@@ -2,7 +2,8 @@
 
 
 
-EntityMovable::EntityMovable():
+EntityMovable::EntityMovable( Ogre::SceneNode* node ):
+    Entity( node ),
     m_MovePosition( Ogre::Vector3::ZERO )
 {
 }

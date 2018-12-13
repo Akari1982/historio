@@ -2,7 +2,8 @@
 
 
 
-EntityStand::EntityStand()
+EntityStand::EntityStand( Ogre::SceneNode* node ):
+    Entity( node )
 {
 }
 

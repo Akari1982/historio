@@ -5,17 +5,18 @@
 
 
 
-EntityTile::EntityTile():
-    m_Position( Ogre::Vector3::ZERO ),
+EntityTile::EntityTile( Ogre::SceneNode* node ):
+    m_SceneNode( node ),
     m_CollisionBox( Ogre::Vector4::ZERO ),
     m_DrawBox( Ogre::Vector4::ZERO ),
     m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) ),
     m_Depth( 0.0f )
 {
-    m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
-    m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
-
     CreateVertexBuffer();
+
+    Ogre::AxisAlignedBox aabb;
+    aabb.setInfinite();
+    setBoundingBox( aabb );
 }
 
 
@@ -27,10 +28,26 @@ EntityTile::~EntityTile()
 
 
 
+Ogre::Real
+EntityTile::getSquaredViewDepth( const Ogre::Camera* cam ) const
+{
+    return 0;
+}
+
+
+
+Ogre::Real
+EntityTile::getBoundingRadius() const
+{
+    return 0;
+}
+
+
+
 void
 EntityTile::SetMaterial( const Ogre::MaterialPtr material )
 {
-    m_Material = material;
+    mMaterial = material;
 }
 
 
@@ -38,8 +55,7 @@ EntityTile::SetMaterial( const Ogre::MaterialPtr material )
 void
 EntityTile::SetPosition( const Ogre::Vector3& position )
 {
-    m_Position = position;
-    UpdateGeometry();
+    m_SceneNode->setPosition( position );
 }
 
 
@@ -47,7 +63,7 @@ EntityTile::SetPosition( const Ogre::Vector3& position )
 const Ogre::Vector3&
 EntityTile::GetPosition() const
 {
-    return m_Position;
+    return m_SceneNode->getPosition();
 }
 
 
@@ -87,7 +103,7 @@ EntityTile::GetDrawBox() const
 void
 EntityTile::SetTexture( const Ogre::String& texture )
 {
-    Ogre::Pass* pass = m_Material->getTechnique( 0 )->getPass( 0 );
+    Ogre::Pass* pass = mMaterial->getTechnique( 0 )->getPass( 0 );
     Ogre::TextureUnitState* tex = pass->getTextureUnitState( 0 );
     tex->setTextureName( texture );
 }
@@ -113,14 +129,14 @@ EntityTile::SetDepth( const float depth )
 void
 EntityTile::UpdateGeometry()
 {
-    float x1 = m_Position.x + m_DrawBox.x;
-    float y1 = m_Position.y + m_DrawBox.y;
-    float x2 = m_Position.x + m_DrawBox.z;
-    float y2 = m_Position.y + m_DrawBox.y;
-    float x3 = m_Position.x + m_DrawBox.z;
-    float y3 = m_Position.y + m_DrawBox.w;
-    float x4 = m_Position.x + m_DrawBox.x;
-    float y4 = m_Position.y + m_DrawBox.w;
+    float x1 = m_DrawBox.x;
+    float y1 = m_DrawBox.y;
+    float x2 = m_DrawBox.z;
+    float y2 = m_DrawBox.y;
+    float x3 = m_DrawBox.z;
+    float y3 = m_DrawBox.w;
+    float x4 = m_DrawBox.x;
+    float y4 = m_DrawBox.w;
 
     float left = 0.0f;
     float right = 1.0f;
@@ -189,7 +205,7 @@ EntityTile::UpdateGeometry()
     *writeIterator++ = left;
     *writeIterator++ = bottom;
 
-    m_RenderOp.vertexData->vertexCount = 6;
+    mRenderOp.vertexData->vertexCount = 6;
 
     m_VertexBuffer->unlock();
 }
@@ -197,21 +213,12 @@ EntityTile::UpdateGeometry()
 
 
 void
-EntityTile::Render()
-{
-    m_SceneManager->_setPass( m_Material->getTechnique( 0 )->getPass( 0 ), true, false );
-    m_RenderSystem->_render( m_RenderOp );
-}
-
-
-
-void
 EntityTile::CreateVertexBuffer()
 {
-    m_RenderOp.vertexData = new Ogre::VertexData;
-    m_RenderOp.vertexData->vertexStart = 0;
+    mRenderOp.vertexData = new Ogre::VertexData;
+    mRenderOp.vertexData->vertexStart = 0;
 
-    Ogre::VertexDeclaration* vDecl = m_RenderOp.vertexData->vertexDeclaration;
+    Ogre::VertexDeclaration* vDecl = mRenderOp.vertexData->vertexDeclaration;
 
     size_t offset = 0;
     vDecl->addElement( 0, 0, Ogre::VET_FLOAT3, Ogre::VES_POSITION );
@@ -222,9 +229,9 @@ EntityTile::CreateVertexBuffer()
 
     m_VertexBuffer = Ogre::HardwareBufferManager::getSingletonPtr()->createVertexBuffer( vDecl->getVertexSize( 0 ), 6, Ogre::HardwareBuffer::HBU_DYNAMIC_WRITE_ONLY, false );
 
-    m_RenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_VertexBuffer );
-    m_RenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
-    m_RenderOp.useIndexes = false;
+    mRenderOp.vertexData->vertexBufferBinding->setBinding( 0, m_VertexBuffer );
+    mRenderOp.operationType = Ogre::RenderOperation::OT_TRIANGLE_LIST;
+    mRenderOp.useIndexes = false;
 }
 
 
@@ -232,7 +239,7 @@ EntityTile::CreateVertexBuffer()
 void
 EntityTile::DestroyVertexBuffer()
 {
-    delete m_RenderOp.vertexData;
-    m_RenderOp.vertexData = 0;
+    delete mRenderOp.vertexData;
+    mRenderOp.vertexData = 0;
     m_VertexBuffer.setNull();
 }

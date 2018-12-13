@@ -3,8 +3,6 @@
 
 #include <OgreCamera.h>
 #include <OgreHardwareVertexBuffer.h>
-#include <OgreRenderQueueListener.h>
-#include <OgreRenderOperation.h>
 #include <OgreSimpleRenderable.h>
 
 
@@ -37,14 +35,10 @@ private:
     void CreateMaterial();
 
 private:
-    Ogre::SceneManager* m_SceneManager;
-    Ogre::RenderSystem* m_RenderSystem;
-
     std::vector< MapTileDesc > m_MapTileDescs;
 
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
     unsigned int m_MaxVertexCount;
-    Ogre::MaterialPtr m_Material;
 };
 
 

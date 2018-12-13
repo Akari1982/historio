@@ -27,17 +27,14 @@ EntityManager::EntityManager()
     desc_file->LoadDesc();
     delete desc_file;
 
+    m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
+    m_SceneNode = m_SceneManager->getRootSceneNode()->createChildSceneNode( "EntityManager" );
+
     MapXmlFile* map_loader = new MapXmlFile( "data/map/test.xml" );
     map_loader->LoadMap( m_MapSector );
     map_loader->LoadEntities();
     delete map_loader;
 
-    m_SceneManager = Ogre::Root::getSingletonPtr()->getSceneManager( "Scene" );
-
-    m_RenderSystem = Ogre::Root::getSingleton().getRenderSystem();
-    m_SceneManager->addRenderQueueListener( this );
-
-    m_SceneNode = m_SceneManager->getRootSceneNode()->createChildSceneNode( "EntityManager" );
     Ogre::SceneNode* node = m_SceneNode->createChildSceneNode( "Map" );
     node->attachObject( &m_MapSector );
 }
@@ -50,8 +47,6 @@ EntityManager::~EntityManager()
     {
         delete m_Entities[ i ];
     }
-
-    m_SceneManager->removeRenderQueueListener( this );
 
     m_SceneManager->getRootSceneNode()->removeAndDestroyChild( "EntityManager" );
 
@@ -144,8 +139,9 @@ EntityManager::UpdateDebug()
     DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
     while( node.hasMoreElements() )
     {
-        Ogre::SceneNode* n = node.getNext();
-        DEBUG_DRAW.Text( 10, 10 + row * 20, n.getName() );
+        Ogre::SceneNode* n = ( Ogre::SceneNode* )node.getNext();
+        DEBUG_DRAW.Text( 10, 10 + row * 20, n->getName() );
+        ++row;
     }
 
     m_Hud->UpdateDebug();
@@ -156,21 +152,26 @@ EntityManager::UpdateDebug()
 void
 EntityManager::AddEntityByName( const Ogre::String& name, const float x, const float y )
 {
+    static int UNIQUE_NODE_ID = 0;
+
     for( size_t i = 0; i < m_EntityDescs.size(); ++i )
     {
         if( m_EntityDescs[ i ].name == name )
         {
             Entity* entity;
+            Ogre::SceneNode* node = m_SceneNode->createChildSceneNode( "Entity" + m_EntityDescs[ i ].entity_class + Ogre::StringConverter::toString( UNIQUE_NODE_ID ) );
+            ++UNIQUE_NODE_ID;
+
 
             if( m_EntityDescs[ i ].entity_class == "Movable" )
             {
-                entity = new EntityMovable();
+                entity = new EntityMovable( node );
                 (( EntityMovable* )entity)->SetMovePosition( Ogre::Vector3( x, y, 0 ) );
                 m_EntitiesMovable.push_back( ( EntityMovable* )entity );
             }
             else if( m_EntityDescs[ i ].entity_class == "Stand" )
             {
-                entity = new EntityStand();
+                entity = new EntityStand( node );
             }
             else
             {
@@ -184,6 +185,9 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             entity->SetTexture( m_EntityDescs[ i ].texture );
             entity->UpdateGeometry();
             m_Entities.push_back( entity );
+
+            node->attachObject( entity );
+
             return;
         }
     }
@@ -232,7 +236,6 @@ EntityManager::SetEntitySelection( const Ogre::Vector3& start, const Ogre::Vecto
 
         if( rhs_left < lhs_right && rhs_right > lhs_left && rhs_top < lhs_bottom && rhs_bottom > lhs_top )
         {
-            //LOG_ERROR( "Found: " + Ogre::StringConverter::toString( pos ) );
             m_EntitiesSelected.push_back( m_EntitiesMovable[ i ] );
         }
     }
@@ -246,23 +249,5 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
         m_EntitiesSelected[ i ]->SetMovePosition( move );
-    }
-}
-
-
-
-void
-EntityManager::renderQueueEnded( Ogre::uint8 queueGroupId, const Ogre::String& invocation, bool& skipThisInvocation )
-{
-    if( queueGroupId == Ogre::RENDER_QUEUE_MAIN )
-    {
-        m_RenderSystem->_setWorldMatrix( Ogre::Matrix4::IDENTITY );
-        m_RenderSystem->_setViewMatrix( CameraManager::getSingleton().GetCurrentCamera()->getViewMatrix( true ) );
-        m_RenderSystem->_setProjectionMatrix( CameraManager::getSingleton().GetCurrentCamera()->getProjectionMatrixRS() );
-
-        for( size_t i = 0; i < m_Entities.size(); ++i )
-        {
-            m_Entities[ i ]->Render();
-        }
     }
 }

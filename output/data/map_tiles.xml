@@ -1,12 +1,12 @@
 <tiles>
     <tile
         name="Water"
-        colour="0 0 1 1"
-        texture_coord="0 0 0.5 1"
+        colour="1 1 1 1"
+        texture_coords="0 0 0.5 1"
     />
     <tile
         name="Grass"
-        colour="0 1 0 1"
-        texture_coord="0.5 0 1 1"
+        colour="1 1 1 1"
+        texture_coords="0.5 0 1 1"
     />
 </tiles>

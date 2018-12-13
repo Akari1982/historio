@@ -5,7 +5,8 @@
 
 
 
-Entity::Entity()
+Entity::Entity( Ogre::SceneNode* node ):
+    EntityTile( node )
 {
     SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
 

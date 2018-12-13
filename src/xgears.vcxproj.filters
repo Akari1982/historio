@@ -292,6 +292,9 @@
     <ClCompile Include="game\EntityMovable.cpp">
       <Filter>game</Filter>
     </ClCompile>
+    <ClCompile Include="game\MapTilesXmlFile.cpp">
+      <Filter>game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Main.h">
@@ -760,6 +763,9 @@
       <Filter>X-Gears files</Filter>
     </ClInclude>
     <ClInclude Include="game\EntityMovable.h">
+      <Filter>game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\MapTilesXmlFile.h">
       <Filter>game</Filter>
     </ClInclude>
   </ItemGroup>

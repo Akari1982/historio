@@ -2,6 +2,7 @@
 #define MAP_TILES_XML_FILE_H
 
 #include "../core/XmlFile.h"
+#include "MapSector.h"
 
 
 
@@ -11,7 +12,7 @@ public:
     MapTilesXmlFile( const Ogre::String& file );
     virtual ~MapTilesXmlFile();
 
-    void LoadDesc();
+    void LoadDesc( MapSector* map_sector );
 };
 
 

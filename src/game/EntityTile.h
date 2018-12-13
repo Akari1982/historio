@@ -1,18 +1,22 @@
 #ifndef ENTITY_TILE_H
 #define ENTITY_TILE_H
 
+#include <OgreCamera.h>
 #include <OgreHardwareVertexBuffer.h>
-#include <OgreRenderOperation.h>
+#include <OgreSimpleRenderable.h>
 #include <OgreVector3.h>
 #include <OgreVector4.h>
 
 
 
-class EntityTile
+class EntityTile : public Ogre::SimpleRenderable
 {
 public:
-    EntityTile();
+    EntityTile( Ogre::SceneNode* node );
     virtual ~EntityTile();
+
+    Ogre::Real getSquaredViewDepth( const Ogre::Camera* cam ) const;
+    Ogre::Real getBoundingRadius() const;
 
     void SetMaterial( const Ogre::MaterialPtr material );
     void SetPosition( const Ogre::Vector3& position );
@@ -26,20 +30,16 @@ public:
     void SetDepth( const float depth );
     void UpdateGeometry();
 
-    void Render();
-
 private:
+    EntityTile();
+
     void CreateVertexBuffer();
     void DestroyVertexBuffer();
 
 protected:
-    Ogre::MaterialPtr m_Material;
-    Ogre::SceneManager* m_SceneManager;
-    Ogre::RenderSystem* m_RenderSystem;
-    Ogre::RenderOperation m_RenderOp;
+    Ogre::SceneNode* m_SceneNode;
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
 
-    Ogre::Vector3 m_Position;
     Ogre::Vector4 m_CollisionBox;
     Ogre::Vector4 m_DrawBox;
     Ogre::ColourValue m_Colour;
