@@ -119,7 +119,7 @@ EntityManager::UpdateDebug()
         Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetPosition() );
         Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetMovePosition() );
 
-        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 1 ) );
+        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
         DEBUG_DRAW.Line( pos_s.x, pos_s.y, pos_e.x, pos_e.y );
     }
 
@@ -130,8 +130,22 @@ EntityManager::UpdateDebug()
         Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.x, col.y, 0 ) );
         Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.z, col.w, 0 ) );
 
-        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
+        DEBUG_DRAW.SetColour( Ogre::ColourValue( 0.5f, 1, 0, 0.3f ) );
         DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+    }
+
+    for( size_t i = 0; i < 100; ++i )
+    {
+        for( size_t j = 0; j < 100; ++j )
+        {
+            Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i - 0.5f, j - 0.5f, 0 ) );
+            Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i + 0.5f, j + 0.5f, 0 ) );
+
+            int pass = m_MapSector.GetPass( i, j );
+            DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
+            DEBUG_DRAW.Text( Ogre::Vector3( i, j, 0 ), 0, 0, Ogre::StringConverter::toString( pass ) );
+            DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+        }
     }
 
     Ogre::SceneNode::ChildNodeIterator node = m_SceneNode->getChildIterator();

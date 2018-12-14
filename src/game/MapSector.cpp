@@ -9,12 +9,17 @@
 
 MapSector::MapSector()
 {
+    for( int i = 0; i < 100; ++i )
+    {
+        for( int j = 0; j < 100; ++j )
+        {
+            m_PassMap[ i ][ j ] = 0x0;
+        }
+    }
+
     MapTilesXmlFile* tile_file = new MapTilesXmlFile( "data/map_tiles.xml" );
     tile_file->LoadDesc( this );
     delete tile_file;
-
-    //mUseIdentityProjection = true;
-    //mUseIdentityView = true;
 
     CreateVertexBuffers();
     CreateMaterial();
@@ -66,7 +71,7 @@ MapSector::AddMapTileDesc( const MapTileDesc& desc )
 
 
 void
-MapSector::Quad( const float x, const float y, const float width, const float height, const Ogre::String& name )
+MapSector::Quad( const unsigned int x, const unsigned int y, const float width, const float height, const Ogre::String& name )
 {
     if( mRenderOp.vertexData->vertexCount + 6 > m_MaxVertexCount )
     {
@@ -99,6 +104,10 @@ MapSector::Quad( const float x, const float y, const float width, const float he
             top = coord.y;
             bottom = coord.w;
             colour = m_MapTileDescs[ i ].colour;
+            if( x < 100 && y < 100 )
+            {
+                m_PassMap[ x ][ y ] = m_MapTileDescs[ i ].collision_mask;
+            }
         }
     }
 
@@ -170,6 +179,18 @@ MapSector::Quad( const float x, const float y, const float width, const float he
     mRenderOp.vertexData->vertexCount += 6;
 
     m_VertexBuffer->unlock();
+}
+
+
+
+const int
+MapSector::GetPass( const unsigned int x, const unsigned int y )
+{
+    if( x < 100 && y < 100 )
+    {
+        return m_PassMap[ x ][ y ]
+    }
+    return -1;
 }
 
 

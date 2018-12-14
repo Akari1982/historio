@@ -1,11 +1,13 @@
 <tiles>
     <tile
         name="Water"
+        collision_mask="unit"
         colour="1 1 1 1"
         texture_coords="0 0 0.5 1"
     />
     <tile
         name="Grass"
+        collision_mask=""
         colour="1 1 1 1"
         texture_coords="0.5 0 1 1"
     />

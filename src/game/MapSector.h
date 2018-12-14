@@ -10,6 +10,7 @@
 struct MapTileDesc
 {
     Ogre::String name;
+    unsigned int collision_mask;
     Ogre::ColourValue colour;
     Ogre::Vector4 texture_coords;
 };
@@ -27,7 +28,9 @@ public:
 
     void AddMapTileDesc( const MapTileDesc& desc );
 
-    void Quad( const float x, const float y, const float width, const float height, const Ogre::String& name );
+    void Quad( const unsigned int x, const unsigned int y, const float width, const float height, const Ogre::String& name );
+
+    const int GetPass( const unsigned int x, const unsigned int y );
 
 private:
     void CreateVertexBuffers();
@@ -36,6 +39,8 @@ private:
 
 private:
     std::vector< MapTileDesc > m_MapTileDescs;
+
+    int m_PassMap[ 100 ][ 100 ];
 
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
     unsigned int m_MaxVertexCount;
