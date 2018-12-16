@@ -1,228 +1,251 @@
-01:53:26: Creating resource group General
-01:53:26: Creating resource group Internal
-01:53:26: Creating resource group Autodetect
-01:53:26: SceneManagerFactory for type 'DefaultSceneManager' registered.
-01:53:26: Registering ResourceManager for type Material
-01:53:26: Registering ResourceManager for type Mesh
-01:53:26: Registering ResourceManager for type Skeleton
-01:53:26: MovableObjectFactory for type 'ParticleSystem' registered.
-01:53:26: ArchiveFactory for archive type FileSystem registered.
-01:53:26: ArchiveFactory for archive type Zip registered.
-01:53:26: ArchiveFactory for archive type EmbeddedZip registered.
-01:53:26: DDS codec registering
-01:53:26: FreeImage version: 3.15.3
-01:53:26: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
-01:53:26: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,3fr,arw,bay,bmq,cap,cine,cr2,crw,cs1,dc2,dcr,drf,dsc,dng,erf,fff,ia,iiq,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,ptx,pxn,qtk,raf,raw,rdc,rw2,rwl,rwz,sr2,srf,srw,sti
-01:53:26: Registering ResourceManager for type HighLevelGpuProgram
-01:53:26: Registering ResourceManager for type Compositor
-01:53:26: MovableObjectFactory for type 'Entity' registered.
-01:53:26: MovableObjectFactory for type 'Light' registered.
-01:53:26: MovableObjectFactory for type 'BillboardSet' registered.
-01:53:26: MovableObjectFactory for type 'ManualObject' registered.
-01:53:26: MovableObjectFactory for type 'BillboardChain' registered.
-01:53:26: MovableObjectFactory for type 'RibbonTrail' registered.
-01:53:26: *-*-* OGRE Initialising
-01:53:26: *-*-* Version 1.9.0 (Ghadamon)
-01:53:26: Loading library ./RenderSystem_Direct3D9.dll
-01:53:26: Installing plugin: D3D9 RenderSystem
-01:53:26: D3D9 : Direct3D9 Rendering Subsystem created.
-01:53:26: D3D9: Driver Detection Starts
-01:53:26: D3D9: Driver Detection Ends
-01:53:26: Plugin successfully installed
-01:53:26: CPU Identifier & Features
-01:53:26: -------------------------
-01:53:26:  *   CPU ID: GenuineIntel: Intel(R) Celeron(R) CPU G1820 @ 2.70GHz
-01:53:26:  *      SSE: yes
-01:53:26:  *     SSE2: yes
-01:53:26:  *     SSE3: yes
-01:53:26:  *      MMX: yes
-01:53:26:  *   MMXEXT: yes
-01:53:26:  *    3DNOW: no
-01:53:26:  * 3DNOWEXT: no
-01:53:26:  *     CMOV: yes
-01:53:26:  *      TSC: yes
-01:53:26:  *      FPU: yes
-01:53:26:  *      PRO: yes
-01:53:26:  *       HT: no
-01:53:26: -------------------------
-01:53:26: D3D9 : Subsystem Initialising
-01:53:26: Registering ResourceManager for type Texture
-01:53:26: Registering ResourceManager for type GpuProgram
-01:53:26: ***************************************
-01:53:26: *** D3D9 : Subsystem Initialised OK ***
-01:53:26: ***************************************
-01:53:26: D3D9RenderSystem::_createRenderWindow "QGearsWindow", 1280x720 windowed  miscParams: title=Historio v0.01 
-01:53:26: D3D9 : Created D3D9 Rendering Window 'QGearsWindow' : 1280x720, 32bpp
-01:53:26: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
-01:53:26: D3D9: Vertex texture format supported - PF_A8R8G8B8
-01:53:26: D3D9: Vertex texture format supported - PF_B8G8R8A8
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8B8A8
-01:53:26: D3D9: Vertex texture format supported - PF_DEPTH
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT16_R
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT32_R
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT16_GR
-01:53:26: D3D9: Vertex texture format supported - PF_FLOAT32_GR
-01:53:26: D3D9: Vertex texture format supported - PF_PVRTC_RGB2
-01:53:26: D3D9: Vertex texture format supported - PF_PVRTC_RGBA2
-01:53:26: D3D9: Vertex texture format supported - PF_PVRTC_RGB4
-01:53:26: D3D9: Vertex texture format supported - PF_PVRTC_RGBA4
-01:53:26: D3D9: Vertex texture format supported - PF_PVRTC2_2BPP
-01:53:26: D3D9: Vertex texture format supported - PF_PVRTC2_4BPP
-01:53:26: D3D9: Vertex texture format supported - PF_R11G11B10_FLOAT
-01:53:26: D3D9: Vertex texture format supported - PF_R8_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8B8_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8B8A8_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16B16_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16B16A16_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32G32_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32G32B32_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32G32B32A32_UINT
-01:53:26: D3D9: Vertex texture format supported - PF_R8_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8B8_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8B8A8_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16B16_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16B16A16_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32G32_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32G32B32_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R32G32B32A32_SINT
-01:53:26: D3D9: Vertex texture format supported - PF_R9G9B9E5_SHAREDEXP
-01:53:26: D3D9: Vertex texture format supported - PF_BC4_UNORM
-01:53:26: D3D9: Vertex texture format supported - PF_BC4_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_BC5_UNORM
-01:53:26: D3D9: Vertex texture format supported - PF_BC5_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_BC6H_UF16
-01:53:26: D3D9: Vertex texture format supported - PF_BC6H_SF16
-01:53:26: D3D9: Vertex texture format supported - PF_BC7_UNORM
-01:53:26: D3D9: Vertex texture format supported - PF_BC7_UNORM_SRGB
-01:53:26: D3D9: Vertex texture format supported - PF_R8
-01:53:26: D3D9: Vertex texture format supported - PF_RG8
-01:53:26: D3D9: Vertex texture format supported - PF_R8_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8B8_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_R8G8B8A8_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_R16_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16B16_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_R16G16B16A16_SNORM
-01:53:26: D3D9: Vertex texture format supported - PF_ETC1_RGB8
-01:53:26: D3D9: Vertex texture format supported - PF_ETC2_RGB8
-01:53:26: D3D9: Vertex texture format supported - PF_ETC2_RGBA8
-01:53:26: D3D9: Vertex texture format supported - PF_ETC2_RGB8A1
-01:53:26: D3D9: Vertex texture format supported - PF_ATC_RGB
-01:53:26: D3D9: Vertex texture format supported - PF_ATC_RGBA_EXPLICIT_ALPHA
-01:53:26: D3D9: Vertex texture format supported - PF_ATC_RGBA_INTERPOLATED_ALPHA
-01:53:26: RenderSystem capabilities
-01:53:26: -------------------------
-01:53:26: RenderSystem Name: Direct3D9 Rendering Subsystem
-01:53:26: GPU Vendor: nvidia
-01:53:26: Device Name: Monitor-1-NVIDIA GeForce GTX 750
-01:53:26: Driver Version: 10.18.13.5560
-01:53:26:  * Fixed function pipeline: yes
-01:53:26:  * Hardware generation of mipmaps: yes
-01:53:26:  * Texture blending: yes
-01:53:26:  * Anisotropic texture filtering: yes
-01:53:26:  * Dot product texture operation: yes
-01:53:26:  * Cube mapping: yes
-01:53:26:  * Hardware stencil buffer: yes
-01:53:26:    - Stencil depth: 8
-01:53:26:    - Two sided stencil support: yes
-01:53:26:    - Wrap stencil values: yes
-01:53:26:  * Hardware vertex / index buffers: yes
-01:53:26:  * Vertex programs: yes
-01:53:26:  * Number of floating-point constants for vertex programs: 256
-01:53:26:  * Number of integer constants for vertex programs: 16
-01:53:26:  * Number of boolean constants for vertex programs: 16
-01:53:26:  * Fragment programs: yes
-01:53:26:  * Number of floating-point constants for fragment programs: 224
-01:53:26:  * Number of integer constants for fragment programs: 16
-01:53:26:  * Number of boolean constants for fragment programs: 16
-01:53:26:  * Geometry programs: no
-01:53:26:  * Number of floating-point constants for geometry programs: 0
-01:53:26:  * Number of integer constants for geometry programs: 0
-01:53:26:  * Number of boolean constants for geometry programs: 0
-01:53:26:  * Tesselation Hull programs: no
-01:53:26:  * Number of floating-point constants for tesselation hull programs: 0
-01:53:26:  * Number of integer constants for tesselation hull programs: 0
-01:53:26:  * Number of boolean constants for tesselation hull programs: 0
-01:53:26:  * Tesselation Domain programs: no
-01:53:26:  * Number of floating-point constants for tesselation domain programs: 0
-01:53:26:  * Number of integer constants for tesselation domain programs: 0
-01:53:26:  * Number of boolean constants for tesselation domain programs: 0
-01:53:26:  * Compute programs: no
-01:53:26:  * Number of floating-point constants for compute programs: 0
-01:53:26:  * Number of integer constants for compute programs: 0
-01:53:26:  * Number of boolean constants for compute programs: 0
-01:53:26:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
-01:53:26:  * Texture Compression: yes
-01:53:26:    - DXT: yes
-01:53:26:    - VTC: no
-01:53:26:    - PVRTC: no
-01:53:26:    - ATC: no
-01:53:26:    - ETC1: no
-01:53:26:    - ETC2: no
-01:53:26:    - BC4/BC5: no
-01:53:26:    - BC6H/BC7: no
-01:53:26:  * Scissor Rectangle: yes
-01:53:26:  * Hardware Occlusion Query: yes
-01:53:26:  * User clip planes: yes
-01:53:26:  * VET_UBYTE4 vertex element type: yes
-01:53:26:  * Infinite far plane projection: yes
-01:53:26:  * Hardware render-to-texture: yes
-01:53:26:  * Floating point textures: yes
-01:53:26:  * Non-power-of-two textures: yes
-01:53:26:  * 1d textures: yes
-01:53:26:  * Volume textures: yes
-01:53:26:  * Multiple Render Targets: 4
-01:53:26:    - With different bit depths: yes
-01:53:26:  * Point Sprites: yes
-01:53:26:  * Extended point parameters: yes
-01:53:26:  * Max Point Size: 8192
-01:53:26:  * Vertex texture fetch: yes
-01:53:26:  * Number of world matrices: 0
-01:53:26:  * Number of texture units: 8
-01:53:26:  * Stencil buffer depth: 8
-01:53:26:  * Number of vertex blend matrices: 0
-01:53:26:    - Max vertex textures: 4
-01:53:26:    - Vertex textures shared: no
-01:53:26:  * Render to Vertex Buffer : no
-01:53:26:  * Hardware Atomic Counters: no
-01:53:26:  * DirectX per stage constants: yes
-01:53:26: DefaultWorkQueue('Root') initialising on thread 132c.
-01:53:26: Particle Renderer Type 'billboard' registered
-01:53:26: OverlayElementFactory for type Panel registered.
-01:53:26: OverlayElementFactory for type BorderPanel registered.
-01:53:26: OverlayElementFactory for type TextArea registered.
-01:53:26: Registering ResourceManager for type Font
-01:53:26: Creating resource group Game
-01:53:26: DefaultWorkQueue('Root')::WorkerFunc - thread 23a0 starting.
-01:53:26: DefaultWorkQueue('Root')::WorkerFunc - thread dcc starting.
-01:53:26: Added resource location './data' of type 'FileSystem' to resource group 'Game' with recursive option
-01:53:26: Initialising resource group Game
-01:53:26: Parsing scripts for resource group Game
-01:53:26: Parsing script system/system.material
-01:53:26: Parsing script system/system.fontdef
-01:53:26: Finished parsing scripts for resource group Game
-01:53:26: Creating resources for group Game
-01:53:26: All done
-01:53:27: Texture: system/courier_new_9_75.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
-01:53:27: CameraManager started.
-01:53:27: Creating viewport on target 'QGearsWindow', rendering from camera 'Camera', relative dimensions 8192L: 0 T: 0 W: 1 H: 1 Z-order: 0
-01:53:27: Viewport for camera 'Camera', actual dimensions 8192L: 0 T: 0 W: 1280 H: 720
-01:53:27: EntityManager created.
-01:53:27: HudManager created.
-01:53:27: Created console width 1280, height 288
-01:53:27: ScriptManager started.
-01:53:27: Resized console width to 1280, height to 288
-01:53:27: camera_speed changed to "0.001".
+00:07:47: Creating resource group General
+00:07:47: Creating resource group Internal
+00:07:47: Creating resource group Autodetect
+00:07:47: SceneManagerFactory for type 'DefaultSceneManager' registered.
+00:07:47: Registering ResourceManager for type Material
+00:07:47: Registering ResourceManager for type Mesh
+00:07:47: Registering ResourceManager for type Skeleton
+00:07:47: MovableObjectFactory for type 'ParticleSystem' registered.
+00:07:47: ArchiveFactory for archive type FileSystem registered.
+00:07:47: ArchiveFactory for archive type Zip registered.
+00:07:47: ArchiveFactory for archive type EmbeddedZip registered.
+00:07:47: DDS codec registering
+00:07:47: FreeImage version: 3.15.3
+00:07:47: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+00:07:47: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,3fr,arw,bay,bmq,cap,cine,cr2,crw,cs1,dc2,dcr,drf,dsc,dng,erf,fff,ia,iiq,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,ptx,pxn,qtk,raf,raw,rdc,rw2,rwl,rwz,sr2,srf,srw,sti
+00:07:47: Registering ResourceManager for type HighLevelGpuProgram
+00:07:47: Registering ResourceManager for type Compositor
+00:07:47: MovableObjectFactory for type 'Entity' registered.
+00:07:47: MovableObjectFactory for type 'Light' registered.
+00:07:47: MovableObjectFactory for type 'BillboardSet' registered.
+00:07:47: MovableObjectFactory for type 'ManualObject' registered.
+00:07:47: MovableObjectFactory for type 'BillboardChain' registered.
+00:07:47: MovableObjectFactory for type 'RibbonTrail' registered.
+00:07:47: *-*-* OGRE Initialising
+00:07:47: *-*-* Version 1.9.0 (Ghadamon)
+00:07:47: Loading library ./RenderSystem_Direct3D9.dll
+00:07:47: Installing plugin: D3D9 RenderSystem
+00:07:47: D3D9 : Direct3D9 Rendering Subsystem created.
+00:07:47: D3D9: Driver Detection Starts
+00:07:47: D3D9: Driver Detection Ends
+00:07:47: Plugin successfully installed
+00:07:47: CPU Identifier & Features
+00:07:47: -------------------------
+00:07:47:  *   CPU ID: GenuineIntel: Intel(R) Celeron(R) CPU G1820 @ 2.70GHz
+00:07:47:  *      SSE: yes
+00:07:47:  *     SSE2: yes
+00:07:47:  *     SSE3: yes
+00:07:47:  *      MMX: yes
+00:07:47:  *   MMXEXT: yes
+00:07:47:  *    3DNOW: no
+00:07:47:  * 3DNOWEXT: no
+00:07:47:  *     CMOV: yes
+00:07:47:  *      TSC: yes
+00:07:47:  *      FPU: yes
+00:07:47:  *      PRO: yes
+00:07:47:  *       HT: no
+00:07:47: -------------------------
+00:07:47: D3D9 : Subsystem Initialising
+00:07:47: Registering ResourceManager for type Texture
+00:07:47: Registering ResourceManager for type GpuProgram
+00:07:47: ***************************************
+00:07:47: *** D3D9 : Subsystem Initialised OK ***
+00:07:47: ***************************************
+00:07:47: D3D9RenderSystem::_createRenderWindow "QGearsWindow", 1280x720 windowed  miscParams: title=Historio v0.01 
+00:07:47: D3D9 : Created D3D9 Rendering Window 'QGearsWindow' : 1280x720, 32bpp
+00:07:47: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
+00:07:47: D3D9: Vertex texture format supported - PF_A8R8G8B8
+00:07:47: D3D9: Vertex texture format supported - PF_B8G8R8A8
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8B8A8
+00:07:47: D3D9: Vertex texture format supported - PF_DEPTH
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT16_R
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT32_R
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT16_GR
+00:07:47: D3D9: Vertex texture format supported - PF_FLOAT32_GR
+00:07:47: D3D9: Vertex texture format supported - PF_PVRTC_RGB2
+00:07:47: D3D9: Vertex texture format supported - PF_PVRTC_RGBA2
+00:07:47: D3D9: Vertex texture format supported - PF_PVRTC_RGB4
+00:07:47: D3D9: Vertex texture format supported - PF_PVRTC_RGBA4
+00:07:47: D3D9: Vertex texture format supported - PF_PVRTC2_2BPP
+00:07:47: D3D9: Vertex texture format supported - PF_PVRTC2_4BPP
+00:07:47: D3D9: Vertex texture format supported - PF_R11G11B10_FLOAT
+00:07:47: D3D9: Vertex texture format supported - PF_R8_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8B8_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8B8A8_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16B16_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16B16A16_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32G32_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32G32B32_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32G32B32A32_UINT
+00:07:47: D3D9: Vertex texture format supported - PF_R8_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8B8_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8B8A8_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16B16_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16B16A16_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32G32_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32G32B32_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R32G32B32A32_SINT
+00:07:47: D3D9: Vertex texture format supported - PF_R9G9B9E5_SHAREDEXP
+00:07:47: D3D9: Vertex texture format supported - PF_BC4_UNORM
+00:07:47: D3D9: Vertex texture format supported - PF_BC4_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_BC5_UNORM
+00:07:47: D3D9: Vertex texture format supported - PF_BC5_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_BC6H_UF16
+00:07:47: D3D9: Vertex texture format supported - PF_BC6H_SF16
+00:07:47: D3D9: Vertex texture format supported - PF_BC7_UNORM
+00:07:47: D3D9: Vertex texture format supported - PF_BC7_UNORM_SRGB
+00:07:47: D3D9: Vertex texture format supported - PF_R8
+00:07:47: D3D9: Vertex texture format supported - PF_RG8
+00:07:47: D3D9: Vertex texture format supported - PF_R8_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8B8_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_R8G8B8A8_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_R16_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16B16_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_R16G16B16A16_SNORM
+00:07:47: D3D9: Vertex texture format supported - PF_ETC1_RGB8
+00:07:47: D3D9: Vertex texture format supported - PF_ETC2_RGB8
+00:07:47: D3D9: Vertex texture format supported - PF_ETC2_RGBA8
+00:07:47: D3D9: Vertex texture format supported - PF_ETC2_RGB8A1
+00:07:47: D3D9: Vertex texture format supported - PF_ATC_RGB
+00:07:47: D3D9: Vertex texture format supported - PF_ATC_RGBA_EXPLICIT_ALPHA
+00:07:47: D3D9: Vertex texture format supported - PF_ATC_RGBA_INTERPOLATED_ALPHA
+00:07:47: RenderSystem capabilities
+00:07:47: -------------------------
+00:07:47: RenderSystem Name: Direct3D9 Rendering Subsystem
+00:07:47: GPU Vendor: nvidia
+00:07:47: Device Name: Monitor-1-NVIDIA GeForce GTX 750
+00:07:47: Driver Version: 10.18.13.5560
+00:07:47:  * Fixed function pipeline: yes
+00:07:47:  * Hardware generation of mipmaps: yes
+00:07:47:  * Texture blending: yes
+00:07:47:  * Anisotropic texture filtering: yes
+00:07:47:  * Dot product texture operation: yes
+00:07:47:  * Cube mapping: yes
+00:07:47:  * Hardware stencil buffer: yes
+00:07:47:    - Stencil depth: 8
+00:07:47:    - Two sided stencil support: yes
+00:07:47:    - Wrap stencil values: yes
+00:07:47:  * Hardware vertex / index buffers: yes
+00:07:47:  * Vertex programs: yes
+00:07:47:  * Number of floating-point constants for vertex programs: 256
+00:07:47:  * Number of integer constants for vertex programs: 16
+00:07:47:  * Number of boolean constants for vertex programs: 16
+00:07:47:  * Fragment programs: yes
+00:07:47:  * Number of floating-point constants for fragment programs: 224
+00:07:47:  * Number of integer constants for fragment programs: 16
+00:07:47:  * Number of boolean constants for fragment programs: 16
+00:07:47:  * Geometry programs: no
+00:07:47:  * Number of floating-point constants for geometry programs: 0
+00:07:47:  * Number of integer constants for geometry programs: 0
+00:07:47:  * Number of boolean constants for geometry programs: 0
+00:07:47:  * Tesselation Hull programs: no
+00:07:47:  * Number of floating-point constants for tesselation hull programs: 0
+00:07:47:  * Number of integer constants for tesselation hull programs: 0
+00:07:47:  * Number of boolean constants for tesselation hull programs: 0
+00:07:47:  * Tesselation Domain programs: no
+00:07:47:  * Number of floating-point constants for tesselation domain programs: 0
+00:07:47:  * Number of integer constants for tesselation domain programs: 0
+00:07:47:  * Number of boolean constants for tesselation domain programs: 0
+00:07:47:  * Compute programs: no
+00:07:47:  * Number of floating-point constants for compute programs: 0
+00:07:47:  * Number of integer constants for compute programs: 0
+00:07:47:  * Number of boolean constants for compute programs: 0
+00:07:47:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
+00:07:47:  * Texture Compression: yes
+00:07:47:    - DXT: yes
+00:07:47:    - VTC: no
+00:07:47:    - PVRTC: no
+00:07:47:    - ATC: no
+00:07:47:    - ETC1: no
+00:07:47:    - ETC2: no
+00:07:47:    - BC4/BC5: no
+00:07:47:    - BC6H/BC7: no
+00:07:47:  * Scissor Rectangle: yes
+00:07:47:  * Hardware Occlusion Query: yes
+00:07:47:  * User clip planes: yes
+00:07:47:  * VET_UBYTE4 vertex element type: yes
+00:07:47:  * Infinite far plane projection: yes
+00:07:47:  * Hardware render-to-texture: yes
+00:07:47:  * Floating point textures: yes
+00:07:47:  * Non-power-of-two textures: yes
+00:07:47:  * 1d textures: yes
+00:07:47:  * Volume textures: yes
+00:07:47:  * Multiple Render Targets: 4
+00:07:47:    - With different bit depths: yes
+00:07:47:  * Point Sprites: yes
+00:07:47:  * Extended point parameters: yes
+00:07:47:  * Max Point Size: 8192
+00:07:47:  * Vertex texture fetch: yes
+00:07:47:  * Number of world matrices: 0
+00:07:47:  * Number of texture units: 8
+00:07:47:  * Stencil buffer depth: 8
+00:07:47:  * Number of vertex blend matrices: 0
+00:07:47:    - Max vertex textures: 4
+00:07:47:    - Vertex textures shared: no
+00:07:47:  * Render to Vertex Buffer : no
+00:07:47:  * Hardware Atomic Counters: no
+00:07:47:  * DirectX per stage constants: yes
+00:07:47: DefaultWorkQueue('Root') initialising on thread 1a3c.
+00:07:47: Particle Renderer Type 'billboard' registered
+00:07:47: DefaultWorkQueue('Root')::WorkerFunc - thread c84 starting.
+00:07:47: DefaultWorkQueue('Root')::WorkerFunc - thread 1b24 starting.
+00:07:47: OverlayElementFactory for type Panel registered.
+00:07:47: OverlayElementFactory for type BorderPanel registered.
+00:07:47: OverlayElementFactory for type TextArea registered.
+00:07:47: Registering ResourceManager for type Font
+00:07:47: Creating resource group Game
+00:07:47: Added resource location './data' of type 'FileSystem' to resource group 'Game' with recursive option
+00:07:47: Initialising resource group Game
+00:07:47: Parsing scripts for resource group Game
+00:07:47: Parsing script system/system.material
+00:07:47: Parsing script system/system.fontdef
+00:07:47: Finished parsing scripts for resource group Game
+00:07:47: Creating resources for group Game
+00:07:47: All done
+00:07:47: Texture: system/courier_new_9_75.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+00:07:47: CameraManager started.
+00:07:47: Creating viewport on target 'QGearsWindow', rendering from camera 'Camera', relative dimensions 8192L: 0 T: 0 W: 1 H: 1 Z-order: 0
+00:07:47: Viewport for camera 'Camera', actual dimensions 8192L: 0 T: 0 W: 1280 H: 720
+00:07:47: EntityManager created.
+00:07:47: HudManager created.
+00:07:47: Created console width 1280, height 288
+00:07:47: ScriptManager started.
+00:07:47: Resized console width to 1280, height to 288
+00:07:47: camera_speed changed to "0.001".
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.
+00:09:08: [ERROR] core\DebugDraw.cpp 432: Max number of quads reached. Can't create more than 16384 quads.

@@ -35,6 +35,8 @@ EntityManager::EntityManager()
     map_loader->LoadEntities();
     delete map_loader;
 
+    AStarFinder( 1, 5, 75, 35 );
+
     Ogre::SceneNode* node = m_SceneNode->createChildSceneNode( "Map" );
     node->attachObject( &m_MapSector );
 }
@@ -138,24 +140,34 @@ EntityManager::UpdateDebug()
     {
         for( size_t j = 0; j < 100; ++j )
         {
-            Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i - 0.5f, j - 0.5f, 0 ) );
-            Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i + 0.5f, j + 0.5f, 0 ) );
+            //Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i - 0.5f, j - 0.5f, 0 ) );
+            //Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i + 0.5f, j + 0.5f, 0 ) );
 
-            int pass = m_MapSector.GetPass( i, j );
-            DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 0, 0, 0.3f ) );
-            DEBUG_DRAW.Text( Ogre::Vector3( i, j, 0 ), 0, 0, Ogre::StringConverter::toString( pass ) );
-            DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+            //int pass = m_MapSector.GetPass( i, j );
+
+            //DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
+            //DEBUG_DRAW.Text( Ogre::Vector3( i, j, 0 ), 0, 0, Ogre::StringConverter::toString( pass ) );
+            //DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 0, 0.3f ) );
+            //DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
         }
     }
 
-    Ogre::SceneNode::ChildNodeIterator node = m_SceneNode->getChildIterator();
-    int row = 0;
-    DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
-    while( node.hasMoreElements() )
+    //Ogre::SceneNode::ChildNodeIterator node = m_SceneNode->getChildIterator();
+    //int row = 0;
+    //DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
+    //while( node.hasMoreElements() )
+    //{
+        //Ogre::SceneNode* n = ( Ogre::SceneNode* )node.getNext();
+        //DEBUG_DRAW.Text( 10, 10 + row * 20, n->getName() );
+        //++row;
+    //}
+
+    for( size_t i = 0; i < m_Path.size(); ++i )
     {
-        Ogre::SceneNode* n = ( Ogre::SceneNode* )node.getNext();
-        DEBUG_DRAW.Text( 10, 10 + row * 20, n->getName() );
-        ++row;
+        Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( m_Path[ i ].first - 0.5f, m_Path[ i ].second - 0.5f, 0 ) );
+        Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( m_Path[ i ].first + 0.5f, m_Path[ i ].second + 0.5f, 0 ) );
+        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 0.5f ) );
+        DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
     }
 
     m_Hud->UpdateDebug();
@@ -263,5 +275,145 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
         m_EntitiesSelected[ i ]->SetMovePosition( move );
+    }
+}
+
+
+
+void
+EntityManager::AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y )
+{
+    m_Path.clear();
+
+    //LOG_ERROR( "AStarFinder: " + Ogre::StringConverter::toString( start_x ) + " " + Ogre::StringConverter::toString( start_y ) + " - " + Ogre::StringConverter::toString( end_x ) + " " + Ogre::StringConverter::toString( end_y ) );
+
+    std::vector< AStarNode* > grid;
+    for( size_t i = 0; i < 100; ++i )
+    {
+        for( size_t j = 0; j < 100; ++j )
+        {
+            AStarNode* node = new AStarNode();
+            node->x = i;
+            node->y = j;
+            node->g = 0.0f;
+            node->h = 0.0f;
+            node->f = 0.0f;
+            node->opened = false;
+            node->closed = false;
+            node->parent = NULL;
+            grid.push_back( node );
+        }
+    }
+
+    AStarNode* start_node = grid[ start_x * 100 + start_y ];
+    start_node->opened = true;
+
+    std::vector< AStarNode* > open_list;
+    open_list.push_back( start_node );
+
+    while( open_list.size() != 0 )
+    {
+        AStarNode* node = open_list.back();
+        open_list.pop_back();
+        node->closed = true;
+
+        //LOG_ERROR( "cycle for node: " + Ogre::StringConverter::toString( node->x ) + " " + Ogre::StringConverter::toString( node->y ) );
+
+        // if reached the end position, construct the path and return it
+        if( node->x == end_x && node->y == end_y )
+        {
+            while( node->parent != NULL )
+            {
+                std::pair< int, int > point;
+                point.first = node->x;
+                point.second = node->y;
+                m_Path.push_back( point );
+                node = node->parent;
+            }
+            break;
+        }
+
+        std::vector< AStarNode* > neighbors;
+        if( m_MapSector.GetPass( node->x - 1, node->y - 1 ) == 0 )
+        {
+            neighbors.push_back( grid[ ( node->x - 1 ) * 100 + ( node->y -  1) ] );
+        }
+        if( m_MapSector.GetPass( node->x, node->y - 1 ) == 0 )
+        {
+            neighbors.push_back( grid[ node->x * 100 + ( node->y - 1 ) ] );
+        }
+        if( m_MapSector.GetPass( node->x + 1, node->y - 1 ) == 0 )
+        {
+            neighbors.push_back( grid[ ( node->x + 1 ) * 100 + ( node->y - 1 ) ] );
+        }
+        if( m_MapSector.GetPass( node->x - 1, node->y ) == 0 )
+        {
+            neighbors.push_back( grid[ ( node->x - 1 ) * 100 + node->y ] );
+        }
+        if( m_MapSector.GetPass( node->x + 1, node->y ) == 0 )
+        {
+            neighbors.push_back( grid[ ( node->x + 1 ) * 100 + node->y ] );
+        }
+        if( m_MapSector.GetPass( node->x - 1, node->y + 1 ) == 0 )
+        {
+            neighbors.push_back( grid[ ( node->x - 1 ) * 100 + ( node->y + 1 ) ] );
+        }
+        if( m_MapSector.GetPass( node->x, node->y + 1 ) == 0 )
+        {
+            neighbors.push_back( grid[ node->x * 100 + ( node->y + 1 ) ] );
+        }
+        if( m_MapSector.GetPass( node->x + 1, node->y + 1 ) == 0 )
+        {
+            neighbors.push_back( grid[ ( node->x + 1 ) * 100 + ( node->y + 1 ) ] );
+        }
+        for( size_t i = 0; i < neighbors.size(); ++i )
+        {
+            AStarNode* neighbor = neighbors[ i ];
+
+            if( neighbor->closed == true )
+            {
+                continue;
+            }
+
+            int x = neighbor->x;
+            int y = neighbor->y;
+            float ng = node->g + sqrt( ( x - node->x ) * ( x - node->x ) + ( y - node->y ) * ( y - node->y ) ); // get the distance between current node and the neighbor and calculate the next g score
+
+            // check if the neighbor has not been inspected yet, or can be reached with smaller cost from the current node
+            if( neighbor->opened == false || ng < neighbor->g )
+            {
+                neighbor->g = ng;
+                neighbor->h = sqrt( ( x - end_x ) * ( x - end_x ) + ( y - end_y ) * ( y - end_y ) );
+                neighbor->f = neighbor->g + neighbor->h;
+                neighbor->parent = node;
+
+                //LOG_ERROR( "neighbor: " + Ogre::StringConverter::toString( x ) + " " + Ogre::StringConverter::toString( y ) + " (" + Ogre::StringConverter::toString( neighbor->g ) + " " + Ogre::StringConverter::toString( neighbor->h ) + " " + Ogre::StringConverter::toString( neighbor->f ) + ")" );
+
+                if( neighbor->opened == false )
+                {
+                    open_list.push_back( neighbor );
+                    neighbor->opened = true;
+                }
+
+                struct
+                {
+                    bool operator()( AStarNode* a, AStarNode* b ) const
+                    {
+                        return a->f > b->f;
+                    }
+                } less;
+                std::sort( open_list.begin(), open_list.end(), less );
+
+                //for( int j = 0; j < open_list.size(); ++j )
+                //{
+                    //LOG_ERROR( "open_list: " + Ogre::StringConverter::toString( open_list[ j ]->x ) + " " + Ogre::StringConverter::toString( open_list[ j ]->y ) );
+                //}
+            }
+        }
+    }
+
+    for( size_t i = 0; i < grid.size(); ++i )
+    {
+        delete grid[ i ];
     }
 }

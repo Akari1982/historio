@@ -41,6 +41,21 @@ public:
     void SetEntitySelectionMove( const Ogre::Vector3& move );
 
 private:
+    struct AStarNode
+    {
+        int x;
+        int y;
+        int pass;
+        float g;
+        float h;
+        float f;
+        bool opened;
+        bool closed;
+        AStarNode* parent;
+    };
+    void AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y );
+    std::vector< std::pair< int, int > > m_Path;
+private:
     Ogre::SceneManager* m_SceneManager;
     Ogre::SceneNode* m_SceneNode;
 

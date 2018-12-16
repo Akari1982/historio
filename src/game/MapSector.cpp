@@ -188,7 +188,7 @@ MapSector::GetPass( const unsigned int x, const unsigned int y )
 {
     if( x < 100 && y < 100 )
     {
-        return m_PassMap[ x ][ y ]
+        return m_PassMap[ x ][ y ];
     }
     return -1;
 }
