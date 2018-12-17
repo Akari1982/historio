@@ -116,11 +116,22 @@ EntityManager::UpdateDebug()
 
     for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
     {
+        Ogre::Vector3 pos = m_EntitiesMovable[ i ]->GetPosition();
         std::vector< Ogre::Vector3 > path = m_EntitiesMovable[ i ]->GetMovePath();
         for( size_t i = 0; i < path.size(); ++i )
         {
-            Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i ].x - 0.5f, path[ i ].y - 0.5f, 0 ) );
-            Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i ].x + 0.5f, path[ i ].y + 0.5f, 0 ) );
+            Ogre::Vector3 pos_s;
+            Ogre::Vector3 pos_e;
+            if( i == 0 )
+            {
+                pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( pos.x, pos.y, 0 ) );
+                pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path.back().x, path.back().y, 0 ) );
+            }
+            else
+            {
+                pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i - 1 ].x, path[ i - 1 ].y, 0 ) );
+                pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i ].x, path[ i ].y, 0 ) );
+            }
             DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
             DEBUG_DRAW.Line( pos_s.x, pos_s.y, pos_e.x, pos_e.y );
         }
@@ -185,7 +196,6 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             if( m_EntityDescs[ i ].entity_class == "Movable" )
             {
                 entity = new EntityMovable( node );
-                (( EntityMovable* )entity)->SetMovePosition( Ogre::Vector3( x, y, 0 ) );
                 m_EntitiesMovable.push_back( ( EntityMovable* )entity );
             }
             else if( m_EntityDescs[ i ].entity_class == "Stand" )
@@ -277,6 +287,8 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 std::vector< Ogre::Vector3 >
 EntityManager::AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y )
 {
+    std::vector< Ogre::Vector3 > move_path;
+
     //LOG_ERROR( "AStarFinder: " + Ogre::StringConverter::toString( start_x ) + " " + Ogre::StringConverter::toString( start_y ) + " - " + Ogre::StringConverter::toString( end_x ) + " " + Ogre::StringConverter::toString( end_y ) );
 
     std::vector< AStarNode* > grid;
@@ -314,7 +326,6 @@ EntityManager::AStarFinder( const int start_x, const int start_y, const int end_
         // if reached the end position, construct the path and return it
         if( node->x == end_x && node->y == end_y )
         {
-            std::vector< Ogre::Vector3 > move_path;
             while( node->parent != NULL )
             {
                 Ogre::Vector3 point;
@@ -410,4 +421,6 @@ EntityManager::AStarFinder( const int start_x, const int start_y, const int end_
     {
         delete grid[ i ];
     }
+
+    return move_path;
 }

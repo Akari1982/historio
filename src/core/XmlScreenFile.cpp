@@ -498,7 +498,6 @@ XmlScreenFile::LoadScreenRecursive( TiXmlNode* node, const Ogre::String& base_na
                             key3.time = key1.time;
                             key4.time = key1.time;
                             Ogre::StringVector keys = Ogre::StringUtil::split( data[ 1 ], " " );
-                            float percent_x1, x1, percent_y1, y1, percent_x2, x2, percent_y2, y2 = 0;
                             ParsePersent( key1.value.x, key1.value.y, keys[ 0 ] );
                             ParsePersent( key2.value.x, key2.value.y, keys[ 1 ] );
                             ParsePersent( key3.value.x, key3.value.y, keys[ 2 ] );

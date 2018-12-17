@@ -77,7 +77,7 @@ void
 InputManager::MousePressed( const int x, const int x_abs, const int y, const int y_abs, const int button, const bool down )
 {
     Event event;
-    event.type = ( down == true ) ? ET_PRESS : ET_RELEASE;
+    event.type = ( down == true ) ? ET_MOUSE_PRESS : ET_MOUSE_RELEASE;
     event.button = button;
     event.param1 = x;
     event.param2 = y;

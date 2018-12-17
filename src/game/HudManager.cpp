@@ -38,7 +38,7 @@ HudManager::Input( const Event& event )
 
     if( m_Selection == false )
     {
-        if( event.type == ET_PRESS && event.button == OIS::MB_Left )
+        if( event.type == ET_MOUSE_PRESS && event.button == OIS::MB_Left )
         {
             mouse_x = event.param3;
             mouse_y = event.param4;
@@ -52,7 +52,7 @@ HudManager::Input( const Event& event )
             m_SelectionStart = point;
             m_SelectionEnd = point;
         }
-        else if( event.type == ET_PRESS && event.button == OIS::MB_Right )
+        else if( event.type == ET_MOUSE_PRESS && event.button == OIS::MB_Right )
         {
             Ogre::Ray ray = m_Camera->getCameraToViewportRay( event.param3 / m_Viewport->getActualWidth(), event.param4 / m_Viewport->getActualHeight() );
             Ogre::Plane plane( Ogre::Vector3::UNIT_Z, 0 );
@@ -65,7 +65,7 @@ HudManager::Input( const Event& event )
     }
     else
     {
-        if( event.type == ET_RELEASE && event.button == OIS::MB_Left )
+        if( event.type == ET_MOUSE_RELEASE && event.button == OIS::MB_Left )
         {
             EntityManager::getSingleton().SetEntitySelection( m_SelectionStart, m_SelectionEnd );
             m_Selection = false;

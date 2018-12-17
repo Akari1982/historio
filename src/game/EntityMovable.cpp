@@ -3,8 +3,7 @@
 
 
 EntityMovable::EntityMovable( Ogre::SceneNode* node ):
-    Entity( node ),
-    m_MovePosition( Ogre::Vector3::ZERO )
+    Entity( node )
 {
 }
 
@@ -31,7 +30,7 @@ EntityMovable::UpdateDebug()
 
 
 void
-SetMovePath( std::vector< Ogre::Vector3 >& move_path )
+EntityMovable::SetMovePath( std::vector< Ogre::Vector3 >& move_path )
 {
     m_MovePath = move_path;
 }
@@ -39,7 +38,7 @@ SetMovePath( std::vector< Ogre::Vector3 >& move_path )
 
 
 const std::vector< Ogre::Vector3 >&
-GetMovePath() const
+EntityMovable::GetMovePath() const
 {
     return m_MovePath;
 }
