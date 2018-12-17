@@ -35,8 +35,6 @@ EntityManager::EntityManager()
     map_loader->LoadEntities();
     delete map_loader;
 
-    AStarFinder( 1, 5, 75, 35 );
-
     Ogre::SceneNode* node = m_SceneNode->createChildSceneNode( "Map" );
     node->attachObject( &m_MapSector );
 }
@@ -118,11 +116,14 @@ EntityManager::UpdateDebug()
 
     for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
     {
-        Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetPosition() );
-        Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( m_EntitiesMovable[ i ]->GetMovePosition() );
-
-        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
-        DEBUG_DRAW.Line( pos_s.x, pos_s.y, pos_e.x, pos_e.y );
+        std::vector< Ogre::Vector3 > path = m_EntitiesMovable[ i ]->GetMovePath();
+        for( size_t i = 0; i < path.size(); ++i )
+        {
+            Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i ].x - 0.5f, path[ i ].y - 0.5f, 0 ) );
+            Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i ].x + 0.5f, path[ i ].y + 0.5f, 0 ) );
+            DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
+            DEBUG_DRAW.Line( pos_s.x, pos_s.y, pos_e.x, pos_e.y );
+        }
     }
 
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
@@ -161,14 +162,6 @@ EntityManager::UpdateDebug()
         //DEBUG_DRAW.Text( 10, 10 + row * 20, n->getName() );
         //++row;
     //}
-
-    for( size_t i = 0; i < m_Path.size(); ++i )
-    {
-        Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( m_Path[ i ].first - 0.5f, m_Path[ i ].second - 0.5f, 0 ) );
-        Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( m_Path[ i ].first + 0.5f, m_Path[ i ].second + 0.5f, 0 ) );
-        DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 0.5f ) );
-        DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
-    }
 
     m_Hud->UpdateDebug();
 }
@@ -274,17 +267,16 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 {
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
-        m_EntitiesSelected[ i ]->SetMovePosition( move );
+        Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetPosition();
+        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( pos.x, pos.y, move.x, move.y ) );
     }
 }
 
 
 
-void
+std::vector< Ogre::Vector3 >
 EntityManager::AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y )
 {
-    m_Path.clear();
-
     //LOG_ERROR( "AStarFinder: " + Ogre::StringConverter::toString( start_x ) + " " + Ogre::StringConverter::toString( start_y ) + " - " + Ogre::StringConverter::toString( end_x ) + " " + Ogre::StringConverter::toString( end_y ) );
 
     std::vector< AStarNode* > grid;
@@ -322,12 +314,14 @@ EntityManager::AStarFinder( const int start_x, const int start_y, const int end_
         // if reached the end position, construct the path and return it
         if( node->x == end_x && node->y == end_y )
         {
+            std::vector< Ogre::Vector3 > move_path;
             while( node->parent != NULL )
             {
-                std::pair< int, int > point;
-                point.first = node->x;
-                point.second = node->y;
-                m_Path.push_back( point );
+                Ogre::Vector3 point;
+                point.x = node->x;
+                point.y = node->y;
+                point.z = 0;
+                move_path.push_back( point );
                 node = node->parent;
             }
             break;

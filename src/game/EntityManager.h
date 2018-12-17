@@ -53,8 +53,8 @@ private:
         bool closed;
         AStarNode* parent;
     };
-    void AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y );
-    std::vector< std::pair< int, int > > m_Path;
+    std::vector< Ogre::Vector3 > AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y );
+
 private:
     Ogre::SceneManager* m_SceneManager;
     Ogre::SceneNode* m_SceneNode;

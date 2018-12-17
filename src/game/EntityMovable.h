@@ -14,11 +14,13 @@ public:
     virtual void Update();
     virtual void UpdateDebug();
 
-    void SetMovePosition( const Ogre::Vector3& target );
+    void SetMovePath( std::vector< Ogre::Vector3 >& move_path );
+    const std::vector< Ogre::Vector3 >& GetMovePath() const;
+    void SetPosition( const Ogre::Vector3& pos );
     const Ogre::Vector3& GetMovePosition() const;
 
 private:
-    Ogre::Vector3 m_MovePosition;
+    std::vector< Ogre::Vector3 > m_MovePath;
 };
 
 

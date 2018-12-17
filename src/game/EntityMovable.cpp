@@ -31,9 +31,30 @@ EntityMovable::UpdateDebug()
 
 
 void
-EntityMovable::SetMovePosition( const Ogre::Vector3& target )
+SetMovePath( std::vector< Ogre::Vector3 >& move_path )
 {
-    m_MovePosition = target;
+    m_MovePath = move_path;
+}
+
+
+
+const std::vector< Ogre::Vector3 >&
+GetMovePath() const
+{
+    return m_MovePath;
+}
+
+
+
+void
+EntityMovable::SetPosition( const Ogre::Vector3& pos )
+{
+    if( m_MovePath.back() == pos )
+    {
+        m_MovePath.pop_back();
+    }
+
+    Entity::SetPosition( pos );
 }
 
 
@@ -41,5 +62,10 @@ EntityMovable::SetMovePosition( const Ogre::Vector3& target )
 const Ogre::Vector3&
 EntityMovable::GetMovePosition() const
 {
-    return m_MovePosition;
+    if( m_MovePath.size() != 0 )
+    {
+        return m_MovePath.back();
+    }
+
+    return GetPosition();
 }
