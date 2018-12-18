@@ -88,9 +88,14 @@ EntityManager::Update()
             float length = end_start.length();
             end_start.normalise();
 
-            if( length < (end_start * speed * delta).length() )
+            if( length <= ( end_start * speed * delta ).length() )
             {
                 m_EntitiesMovable[ i ]->SetPosition( end );
+                Ogre::Vector3 pos_e = m_EntitiesMovable[ i ]->GetMoveEndPosition();
+                if( pos_e != end )
+                {
+                    m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], end.x, end.y, pos_e.x, pos_e.y ) );
+                }
             }
             else
             {
@@ -277,19 +282,25 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 {
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
-        Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetPosition();
-        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( pos.x, pos.y, move.x, move.y ) );
+        Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
+        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], pos.x, pos.y, move.x, move.y ) );
     }
 }
 
 
 
-std::vector< Ogre::Vector3 >
-EntityManager::AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y )
+const std::vector< Ogre::Vector3 >
+EntityManager::AStarFinder( Entity* entity, const int start_x, const int start_y, const int end_x, const int end_y ) const
 {
     std::vector< Ogre::Vector3 > move_path;
 
     //LOG_ERROR( "AStarFinder: " + Ogre::StringConverter::toString( start_x ) + " " + Ogre::StringConverter::toString( start_y ) + " - " + Ogre::StringConverter::toString( end_x ) + " " + Ogre::StringConverter::toString( end_y ) );
+
+    Ogre::Vector3 pos_e = PlaceFinder( entity, end_x, end_y );
+    if( pos_e.z == -1 )
+    {
+        return move_path;
+    }
 
     std::vector< AStarNode* > grid;
     for( size_t i = 0; i < 100; ++i )
@@ -324,7 +335,7 @@ EntityManager::AStarFinder( const int start_x, const int start_y, const int end_
         //LOG_ERROR( "cycle for node: " + Ogre::StringConverter::toString( node->x ) + " " + Ogre::StringConverter::toString( node->y ) );
 
         // if reached the end position, construct the path and return it
-        if( node->x == end_x && node->y == end_y )
+        if( node->x == pos_e.x && node->y == pos_e.y )
         {
             while( node->parent != NULL )
             {
@@ -339,35 +350,35 @@ EntityManager::AStarFinder( const int start_x, const int start_y, const int end_
         }
 
         std::vector< AStarNode* > neighbors;
-        if( m_MapSector.GetPass( node->x - 1, node->y - 1 ) == 0 )
+        if( IsPassable( entity, node->x - 1, node->y - 1 ) && IsPassable( entity, node->x, node->y - 1 ) && IsPassable( entity, node->x - 1, node->y ) )
         {
             neighbors.push_back( grid[ ( node->x - 1 ) * 100 + ( node->y -  1) ] );
         }
-        if( m_MapSector.GetPass( node->x, node->y - 1 ) == 0 )
+        if( IsPassable( entity, node->x, node->y - 1 ) )
         {
             neighbors.push_back( grid[ node->x * 100 + ( node->y - 1 ) ] );
         }
-        if( m_MapSector.GetPass( node->x + 1, node->y - 1 ) == 0 )
+        if( IsPassable( entity, node->x + 1, node->y - 1 ) && IsPassable( entity, node->x, node->y - 1 ) && IsPassable( entity, node->x + 1, node->y ) )
         {
             neighbors.push_back( grid[ ( node->x + 1 ) * 100 + ( node->y - 1 ) ] );
         }
-        if( m_MapSector.GetPass( node->x - 1, node->y ) == 0 )
+        if( IsPassable( entity, node->x - 1, node->y ) )
         {
             neighbors.push_back( grid[ ( node->x - 1 ) * 100 + node->y ] );
         }
-        if( m_MapSector.GetPass( node->x + 1, node->y ) == 0 )
+        if( IsPassable( entity, node->x + 1, node->y ) )
         {
             neighbors.push_back( grid[ ( node->x + 1 ) * 100 + node->y ] );
         }
-        if( m_MapSector.GetPass( node->x - 1, node->y + 1 ) == 0 )
+        if( IsPassable( entity, node->x - 1, node->y + 1 ) && IsPassable( entity, node->x, node->y + 1 ) && IsPassable( entity, node->x - 1, node->y ) )
         {
             neighbors.push_back( grid[ ( node->x - 1 ) * 100 + ( node->y + 1 ) ] );
         }
-        if( m_MapSector.GetPass( node->x, node->y + 1 ) == 0 )
+        if( IsPassable( entity, node->x, node->y + 1 ) )
         {
             neighbors.push_back( grid[ node->x * 100 + ( node->y + 1 ) ] );
         }
-        if( m_MapSector.GetPass( node->x + 1, node->y + 1 ) == 0 )
+        if( IsPassable( entity, node->x + 1, node->y + 1 ) && IsPassable( entity, node->x, node->y + 1 ) && IsPassable( entity, node->x + 1, node->y ) )
         {
             neighbors.push_back( grid[ ( node->x + 1 ) * 100 + ( node->y + 1 ) ] );
         }
@@ -423,4 +434,75 @@ EntityManager::AStarFinder( const int start_x, const int start_y, const int end_
     }
 
     return move_path;
+}
+
+
+
+const Ogre::Vector3
+EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
+{
+    std::vector< Ogre::Vector3 > searched;
+    std::vector< Ogre::Vector3 > neighbors;
+
+    neighbors.push_back( Ogre::Vector3( x, y, 0 ) );
+
+    while( neighbors.size() != 0 )
+    {
+        Ogre::Vector3 neighbor = neighbors.back();
+        neighbors.pop_back();
+
+        size_t j = 0;
+        for( ; j < searched.size(); ++j )
+        {
+            if( searched[ j ].x == neighbor.x && searched[ j ].y == neighbor.y )
+            {
+                break;
+            }
+        }
+        if( j == searched.size() )
+        {
+            float dist = sqrt( ( x - neighbor.x ) * ( x - neighbor.x ) + ( y - neighbor.y ) * ( y - neighbor.y ) );
+            if( dist <= 5.0f )
+            {
+                if( IsPassable( entity, neighbor.x, neighbor.y ) == true )
+                {
+                    return Orge::Vector3( neighbor.x, neighbor.y, 0 );
+                }
+            }
+
+            neighbors.push_back( Ogre::Vector3( neighbor.x, neighbor.y - 1, 0 ) );
+            neighbors.push_back( Ogre::Vector3( neighbor.x - 1, neighbor.y, 0 ) );
+            neighbors.push_back( Ogre::Vector3( neighbor.x + 1, neighbor.y, 0 ) );
+            neighbors.push_back( Ogre::Vector3( neighbor.x, neighbor.y + 1, 0 ) );
+            searched.push_back( neighbor );
+        }
+    }
+
+    return Ogre::Vector3( 0, 0, -1 );
+}
+
+
+
+const bool
+EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
+{
+    if( m_MapSector.GetPass( x, y ) == 0 )
+    {
+        for( size_t i = 0; i < m_Entities.size(); ++i )
+        {
+            if( m_Entities[ i ] != entity )
+            {
+                std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOcupation();
+                for( size_t j = 0; j < occupation.size(); ++j )
+                {
+                    if( occupation[ j ].x = x && occupation[ j ].y = y )
+                    {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
+    }
+    return false;
 }

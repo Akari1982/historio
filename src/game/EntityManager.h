@@ -53,7 +53,9 @@ private:
         bool closed;
         AStarNode* parent;
     };
-    std::vector< Ogre::Vector3 > AStarFinder( const int start_x, const int start_y, const int end_x, const int end_y );
+    const std::vector< Ogre::Vector3 > AStarFinder( Entity* entity, const int start_x, const int start_y, const int end_x, const int end_y );
+    const Ogre::Vector3 PlaceFinder( Entity* entity, const int x, const int y );
+    const bool IsPassable( Entity* entity, const int x, const int y ) const;
 
 private:
     Ogre::SceneManager* m_SceneManager;

@@ -13,6 +13,11 @@ public:
 
     virtual void Update();
     virtual void UpdateDebug();
+
+    const std::vector< Ogre::Vector3 >& GetOcupation() const;
+
+private:
+    std::vector< Ogre::Vector3 > m_Occupation;
 };
 
 

@@ -49,3 +49,11 @@ void
 Entity::UpdateDebug()
 {
 }
+
+
+
+const std::vector< Ogre::Vector3 >&
+Entity::GetOccupation() const
+{
+    return m_Occupation;
+}
