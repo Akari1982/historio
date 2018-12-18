@@ -184,9 +184,9 @@ MapSector::Quad( const unsigned int x, const unsigned int y, const float width, 
 
 
 const int
-MapSector::GetPass( const unsigned int x, const unsigned int y )
+MapSector::GetPass( const unsigned int x, const unsigned int y ) const
 {
-    if( x < 100 && y < 100 )
+    if( ( x < 100 ) && ( y < 100 ) )
     {
         return m_PassMap[ x ][ y ];
     }

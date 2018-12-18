@@ -19,7 +19,7 @@ public:
     Ogre::Real getBoundingRadius() const;
 
     void SetMaterial( const Ogre::MaterialPtr material );
-    void SetPosition( const Ogre::Vector3& position );
+    virtual void SetPosition( const Ogre::Vector3& position );
     const Ogre::Vector3& GetPosition() const;
     void SetCollisionBox( const Ogre::Vector4& сollision_box );
     const Ogre::Vector4& GetCollisionBox() const;

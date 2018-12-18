@@ -70,15 +70,10 @@ EntityManager::Update()
 {
     float delta = Timer::getSingleton().GetGameTimeDelta();
 
-    for( size_t i = 0; i < m_Entities.size(); ++i )
-    {
-        m_Entities[ i ]->Update();
-    }
-
     for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
     {
         Ogre::Vector3 start = m_EntitiesMovable[ i ]->GetPosition();
-        Ogre::Vector3 end = m_EntitiesMovable[ i ]->GetMovePosition();
+        Ogre::Vector3 end = m_EntitiesMovable[ i ]->GetMoveNextPosition();
 
         float speed = 2.0f;
 
@@ -94,7 +89,8 @@ EntityManager::Update()
                 Ogre::Vector3 pos_e = m_EntitiesMovable[ i ]->GetMoveEndPosition();
                 if( pos_e != end )
                 {
-                    m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], end.x, end.y, pos_e.x, pos_e.y ) );
+                    Ogre::Vector3 pos_s = m_EntitiesMovable[ i ]->GetMoveNextPosition();
+                    m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], pos_s.x, pos_s.y, pos_e.x, pos_e.y ) );
                 }
             }
             else
@@ -116,7 +112,15 @@ EntityManager::UpdateDebug()
 {
     for( size_t i = 0; i < m_Entities.size(); ++i )
     {
-        m_Entities[ i ]->UpdateDebug();
+        std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOccupation();
+        for( size_t j = 0; j < occupation.size(); ++j )
+        {
+            Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( occupation[ j ].x - 0.5f, occupation[ j ].y - 0.5f, 0 ) );
+            Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( occupation[ j ].x + 0.5f, occupation[ j ].y + 0.5f, 0 ) );
+            DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 0.5f ) );
+            DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+        }
+
     }
 
     for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
@@ -148,7 +152,6 @@ EntityManager::UpdateDebug()
         Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetPosition();
         Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.x, col.y, 0 ) );
         Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.z, col.w, 0 ) );
-
         DEBUG_DRAW.SetColour( Ogre::ColourValue( 0.5f, 1, 0, 0.3f ) );
         DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
     }
@@ -159,9 +162,7 @@ EntityManager::UpdateDebug()
         {
             //Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i - 0.5f, j - 0.5f, 0 ) );
             //Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( i + 0.5f, j + 0.5f, 0 ) );
-
             //int pass = m_MapSector.GetPass( i, j );
-
             //DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
             //DEBUG_DRAW.Text( Ogre::Vector3( i, j, 0 ), 0, 0, Ogre::StringConverter::toString( pass ) );
             //DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 0, 0.3f ) );
@@ -283,13 +284,13 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
         Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
-        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], pos.x, pos.y, move.x, move.y ) );
+        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( NULL, pos.x, pos.y, move.x, move.y ) );
     }
 }
 
 
 
-const std::vector< Ogre::Vector3 >
+std::vector< Ogre::Vector3 >
 EntityManager::AStarFinder( Entity* entity, const int start_x, const int start_y, const int end_x, const int end_y ) const
 {
     std::vector< Ogre::Vector3 > move_path;
@@ -446,10 +447,9 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
 
     neighbors.push_back( Ogre::Vector3( x, y, 0 ) );
 
-    while( neighbors.size() != 0 )
+    for( int i = 0; i < neighbors.size(); ++i )
     {
-        Ogre::Vector3 neighbor = neighbors.back();
-        neighbors.pop_back();
+        Ogre::Vector3 neighbor = neighbors[ i ];
 
         size_t j = 0;
         for( ; j < searched.size(); ++j )
@@ -466,7 +466,7 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
             {
                 if( IsPassable( entity, neighbor.x, neighbor.y ) == true )
                 {
-                    return Orge::Vector3( neighbor.x, neighbor.y, 0 );
+                    return Ogre::Vector3( neighbor.x, neighbor.y, 0 );
                 }
             }
 
@@ -492,10 +492,10 @@ EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
         {
             if( m_Entities[ i ] != entity )
             {
-                std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOcupation();
+                std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOccupation();
                 for( size_t j = 0; j < occupation.size(); ++j )
                 {
-                    if( occupation[ j ].x = x && occupation[ j ].y = y )
+                    if( ( occupation[ j ].x == x ) && ( occupation[ j ].y == y ) )
                     {
                         return false;
                     }

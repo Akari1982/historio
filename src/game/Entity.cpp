@@ -38,20 +38,6 @@ Entity::~Entity()
 
 
 
-void
-Entity::Update()
-{
-}
-
-
-
-void
-Entity::UpdateDebug()
-{
-}
-
-
-
 const std::vector< Ogre::Vector3 >&
 Entity::GetOccupation() const
 {

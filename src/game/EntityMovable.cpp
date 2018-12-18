@@ -72,13 +72,18 @@ EntityMovable::SetPosition( const Ogre::Vector3& pos )
             m_Occupation.push_back( pos );
         }
     }
+    else
+    {
+        m_Occupation.clear();
+        m_Occupation.push_back( pos );
+    }
 
     Entity::SetPosition( pos );
 }
 
 
 
-const Ogre::Vector3&
+Ogre::Vector3
 EntityMovable::GetMoveNextPosition() const
 {
     if( m_MovePath.size() != 0 )
@@ -90,12 +95,12 @@ EntityMovable::GetMoveNextPosition() const
 
 
 
-const Ogre::Vector3&
+Ogre::Vector3
 EntityMovable::GetMoveEndPosition() const
 {
     if( m_MovePath.size() != 0 )
     {
-        return m_MovePath.first();
+        return m_MovePath.front();
     }
     return GetPosition();
 }

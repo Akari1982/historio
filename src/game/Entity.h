@@ -11,12 +11,9 @@ public:
     Entity( Ogre::SceneNode* node );
     virtual ~Entity();
 
-    virtual void Update();
-    virtual void UpdateDebug();
+    const std::vector< Ogre::Vector3 >& GetOccupation() const;
 
-    const std::vector< Ogre::Vector3 >& GetOcupation() const;
-
-private:
+protected:
     std::vector< Ogre::Vector3 > m_Occupation;
 };
 

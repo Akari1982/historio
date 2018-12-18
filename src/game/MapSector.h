@@ -30,7 +30,7 @@ public:
 
     void Quad( const unsigned int x, const unsigned int y, const float width, const float height, const Ogre::String& name );
 
-    const int GetPass( const unsigned int x, const unsigned int y );
+    const int GetPass( const unsigned int x, const unsigned int y ) const;
 
 private:
     void CreateVertexBuffers();
