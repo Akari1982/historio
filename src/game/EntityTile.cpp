@@ -7,7 +7,6 @@
 
 EntityTile::EntityTile( Ogre::SceneNode* node ):
     m_SceneNode( node ),
-    m_CollisionBox( Ogre::Vector4::ZERO ),
     m_DrawBox( Ogre::Vector4::ZERO ),
     m_Colour( Ogre::ColourValue( 1, 1, 1, 1 ) ),
     m_Depth( 0.0f )
@@ -64,22 +63,6 @@ const Ogre::Vector3&
 EntityTile::GetPosition() const
 {
     return m_SceneNode->getPosition();
-}
-
-
-
-void
-EntityTile::SetCollisionBox( const Ogre::Vector4& collision_box )
-{
-    m_CollisionBox = collision_box;
-}
-
-
-
-const Ogre::Vector4&
-EntityTile::GetCollisionBox() const
-{
-    return m_CollisionBox;
 }
 
 

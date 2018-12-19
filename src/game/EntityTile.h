@@ -21,8 +21,6 @@ public:
     void SetMaterial( const Ogre::MaterialPtr material );
     virtual void SetPosition( const Ogre::Vector3& position );
     const Ogre::Vector3& GetPosition() const;
-    void SetCollisionBox( const Ogre::Vector4& сollision_box );
-    const Ogre::Vector4& GetCollisionBox() const;
     void SetDrawBox( const Ogre::Vector4& draw_box );
     const Ogre::Vector4& GetDrawBox() const;
     void SetTexture( const Ogre::String& texture );
@@ -40,7 +38,6 @@ protected:
     Ogre::SceneNode* m_SceneNode;
     Ogre::HardwareVertexBufferSharedPtr m_VertexBuffer;
 
-    Ogre::Vector4 m_CollisionBox;
     Ogre::Vector4 m_DrawBox;
     Ogre::ColourValue m_Colour;
     float m_Depth;

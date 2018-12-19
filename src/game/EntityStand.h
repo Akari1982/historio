@@ -10,9 +10,6 @@ class EntityStand : public Entity
 public:
     EntityStand( Ogre::SceneNode* node );
     virtual ~EntityStand();
-
-    virtual void Update();
-    virtual void UpdateDebug();
 };
 
 

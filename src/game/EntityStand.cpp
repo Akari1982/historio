@@ -12,17 +12,3 @@ EntityStand::EntityStand( Ogre::SceneNode* node ):
 EntityStand::~EntityStand()
 {
 }
-
-
-
-void
-EntityStand::Update()
-{
-}
-
-
-
-void
-EntityStand::UpdateDebug()
-{
-}

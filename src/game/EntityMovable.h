@@ -11,9 +11,6 @@ public:
     EntityMovable( Ogre::SceneNode* node );
     virtual ~EntityMovable();
 
-    virtual void Update();
-    virtual void UpdateDebug();
-
     void SetMovePath( std::vector< Ogre::Vector3 >& move_path );
     const std::vector< Ogre::Vector3 >& GetMovePath() const;
     void SetPosition( const Ogre::Vector3& pos );

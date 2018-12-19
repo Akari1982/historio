@@ -11,6 +11,7 @@ public:
     Entity( Ogre::SceneNode* node );
     virtual ~Entity();
 
+    void SetOccupation( const std::vector< Ogre::Vector3 >& occupation );
     const std::vector< Ogre::Vector3 >& GetOccupation() const;
 
 protected:

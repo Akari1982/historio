@@ -40,14 +40,19 @@ EntityXmlFile::LoadDesc()
             desc.collision_mask = 0x0;
             Ogre::String collision_mask = GetString( node, "collision_mask" );
             Ogre::StringVector mask = Ogre::StringUtil::split( collision_mask, " " );
-            for( unsigned int i = 0; i < mask.size(); ++i )
+            for( size_t i = 0; i < mask.size(); ++i )
             {
                 if( mask[ i ] == "unit" )
                 {
                     desc.collision_mask |= 0x1;
                 }
             }
-            desc.collision_box = GetVector4( node, "collision_box", Ogre::Vector4( 0, 0, 1, 1 ) );
+            Ogre::String occupation = GetString( node, "occupation" );
+            Ogre::StringVector points = Ogre::StringUtil::split( occupation, ";" );
+            for( size_t i = 0; i < points.size(); ++i )
+            {
+                desc.occupation.push_back( Ogre::StringConverter::parseVector3( points[ i ] ) )
+            }
             desc.draw_box = GetVector4( node, "draw_box", Ogre::Vector4( 0, 0, 1, 1 ) );
             desc.texture = GetString( node, "texture" );
             EntityManager::getSingleton().AddEntityDesc( desc );

@@ -91,6 +91,10 @@ EntityManager::Update()
                 {
                     Ogre::Vector3 pos_s = m_EntitiesMovable[ i ]->GetMoveNextPosition();
                     m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], pos_s.x, pos_s.y, pos_e.x, pos_e.y ) );
+                    std::vector< Ogre::Vector3 > occupation;
+                    occupation.push_back( end );
+                    occupation.push_back( pos_s );
+                    entity->SetOccupation( occupation );
                 }
             }
             else
@@ -148,7 +152,7 @@ EntityManager::UpdateDebug()
 
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
-        Ogre::Vector4 col = m_EntitiesSelected[ i ]->GetCollisionBox();
+        Ogre::Vector4 col = m_EntitiesSelected[ i ]->GetDrawBox();
         Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetPosition();
         Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.x, col.y, 0 ) );
         Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( pos + Ogre::Vector3( col.z, col.w, 0 ) );
@@ -203,10 +207,19 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             {
                 entity = new EntityMovable( node );
                 m_EntitiesMovable.push_back( ( EntityMovable* )entity );
+                std::vector< Ogre::Vector3 > occupation;
+                occupation.push_back( pos );
+                entity->SetOccupation( occupation );
             }
             else if( m_EntityDescs[ i ].entity_class == "Stand" )
             {
                 entity = new EntityStand( node );
+                std::vector< Ogre::Vector3 > occupation;
+                for( size_t i = 0; i < m_EntityDescs[ i ].occupation.size(); ++i )
+                {
+                    occupation.push_back( pos + m_EntityDescs[ i ].occupation[ i ] );
+                }
+                entity->SetOccupation( occupation );
             }
             else
             {
@@ -215,7 +228,6 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             }
 
             entity->SetPosition( Ogre::Vector3( x, y, 0 ) );
-            entity->SetCollisionBox( m_EntityDescs[ i ].collision_box );
             entity->SetDrawBox( m_EntityDescs[ i ].draw_box );
             entity->SetTexture( m_EntityDescs[ i ].texture );
             entity->UpdateGeometry();
@@ -284,7 +296,7 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
         Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
-        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( NULL, pos.x, pos.y, move.x, move.y ) );
+        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], pos.x, pos.y, move.x, move.y ) );
     }
 }
 
@@ -468,12 +480,13 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
                 {
                     return Ogre::Vector3( neighbor.x, neighbor.y, 0 );
                 }
+
+                neighbors.push_back( Ogre::Vector3( neighbor.x, neighbor.y - 1, 0 ) );
+                neighbors.push_back( Ogre::Vector3( neighbor.x - 1, neighbor.y, 0 ) );
+                neighbors.push_back( Ogre::Vector3( neighbor.x + 1, neighbor.y, 0 ) );
+                neighbors.push_back( Ogre::Vector3( neighbor.x, neighbor.y + 1, 0 ) );
             }
 
-            neighbors.push_back( Ogre::Vector3( neighbor.x, neighbor.y - 1, 0 ) );
-            neighbors.push_back( Ogre::Vector3( neighbor.x - 1, neighbor.y, 0 ) );
-            neighbors.push_back( Ogre::Vector3( neighbor.x + 1, neighbor.y, 0 ) );
-            neighbors.push_back( Ogre::Vector3( neighbor.x, neighbor.y + 1, 0 ) );
             searched.push_back( neighbor );
         }
     }
@@ -486,6 +499,16 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
 const bool
 EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
 {
+    // we use self position collision to not to move to same point as we already stand
+    if( entity != NULL )
+    {
+        Ogre::Vector3 pos = m_Entities[ i ]->GetPosition();
+        if( pos.x = x && pos.y = y )
+        {
+            return false;
+        }
+    }
+
     if( m_MapSector.GetPass( x, y ) == 0 )
     {
         for( size_t i = 0; i < m_Entities.size(); ++i )

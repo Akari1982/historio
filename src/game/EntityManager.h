@@ -15,7 +15,7 @@ struct EntityDesc
     Ogre::String entity_class;
     Ogre::String name;
     unsigned int collision_mask;
-    Ogre::Vector4 collision_box;
+    std::vector< Ogre::Vector3 > occupation;
     Ogre::Vector4 draw_box;
     Ogre::String texture;
 };

@@ -38,6 +38,14 @@ Entity::~Entity()
 
 
 
+void
+Entity::SetOccupation( const std::vector< Ogre::Vector3 >& occupation )
+{
+    m_Occupation = occupation;
+}
+
+
+
 const std::vector< Ogre::Vector3 >&
 Entity::GetOccupation() const
 {
