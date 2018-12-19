@@ -51,7 +51,7 @@ EntityXmlFile::LoadDesc()
             Ogre::StringVector points = Ogre::StringUtil::split( occupation, ";" );
             for( size_t i = 0; i < points.size(); ++i )
             {
-                desc.occupation.push_back( Ogre::StringConverter::parseVector3( points[ i ] ) )
+                desc.occupation.push_back( Ogre::StringConverter::parseVector3( points[ i ] ) );
             }
             desc.draw_box = GetVector4( node, "draw_box", Ogre::Vector4( 0, 0, 1, 1 ) );
             desc.texture = GetString( node, "texture" );

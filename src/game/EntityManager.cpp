@@ -94,7 +94,13 @@ EntityManager::Update()
                     std::vector< Ogre::Vector3 > occupation;
                     occupation.push_back( end );
                     occupation.push_back( pos_s );
-                    entity->SetOccupation( occupation );
+                    m_EntitiesMovable[ i ]->SetOccupation( occupation );
+                }
+                else
+                {
+                    std::vector< Ogre::Vector3 > occupation;
+                    occupation.push_back( end );
+                    m_EntitiesMovable[ i ]->SetOccupation( occupation );
                 }
             }
             else
@@ -208,16 +214,16 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
                 entity = new EntityMovable( node );
                 m_EntitiesMovable.push_back( ( EntityMovable* )entity );
                 std::vector< Ogre::Vector3 > occupation;
-                occupation.push_back( pos );
+                occupation.push_back( Ogre::Vector3( x, y, 0 ) );
                 entity->SetOccupation( occupation );
             }
             else if( m_EntityDescs[ i ].entity_class == "Stand" )
             {
                 entity = new EntityStand( node );
                 std::vector< Ogre::Vector3 > occupation;
-                for( size_t i = 0; i < m_EntityDescs[ i ].occupation.size(); ++i )
+                for( size_t j = 0; j < m_EntityDescs[ i ].occupation.size(); ++j )
                 {
-                    occupation.push_back( pos + m_EntityDescs[ i ].occupation[ i ] );
+                    occupation.push_back( Ogre::Vector3( x, y, 0 ) + m_EntityDescs[ i ].occupation[ j ] );
                 }
                 entity->SetOccupation( occupation );
             }
@@ -269,7 +275,7 @@ EntityManager::SetEntitySelection( const Ogre::Vector3& start, const Ogre::Vecto
     for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
     {
         Ogre::Vector3 pos = m_EntitiesMovable[ i ]->GetPosition();
-        Ogre::Vector4 col = m_EntitiesMovable[ i ]->GetCollisionBox();
+        Ogre::Vector4 col = m_EntitiesMovable[ i ]->GetDrawBox();
 
         float lhs_left = ( start.x < end.x ) ? start.x : end.x;
         float lhs_right = ( start.x < end.x ) ? end.x : start.x;
@@ -297,6 +303,14 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
     {
         Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
         m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], pos.x, pos.y, move.x, move.y ) );
+        std::vector< Ogre::Vector3 > occupation_old = m_EntitiesSelected[ i ]->GetOccupation();
+        std::vector< Ogre::Vector3 > occupation;
+        if( occupation_old.size() > 1 )
+        {
+            occupation.push_back( occupation_old[ 0 ] );
+        }
+        occupation.push_back( m_EntitiesSelected[ i ]->GetMoveNextPosition() );
+        m_EntitiesSelected[ i ]->SetOccupation( occupation );
     }
 }
 
@@ -502,8 +516,8 @@ EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
     // we use self position collision to not to move to same point as we already stand
     if( entity != NULL )
     {
-        Ogre::Vector3 pos = m_Entities[ i ]->GetPosition();
-        if( pos.x = x && pos.y = y )
+        Ogre::Vector3 pos = entity->GetPosition();
+        if( ( pos.x == x ) && ( pos.y == y ) )
         {
             return false;
         }
