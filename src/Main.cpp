@@ -47,6 +47,7 @@ main(int argc, char *argv[])
     Ogre::NameValuePairList misc;
     misc[ "title" ] = QG_VERSION_NAME;
     window = root->createRenderWindow( "QGearsWindow", 1280, 720, false, &misc );
+    window->setDeactivateOnFocusChange( false );
 
 
 

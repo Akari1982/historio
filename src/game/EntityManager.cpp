@@ -90,7 +90,7 @@ EntityManager::Update()
                 if( pos_e != end )
                 {
                     Ogre::Vector3 pos_s = m_EntitiesMovable[ i ]->GetMoveNextPosition();
-                    m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], pos_s.x, pos_s.y, pos_e.x, pos_e.y ) );
+                    m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], pos_e.x, pos_e.y ) );
                     std::vector< Ogre::Vector3 > occupation;
                     occupation.push_back( end );
                     occupation.push_back( pos_s );
@@ -301,29 +301,36 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 {
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
-        Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
-        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], pos.x, pos.y, move.x, move.y ) );
+        m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], move.x, move.y ) );
         std::vector< Ogre::Vector3 > occupation_old = m_EntitiesSelected[ i ]->GetOccupation();
         std::vector< Ogre::Vector3 > occupation;
-        if( occupation_old.size() > 1 )
+        if( occupation_old.size() > 0 )
         {
             occupation.push_back( occupation_old[ 0 ] );
+            Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
+            if( pos != occupation_old[ 0 ] )
+            {
+                occupation.push_back( pos );
+            }
+            m_EntitiesSelected[ i ]->SetOccupation( occupation );
         }
-        occupation.push_back( m_EntitiesSelected[ i ]->GetMoveNextPosition() );
-        m_EntitiesSelected[ i ]->SetOccupation( occupation );
     }
 }
 
 
 
 std::vector< Ogre::Vector3 >
-EntityManager::AStarFinder( Entity* entity, const int start_x, const int start_y, const int end_x, const int end_y ) const
+EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) const
 {
     std::vector< Ogre::Vector3 > move_path;
 
-    //LOG_ERROR( "AStarFinder: " + Ogre::StringConverter::toString( start_x ) + " " + Ogre::StringConverter::toString( start_y ) + " - " + Ogre::StringConverter::toString( end_x ) + " " + Ogre::StringConverter::toString( end_y ) );
+    if( entity == NULL )
+    {
+        return move_path;
+    }
 
-    Ogre::Vector3 pos_e = PlaceFinder( entity, end_x, end_y );
+    Ogre::Vector3 pos_s = entity->GetMoveNextPosition();
+    Ogre::Vector3 pos_e = PlaceFinder( entity, x, y );
     if( pos_e.z == -1 )
     {
         return move_path;
@@ -347,7 +354,7 @@ EntityManager::AStarFinder( Entity* entity, const int start_x, const int start_y
         }
     }
 
-    AStarNode* start_node = grid[ start_x * 100 + start_y ];
+    AStarNode* start_node = grid[ pos_s.x * 100 + pos_s.y ];
     start_node->opened = true;
 
     std::vector< AStarNode* > open_list;
@@ -418,19 +425,16 @@ EntityManager::AStarFinder( Entity* entity, const int start_x, const int start_y
                 continue;
             }
 
-            int x = neighbor->x;
-            int y = neighbor->y;
-            float ng = node->g + sqrt( ( x - node->x ) * ( x - node->x ) + ( y - node->y ) * ( y - node->y ) ); // get the distance between current node and the neighbor and calculate the next g score
+            // get the distance between current node and the neighbor and calculate the next g score
+            float ng = node->g + sqrt( ( neighbor->x - node->x ) * ( neighbor->x - node->x ) + ( neighbor->y - node->y ) * ( neighbor->y - node->y ) );
 
             // check if the neighbor has not been inspected yet, or can be reached with smaller cost from the current node
             if( neighbor->opened == false || ng < neighbor->g )
             {
                 neighbor->g = ng;
-                neighbor->h = sqrt( ( x - end_x ) * ( x - end_x ) + ( y - end_y ) * ( y - end_y ) );
+                neighbor->h = sqrt( ( neighbor->x - x ) * ( neighbor->x - x ) + ( neighbor->y - y ) * ( neighbor->y - y ) );
                 neighbor->f = neighbor->g + neighbor->h;
                 neighbor->parent = node;
-
-                //LOG_ERROR( "neighbor: " + Ogre::StringConverter::toString( x ) + " " + Ogre::StringConverter::toString( y ) + " (" + Ogre::StringConverter::toString( neighbor->g ) + " " + Ogre::StringConverter::toString( neighbor->h ) + " " + Ogre::StringConverter::toString( neighbor->f ) + ")" );
 
                 if( neighbor->opened == false )
                 {
@@ -446,11 +450,6 @@ EntityManager::AStarFinder( Entity* entity, const int start_x, const int start_y
                     }
                 } less;
                 std::sort( open_list.begin(), open_list.end(), less );
-
-                //for( int j = 0; j < open_list.size(); ++j )
-                //{
-                    //LOG_ERROR( "open_list: " + Ogre::StringConverter::toString( open_list[ j ]->x ) + " " + Ogre::StringConverter::toString( open_list[ j ]->y ) );
-                //}
             }
         }
     }
@@ -473,7 +472,7 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
 
     neighbors.push_back( Ogre::Vector3( x, y, 0 ) );
 
-    for( int i = 0; i < neighbors.size(); ++i )
+    for( size_t i = 0; i < neighbors.size(); ++i )
     {
         Ogre::Vector3 neighbor = neighbors[ i ];
 
