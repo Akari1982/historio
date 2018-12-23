@@ -1,228 +1,2003 @@
-00:15:42: Creating resource group General
-00:15:42: Creating resource group Internal
-00:15:42: Creating resource group Autodetect
-00:15:42: SceneManagerFactory for type 'DefaultSceneManager' registered.
-00:15:42: Registering ResourceManager for type Material
-00:15:42: Registering ResourceManager for type Mesh
-00:15:42: Registering ResourceManager for type Skeleton
-00:15:42: MovableObjectFactory for type 'ParticleSystem' registered.
-00:15:42: ArchiveFactory for archive type FileSystem registered.
-00:15:42: ArchiveFactory for archive type Zip registered.
-00:15:42: ArchiveFactory for archive type EmbeddedZip registered.
-00:15:42: DDS codec registering
-00:15:42: FreeImage version: 3.15.3
-00:15:42: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
-00:15:42: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,3fr,arw,bay,bmq,cap,cine,cr2,crw,cs1,dc2,dcr,drf,dsc,dng,erf,fff,ia,iiq,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,ptx,pxn,qtk,raf,raw,rdc,rw2,rwl,rwz,sr2,srf,srw,sti
-00:15:42: Registering ResourceManager for type HighLevelGpuProgram
-00:15:42: Registering ResourceManager for type Compositor
-00:15:42: MovableObjectFactory for type 'Entity' registered.
-00:15:42: MovableObjectFactory for type 'Light' registered.
-00:15:42: MovableObjectFactory for type 'BillboardSet' registered.
-00:15:42: MovableObjectFactory for type 'ManualObject' registered.
-00:15:42: MovableObjectFactory for type 'BillboardChain' registered.
-00:15:42: MovableObjectFactory for type 'RibbonTrail' registered.
-00:15:42: *-*-* OGRE Initialising
-00:15:42: *-*-* Version 1.9.0 (Ghadamon)
-00:15:42: Loading library ./RenderSystem_Direct3D9.dll
-00:15:42: Installing plugin: D3D9 RenderSystem
-00:15:42: D3D9 : Direct3D9 Rendering Subsystem created.
-00:15:42: D3D9: Driver Detection Starts
-00:15:42: D3D9: Driver Detection Ends
-00:15:42: Plugin successfully installed
-00:15:42: CPU Identifier & Features
-00:15:42: -------------------------
-00:15:42:  *   CPU ID: GenuineIntel: Intel(R) Celeron(R) CPU G1820 @ 2.70GHz
-00:15:42:  *      SSE: yes
-00:15:42:  *     SSE2: yes
-00:15:42:  *     SSE3: yes
-00:15:42:  *      MMX: yes
-00:15:42:  *   MMXEXT: yes
-00:15:42:  *    3DNOW: no
-00:15:42:  * 3DNOWEXT: no
-00:15:42:  *     CMOV: yes
-00:15:42:  *      TSC: yes
-00:15:42:  *      FPU: yes
-00:15:42:  *      PRO: yes
-00:15:42:  *       HT: no
-00:15:42: -------------------------
-00:15:42: D3D9 : Subsystem Initialising
-00:15:42: Registering ResourceManager for type Texture
-00:15:42: Registering ResourceManager for type GpuProgram
-00:15:42: ***************************************
-00:15:42: *** D3D9 : Subsystem Initialised OK ***
-00:15:42: ***************************************
-00:15:42: D3D9RenderSystem::_createRenderWindow "QGearsWindow", 1280x720 windowed  miscParams: title=Historio v0.01 
-00:15:42: D3D9 : Created D3D9 Rendering Window 'QGearsWindow' : 1280x720, 32bpp
-00:15:42: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
-00:15:42: D3D9: Vertex texture format supported - PF_A8R8G8B8
-00:15:42: D3D9: Vertex texture format supported - PF_B8G8R8A8
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
-00:15:42: D3D9: Vertex texture format supported - PF_R8G8B8A8
-00:15:42: D3D9: Vertex texture format supported - PF_DEPTH
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT16_R
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT32_R
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT16_GR
-00:15:42: D3D9: Vertex texture format supported - PF_FLOAT32_GR
-00:15:42: D3D9: Vertex texture format supported - PF_PVRTC_RGB2
-00:15:42: D3D9: Vertex texture format supported - PF_PVRTC_RGBA2
-00:15:42: D3D9: Vertex texture format supported - PF_PVRTC_RGB4
-00:15:42: D3D9: Vertex texture format supported - PF_PVRTC_RGBA4
-00:15:42: D3D9: Vertex texture format supported - PF_PVRTC2_2BPP
-00:15:42: D3D9: Vertex texture format supported - PF_PVRTC2_4BPP
-00:15:42: D3D9: Vertex texture format supported - PF_R11G11B10_FLOAT
-00:15:42: D3D9: Vertex texture format supported - PF_R8_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R8G8_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R8G8B8_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R8G8B8A8_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16G16_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16G16B16_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16G16B16A16_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32G32_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32G32B32_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32G32B32A32_UINT
-00:15:42: D3D9: Vertex texture format supported - PF_R8_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R8G8_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R8G8B8_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R8G8B8A8_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16G16_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16G16B16_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R16G16B16A16_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32G32_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32G32B32_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R32G32B32A32_SINT
-00:15:42: D3D9: Vertex texture format supported - PF_R9G9B9E5_SHAREDEXP
-00:15:42: D3D9: Vertex texture format supported - PF_BC4_UNORM
-00:15:42: D3D9: Vertex texture format supported - PF_BC4_SNORM
-00:15:42: D3D9: Vertex texture format supported - PF_BC5_UNORM
-00:15:42: D3D9: Vertex texture format supported - PF_BC5_SNORM
-00:15:42: D3D9: Vertex texture format supported - PF_BC6H_UF16
-00:15:42: D3D9: Vertex texture format supported - PF_BC6H_SF16
-00:15:43: D3D9: Vertex texture format supported - PF_BC7_UNORM
-00:15:43: D3D9: Vertex texture format supported - PF_BC7_UNORM_SRGB
-00:15:43: D3D9: Vertex texture format supported - PF_R8
-00:15:43: D3D9: Vertex texture format supported - PF_RG8
-00:15:43: D3D9: Vertex texture format supported - PF_R8_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_R8G8_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_R8G8B8_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_R8G8B8A8_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_R16_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_R16G16_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_R16G16B16_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_R16G16B16A16_SNORM
-00:15:43: D3D9: Vertex texture format supported - PF_ETC1_RGB8
-00:15:43: D3D9: Vertex texture format supported - PF_ETC2_RGB8
-00:15:43: D3D9: Vertex texture format supported - PF_ETC2_RGBA8
-00:15:43: D3D9: Vertex texture format supported - PF_ETC2_RGB8A1
-00:15:43: D3D9: Vertex texture format supported - PF_ATC_RGB
-00:15:43: D3D9: Vertex texture format supported - PF_ATC_RGBA_EXPLICIT_ALPHA
-00:15:43: D3D9: Vertex texture format supported - PF_ATC_RGBA_INTERPOLATED_ALPHA
-00:15:43: RenderSystem capabilities
-00:15:43: -------------------------
-00:15:43: RenderSystem Name: Direct3D9 Rendering Subsystem
-00:15:43: GPU Vendor: nvidia
-00:15:43: Device Name: Monitor-1-NVIDIA GeForce GTX 750
-00:15:43: Driver Version: 10.18.13.5560
-00:15:43:  * Fixed function pipeline: yes
-00:15:43:  * Hardware generation of mipmaps: yes
-00:15:43:  * Texture blending: yes
-00:15:43:  * Anisotropic texture filtering: yes
-00:15:43:  * Dot product texture operation: yes
-00:15:43:  * Cube mapping: yes
-00:15:43:  * Hardware stencil buffer: yes
-00:15:43:    - Stencil depth: 8
-00:15:43:    - Two sided stencil support: yes
-00:15:43:    - Wrap stencil values: yes
-00:15:43:  * Hardware vertex / index buffers: yes
-00:15:43:  * Vertex programs: yes
-00:15:43:  * Number of floating-point constants for vertex programs: 256
-00:15:43:  * Number of integer constants for vertex programs: 16
-00:15:43:  * Number of boolean constants for vertex programs: 16
-00:15:43:  * Fragment programs: yes
-00:15:43:  * Number of floating-point constants for fragment programs: 224
-00:15:43:  * Number of integer constants for fragment programs: 16
-00:15:43:  * Number of boolean constants for fragment programs: 16
-00:15:43:  * Geometry programs: no
-00:15:43:  * Number of floating-point constants for geometry programs: 0
-00:15:43:  * Number of integer constants for geometry programs: 0
-00:15:43:  * Number of boolean constants for geometry programs: 0
-00:15:43:  * Tesselation Hull programs: no
-00:15:43:  * Number of floating-point constants for tesselation hull programs: 0
-00:15:43:  * Number of integer constants for tesselation hull programs: 0
-00:15:43:  * Number of boolean constants for tesselation hull programs: 0
-00:15:43:  * Tesselation Domain programs: no
-00:15:43:  * Number of floating-point constants for tesselation domain programs: 0
-00:15:43:  * Number of integer constants for tesselation domain programs: 0
-00:15:43:  * Number of boolean constants for tesselation domain programs: 0
-00:15:43:  * Compute programs: no
-00:15:43:  * Number of floating-point constants for compute programs: 0
-00:15:43:  * Number of integer constants for compute programs: 0
-00:15:43:  * Number of boolean constants for compute programs: 0
-00:15:43:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
-00:15:43:  * Texture Compression: yes
-00:15:43:    - DXT: yes
-00:15:43:    - VTC: no
-00:15:43:    - PVRTC: no
-00:15:43:    - ATC: no
-00:15:43:    - ETC1: no
-00:15:43:    - ETC2: no
-00:15:43:    - BC4/BC5: no
-00:15:43:    - BC6H/BC7: no
-00:15:43:  * Scissor Rectangle: yes
-00:15:43:  * Hardware Occlusion Query: yes
-00:15:43:  * User clip planes: yes
-00:15:43:  * VET_UBYTE4 vertex element type: yes
-00:15:43:  * Infinite far plane projection: yes
-00:15:43:  * Hardware render-to-texture: yes
-00:15:43:  * Floating point textures: yes
-00:15:43:  * Non-power-of-two textures: yes
-00:15:43:  * 1d textures: yes
-00:15:43:  * Volume textures: yes
-00:15:43:  * Multiple Render Targets: 4
-00:15:43:    - With different bit depths: yes
-00:15:43:  * Point Sprites: yes
-00:15:43:  * Extended point parameters: yes
-00:15:43:  * Max Point Size: 8192
-00:15:43:  * Vertex texture fetch: yes
-00:15:43:  * Number of world matrices: 0
-00:15:43:  * Number of texture units: 8
-00:15:43:  * Stencil buffer depth: 8
-00:15:43:  * Number of vertex blend matrices: 0
-00:15:43:    - Max vertex textures: 4
-00:15:43:    - Vertex textures shared: no
-00:15:43:  * Render to Vertex Buffer : no
-00:15:43:  * Hardware Atomic Counters: no
-00:15:43:  * DirectX per stage constants: yes
-00:15:43: DefaultWorkQueue('Root') initialising on thread 184c.
-00:15:43: Particle Renderer Type 'billboard' registered
-00:15:43: DefaultWorkQueue('Root')::WorkerFunc - thread 2314 starting.
-00:15:43: DefaultWorkQueue('Root')::WorkerFunc - thread 1fac starting.
-00:15:43: OverlayElementFactory for type Panel registered.
-00:15:43: OverlayElementFactory for type BorderPanel registered.
-00:15:43: OverlayElementFactory for type TextArea registered.
-00:15:43: Registering ResourceManager for type Font
-00:15:43: Creating resource group Game
-00:15:43: Added resource location './data' of type 'FileSystem' to resource group 'Game' with recursive option
-00:15:43: Initialising resource group Game
-00:15:43: Parsing scripts for resource group Game
-00:15:43: Parsing script system/system.material
-00:15:43: Parsing script system/system.fontdef
-00:15:43: Finished parsing scripts for resource group Game
-00:15:43: Creating resources for group Game
-00:15:43: All done
-00:15:43: Texture: system/courier_new_9_75.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
-00:15:43: CameraManager started.
-00:15:43: Creating viewport on target 'QGearsWindow', rendering from camera 'Camera', relative dimensions 8192L: 0 T: 0 W: 1 H: 1 Z-order: 0
-00:15:43: Viewport for camera 'Camera', actual dimensions 8192L: 0 T: 0 W: 1280 H: 720
-00:15:43: EntityManager created.
-00:15:43: HudManager created.
-00:15:43: Created console width 1280, height 288
-00:15:43: ScriptManager started.
-00:15:43: Resized console width to 1280, height to 288
-00:15:43: camera_speed changed to "0.001".
+02:08:37: Creating resource group General
+02:08:37: Creating resource group Internal
+02:08:37: Creating resource group Autodetect
+02:08:37: SceneManagerFactory for type 'DefaultSceneManager' registered.
+02:08:37: Registering ResourceManager for type Material
+02:08:37: Registering ResourceManager for type Mesh
+02:08:37: Registering ResourceManager for type Skeleton
+02:08:37: MovableObjectFactory for type 'ParticleSystem' registered.
+02:08:37: ArchiveFactory for archive type FileSystem registered.
+02:08:37: ArchiveFactory for archive type Zip registered.
+02:08:37: ArchiveFactory for archive type EmbeddedZip registered.
+02:08:37: DDS codec registering
+02:08:37: FreeImage version: 3.15.3
+02:08:37: This program uses FreeImage, a free, open source image library supporting all common bitmap formats. See http://freeimage.sourceforge.net for details
+02:08:37: Supported formats: bmp,ico,jpg,jif,jpeg,jpe,jng,koa,iff,lbm,mng,pbm,pbm,pcd,pcx,pgm,pgm,png,ppm,ppm,ras,tga,targa,tif,tiff,wap,wbmp,wbm,psd,cut,xbm,xpm,gif,hdr,g3,sgi,exr,j2k,j2c,jp2,pfm,pct,pict,pic,3fr,arw,bay,bmq,cap,cine,cr2,crw,cs1,dc2,dcr,drf,dsc,dng,erf,fff,ia,iiq,k25,kc2,kdc,mdc,mef,mos,mrw,nef,nrw,orf,pef,ptx,pxn,qtk,raf,raw,rdc,rw2,rwl,rwz,sr2,srf,srw,sti
+02:08:37: Registering ResourceManager for type HighLevelGpuProgram
+02:08:37: Registering ResourceManager for type Compositor
+02:08:37: MovableObjectFactory for type 'Entity' registered.
+02:08:37: MovableObjectFactory for type 'Light' registered.
+02:08:37: MovableObjectFactory for type 'BillboardSet' registered.
+02:08:37: MovableObjectFactory for type 'ManualObject' registered.
+02:08:37: MovableObjectFactory for type 'BillboardChain' registered.
+02:08:37: MovableObjectFactory for type 'RibbonTrail' registered.
+02:08:37: *-*-* OGRE Initialising
+02:08:37: *-*-* Version 1.9.0 (Ghadamon)
+02:08:37: Loading library ./RenderSystem_Direct3D9.dll
+02:08:37: Installing plugin: D3D9 RenderSystem
+02:08:37: D3D9 : Direct3D9 Rendering Subsystem created.
+02:08:37: D3D9: Driver Detection Starts
+02:08:37: D3D9: Driver Detection Ends
+02:08:37: Plugin successfully installed
+02:08:37: CPU Identifier & Features
+02:08:37: -------------------------
+02:08:37:  *   CPU ID: GenuineIntel: Intel(R) Celeron(R) CPU G1820 @ 2.70GHz
+02:08:37:  *      SSE: yes
+02:08:37:  *     SSE2: yes
+02:08:37:  *     SSE3: yes
+02:08:37:  *      MMX: yes
+02:08:37:  *   MMXEXT: yes
+02:08:37:  *    3DNOW: no
+02:08:37:  * 3DNOWEXT: no
+02:08:37:  *     CMOV: yes
+02:08:37:  *      TSC: yes
+02:08:37:  *      FPU: yes
+02:08:37:  *      PRO: yes
+02:08:37:  *       HT: no
+02:08:37: -------------------------
+02:08:37: D3D9 : Subsystem Initialising
+02:08:37: Registering ResourceManager for type Texture
+02:08:37: Registering ResourceManager for type GpuProgram
+02:08:37: ***************************************
+02:08:37: *** D3D9 : Subsystem Initialised OK ***
+02:08:37: ***************************************
+02:08:37: D3D9RenderSystem::_createRenderWindow "QGearsWindow", 1280x720 windowed  miscParams: title=Historio v0.01 
+02:08:37: D3D9 : Created D3D9 Rendering Window 'QGearsWindow' : 1280x720, 32bpp
+02:08:37: D3D9 : WARNING - disabling VSync in windowed mode can cause timing issues at lower frame rates, turn VSync on if you observe this problem.
+02:08:37: D3D9: Vertex texture format supported - PF_A8R8G8B8
+02:08:37: D3D9: Vertex texture format supported - PF_B8G8R8A8
+02:08:37: D3D9: Vertex texture format supported - PF_FLOAT16_RGB
+02:08:37: D3D9: Vertex texture format supported - PF_FLOAT16_RGBA
+02:08:37: D3D9: Vertex texture format supported - PF_FLOAT32_RGB
+02:08:37: D3D9: Vertex texture format supported - PF_FLOAT32_RGBA
+02:08:37: D3D9: Vertex texture format supported - PF_R8G8B8A8
+02:08:37: D3D9: Vertex texture format supported - PF_DEPTH
+02:08:38: D3D9: Vertex texture format supported - PF_FLOAT16_R
+02:08:38: D3D9: Vertex texture format supported - PF_FLOAT32_R
+02:08:38: D3D9: Vertex texture format supported - PF_FLOAT16_GR
+02:08:38: D3D9: Vertex texture format supported - PF_FLOAT32_GR
+02:08:38: D3D9: Vertex texture format supported - PF_PVRTC_RGB2
+02:08:38: D3D9: Vertex texture format supported - PF_PVRTC_RGBA2
+02:08:38: D3D9: Vertex texture format supported - PF_PVRTC_RGB4
+02:08:38: D3D9: Vertex texture format supported - PF_PVRTC_RGBA4
+02:08:38: D3D9: Vertex texture format supported - PF_PVRTC2_2BPP
+02:08:38: D3D9: Vertex texture format supported - PF_PVRTC2_4BPP
+02:08:38: D3D9: Vertex texture format supported - PF_R11G11B10_FLOAT
+02:08:38: D3D9: Vertex texture format supported - PF_R8_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8B8_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8B8A8_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16B16_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16B16A16_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32G32_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32G32B32_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32G32B32A32_UINT
+02:08:38: D3D9: Vertex texture format supported - PF_R8_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8B8_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8B8A8_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16B16_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16B16A16_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32G32_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32G32B32_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R32G32B32A32_SINT
+02:08:38: D3D9: Vertex texture format supported - PF_R9G9B9E5_SHAREDEXP
+02:08:38: D3D9: Vertex texture format supported - PF_BC4_UNORM
+02:08:38: D3D9: Vertex texture format supported - PF_BC4_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_BC5_UNORM
+02:08:38: D3D9: Vertex texture format supported - PF_BC5_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_BC6H_UF16
+02:08:38: D3D9: Vertex texture format supported - PF_BC6H_SF16
+02:08:38: D3D9: Vertex texture format supported - PF_BC7_UNORM
+02:08:38: D3D9: Vertex texture format supported - PF_BC7_UNORM_SRGB
+02:08:38: D3D9: Vertex texture format supported - PF_R8
+02:08:38: D3D9: Vertex texture format supported - PF_RG8
+02:08:38: D3D9: Vertex texture format supported - PF_R8_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8B8_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_R8G8B8A8_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_R16_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16B16_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_R16G16B16A16_SNORM
+02:08:38: D3D9: Vertex texture format supported - PF_ETC1_RGB8
+02:08:38: D3D9: Vertex texture format supported - PF_ETC2_RGB8
+02:08:38: D3D9: Vertex texture format supported - PF_ETC2_RGBA8
+02:08:38: D3D9: Vertex texture format supported - PF_ETC2_RGB8A1
+02:08:38: D3D9: Vertex texture format supported - PF_ATC_RGB
+02:08:38: D3D9: Vertex texture format supported - PF_ATC_RGBA_EXPLICIT_ALPHA
+02:08:38: D3D9: Vertex texture format supported - PF_ATC_RGBA_INTERPOLATED_ALPHA
+02:08:38: RenderSystem capabilities
+02:08:38: -------------------------
+02:08:38: RenderSystem Name: Direct3D9 Rendering Subsystem
+02:08:38: GPU Vendor: nvidia
+02:08:38: Device Name: Monitor-1-NVIDIA GeForce GTX 750
+02:08:38: Driver Version: 10.18.13.5560
+02:08:38:  * Fixed function pipeline: yes
+02:08:38:  * Hardware generation of mipmaps: yes
+02:08:38:  * Texture blending: yes
+02:08:38:  * Anisotropic texture filtering: yes
+02:08:38:  * Dot product texture operation: yes
+02:08:38:  * Cube mapping: yes
+02:08:38:  * Hardware stencil buffer: yes
+02:08:38:    - Stencil depth: 8
+02:08:38:    - Two sided stencil support: yes
+02:08:38:    - Wrap stencil values: yes
+02:08:38:  * Hardware vertex / index buffers: yes
+02:08:38:  * Vertex programs: yes
+02:08:38:  * Number of floating-point constants for vertex programs: 256
+02:08:38:  * Number of integer constants for vertex programs: 16
+02:08:38:  * Number of boolean constants for vertex programs: 16
+02:08:38:  * Fragment programs: yes
+02:08:38:  * Number of floating-point constants for fragment programs: 224
+02:08:38:  * Number of integer constants for fragment programs: 16
+02:08:38:  * Number of boolean constants for fragment programs: 16
+02:08:38:  * Geometry programs: no
+02:08:38:  * Number of floating-point constants for geometry programs: 0
+02:08:38:  * Number of integer constants for geometry programs: 0
+02:08:38:  * Number of boolean constants for geometry programs: 0
+02:08:38:  * Tesselation Hull programs: no
+02:08:38:  * Number of floating-point constants for tesselation hull programs: 0
+02:08:38:  * Number of integer constants for tesselation hull programs: 0
+02:08:38:  * Number of boolean constants for tesselation hull programs: 0
+02:08:38:  * Tesselation Domain programs: no
+02:08:38:  * Number of floating-point constants for tesselation domain programs: 0
+02:08:38:  * Number of integer constants for tesselation domain programs: 0
+02:08:38:  * Number of boolean constants for tesselation domain programs: 0
+02:08:38:  * Compute programs: no
+02:08:38:  * Number of floating-point constants for compute programs: 0
+02:08:38:  * Number of integer constants for compute programs: 0
+02:08:38:  * Number of boolean constants for compute programs: 0
+02:08:38:  * Supported Shader Profiles: hlsl ps_1_1 ps_1_2 ps_1_3 ps_1_4 ps_2_0 ps_2_a ps_2_b ps_2_x ps_3_0 vs_1_1 vs_2_0 vs_2_a vs_2_x vs_3_0
+02:08:38:  * Texture Compression: yes
+02:08:38:    - DXT: yes
+02:08:38:    - VTC: no
+02:08:38:    - PVRTC: no
+02:08:38:    - ATC: no
+02:08:38:    - ETC1: no
+02:08:38:    - ETC2: no
+02:08:38:    - BC4/BC5: no
+02:08:38:    - BC6H/BC7: no
+02:08:38:  * Scissor Rectangle: yes
+02:08:38:  * Hardware Occlusion Query: yes
+02:08:38:  * User clip planes: yes
+02:08:38:  * VET_UBYTE4 vertex element type: yes
+02:08:38:  * Infinite far plane projection: yes
+02:08:38:  * Hardware render-to-texture: yes
+02:08:38:  * Floating point textures: yes
+02:08:38:  * Non-power-of-two textures: yes
+02:08:38:  * 1d textures: yes
+02:08:38:  * Volume textures: yes
+02:08:38:  * Multiple Render Targets: 4
+02:08:38:    - With different bit depths: yes
+02:08:38:  * Point Sprites: yes
+02:08:38:  * Extended point parameters: yes
+02:08:38:  * Max Point Size: 8192
+02:08:38:  * Vertex texture fetch: yes
+02:08:38:  * Number of world matrices: 0
+02:08:38:  * Number of texture units: 8
+02:08:38:  * Stencil buffer depth: 8
+02:08:38:  * Number of vertex blend matrices: 0
+02:08:38:    - Max vertex textures: 4
+02:08:38:    - Vertex textures shared: no
+02:08:38:  * Render to Vertex Buffer : no
+02:08:38:  * Hardware Atomic Counters: no
+02:08:38:  * DirectX per stage constants: yes
+02:08:38: DefaultWorkQueue('Root') initialising on thread 2a90.
+02:08:38: Particle Renderer Type 'billboard' registered
+02:08:38: DefaultWorkQueue('Root')::WorkerFunc - thread 2ac0 starting.
+02:08:38: DefaultWorkQueue('Root')::WorkerFunc - thread 2ac4 starting.
+02:08:38: OverlayElementFactory for type Panel registered.
+02:08:38: OverlayElementFactory for type BorderPanel registered.
+02:08:38: OverlayElementFactory for type TextArea registered.
+02:08:38: Registering ResourceManager for type Font
+02:08:38: Creating resource group Game
+02:08:38: Added resource location './data' of type 'FileSystem' to resource group 'Game' with recursive option
+02:08:38: Initialising resource group Game
+02:08:38: Parsing scripts for resource group Game
+02:08:38: Parsing script system/system.material
+02:08:38: Parsing script system/system.fontdef
+02:08:38: Finished parsing scripts for resource group Game
+02:08:38: Creating resources for group Game
+02:08:38: All done
+02:08:38: Texture: system/courier_new_9_75.png: Loading 1 faces(PF_A8R8G8B8,256x256x1) with 0 generated mipmaps from Image. Internal format is PF_A8R8G8B8,256x256x1.
+02:08:38: CameraManager started.
+02:08:38: Creating viewport on target 'QGearsWindow', rendering from camera 'Camera', relative dimensions 8192L: 0 T: 0 W: 1 H: 1 Z-order: 0
+02:08:38: Viewport for camera 'Camera', actual dimensions 8192L: 0 T: 0 W: 1280 H: 720
+02:08:38: EntityManager created.
+02:08:38: HudManager created.
+02:08:38: Created console width 1280, height 288
+02:08:38: ScriptManager started.
+02:08:38: Resized console width to 1280, height to 288
+02:08:38: camera_speed changed to "0.001".
+02:08:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 4 0 4 4 0
+02:08:40: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 4 0 6 4 0
+02:08:41: [ERROR] game\EntityManager.cpp 93: Update: 5 4 0 6 4 0
+02:08:41: [ERROR] game\EntityManager.cpp 100:     5 4 0 6 4 0
+02:08:41: [ERROR] game\EntityManager.cpp 93: Update: 6 4 0 6 4 0
+02:08:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 9 0 6 4 0
+02:08:42: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 6 4 0 8 9 0
+02:08:43: [ERROR] game\EntityManager.cpp 93: Update: 6 5 0 8 9 0
+02:08:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 9 0 7 6 0
+02:08:43: [ERROR] game\EntityManager.cpp 100:     6 5 0 8 9 0
+02:08:44: [ERROR] game\EntityManager.cpp 93: Update: 7 6 0 8 9 0
+02:08:44: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 9 0 7 7 0
+02:08:44: [ERROR] game\EntityManager.cpp 100:     7 6 0 8 9 0
+02:08:44: [ERROR] game\EntityManager.cpp 93: Update: 7 7 0 8 9 0
+02:08:44: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 9 0 8 8 0
+02:08:44: [ERROR] game\EntityManager.cpp 100:     7 7 0 8 9 0
+02:08:45: [ERROR] game\EntityManager.cpp 93: Update: 8 8 0 8 9 0
+02:08:45: [ERROR] game\EntityManager.cpp 100:     8 8 0 8 9 0
+02:08:45: [ERROR] game\EntityManager.cpp 93: Update: 8 9 0 8 9 0
+02:08:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 9 0 8 9 0
+02:08:46: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 9 0 7 9 0
+02:08:47: [ERROR] game\EntityManager.cpp 93: Update: 7 9 0 7 9 0
+02:08:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 6 0 7 9 0
+02:08:47: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 7 9 0 6 6 0
+02:08:48: [ERROR] game\EntityManager.cpp 93: Update: 7 8 0 6 6 0
+02:08:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 6 0 7 7 0
+02:08:48: [ERROR] game\EntityManager.cpp 100:     7 8 0 6 6 0
+02:08:48: [ERROR] game\EntityManager.cpp 93: Update: 7 7 0 6 6 0
+02:08:48: [ERROR] game\EntityManager.cpp 100:     7 7 0 6 6 0
+02:08:49: [ERROR] game\EntityManager.cpp 93: Update: 6 6 0 6 6 0
+02:08:49: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 6 0 6 6 0
+02:08:49: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 6 6 0 3 6 0
+02:08:50: [ERROR] game\EntityManager.cpp 93: Update: 5 6 0 3 6 0
+02:08:50: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 6 0 4 6 0
+02:08:50: [ERROR] game\EntityManager.cpp 100:     5 6 0 3 6 0
+02:08:50: [ERROR] game\EntityManager.cpp 93: Update: 4 6 0 3 6 0
+02:08:50: [ERROR] game\EntityManager.cpp 100:     4 6 0 3 6 0
+02:08:51: [ERROR] game\EntityManager.cpp 93: Update: 3 6 0 3 6 0
+02:08:51: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 8 0 3 6 0
+02:08:51: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 6 0 0 8 0
+02:08:52: [ERROR] game\EntityManager.cpp 93: Update: 2 7 0 0 8 0
+02:08:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 8 0 1 8 0
+02:08:52: [ERROR] game\EntityManager.cpp 100:     2 7 0 0 8 0
+02:08:53: [ERROR] game\EntityManager.cpp 93: Update: 1 8 0 0 8 0
+02:08:53: [ERROR] game\EntityManager.cpp 100:     1 8 0 0 8 0
+02:08:53: [ERROR] game\EntityManager.cpp 93: Update: 0 8 0 0 8 0
+02:08:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 6 0 0 8 0
+02:08:53: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 0 8 0 4 6 0
+02:08:54: [ERROR] game\EntityManager.cpp 93: Update: 1 7 0 4 6 0
+02:08:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 6 0 2 7 0
+02:08:54: [ERROR] game\EntityManager.cpp 100:     1 7 0 4 6 0
+02:08:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 10 0 2 7 0
+02:08:55: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 1.72799 7 0 7 10 0
+02:08:55: [ERROR] game\EntityManager.cpp 93: Update: 2 7 0 7 10 0
+02:08:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 10 0 3 6 0
+02:08:55: [ERROR] game\EntityManager.cpp 100:     2 7 0 7 10 0
+02:08:55: [ERROR] game\EntityManager.cpp 93: Update: 3 6 0 7 10 0
+02:08:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 10 0 4 6 0
+02:08:55: [ERROR] game\EntityManager.cpp 100:     3 6 0 7 10 0
+02:08:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 11 0 4 6 0
+02:08:55: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3.118 6 0 3 11 0
+02:08:56: [ERROR] game\EntityManager.cpp 93: Update: 4 6 0 3 11 0
+02:08:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 11 0 3 6 0
+02:08:56: [ERROR] game\EntityManager.cpp 100:     4 6 0 3 11 0
+02:08:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 12 0 3 6 0
+02:08:56: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3.638 6 0 3 12 0
+02:08:56: [ERROR] game\EntityManager.cpp 93: Update: 3 6 0 3 12 0
+02:08:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 12 0 3 7 0
+02:08:56: [ERROR] game\EntityManager.cpp 100:     3 6 0 3 12 0
+02:08:57: [ERROR] game\EntityManager.cpp 93: Update: 3 7 0 3 12 0
+02:08:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 12 0 3 8 0
+02:08:57: [ERROR] game\EntityManager.cpp 100:     3 7 0 3 12 0
+02:08:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 12 0 3 8 0
+02:08:57: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 7.168 0 5 12 0
+02:08:57: [ERROR] game\EntityManager.cpp 93: Update: 3 8 0 5 12 0
+02:08:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 12 0 3 9 0
+02:08:57: [ERROR] game\EntityManager.cpp 100:     3 8 0 5 12 0
+02:08:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 6 0 3 9 0
+02:08:58: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 8.89394 0 6 6 0
+02:08:58: [ERROR] game\EntityManager.cpp 93: Update: 3 9 0 6 6 0
+02:08:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 6 0 3 8 0
+02:08:58: [ERROR] game\EntityManager.cpp 100:     3 9 0 6 6 0
+02:08:58: [ERROR] game\EntityManager.cpp 93: Update: 3 8 0 6 6 0
+02:08:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 6 0 3 7 0
+02:08:58: [ERROR] game\EntityManager.cpp 100:     3 8 0 6 6 0
+02:08:59: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 10 0 3 7 0
+02:08:59: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 7.63599 0 5 10 0
+02:08:59: [ERROR] game\EntityManager.cpp 93: Update: 3 7 0 6 10 0
+02:08:59: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 10 0 3 6 0
+02:08:59: [ERROR] game\EntityManager.cpp 100:     3 7 0 6 10 0
+02:08:59: [ERROR] game\EntityManager.cpp 93: Update: 3 6 0 6 10 0
+02:08:59: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 10 0 4 6 0
+02:08:59: [ERROR] game\EntityManager.cpp 100:     3 6 0 6 10 0
+02:09:00: [ERROR] game\EntityManager.cpp 93: Update: 4 6 0 6 10 0
+02:09:00: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 10 0 5 6 0
+02:09:00: [ERROR] game\EntityManager.cpp 100:     4 6 0 6 10 0
+02:09:00: [ERROR] game\EntityManager.cpp 93: Update: 5 6 0 6 10 0
+02:09:00: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 10 0 6 6 0
+02:09:00: [ERROR] game\EntityManager.cpp 100:     5 6 0 6 10 0
+02:09:01: [ERROR] game\EntityManager.cpp 93: Update: 6 6 0 6 10 0
+02:09:01: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 10 0 6 7 0
+02:09:01: [ERROR] game\EntityManager.cpp 100:     6 6 0 6 10 0
+02:09:01: [ERROR] game\EntityManager.cpp 93: Update: 6 7 0 6 10 0
+02:09:01: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 10 0 6 8 0
+02:09:01: [ERROR] game\EntityManager.cpp 100:     6 7 0 6 10 0
+02:09:02: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 6 8 0
+02:09:02: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 6 7.34001 0 3 3 0
+02:09:02: [ERROR] game\EntityManager.cpp 93: Update: 6 8 0 3 3 0
+02:09:02: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 6 7 0
+02:09:02: [ERROR] game\EntityManager.cpp 100:     6 8 0 3 3 0
+02:09:02: [ERROR] game\EntityManager.cpp 93: Update: 6 7 0 3 3 0
+02:09:02: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 6 6 0
+02:09:02: [ERROR] game\EntityManager.cpp 100:     6 7 0 3 3 0
+02:09:03: [ERROR] game\EntityManager.cpp 93: Update: 6 6 0 3 3 0
+02:09:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 5 5 0
+02:09:03: [ERROR] game\EntityManager.cpp 100:     6 6 0 3 3 0
+02:09:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 1 0 5 5 0
+02:09:03: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5.68603 5.68603 0 0 1 0
+02:09:04: [ERROR] game\EntityManager.cpp 93: Update: 5 5 0 0 1 0
+02:09:04: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 1 0 4 4 0
+02:09:04: [ERROR] game\EntityManager.cpp 100:     5 5 0 0 1 0
+02:09:04: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 0 1 0
+02:09:04: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 1 0 3 3 0
+02:09:04: [ERROR] game\EntityManager.cpp 100:     4 4 0 0 1 0
+02:09:05: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 0 1 0
+02:09:05: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 1 0 2 3 0
+02:09:05: [ERROR] game\EntityManager.cpp 100:     3 3 0 0 1 0
+02:09:06: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 0 1 0
+02:09:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 1 0 1 3 0
+02:09:06: [ERROR] game\EntityManager.cpp 100:     2 3 0 0 1 0
+02:09:06: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 0 1 0
+02:09:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 1 0 1 2 0
+02:09:06: [ERROR] game\EntityManager.cpp 100:     1 3 0 0 1 0
+02:09:07: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 0 1 0
+02:09:07: [ERROR] game\EntityManager.cpp 100:     1 2 0 0 1 0
+02:09:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 0 1 0
+02:09:07: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 0.780797 1.78079 0 8 5 0
+02:09:07: [ERROR] game\EntityManager.cpp 93: Update: 0 1 0 8 5 0
+02:09:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 1 2 0
+02:09:07: [ERROR] game\EntityManager.cpp 100:     0 1 0 8 5 0
+02:09:08: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 8 5 0
+02:09:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 1 3 0
+02:09:08: [ERROR] game\EntityManager.cpp 100:     1 2 0 8 5 0
+02:09:08: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 8 5 0
+02:09:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 2 3 0
+02:09:08: [ERROR] game\EntityManager.cpp 100:     1 3 0 8 5 0
+02:09:09: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 8 5 0
+02:09:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 3 3 0
+02:09:09: [ERROR] game\EntityManager.cpp 100:     2 3 0 8 5 0
+02:09:09: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 8 5 0
+02:09:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 4 3 0
+02:09:09: [ERROR] game\EntityManager.cpp 100:     3 3 0 8 5 0
+02:09:10: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 8 5 0
+02:09:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 5 4 0
+02:09:10: [ERROR] game\EntityManager.cpp 100:     4 3 0 8 5 0
+02:09:11: [ERROR] game\EntityManager.cpp 93: Update: 5 4 0 8 5 0
+02:09:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 6 4 0
+02:09:11: [ERROR] game\EntityManager.cpp 100:     5 4 0 8 5 0
+02:09:11: [ERROR] game\EntityManager.cpp 93: Update: 6 4 0 8 5 0
+02:09:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 7 5 0
+02:09:11: [ERROR] game\EntityManager.cpp 100:     6 4 0 8 5 0
+02:09:12: [ERROR] game\EntityManager.cpp 93: Update: 7 5 0 8 5 0
+02:09:12: [ERROR] game\EntityManager.cpp 100:     7 5 0 8 5 0
+02:09:12: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 8 5 0
+02:09:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 5 0
+02:09:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 5 0
+02:09:13: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 5 0 10 5 0
+02:09:13: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 10 3 0
+02:09:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 3 0
+02:09:13: [ERROR] game\EntityManager.cpp 100:     8 4 0 10 3 0
+02:09:14: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 10 3 0
+02:09:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 9 3 0
+02:09:14: [ERROR] game\EntityManager.cpp 100:     8 3 0 10 3 0
+02:09:14: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 10 3 0
+02:09:14: [ERROR] game\EntityManager.cpp 100:     9 3 0 10 3 0
+02:09:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 3 0
+02:09:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 10 3 0
+02:09:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 3 0
+02:09:15: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 9.75795 3 0 10 5 0
+02:09:15: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 8 5 0
+02:09:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 9 3 0
+02:09:15: [ERROR] game\EntityManager.cpp 100:     10 3 0 8 5 0
+02:09:15: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 8 5 0
+02:09:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 3 0
+02:09:15: [ERROR] game\EntityManager.cpp 100:     9 3 0 8 5 0
+02:09:16: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 8 5 0
+02:09:16: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 4 0
+02:09:16: [ERROR] game\EntityManager.cpp 100:     8 3 0 8 5 0
+02:09:16: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 8 5 0
+02:09:16: [ERROR] game\EntityManager.cpp 100:     8 4 0 8 5 0
+02:09:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 5 0
+02:09:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 8 5 0
+02:09:17: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 4.77401 0 11 5 0
+02:09:17: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 12 5 0
+02:09:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 8 6 0
+02:09:17: [ERROR] game\EntityManager.cpp 100:     8 5 0 12 5 0
+02:09:17: [ERROR] game\EntityManager.cpp 93: Update: 8 6 0 12 5 0
+02:09:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 8 7 0
+02:09:17: [ERROR] game\EntityManager.cpp 100:     8 6 0 12 5 0
+02:09:18: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 12 5 0
+02:09:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 9 7 0
+02:09:18: [ERROR] game\EntityManager.cpp 100:     8 7 0 12 5 0
+02:09:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 9 7 0
+02:09:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 7 0 9 7 0
+02:09:18: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8.74595 7 0 10 6 0
+02:09:18: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 10 7 0
+02:09:18: [ERROR] game\EntityManager.cpp 100:     9 7 0 10 7 0
+02:09:19: [ERROR] game\EntityManager.cpp 93: Update: 10 7 0 10 7 0
+02:09:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 7 0
+02:09:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 10 7 0
+02:09:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 7 0 10 6 0
+02:09:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 9 7 0
+02:09:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 7 0 9 7 0
+02:09:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 9.17003 7 0 10 6 0
+02:09:20: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 10 7 0
+02:09:20: [ERROR] game\EntityManager.cpp 100:     9 7 0 10 7 0
+02:09:21: [ERROR] game\EntityManager.cpp 93: Update: 10 7 0 10 7 0
+02:09:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 7 0
+02:09:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 10 7 0
+02:09:21: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 7 0 10 6 0
+02:09:21: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 8 6 0
+02:09:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 8 7 0
+02:09:21: [ERROR] game\EntityManager.cpp 100:     9 7 0 8 6 0
+02:09:22: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 8 6 0
+02:09:22: [ERROR] game\EntityManager.cpp 100:     8 7 0 8 6 0
+02:09:22: [ERROR] game\EntityManager.cpp 93: Update: 8 6 0 8 6 0
+02:09:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 6 0
+02:09:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 7 0 8 6 0
+02:09:23: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 6 0 10 6 0
+02:09:23: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 10 7 0
+02:09:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 7 0 9 7 0
+02:09:23: [ERROR] game\EntityManager.cpp 100:     8 7 0 10 7 0
+02:09:24: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 10 7 0
+02:09:24: [ERROR] game\EntityManager.cpp 100:     9 7 0 10 7 0
+02:09:24: [ERROR] game\EntityManager.cpp 93: Update: 10 7 0 10 7 0
+02:09:25: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 7 0
+02:09:25: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 10 7 0
+02:09:25: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 7 0 10 6 0
+02:09:25: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 8 6 0
+02:09:25: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 8 7 0
+02:09:25: [ERROR] game\EntityManager.cpp 100:     9 7 0 8 6 0
+02:09:26: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 8 6 0
+02:09:26: [ERROR] game\EntityManager.cpp 100:     8 7 0 8 6 0
+02:09:26: [ERROR] game\EntityManager.cpp 93: Update: 8 6 0 8 6 0
+02:09:26: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 7 0 8 6 0
+02:09:26: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 6 0 9 6 0
+02:09:27: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 9 7 0
+02:09:27: [ERROR] game\EntityManager.cpp 100:     8 7 0 9 7 0
+02:09:27: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 9 7 0
+02:09:27: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 9 7 0
+02:09:27: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 9 7 0 9 6 0
+02:09:28: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 8 6 0
+02:09:28: [ERROR] game\EntityManager.cpp 100:     8 7 0 8 6 0
+02:09:28: [ERROR] game\EntityManager.cpp 93: Update: 8 6 0 8 6 0
+02:09:28: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 6 0
+02:09:28: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 6 0 9 5 0
+02:09:29: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 8 5 0
+02:09:29: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 5 0
+02:09:29: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 3 0 8 5 0
+02:09:29: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 5 0 9 5 0
+02:09:30: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 9 3 0
+02:09:30: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 3 0 8 3 0
+02:09:30: [ERROR] game\EntityManager.cpp 100:     8 4 0 9 3 0
+02:09:31: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 9 3 0
+02:09:31: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 9 3 0
+02:09:31: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 9 3 0 9 5 0
+02:09:31: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 8 5 0
+02:09:31: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 4 0
+02:09:31: [ERROR] game\EntityManager.cpp 100:     8 3 0 8 5 0
+02:09:32: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 8 5 0
+02:09:32: [ERROR] game\EntityManager.cpp 100:     8 4 0 8 5 0
+02:09:32: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 8 5 0
+02:09:33: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 5 0
+02:09:33: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 5 0
+02:09:33: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 5 0 10 5 0
+02:09:34: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 10 3 0
+02:09:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 3 0
+02:09:34: [ERROR] game\EntityManager.cpp 100:     8 4 0 10 3 0
+02:09:34: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 10 3 0
+02:09:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 9 3 0
+02:09:34: [ERROR] game\EntityManager.cpp 100:     8 3 0 10 3 0
+02:09:35: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 10 3 0
+02:09:35: [ERROR] game\EntityManager.cpp 100:     9 3 0 10 3 0
+02:09:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 6 0 10 3 0
+02:09:35: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 9.67595 3 0 11 6 0
+02:09:35: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 12 6 0
+02:09:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 6 0 11 3 0
+02:09:35: [ERROR] game\EntityManager.cpp 100:     10 3 0 12 6 0
+02:09:36: [ERROR] game\EntityManager.cpp 93: Update: 11 3 0 12 6 0
+02:09:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 6 0 12 3 0
+02:09:36: [ERROR] game\EntityManager.cpp 100:     11 3 0 12 6 0
+02:09:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 12 3 0
+02:09:36: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 11.252 3 0 8 6 0
+02:09:36: [ERROR] game\EntityManager.cpp 93: Update: 12 3 0 8 6 0
+02:09:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 11 3 0
+02:09:36: [ERROR] game\EntityManager.cpp 100:     12 3 0 8 6 0
+02:09:37: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 11 3 0
+02:09:37: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 11.2281 3 0 9 6 0
+02:09:37: [ERROR] game\EntityManager.cpp 93: Update: 11 3 0 8 6 0
+02:09:37: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 10 3 0
+02:09:37: [ERROR] game\EntityManager.cpp 100:     11 3 0 8 6 0
+02:09:37: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 8 6 0
+02:09:37: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 9 3 0
+02:09:37: [ERROR] game\EntityManager.cpp 100:     10 3 0 8 6 0
+02:09:38: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 8 6 0
+02:09:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 8 3 0
+02:09:38: [ERROR] game\EntityManager.cpp 100:     9 3 0 8 6 0
+02:09:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 3 0
+02:09:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 3 0
+02:09:38: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8.982 3 0 10 5 0
+02:09:38: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 10 3 0
+02:09:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 9 3 0
+02:09:38: [ERROR] game\EntityManager.cpp 100:     8 3 0 10 3 0
+02:09:39: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 10 3 0
+02:09:39: [ERROR] game\EntityManager.cpp 100:     9 3 0 10 3 0
+02:09:39: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 10 3 0
+02:09:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 10 3 0
+02:09:39: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 3 0 9 6 0
+02:09:40: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 8 6 0
+02:09:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 8 3 0
+02:09:40: [ERROR] game\EntityManager.cpp 100:     9 3 0 8 6 0
+02:09:40: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 8 6 0
+02:09:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 8 4 0
+02:09:40: [ERROR] game\EntityManager.cpp 100:     8 3 0 8 6 0
+02:09:41: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 8 6 0
+02:09:41: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 8 5 0
+02:09:41: [ERROR] game\EntityManager.cpp 100:     8 4 0 8 6 0
+02:09:41: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 8 5 0
+02:09:41: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 4.33201 0 3 3 0
+02:09:41: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 3 3 0
+02:09:41: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 7 5 0
+02:09:41: [ERROR] game\EntityManager.cpp 100:     8 5 0 3 3 0
+02:09:42: [ERROR] game\EntityManager.cpp 93: Update: 7 5 0 3 3 0
+02:09:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 6 4 0
+02:09:42: [ERROR] game\EntityManager.cpp 100:     7 5 0 3 3 0
+02:09:42: [ERROR] game\EntityManager.cpp 93: Update: 6 4 0 3 3 0
+02:09:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 5 4 0
+02:09:42: [ERROR] game\EntityManager.cpp 100:     6 4 0 3 3 0
+02:09:43: [ERROR] game\EntityManager.cpp 93: Update: 5 4 0 3 3 0
+02:09:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 4 4 0
+02:09:43: [ERROR] game\EntityManager.cpp 100:     5 4 0 3 3 0
+02:09:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 4 0 2 4 0
+02:09:43: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 4 0 3 4 0
+02:09:43: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 3 3 0
+02:09:43: [ERROR] game\EntityManager.cpp 100:     4 4 0 3 3 0
+02:09:44: [ERROR] game\EntityManager.cpp 93: Update: 3 4 0 3 4 0
+02:09:44: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 3 3 0
+02:09:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 2 0 2 2 0
+02:09:47: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 2 0 3 2 0
+02:09:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 4 2 0
+02:09:47: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 2 0 3 2 0
+02:09:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 3 4 0
+02:09:47: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 4 0 3 2 0
+02:09:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 3 3 0
+02:09:47: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 3 0 3 2 0
+02:09:47: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 3 2 0
+02:09:47: [ERROR] game\EntityManager.cpp 93: Update: 2 4 0 3 1 0
+02:09:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 1 3 0
+02:09:47: [ERROR] game\EntityManager.cpp 100:     2 4 0 3 1 0
+02:09:47: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 3 1 0
+02:09:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 1 3 0
+02:09:47: [ERROR] game\EntityManager.cpp 100:     2 3 0 3 1 0
+02:09:47: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 3 1 0
+02:09:47: [ERROR] game\EntityManager.cpp 100:     4 1 0 3 1 0
+02:09:48: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 3 1 0
+02:09:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 1 2 0
+02:09:48: [ERROR] game\EntityManager.cpp 100:     1 3 0 3 0 0
+02:09:48: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 1 0
+02:09:48: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 3 1 0
+02:09:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 1 2 0
+02:09:48: [ERROR] game\EntityManager.cpp 100:     1 3 0 3 0 0
+02:09:48: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 3 0 0
+02:09:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 2 1 0
+02:09:48: [ERROR] game\EntityManager.cpp 100:     1 2 0 3 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 3 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 2 1 0
+02:09:49: [ERROR] game\EntityManager.cpp 100:     1 2 0 3 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 3 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 2 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 100:     2 1 0 3 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 3 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 2 0 0
+02:09:49: [ERROR] game\EntityManager.cpp 100:     2 1 0 3 0 0
+02:09:50: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 3 0 0
+02:09:50: [ERROR] game\EntityManager.cpp 100:     2 0 0 3 0 0
+02:09:50: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 3 0 0
+02:09:50: [ERROR] game\EntityManager.cpp 100:     2 0 0 3 0 0
+02:09:50: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 3 0 0
+02:09:50: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 3 0 0
+02:09:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 3 2 0
+02:09:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 2 2 0
+02:09:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 1 0 3 1 0
+02:09:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 1 0 2 2 0
+02:09:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 3 0 0
+02:09:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 0 0 2 2 0
+02:09:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 3 0 0
+02:09:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 0 0 2 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 2 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 2 1 0
+02:09:53: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 1 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 0 0
+02:09:53: [ERROR] game\EntityManager.cpp 100:     2 0 0 1 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 93: Update: 4 0 0 1 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 4 1 0
+02:09:53: [ERROR] game\EntityManager.cpp 100:     4 0 0 1 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 93: Update: 1 0 0 1 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 1 0
+02:09:53: [ERROR] game\EntityManager.cpp 100:     1 0 0 1 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 1 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 3 2 0
+02:09:53: [ERROR] game\EntityManager.cpp 100:     4 1 0 1 2 0
+02:09:54: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 1 2 0
+02:09:54: [ERROR] game\EntityManager.cpp 100:     1 1 0 1 2 0
+02:09:54: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 1 2 0
+02:09:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 3 3 0
+02:09:54: [ERROR] game\EntityManager.cpp 100:     3 2 0 0 2 0
+02:09:54: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 1 2 0
+02:09:54: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 0 2 0
+02:09:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 2 3 0
+02:09:54: [ERROR] game\EntityManager.cpp 100:     3 3 0 0 2 0
+02:09:55: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 0 2 0
+02:09:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 1 3 0
+02:09:55: [ERROR] game\EntityManager.cpp 100:     2 3 0 0 2 0
+02:09:55: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 0 2 0
+02:09:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 0 3 0
+02:09:55: [ERROR] game\EntityManager.cpp 100:     1 3 0 0 2 0
+02:09:56: [ERROR] game\EntityManager.cpp 93: Update: 0 3 0 0 2 0
+02:09:56: [ERROR] game\EntityManager.cpp 100:     0 3 0 0 2 0
+02:09:56: [ERROR] game\EntityManager.cpp 93: Update: 0 2 0 0 2 0
+02:09:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 2 0 2 2 0
+02:09:57: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 2 0 3 2 0
+02:09:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 2 1 0
+02:09:57: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 1 0 3 2 0
+02:09:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 1 2 0
+02:09:57: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 1 2 0 3 2 0
+02:09:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 0 2 0
+02:09:57: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 0 2 0 3 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 3 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 1 0
+02:09:58: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 4 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 2 3 0
+02:09:58: [ERROR] game\EntityManager.cpp 100:     1 3 0 4 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 93: Update: 0 1 0 4 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 1 0 0
+02:09:58: [ERROR] game\EntityManager.cpp 100:     0 1 0 4 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 4 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 3 3 0
+02:09:58: [ERROR] game\EntityManager.cpp 100:     2 3 0 4 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 93: Update: 1 0 0 4 2 0
+02:09:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 2 0 0
+02:09:58: [ERROR] game\EntityManager.cpp 100:     1 0 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 4 3 0
+02:09:59: [ERROR] game\EntityManager.cpp 100:     3 3 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 3 0 0
+02:09:59: [ERROR] game\EntityManager.cpp 100:     2 0 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 100:     4 3 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 4 2 0
+02:09:59: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 1 0 4 0 0
+02:09:59: [ERROR] game\EntityManager.cpp 100:     3 0 0 4 1 0
+02:10:00: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 4 2 0
+02:10:00: [ERROR] game\EntityManager.cpp 93: Update: 4 0 0 4 1 0
+02:10:00: [ERROR] game\EntityManager.cpp 100:     4 0 0 4 1 0
+02:10:00: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 4 1 0
+02:10:01: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 3 2 0
+02:10:01: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 3 1 0
+02:10:01: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 1 0 3 2 0
+02:10:01: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 4 2 0
+02:10:01: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 2 0 3 2 0
+02:10:01: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 4 1 0
+02:10:01: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 1 0 3 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 2 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 100:     2 1 0 2 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 2 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 3 3 0
+02:10:02: [ERROR] game\EntityManager.cpp 100:     4 3 0 1 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 93: Update: 4 0 0 2 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 3 0 0
+02:10:02: [ERROR] game\EntityManager.cpp 100:     4 0 0 1 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 1 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 2 3 0
+02:10:02: [ERROR] game\EntityManager.cpp 100:     3 3 0 1 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 2 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 1 2 0
+02:10:02: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 2 0 0
+02:10:02: [ERROR] game\EntityManager.cpp 100:     3 0 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 3 0
+02:10:03: [ERROR] game\EntityManager.cpp 100:     2 3 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 1 0
+02:10:03: [ERROR] game\EntityManager.cpp 100:     2 0 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 100:     1 3 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 1 2 0
+02:10:03: [ERROR] game\EntityManager.cpp 100:     1 1 0 1 2 0
+02:10:04: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 1 2 0
+02:10:04: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 1 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 3 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 2 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 2 0 3 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 1 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 1 2 0 3 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 1 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 1 2 0 3 2 0
+02:10:08: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 3 1 0
+02:10:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 2 3 0
+02:10:08: [ERROR] game\EntityManager.cpp 100:     1 3 0 3 1 0
+02:10:08: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 3 1 0
+02:10:08: [ERROR] game\EntityManager.cpp 100:     2 1 0 3 1 0
+02:10:08: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 3 1 0
+02:10:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 1 0 0
+02:10:08: [ERROR] game\EntityManager.cpp 100:     1 1 0 3 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 3 1 0
+02:10:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 3 3 0
+02:10:09: [ERROR] game\EntityManager.cpp 100:     2 3 0 3 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 1 0
+02:10:09: [ERROR] game\EntityManager.cpp 93: Update: 1 0 0 3 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 2 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 100:     1 0 0 3 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 3 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 4 3 0
+02:10:09: [ERROR] game\EntityManager.cpp 100:     3 3 0 3 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 3 0 0
+02:10:09: [ERROR] game\EntityManager.cpp 100:     2 0 0 3 0 0
+02:10:10: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 3 0 0
+02:10:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 0 0 4 2 0
+02:10:10: [ERROR] game\EntityManager.cpp 100:     4 3 0 4 0 0
+02:10:10: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 3 0 0
+02:10:10: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 4 0 0
+02:10:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 0 0 4 1 0
+02:10:10: [ERROR] game\EntityManager.cpp 100:     4 2 0 4 0 0
+02:10:11: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 4 0 0
+02:10:11: [ERROR] game\EntityManager.cpp 100:     4 1 0 4 0 0
+02:10:11: [ERROR] game\EntityManager.cpp 93: Update: 4 0 0 4 0 0
+02:10:12: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 3 2 0
+02:10:12: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 3 1 0
+02:10:12: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 1 0 3 2 0
+02:10:12: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 3 0 0
+02:10:12: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 0 0 3 2 0
+02:10:12: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 4 0 0
+02:10:12: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 0 0 3 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 2 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 100:     2 1 0 2 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 2 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 0 0
+02:10:13: [ERROR] game\EntityManager.cpp 100:     2 0 0 1 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 2 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 4 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 100:     4 1 0 1 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 2 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 93: Update: 1 0 0 1 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 1 0
+02:10:13: [ERROR] game\EntityManager.cpp 100:     1 0 0 1 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 1 2 0
+02:10:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 4 3 0
+02:10:13: [ERROR] game\EntityManager.cpp 100:     4 2 0 1 2 0
+02:10:14: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 1 2 0
+02:10:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 3 3 0
+02:10:14: [ERROR] game\EntityManager.cpp 100:     4 3 0 1 2 0
+02:10:14: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 1 2 0
+02:10:14: [ERROR] game\EntityManager.cpp 100:     1 1 0 1 2 0
+02:10:14: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 1 2 0
+02:10:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 2 3 0
+02:10:14: [ERROR] game\EntityManager.cpp 100:     3 3 0 0 2 0
+02:10:14: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 1 2 0
+02:10:15: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 0 2 0
+02:10:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 1 3 0
+02:10:15: [ERROR] game\EntityManager.cpp 100:     2 3 0 0 2 0
+02:10:15: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 0 2 0
+02:10:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 0 3 0
+02:10:15: [ERROR] game\EntityManager.cpp 100:     1 3 0 0 2 0
+02:10:16: [ERROR] game\EntityManager.cpp 93: Update: 0 3 0 0 2 0
+02:10:16: [ERROR] game\EntityManager.cpp 100:     0 3 0 0 2 0
+02:10:16: [ERROR] game\EntityManager.cpp 93: Update: 0 2 0 0 2 0
+02:10:17: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 3 2 0
+02:10:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 2 2 0
+02:10:17: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 2 0 3 2 0
+02:10:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 1 2 0
+02:10:17: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 1 2 0 3 2 0
+02:10:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 0 2 0
+02:10:17: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 0 2 0 3 2 0
+02:10:18: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 3 1 0
+02:10:18: [ERROR] game\EntityManager.cpp 100:     2 1 0 3 1 0
+02:10:18: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 3 1 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 1 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 100:     1 1 0 3 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 93: Update: 0 1 0 3 1 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 1 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 0 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 0 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 1 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 1 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 0 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 0 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 1 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 2 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 5 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 0 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 5 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 1 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 2 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 6 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 5 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 3 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 5 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 100:     0 1 0 0 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 1 0
+02:10:18: [ERROR] game\EntityManager.cpp 93: Update: 1 0 0 3 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 2 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 100:     1 0 0 3 0 0
+02:10:18: [ERROR] game\EntityManager.cpp 93: Update: 0 0 0 0 0 0
+02:10:19: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 3 0 0
+02:10:19: [ERROR] game\EntityManager.cpp 100:     2 0 0 3 0 0
+02:10:19: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 3 0 0
+02:10:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 3 2 0
+02:10:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 3 1 0
+02:10:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 1 0 3 2 0
+02:10:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 3 0 0
+02:10:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 0 0 3 2 0
+02:10:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 2 0 0 0 0
+02:10:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 0 0 0 3 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 2 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 100:     2 1 0 2 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 2 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 3 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 2 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 3 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 3 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 4 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 0 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 1 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 1 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 3 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 4 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 3 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 4 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 5 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 0 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 1 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 4 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 5 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 2 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 4 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 5 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 6 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 1 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 5 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 6 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 2 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 3 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 4 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 6 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 7 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 0 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 0 6 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 4 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 6 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 6 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 100:     2 0 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 2 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 1 2 0 1 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 3 0 1 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 100:     1 1 0 2 3 0
+02:10:21: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 2 2 0
+02:10:21: [ERROR] game\EntityManager.cpp 93: Update: 1 0 0 1 0 0
+02:10:21: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 2 3 0
+02:10:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 3 0 1 3 0
+02:10:21: [ERROR] game\EntityManager.cpp 100:     1 2 0 2 3 0
+02:10:22: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 2 3 0
+02:10:22: [ERROR] game\EntityManager.cpp 100:     1 3 0 2 3 0
+02:10:22: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 2 3 0
+02:10:23: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 3 2 0
+02:10:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 2 2 0
+02:10:23: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 2 0 3 2 0
+02:10:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 1 0 0
+02:10:23: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 1 0 0 3 2 0
+02:10:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 2 3 0
+02:10:23: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 3 0 3 2 0
+02:10:23: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 3 1 0
+02:10:23: [ERROR] game\EntityManager.cpp 100:     2 1 0 3 1 0
+02:10:23: [ERROR] game\EntityManager.cpp 93: Update: 2 0 0 3 1 0
+02:10:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 0 0 3 0 0
+02:10:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 1 0 3 0 0
+02:10:23: [ERROR] game\EntityManager.cpp 100:     2 0 0 4 1 0
+02:10:23: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 3 1 0
+02:10:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 1 0 4 3 0
+02:10:23: [ERROR] game\EntityManager.cpp 100:     3 3 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 1 0 4 0 0
+02:10:24: [ERROR] game\EntityManager.cpp 100:     3 0 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 1 0 4 2 0
+02:10:24: [ERROR] game\EntityManager.cpp 100:     4 3 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 93: Update: 4 0 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 100:     4 0 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 4 1 0
+02:10:24: [ERROR] game\EntityManager.cpp 100:     4 2 0 4 1 0
+02:10:25: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 4 1 0
+02:10:25: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 4 1 0
+02:10:30: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 0 0 3 2 0
+02:10:30: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2 0 4 1 0
+02:10:30: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 0 0 3 1 0
+02:10:30: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 1 0 4 1 0
+02:10:30: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 1 0 4 1 0
+02:10:30: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 1 0 4 1 0
+02:10:30: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 4 0 0
+02:10:30: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 0 0 2 1 0
+02:10:30: [ERROR] game\EntityManager.cpp 100:     2 2 0 4 0 0
+02:10:30: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 4 0 0
+02:10:30: [ERROR] game\EntityManager.cpp 100:     3 0 0 4 0 0
+02:10:31: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 4 0 0
+02:10:31: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 1 1 0
+02:10:31: [ERROR] game\EntityManager.cpp 100:     2 1 0 5 0 0
+02:10:31: [ERROR] game\EntityManager.cpp 93: Update: 4 0 0 4 0 0
+02:10:31: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 5 0 0
+02:10:31: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 1 2 0
+02:10:31: [ERROR] game\EntityManager.cpp 100:     1 1 0 5 0 0
+02:10:32: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 5 0 0
+02:10:32: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 2 2 0
+02:10:32: [ERROR] game\EntityManager.cpp 100:     1 2 0 5 0 0
+02:10:32: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 5 0 0
+02:10:32: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 3 2 0
+02:10:32: [ERROR] game\EntityManager.cpp 100:     2 2 0 5 0 0
+02:10:33: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 5 0 0
+02:10:33: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 4 2 0
+02:10:33: [ERROR] game\EntityManager.cpp 100:     3 2 0 5 0 0
+02:10:33: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 5 0 0
+02:10:33: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 5 2 0
+02:10:33: [ERROR] game\EntityManager.cpp 100:     4 2 0 5 0 0
+02:10:34: [ERROR] game\EntityManager.cpp 93: Update: 5 2 0 5 0 0
+02:10:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 0 0 5 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 100:     5 2 0 5 0 0
+02:10:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 5 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 1.08401 0 3 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 4 0 0
+02:10:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 0 0 3 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 1 0 4 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 1 0 3 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 1 0 4 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 1 0 3 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 93: Update: 5 1 0 3 1 0
+02:10:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 1 0 5 2 0
+02:10:34: [ERROR] game\EntityManager.cpp 100:     5 1 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 93: Update: 3 0 0 3 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 100:     3 0 0 3 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 1 0 3 2 0
+02:10:35: [ERROR] game\EntityManager.cpp 100:     4 2 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 93: Update: 5 2 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 1 0 5 3 0
+02:10:35: [ERROR] game\EntityManager.cpp 100:     5 2 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 1 0 2 2 0
+02:10:35: [ERROR] game\EntityManager.cpp 100:     3 2 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 93: Update: 5 3 0 2 1 0
+02:10:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 1 0 4 3 0
+02:10:35: [ERROR] game\EntityManager.cpp 100:     5 3 0 2 1 0
+02:10:36: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 2 1 0
+02:10:36: [ERROR] game\EntityManager.cpp 100:     2 2 0 2 1 0
+02:10:36: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 2 1 0
+02:10:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 0 0 3 3 0
+02:10:36: [ERROR] game\EntityManager.cpp 100:     4 3 0 2 0 0
+02:10:36: [ERROR] game\EntityManager.cpp 93: Update: 2 1 0 2 1 0
+02:10:36: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 2 0 0
+02:10:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 0 0 3 2 0
+02:10:36: [ERROR] game\EntityManager.cpp 100:     3 3 0 2 0 0
+02:10:37: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 2 0 0
+02:10:37: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 0 0 2 2 0
+02:10:37: [ERROR] game\EntityManager.cpp 100:     3 2 0 2 0 0
+02:10:37: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 2 0 0
+02:10:37: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 0 0 1 2 0
+02:10:37: [ERROR] game\EntityManager.cpp 100:     2 2 0 2 0 0
+02:10:38: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 2 0 0
+02:10:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 0 0 1 1 0
+02:10:38: [ERROR] game\EntityManager.cpp 100:     1 2 0 2 0 0
+02:10:38: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 2 0 0
+02:10:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 2 0 0 1 0 0
+02:10:38: [ERROR] game\EntityManager.cpp 100:     1 1 0 2 0 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 1 0 0
+02:10:39: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 1 0.136 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 3 1 0
+02:10:39: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 1 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 3 1 0
+02:10:39: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 1 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 2 1 0
+02:10:39: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 2 1 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 93: Update: 1 0 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 1 1 0
+02:10:39: [ERROR] game\EntityManager.cpp 100:     1 0 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 3 3 0
+02:10:39: [ERROR] game\EntityManager.cpp 100:     3 2 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 93: Update: 2 2 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 2 3 0
+02:10:39: [ERROR] game\EntityManager.cpp 100:     2 2 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 93: Update: 1 1 0 5 5 0
+02:10:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 1 2 0
+02:10:39: [ERROR] game\EntityManager.cpp 100:     1 1 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 4 3 0
+02:10:40: [ERROR] game\EntityManager.cpp 100:     4 2 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 4 4 0
+02:10:40: [ERROR] game\EntityManager.cpp 100:     3 3 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 93: Update: 2 3 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 2 4 0
+02:10:40: [ERROR] game\EntityManager.cpp 100:     2 3 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 93: Update: 1 2 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 1 3 0
+02:10:40: [ERROR] game\EntityManager.cpp 100:     1 2 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 5 4 0
+02:10:40: [ERROR] game\EntityManager.cpp 100:     4 3 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 93: Update: 2 4 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 3 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 100:     2 4 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 93: Update: 1 3 0 5 5 0
+02:10:40: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 1 4 0
+02:10:40: [ERROR] game\EntityManager.cpp 100:     1 3 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 100:     4 4 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 93: Update: 5 4 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 100:     5 4 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 93: Update: 1 4 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 1 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 100:     1 4 0 4 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 93: Update: 3 5 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 4 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 4 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 100:     3 5 0 6 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 93: Update: 5 5 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 93: Update: 5 5 0 5 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 93: Update: 1 5 0 4 5 0
+02:10:41: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 4 0 2 6 0
+02:10:41: [ERROR] game\EntityManager.cpp 100:     1 5 0 4 4 0
+02:10:42: [ERROR] game\EntityManager.cpp 93: Update: 4 5 0 6 5 0
+02:10:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 4 6 0
+02:10:42: [ERROR] game\EntityManager.cpp 100:     4 5 0 6 5 0
+02:10:42: [ERROR] game\EntityManager.cpp 93: Update: 4 6 0 6 5 0
+02:10:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 5 6 0
+02:10:42: [ERROR] game\EntityManager.cpp 100:     4 6 0 6 5 0
+02:10:42: [ERROR] game\EntityManager.cpp 93: Update: 2 6 0 4 4 0
+02:10:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 4 0 2 5 0
+02:10:42: [ERROR] game\EntityManager.cpp 100:     2 6 0 4 4 0
+02:10:43: [ERROR] game\EntityManager.cpp 93: Update: 5 6 0 6 5 0
+02:10:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 6 6 0
+02:10:43: [ERROR] game\EntityManager.cpp 100:     5 6 0 6 5 0
+02:10:43: [ERROR] game\EntityManager.cpp 93: Update: 2 5 0 4 4 0
+02:10:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 4 0 3 5 0
+02:10:43: [ERROR] game\EntityManager.cpp 100:     2 5 0 4 4 0
+02:10:43: [ERROR] game\EntityManager.cpp 93: Update: 6 6 0 6 5 0
+02:10:43: [ERROR] game\EntityManager.cpp 100:     6 6 0 6 5 0
+02:10:43: [ERROR] game\EntityManager.cpp 93: Update: 3 5 0 4 4 0
+02:10:43: [ERROR] game\EntityManager.cpp 100:     3 5 0 4 4 0
+02:10:44: [ERROR] game\EntityManager.cpp 93: Update: 6 5 0 6 5 0
+02:10:44: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 4 4 0
+02:10:45: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 4 0 4 4 0
+02:10:45: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 4 0 5 4 0
+02:10:45: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 5 5 0
+02:10:45: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 5 0 5 4 0
+02:10:45: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 5 5 0
+02:10:45: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 5 0 5 4 0
+02:10:45: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 6 5 0
+02:10:45: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 6 5 0 5 4 0
+02:10:46: [ERROR] game\EntityManager.cpp 93: Update: 5 4 0 5 4 0
+02:10:46: [ERROR] game\EntityManager.cpp 93: Update: 4 5 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 3 5 0
+02:10:46: [ERROR] game\EntityManager.cpp 100:     4 5 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 93: Update: 5 6 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 6 6 0
+02:10:46: [ERROR] game\EntityManager.cpp 100:     5 6 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 93: Update: 6 4 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 6 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 100:     6 4 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 93: Update: 3 5 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 3 4 0
+02:10:46: [ERROR] game\EntityManager.cpp 100:     3 5 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 93: Update: 6 6 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 7 6 0
+02:10:46: [ERROR] game\EntityManager.cpp 100:     6 6 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 93: Update: 6 3 0 5 3 0
+02:10:46: [ERROR] game\EntityManager.cpp 100:     6 3 0 5 3 0
+02:10:47: [ERROR] game\EntityManager.cpp 93: Update: 3 4 0 5 3 0
+02:10:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 4 3 0
+02:10:47: [ERROR] game\EntityManager.cpp 100:     3 4 0 5 2 0
+02:10:47: [ERROR] game\EntityManager.cpp 93: Update: 7 6 0 5 3 0
+02:10:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 7 5 0
+02:10:47: [ERROR] game\EntityManager.cpp 100:     7 6 0 5 2 0
+02:10:47: [ERROR] game\EntityManager.cpp 93: Update: 5 3 0 5 3 0
+02:10:47: [ERROR] game\EntityManager.cpp 93: Update: 7 5 0 5 2 0
+02:10:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 7 4 0
+02:10:47: [ERROR] game\EntityManager.cpp 100:     7 5 0 5 2 0
+02:10:47: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 5 2 0
+02:10:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 4 2 0
+02:10:47: [ERROR] game\EntityManager.cpp 100:     4 3 0 5 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 93: Update: 7 4 0 5 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 6 3 0
+02:10:48: [ERROR] game\EntityManager.cpp 100:     7 4 0 5 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 5 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 100:     4 2 0 5 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 93: Update: 5 2 0 5 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 93: Update: 6 3 0 5 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 1 0 6 2 0
+02:10:48: [ERROR] game\EntityManager.cpp 100:     6 3 0 5 1 0
+02:10:49: [ERROR] game\EntityManager.cpp 93: Update: 6 2 0 5 1 0
+02:10:49: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 1 0 6 1 0
+02:10:49: [ERROR] game\EntityManager.cpp 100:     6 2 0 5 1 0
+02:10:49: [ERROR] game\EntityManager.cpp 93: Update: 6 1 0 5 1 0
+02:10:49: [ERROR] game\EntityManager.cpp 100:     6 1 0 5 1 0
+02:10:50: [ERROR] game\EntityManager.cpp 93: Update: 5 1 0 5 1 0
+02:10:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 5 4 0
+02:10:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 4 0 5 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 5 2 0
+02:10:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 2 0 5 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 5 1 0
+02:10:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 1 0 5 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 5 3 0
+02:10:52: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 3 0 5 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 93: Update: 5 5 0 5 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 4 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 4 3 0
+02:10:52: [ERROR] game\EntityManager.cpp 100:     4 2 0 4 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 4 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 3 1 0
+02:10:52: [ERROR] game\EntityManager.cpp 100:     4 1 0 4 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 4 5 0
+02:10:52: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 4 4 0
+02:10:52: [ERROR] game\EntityManager.cpp 100:     4 3 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 4 4 0
+02:10:53: [ERROR] game\EntityManager.cpp 100:     4 3 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 5 0 3 2 0
+02:10:53: [ERROR] game\EntityManager.cpp 100:     3 1 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 100:     4 4 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 100:     4 4 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 4 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 5 0 3 3 0
+02:10:53: [ERROR] game\EntityManager.cpp 100:     3 2 0 3 5 0
+02:10:53: [ERROR] game\EntityManager.cpp 93: Update: 4 5 0 4 5 0
+02:10:54: [ERROR] game\EntityManager.cpp 93: Update: 4 5 0 4 5 0
+02:10:54: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 3 5 0
+02:10:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 5 0 3 4 0
+02:10:54: [ERROR] game\EntityManager.cpp 100:     3 3 0 3 5 0
+02:10:54: [ERROR] game\EntityManager.cpp 93: Update: 3 4 0 3 5 0
+02:10:54: [ERROR] game\EntityManager.cpp 100:     3 4 0 3 5 0
+02:10:55: [ERROR] game\EntityManager.cpp 93: Update: 3 5 0 3 5 0
+02:11:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 4 0 5 5 0
+02:11:03: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 5 5 0 4 4 0
+02:11:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 4 0 4 5 0
+02:11:03: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 5 0 4 4 0
+02:11:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 3 0 3 5 0
+02:11:03: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 5 0 4 4 0
+02:11:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 3 0 4 5 0
+02:11:03: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 5 0 4 4 0
+02:11:03: [ERROR] game\EntityManager.cpp 93: Update: 5 4 0 4 4 0
+02:11:03: [ERROR] game\EntityManager.cpp 100:     5 4 0 4 4 0
+02:11:03: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 4 4 0
+02:11:03: [ERROR] game\EntityManager.cpp 93: Update: 3 4 0 4 3 0
+02:11:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 3 0 3 3 0
+02:11:03: [ERROR] game\EntityManager.cpp 100:     3 4 0 4 3 0
+02:11:03: [ERROR] game\EntityManager.cpp 93: Update: 4 6 0 4 3 0
+02:11:03: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 3 0 3 6 0
+02:11:03: [ERROR] game\EntityManager.cpp 100:     4 6 0 4 3 0
+02:11:04: [ERROR] game\EntityManager.cpp 93: Update: 4 4 0 4 4 0
+02:11:04: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 4 3 0
+02:11:04: [ERROR] game\EntityManager.cpp 100:     3 3 0 4 3 0
+02:11:04: [ERROR] game\EntityManager.cpp 93: Update: 3 6 0 4 3 0
+02:11:04: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 2 5 0
+02:11:04: [ERROR] game\EntityManager.cpp 100:     3 6 0 4 2 0
+02:11:04: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 4 3 0
+02:11:04: [ERROR] game\EntityManager.cpp 93: Update: 2 5 0 4 2 0
+02:11:04: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 2 4 0
+02:11:05: [ERROR] game\EntityManager.cpp 100:     2 5 0 4 2 0
+02:11:05: [ERROR] game\EntityManager.cpp 93: Update: 2 4 0 4 2 0
+02:11:05: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 3 3 0
+02:11:05: [ERROR] game\EntityManager.cpp 100:     2 4 0 4 2 0
+02:11:06: [ERROR] game\EntityManager.cpp 93: Update: 3 3 0 4 2 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 3 2 0
+02:11:06: [ERROR] game\EntityManager.cpp 100:     3 3 0 4 2 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 4 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 4 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 4 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 4 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 4 3 0
+02:11:06: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 4 3 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 3 2 0
+02:11:06: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 3 2.884 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 93: Update: 3 2 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 4 2 0
+02:11:06: [ERROR] game\EntityManager.cpp 100:     3 2 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 93: Update: 5 4 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 6 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 100:     5 4 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 93: Update: 4 5 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 5 5 0
+02:11:06: [ERROR] game\EntityManager.cpp 100:     4 5 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 93: Update: 5 3 0 7 4 0
+02:11:06: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 6 3 0
+02:11:06: [ERROR] game\EntityManager.cpp 100:     5 3 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 5 2 0
+02:11:07: [ERROR] game\EntityManager.cpp 100:     4 2 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 6 4 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 100:     6 4 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 5 5 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 3 0 6 5 0
+02:11:07: [ERROR] game\EntityManager.cpp 100:     5 5 0 7 3 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 6 3 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 3 0 7 3 0
+02:11:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 7 3 0
+02:11:07: [ERROR] game\EntityManager.cpp 100:     6 3 0 8 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 5 2 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 6 2 0
+02:11:07: [ERROR] game\EntityManager.cpp 100:     5 2 0 8 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 7 4 0 7 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 6 5 0 7 3 0
+02:11:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 2 0 7 5 0
+02:11:07: [ERROR] game\EntityManager.cpp 100:     6 5 0 7 2 0
+02:11:07: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 8 4 0
+02:11:07: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 8 3 0
+02:11:07: [ERROR] game\EntityManager.cpp 100:     7 3 0 8 4 0
+02:11:08: [ERROR] game\EntityManager.cpp 93: Update: 6 2 0 8 4 0
+02:11:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 7 2 0
+02:11:08: [ERROR] game\EntityManager.cpp 100:     6 2 0 8 4 0
+02:11:08: [ERROR] game\EntityManager.cpp 93: Update: 7 5 0 7 2 0
+02:11:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 1 0 8 5 0
+02:11:08: [ERROR] game\EntityManager.cpp 100:     7 5 0 7 1 0
+02:11:08: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 8 4 0
+02:11:08: [ERROR] game\EntityManager.cpp 100:     8 3 0 8 4 0
+02:11:08: [ERROR] game\EntityManager.cpp 93: Update: 7 2 0 8 4 0
+02:11:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 2 0 7 1 0
+02:11:08: [ERROR] game\EntityManager.cpp 100:     7 2 0 8 2 0
+02:11:08: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 7 1 0
+02:11:08: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 0 0 8 6 0
+02:11:08: [ERROR] game\EntityManager.cpp 100:     8 5 0 7 0 0
+02:11:08: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 8 4 0
+02:11:09: [ERROR] game\EntityManager.cpp 93: Update: 7 1 0 8 2 0
+02:11:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 2 0 8 1 0
+02:11:09: [ERROR] game\EntityManager.cpp 100:     7 1 0 8 2 0
+02:11:09: [ERROR] game\EntityManager.cpp 93: Update: 8 6 0 7 0 0
+02:11:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 0 0 7 6 0
+02:11:09: [ERROR] game\EntityManager.cpp 100:     8 6 0 7 0 0
+02:11:09: [ERROR] game\EntityManager.cpp 93: Update: 8 1 0 8 2 0
+02:11:09: [ERROR] game\EntityManager.cpp 100:     8 1 0 8 2 0
+02:11:09: [ERROR] game\EntityManager.cpp 93: Update: 7 6 0 7 0 0
+02:11:09: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 0 0 6 5 0
+02:11:09: [ERROR] game\EntityManager.cpp 100:     7 6 0 7 0 0
+02:11:10: [ERROR] game\EntityManager.cpp 93: Update: 8 2 0 8 2 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 7 4 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 7 4 0
+02:11:10: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 7 4 0 10 5 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 6 5 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 6 5 0
+02:11:10: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 6.18395 5.18395 0 10 5 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 4 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 4 0
+02:11:10: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 4 0 10 5 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 2 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 2 0
+02:11:10: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 2 0 10 5 0
+02:11:10: [ERROR] game\EntityManager.cpp 93: Update: 6 5 0 10 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 6 4 0
+02:11:10: [ERROR] game\EntityManager.cpp 100:     6 5 0 10 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 10 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 100:     7 3 0 10 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 10 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 9 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 100:     8 3 0 10 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 10 3 0
+02:11:10: [ERROR] game\EntityManager.cpp 100:     9 2 0 10 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 93: Update: 6 4 0 10 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 6 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 100:     6 4 0 10 2 0
+02:11:11: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 10 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 4 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 7 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 2 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 7 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 15 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 4 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 6 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 7 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 8 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 1 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 6 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 7 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 5 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 6 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 7 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 0 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 6 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 7 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 6 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 7 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 100:     8 3 0 9 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 10 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 100:     9 3 0 10 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 10 3 0
+02:11:11: [ERROR] game\EntityManager.cpp 93: Update: 6 3 0 10 2 0
+02:11:11: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 6 2 0
+02:11:11: [ERROR] game\EntityManager.cpp 100:     6 3 0 10 2 0
+02:11:11: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 9 3 0
+02:11:12: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 10 3 0
+02:11:12: [ERROR] game\EntityManager.cpp 93: Update: 6 2 0 10 2 0
+02:11:12: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 7 2 0
+02:11:12: [ERROR] game\EntityManager.cpp 100:     6 2 0 10 2 0
+02:11:12: [ERROR] game\EntityManager.cpp 93: Update: 7 2 0 10 2 0
+02:11:12: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 8 2 0
+02:11:12: [ERROR] game\EntityManager.cpp 100:     7 2 0 10 2 0
+02:11:13: [ERROR] game\EntityManager.cpp 93: Update: 8 2 0 10 2 0
+02:11:13: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 9 2 0
+02:11:13: [ERROR] game\EntityManager.cpp 100:     8 2 0 10 2 0
+02:11:13: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 10 2 0
+02:11:13: [ERROR] game\EntityManager.cpp 100:     9 2 0 10 2 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 9 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 9 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 9 3 0 10 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 2 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 2 0
+02:11:14: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 9.77594 2 0 10 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 3 0 10 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 4 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 6 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 6 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 2 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 3 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 4 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 6 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 6 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 9 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 0 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 1 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 1 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 2 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 2 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 3 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 3 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 4 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 4 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 6 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 9 9 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 15 5 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 6 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 11 9 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 10 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 1 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 1 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 2 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 2 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 3 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 3 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 9 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 7 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 9 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 1 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 1 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 2 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 2 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 9 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 14 8 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 9 0 10 3 0
+02:11:14: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 3 0 10 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 8 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 4 0
+02:11:14: [ERROR] game\EntityManager.cpp 100:     8 3 0 8 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 93: Update: 10 2 0 8 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 9 2 0
+02:11:14: [ERROR] game\EntityManager.cpp 100:     10 2 0 8 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 93: Update: 11 3 0 8 5 0
+02:11:14: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 11 2 0
+02:11:14: [ERROR] game\EntityManager.cpp 100:     11 3 0 8 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 8 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 100:     8 4 0 8 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 93: Update: 11 2 0 8 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 11 1 0
+02:11:15: [ERROR] game\EntityManager.cpp 100:     11 2 0 7 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 8 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 8 2 0
+02:11:15: [ERROR] game\EntityManager.cpp 100:     9 2 0 7 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 8 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 93: Update: 11 1 0 7 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 10 1 0
+02:11:15: [ERROR] game\EntityManager.cpp 100:     11 1 0 7 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 93: Update: 8 2 0 7 5 0
+02:11:15: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 7 3 0
+02:11:15: [ERROR] game\EntityManager.cpp 100:     8 2 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 93: Update: 10 1 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 9 1 0
+02:11:16: [ERROR] game\EntityManager.cpp 100:     10 1 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 7 4 0
+02:11:16: [ERROR] game\EntityManager.cpp 100:     7 3 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 93: Update: 9 1 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 9 2 0
+02:11:16: [ERROR] game\EntityManager.cpp 100:     9 1 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 93: Update: 7 4 0 7 5 0
+02:11:16: [ERROR] game\EntityManager.cpp 100:     7 4 0 7 5 0
+02:11:17: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 7 5 0
+02:11:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 8 2 0
+02:11:17: [ERROR] game\EntityManager.cpp 100:     9 2 0 6 5 0
+02:11:17: [ERROR] game\EntityManager.cpp 93: Update: 7 5 0 7 5 0
+02:11:17: [ERROR] game\EntityManager.cpp 93: Update: 8 2 0 6 5 0
+02:11:17: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 7 3 0
+02:11:17: [ERROR] game\EntityManager.cpp 100:     8 2 0 6 5 0
+02:11:18: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 6 5 0
+02:11:18: [ERROR] game\EntityManager.cpp 355: AStarFinder 6 5 0 6 4 0
+02:11:18: [ERROR] game\EntityManager.cpp 100:     7 3 0 6 5 0
+02:11:19: [ERROR] game\EntityManager.cpp 93: Update: 6 4 0 6 5 0
+02:11:19: [ERROR] game\EntityManager.cpp 100:     6 4 0 6 5 0
+02:11:19: [ERROR] game\EntityManager.cpp 93: Update: 6 5 0 6 5 0
+02:11:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 5 0
+02:11:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 8 5 0
+02:11:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 5 0 10 5 0
+02:11:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 7 5 0
+02:11:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 7 5 0
+02:11:20: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 7 5 0 10 5 0
+02:11:20: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 6 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 6 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 6 5 0 10 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 3 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 10 3 0
+02:11:21: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 3 0 10 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 8 6 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 8 7 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     8 6 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 7 6 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 7 7 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     7 6 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 6 6 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 6 7 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     6 6 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 11 3 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 12 3 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     11 3 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 9 7 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     8 7 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 7 7 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 7 8 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     7 7 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 6 7 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 6 8 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     6 7 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 93: Update: 12 3 0 12 5 0
+02:11:21: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 12 4 0
+02:11:21: [ERROR] game\EntityManager.cpp 100:     12 3 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 7 8 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 8 8 0
+02:11:22: [ERROR] game\EntityManager.cpp 100:     7 8 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 6 8 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 6 9 0
+02:11:22: [ERROR] game\EntityManager.cpp 100:     6 8 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 355: AStarFinder 12 5 0 10 7 0
+02:11:22: [ERROR] game\EntityManager.cpp 100:     9 7 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 12 4 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 100:     12 4 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 8 8 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 9 8 0
+02:11:22: [ERROR] game\EntityManager.cpp 100:     8 8 0 13 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 6 9 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 7 9 0
+02:11:22: [ERROR] game\EntityManager.cpp 100:     6 9 0 13 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 10 7 0 12 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 11 7 0
+02:11:22: [ERROR] game\EntityManager.cpp 100:     10 7 0 13 5 0
+02:11:22: [ERROR] game\EntityManager.cpp 93: Update: 12 5 0 12 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 93: Update: 7 9 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 8 9 0
+02:11:23: [ERROR] game\EntityManager.cpp 100:     7 9 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 93: Update: 9 8 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 10 8 0
+02:11:23: [ERROR] game\EntityManager.cpp 100:     9 8 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 93: Update: 11 7 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 12 7 0
+02:11:23: [ERROR] game\EntityManager.cpp 100:     11 7 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 93: Update: 8 9 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 9 9 0
+02:11:23: [ERROR] game\EntityManager.cpp 100:     8 9 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 93: Update: 10 8 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 11 8 0
+02:11:23: [ERROR] game\EntityManager.cpp 100:     10 8 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 93: Update: 12 7 0 13 5 0
+02:11:23: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 13 6 0
+02:11:23: [ERROR] game\EntityManager.cpp 100:     12 7 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 93: Update: 9 9 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 10 9 0
+02:11:24: [ERROR] game\EntityManager.cpp 100:     9 9 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 93: Update: 11 8 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 5 0 12 8 0
+02:11:24: [ERROR] game\EntityManager.cpp 100:     11 8 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 93: Update: 13 6 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 100:     13 6 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 93: Update: 10 9 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 11 9 0
+02:11:24: [ERROR] game\EntityManager.cpp 100:     10 9 0 13 4 0
+02:11:24: [ERROR] game\EntityManager.cpp 93: Update: 12 8 0 13 5 0
+02:11:24: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 13 8 0
+02:11:24: [ERROR] game\EntityManager.cpp 100:     12 8 0 13 4 0
+02:11:24: [ERROR] game\EntityManager.cpp 93: Update: 13 5 0 13 5 0
+02:11:25: [ERROR] game\EntityManager.cpp 93: Update: 11 9 0 13 4 0
+02:11:25: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 12 9 0
+02:11:25: [ERROR] game\EntityManager.cpp 100:     11 9 0 13 4 0
+02:11:25: [ERROR] game\EntityManager.cpp 93: Update: 13 8 0 13 4 0
+02:11:25: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 14 7 0
+02:11:25: [ERROR] game\EntityManager.cpp 100:     13 8 0 13 4 0
+02:11:25: [ERROR] game\EntityManager.cpp 93: Update: 12 9 0 13 4 0
+02:11:25: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 13 9 0
+02:11:25: [ERROR] game\EntityManager.cpp 100:     12 9 0 13 4 0
+02:11:25: [ERROR] game\EntityManager.cpp 93: Update: 14 7 0 13 4 0
+02:11:25: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 14 6 0
+02:11:25: [ERROR] game\EntityManager.cpp 100:     14 7 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 93: Update: 13 9 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 14 9 0
+02:11:26: [ERROR] game\EntityManager.cpp 100:     13 9 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 93: Update: 14 6 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 14 5 0
+02:11:26: [ERROR] game\EntityManager.cpp 100:     14 6 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 93: Update: 14 9 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 15 8 0
+02:11:26: [ERROR] game\EntityManager.cpp 100:     14 9 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 93: Update: 14 5 0 13 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 14 4 0
+02:11:26: [ERROR] game\EntityManager.cpp 100:     14 5 0 13 4 0
+02:11:27: [ERROR] game\EntityManager.cpp 93: Update: 15 8 0 13 4 0
+02:11:27: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 4 0 15 7 0
+02:11:27: [ERROR] game\EntityManager.cpp 100:     15 8 0 13 4 0
+02:11:27: [ERROR] game\EntityManager.cpp 93: Update: 14 4 0 13 4 0
+02:11:27: [ERROR] game\EntityManager.cpp 100:     14 4 0 13 4 0
+02:11:27: [ERROR] game\EntityManager.cpp 93: Update: 15 7 0 13 4 0
+02:11:27: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 3 0 15 6 0
+02:11:27: [ERROR] game\EntityManager.cpp 100:     15 7 0 13 3 0
+02:11:27: [ERROR] game\EntityManager.cpp 93: Update: 13 4 0 13 4 0
+02:11:28: [ERROR] game\EntityManager.cpp 93: Update: 15 6 0 13 3 0
+02:11:28: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 3 0 15 5 0
+02:11:28: [ERROR] game\EntityManager.cpp 100:     15 6 0 13 3 0
+02:11:28: [ERROR] game\EntityManager.cpp 93: Update: 15 5 0 13 3 0
+02:11:28: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 3 0 14 4 0
+02:11:28: [ERROR] game\EntityManager.cpp 100:     15 5 0 13 3 0
+02:11:29: [ERROR] game\EntityManager.cpp 93: Update: 14 4 0 13 3 0
+02:11:29: [ERROR] game\EntityManager.cpp 355: AStarFinder 13 3 0 14 3 0
+02:11:29: [ERROR] game\EntityManager.cpp 100:     14 4 0 13 3 0
+02:11:30: [ERROR] game\EntityManager.cpp 93: Update: 14 3 0 13 3 0
+02:11:30: [ERROR] game\EntityManager.cpp 100:     14 3 0 13 3 0
+02:11:30: [ERROR] game\EntityManager.cpp 93: Update: 13 3 0 13 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 13 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 13 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 13 5 0 10 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 13 4 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 13 4 0
+02:11:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 13 4 0 10 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 13 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 13 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 13 3 0 10 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 12 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 12 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 12 5 0 10 5 0
+02:11:34: [ERROR] game\EntityManager.cpp 93: Update: 14 5 0 10 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 14 4 0
+02:11:34: [ERROR] game\EntityManager.cpp 100:     14 5 0 10 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 93: Update: 12 4 0 10 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 12 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 100:     12 4 0 10 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 93: Update: 12 3 0 10 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 11 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 100:     12 3 0 10 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 93: Update: 12 6 0 10 3 0
+02:11:34: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 12 7 0
+02:11:34: [ERROR] game\EntityManager.cpp 100:     12 6 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 14 4 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 14 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 100:     14 4 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 12 3 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 11 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 100:     12 3 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 12 7 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 13 7 0
+02:11:35: [ERROR] game\EntityManager.cpp 100:     12 7 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 11 3 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 100:     11 3 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 14 3 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 13 2 0
+02:11:35: [ERROR] game\EntityManager.cpp 100:     14 3 0 10 2 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 11 3 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 100:     11 3 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 13 7 0 10 3 0
+02:11:35: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 13 6 0
+02:11:35: [ERROR] game\EntityManager.cpp 100:     13 7 0 10 2 0
+02:11:35: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 10 3 0
+02:11:36: [ERROR] game\EntityManager.cpp 93: Update: 13 6 0 10 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 12 5 0
+02:11:36: [ERROR] game\EntityManager.cpp 100:     13 6 0 10 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 10 3 0
+02:11:36: [ERROR] game\EntityManager.cpp 93: Update: 13 2 0 10 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 12 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 100:     13 2 0 10 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 93: Update: 12 5 0 10 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 12 4 0
+02:11:36: [ERROR] game\EntityManager.cpp 100:     12 5 0 10 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 93: Update: 12 2 0 10 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 11 2 0
+02:11:36: [ERROR] game\EntityManager.cpp 100:     12 2 0 10 2 0
+02:11:37: [ERROR] game\EntityManager.cpp 93: Update: 12 4 0 10 2 0
+02:11:37: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 12 3 0
+02:11:37: [ERROR] game\EntityManager.cpp 100:     12 4 0 10 2 0
+02:11:37: [ERROR] game\EntityManager.cpp 93: Update: 11 2 0 10 2 0
+02:11:37: [ERROR] game\EntityManager.cpp 100:     11 2 0 10 2 0
+02:11:37: [ERROR] game\EntityManager.cpp 93: Update: 12 3 0 10 2 0
+02:11:37: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 13 3 0
+02:11:37: [ERROR] game\EntityManager.cpp 100:     12 3 0 10 1 0
+02:11:37: [ERROR] game\EntityManager.cpp 93: Update: 10 2 0 10 2 0
+02:11:38: [ERROR] game\EntityManager.cpp 93: Update: 13 3 0 10 1 0
+02:11:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 13 2 0
+02:11:38: [ERROR] game\EntityManager.cpp 100:     13 3 0 10 1 0
+02:11:38: [ERROR] game\EntityManager.cpp 93: Update: 13 2 0 10 1 0
+02:11:38: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 12 2 0
+02:11:38: [ERROR] game\EntityManager.cpp 100:     13 2 0 10 1 0
+02:11:39: [ERROR] game\EntityManager.cpp 93: Update: 12 2 0 10 1 0
+02:11:39: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 11 1 0
+02:11:39: [ERROR] game\EntityManager.cpp 100:     12 2 0 10 1 0
+02:11:40: [ERROR] game\EntityManager.cpp 93: Update: 11 1 0 10 1 0
+02:11:40: [ERROR] game\EntityManager.cpp 100:     11 1 0 10 1 0
+02:11:40: [ERROR] game\EntityManager.cpp 93: Update: 10 1 0 10 1 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 2 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 2 0
+02:11:42: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 2 0 10 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 3 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 3 0
+02:11:42: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 3 0 10 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 3 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 3 0
+02:11:42: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 3 0 10 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 10 1 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 1 0
+02:11:42: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 1 0 10 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 8 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 3 0
+02:11:42: [ERROR] game\EntityManager.cpp 100:     9 2 0 8 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 8 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 3 0
+02:11:42: [ERROR] game\EntityManager.cpp 100:     9 3 0 8 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 93: Update: 11 3 0 8 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 11 2 0
+02:11:42: [ERROR] game\EntityManager.cpp 100:     11 3 0 8 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 93: Update: 9 1 0 8 5 0
+02:11:42: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 1 0
+02:11:42: [ERROR] game\EntityManager.cpp 100:     9 1 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 11 2 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 11 1 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     11 2 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 4 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     8 3 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 8 1 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 7 2 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     8 1 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 8 4 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     8 3 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 11 1 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 5 0 10 0 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     11 1 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     8 4 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     8 4 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 93: Update: 7 2 0 8 5 0
+02:11:43: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 7 3 0
+02:11:43: [ERROR] game\EntityManager.cpp 100:     7 2 0 7 5 0
+02:11:44: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 8 5 0
+02:11:44: [ERROR] game\EntityManager.cpp 93: Update: 8 5 0 8 5 0
+02:11:44: [ERROR] game\EntityManager.cpp 93: Update: 10 0 0 8 5 0
+02:11:44: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 9 0 0
+02:11:44: [ERROR] game\EntityManager.cpp 100:     10 0 0 8 4 0
+02:11:44: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 7 5 0
+02:11:44: [ERROR] game\EntityManager.cpp 355: AStarFinder 7 5 0 7 4 0
+02:11:44: [ERROR] game\EntityManager.cpp 100:     7 3 0 7 5 0
+02:11:44: [ERROR] game\EntityManager.cpp 93: Update: 9 0 0 8 4 0
+02:11:44: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 9 1 0
+02:11:44: [ERROR] game\EntityManager.cpp 100:     9 0 0 8 4 0
+02:11:44: [ERROR] game\EntityManager.cpp 93: Update: 7 4 0 7 5 0
+02:11:44: [ERROR] game\EntityManager.cpp 100:     7 4 0 7 5 0
+02:11:45: [ERROR] game\EntityManager.cpp 93: Update: 9 1 0 8 4 0
+02:11:45: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 9 2 0
+02:11:45: [ERROR] game\EntityManager.cpp 100:     9 1 0 8 4 0
+02:11:45: [ERROR] game\EntityManager.cpp 93: Update: 7 5 0 7 5 0
+02:11:45: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 8 4 0
+02:11:45: [ERROR] game\EntityManager.cpp 355: AStarFinder 8 4 0 8 3 0
+02:11:45: [ERROR] game\EntityManager.cpp 100:     9 2 0 8 4 0
+02:11:45: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 5 0 10 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8 5 0 10 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 8 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 8.84867 2.15132 0 10 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 5 0 7 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 7 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 7 5 0 10 5 0
+02:11:46: [ERROR] game\EntityManager.cpp 93: Update: 8 4 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 7 4 0
+02:11:46: [ERROR] game\EntityManager.cpp 100:     8 4 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 93: Update: 8 6 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 8 7 0
+02:11:46: [ERROR] game\EntityManager.cpp 100:     8 6 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 93: Update: 7 4 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 7 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 100:     7 4 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 9 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 100:     8 3 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 93: Update: 7 4 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 7 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 100:     7 4 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 93: Update: 8 7 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 9 7 0
+02:11:46: [ERROR] game\EntityManager.cpp 100:     8 7 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 10 3 0
+02:11:46: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 3 0 7 2 0
+02:11:46: [ERROR] game\EntityManager.cpp 100:     7 3 0 10 3 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 10 3 0
+02:11:47: [ERROR] game\EntityManager.cpp 100:     9 3 0 10 3 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 10 3 0
+02:11:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 7 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 100:     7 3 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 9 7 0 10 3 0
+02:11:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 10 7 0
+02:11:47: [ERROR] game\EntityManager.cpp 100:     9 7 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 7 2 0 10 3 0
+02:11:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 8 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 100:     7 2 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 10 3 0 10 3 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 7 2 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 8 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 100:     7 2 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 10 7 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 11 7 0
+02:11:47: [ERROR] game\EntityManager.cpp 100:     10 7 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 93: Update: 8 2 0 10 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 9 2 0
+02:11:47: [ERROR] game\EntityManager.cpp 100:     8 2 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 93: Update: 8 2 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 9 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 100:     8 2 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 93: Update: 11 7 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 2 0 12 7 0
+02:11:48: [ERROR] game\EntityManager.cpp 100:     11 7 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 100:     9 2 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 100:     9 2 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 93: Update: 12 7 0 10 2 0
+02:11:48: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 12 6 0
+02:11:48: [ERROR] game\EntityManager.cpp 100:     12 7 0 10 1 0
+02:11:48: [ERROR] game\EntityManager.cpp 93: Update: 10 2 0 10 2 0
+02:11:49: [ERROR] game\EntityManager.cpp 93: Update: 10 2 0 10 2 0
+02:11:49: [ERROR] game\EntityManager.cpp 93: Update: 12 6 0 10 1 0
+02:11:49: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 12 5 0
+02:11:49: [ERROR] game\EntityManager.cpp 100:     12 6 0 10 1 0
+02:11:49: [ERROR] game\EntityManager.cpp 93: Update: 12 5 0 10 1 0
+02:11:49: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 12 4 0
+02:11:49: [ERROR] game\EntityManager.cpp 100:     12 5 0 10 1 0
+02:11:50: [ERROR] game\EntityManager.cpp 93: Update: 12 4 0 10 1 0
+02:11:50: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 12 3 0
+02:11:50: [ERROR] game\EntityManager.cpp 100:     12 4 0 10 1 0
+02:11:50: [ERROR] game\EntityManager.cpp 93: Update: 12 3 0 10 1 0
+02:11:50: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 11 2 0
+02:11:50: [ERROR] game\EntityManager.cpp 100:     12 3 0 10 1 0
+02:11:51: [ERROR] game\EntityManager.cpp 93: Update: 11 2 0 10 1 0
+02:11:51: [ERROR] game\EntityManager.cpp 355: AStarFinder 10 1 0 11 1 0
+02:11:51: [ERROR] game\EntityManager.cpp 100:     11 2 0 10 1 0
+02:11:52: [ERROR] game\EntityManager.cpp 93: Update: 11 1 0 10 1 0
+02:11:52: [ERROR] game\EntityManager.cpp 100:     11 1 0 10 1 0
+02:11:52: [ERROR] game\EntityManager.cpp 93: Update: 10 1 0 10 1 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 10 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 2 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 10 1 0
+02:11:54: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 1 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 10 3 0
+02:11:54: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 3 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 10 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 314: SetEntitySelection: 10 2 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 93: Update: 9 2 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 8 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 100:     9 2 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 93: Update: 9 1 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 8 1 0
+02:11:54: [ERROR] game\EntityManager.cpp 100:     9 1 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 93: Update: 9 3 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 8 3 0
+02:11:54: [ERROR] game\EntityManager.cpp 100:     9 3 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 93: Update: 11 2 0 5 2 0
+02:11:54: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 11 1 0
+02:11:54: [ERROR] game\EntityManager.cpp 100:     11 2 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 93: Update: 8 2 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 7 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 100:     8 2 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 93: Update: 8 1 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 7 1 0
+02:11:55: [ERROR] game\EntityManager.cpp 100:     8 1 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 93: Update: 8 3 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 7 3 0
+02:11:55: [ERROR] game\EntityManager.cpp 100:     8 3 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 93: Update: 11 1 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 10 0 0
+02:11:55: [ERROR] game\EntityManager.cpp 100:     11 1 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 93: Update: 7 2 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 6 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 100:     7 2 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 93: Update: 7 1 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 6 1 0
+02:11:55: [ERROR] game\EntityManager.cpp 100:     7 1 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 93: Update: 7 3 0 5 2 0
+02:11:55: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 6 3 0
+02:11:55: [ERROR] game\EntityManager.cpp 100:     7 3 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 10 0 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 2 0 9 0 0
+02:11:56: [ERROR] game\EntityManager.cpp 100:     10 0 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 6 2 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 100:     6 2 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 6 1 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 5 1 0 5 1 0
+02:11:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 5 1 0
+02:11:56: [ERROR] game\EntityManager.cpp 100:     6 1 0 4 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 6 3 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 5 3 0
+02:11:56: [ERROR] game\EntityManager.cpp 100:     6 3 0 4 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 9 0 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 8 0 0
+02:11:56: [ERROR] game\EntityManager.cpp 100:     9 0 0 4 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 5 2 0 5 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 5 1 0 4 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 4 1 0
+02:11:56: [ERROR] game\EntityManager.cpp 100:     5 1 0 4 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 93: Update: 5 3 0 4 2 0
+02:11:56: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 4 3 0
+02:11:56: [ERROR] game\EntityManager.cpp 100:     5 3 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 93: Update: 8 0 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 4 2 0 7 0 0
+02:11:57: [ERROR] game\EntityManager.cpp 100:     8 0 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 100:     4 1 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 93: Update: 4 3 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 100:     4 3 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 93: Update: 7 0 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 2 0 6 0 0
+02:11:57: [ERROR] game\EntityManager.cpp 100:     7 0 0 3 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 4 2 0
+02:11:57: [ERROR] game\EntityManager.cpp 93: Update: 4 2 0 4 2 0
+02:11:58: [ERROR] game\EntityManager.cpp 93: Update: 6 0 0 3 2 0
+02:11:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 2 0 5 0 0
+02:11:58: [ERROR] game\EntityManager.cpp 100:     6 0 0 3 2 0
+02:11:58: [ERROR] game\EntityManager.cpp 93: Update: 5 0 0 3 2 0
+02:11:58: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 2 0 4 1 0
+02:11:58: [ERROR] game\EntityManager.cpp 100:     5 0 0 3 2 0
+02:11:59: [ERROR] game\EntityManager.cpp 93: Update: 4 1 0 3 2 0
+02:11:59: [ERROR] game\EntityManager.cpp 355: AStarFinder 3 2 0 3 1 0
+02:11:59: [ERROR] game\EntityManager.cpp 100:     4 1 0 3 2 0
+02:11:59: [ERROR] game\EntityManager.cpp 93: Update: 3 1 0 3 2 0
+02:11:59: [ERROR] game\EntityManager.cpp 100:     3 1 0 3 2 0

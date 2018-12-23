@@ -13,6 +13,8 @@
 
 template<>EntityManager *Ogre::Singleton< EntityManager >::msSingleton = NULL;
 
+std::vector< Ogre::Vector3 > place_finder_ignore;
+
 
 
 EntityManager::EntityManager()
@@ -87,10 +89,15 @@ EntityManager::Update()
             {
                 m_EntitiesMovable[ i ]->SetPosition( end );
                 Ogre::Vector3 pos_e = m_EntitiesMovable[ i ]->GetMoveEndPosition();
+
+//LOG_ERROR( "Update: " + Ogre::StringConverter::toString( end ) + " " + Ogre::StringConverter::toString( pos_e ) );
+
                 if( pos_e != end )
                 {
                     Ogre::Vector3 pos_s = m_EntitiesMovable[ i ]->GetMoveNextPosition();
+                    place_finder_ignore.clear();
                     m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], pos_e.x, pos_e.y ) );
+//LOG_ERROR( "    " + Ogre::StringConverter::toString( end ) + " " + Ogre::StringConverter::toString( m_EntitiesMovable[ i ]->GetMoveEndPosition() ) );
                     std::vector< Ogre::Vector3 > occupation;
                     occupation.push_back( end );
                     occupation.push_back( pos_s );
@@ -301,7 +308,9 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 {
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
+        place_finder_ignore.clear();
         m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], move.x, move.y ) );
+
         std::vector< Ogre::Vector3 > occupation_old = m_EntitiesSelected[ i ]->GetOccupation();
         std::vector< Ogre::Vector3 > occupation;
         if( occupation_old.size() > 0 )
@@ -330,6 +339,11 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
     }
 
     Ogre::Vector3 pos_s = entity->GetMoveNextPosition();
+    if( ( pos_s.x == x ) && ( pos_s.y == y ) )
+    {
+        return move_path;
+    }
+
     Ogre::Vector3 pos_e = PlaceFinder( entity, x, y );
     if( pos_e.z == -1 )
     {
@@ -459,6 +473,12 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
         delete grid[ i ];
     }
 
+    if( move_path.size() == 0 )
+    {
+        place_finder_ignore.push_back( pos_e );
+        move_path = AStarFinder( entity, x, y );
+    }
+
     return move_path;
 }
 
@@ -517,6 +537,14 @@ EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
     {
         Ogre::Vector3 pos = entity->GetPosition();
         if( ( pos.x == x ) && ( pos.y == y ) )
+        {
+            return false;
+        }
+    }
+
+    for( size_t i = 0; i < place_finder_ignore.size(); ++i )
+    {
+        if( ( place_finder_ignore[ i ].x == x ) && ( place_finder_ignore[ i ].y == y ) )
         {
             return false;
         }
