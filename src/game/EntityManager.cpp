@@ -90,7 +90,7 @@ EntityManager::Update()
                 m_EntitiesMovable[ i ]->SetPosition( end );
                 Ogre::Vector3 pos_e = m_EntitiesMovable[ i ]->GetMoveEndPosition();
 
-                LOG_ERROR( "Update for entity " + Ogre::StringConverter::toString( m_EntitiesMovable[ i ] ) + ": cur_pos=" + Ogre::StringConverter::toString( end ) + ", final_pos" + Ogre::StringConverter::toString( pos_e ) );
+                LOG_ERROR( "Update for entity " + Ogre::StringConverter::toString( i ) + ": cur_pos=" + Ogre::StringConverter::toString( end ) + ", final_pos=" + Ogre::StringConverter::toString( pos_e ) );
 
                 if( pos_e != end )
                 {
@@ -322,7 +322,7 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
         place_finder_ignore.clear();
         m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], move.x, move.y ) );
 
-        LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( m_EntitiesSelected[ i ] ) + ":" );
+        LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( i ) + ":" );
         std::vector< Ogre::Vector3 > path = m_EntitiesSelected[ i ]->GetMovePath();
         for( size_t j = 0; j < path.size(); ++j )
         {
@@ -358,14 +358,14 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
         return move_path;
     }
 
-    Ogre::Vector3 pos_s = entity->GetMoveNextPosition();
-    if( ( pos_s.x == x ) && ( pos_s.y == y ) )
+    Ogre::Vector3 pos_e = PlaceFinder( entity, x, y );
+    if( pos_e.z == -1 )
     {
         return move_path;
     }
 
-    Ogre::Vector3 pos_e = PlaceFinder( entity, x, y );
-    if( pos_e.z == -1 )
+    Ogre::Vector3 pos_s = entity->GetMoveNextPosition();
+    if( ( pos_s.x == pos_e.x ) && ( pos_s.y == pos_e.y ) )
     {
         return move_path;
     }
