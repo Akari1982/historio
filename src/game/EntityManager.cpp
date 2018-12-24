@@ -90,21 +90,31 @@ EntityManager::Update()
                 m_EntitiesMovable[ i ]->SetPosition( end );
                 Ogre::Vector3 pos_e = m_EntitiesMovable[ i ]->GetMoveEndPosition();
 
-//LOG_ERROR( "Update: " + Ogre::StringConverter::toString( end ) + " " + Ogre::StringConverter::toString( pos_e ) );
+                LOG_ERROR( "Update for entity " + Ogre::StringConverter::toString( m_EntitiesMovable[ i ] ) + ": cur_pos=" + Ogre::StringConverter::toString( end ) + ", final_pos" + Ogre::StringConverter::toString( pos_e ) );
 
                 if( pos_e != end )
                 {
                     Ogre::Vector3 pos_s = m_EntitiesMovable[ i ]->GetMoveNextPosition();
                     place_finder_ignore.clear();
                     m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], pos_e.x, pos_e.y ) );
-//LOG_ERROR( "    " + Ogre::StringConverter::toString( end ) + " " + Ogre::StringConverter::toString( m_EntitiesMovable[ i ]->GetMoveEndPosition() ) );
+
+                    LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( m_EntitiesMovable[ i ] ) + ":" );
+                    std::vector< Ogre::Vector3 > path = m_EntitiesMovable[ i ]->GetMovePath();
+                    for( size_t j = 0; j < path.size(); ++j )
+                    {
+                        LOG_ERROR( "        " + Ogre::StringConverter::toString( path[ j ] ) );
+                    }
+
                     std::vector< Ogre::Vector3 > occupation;
                     occupation.push_back( end );
                     occupation.push_back( pos_s );
+                    LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( end ) );
+                    LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( pos_s ) );
                     m_EntitiesMovable[ i ]->SetOccupation( occupation );
                 }
                 else
                 {
+                    LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( end ) );
                     std::vector< Ogre::Vector3 > occupation;
                     occupation.push_back( end );
                     m_EntitiesMovable[ i ]->SetOccupation( occupation );
@@ -306,19 +316,29 @@ EntityManager::SetEntitySelection( const Ogre::Vector3& start, const Ogre::Vecto
 void
 EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 {
+    LOG_ERROR( "Start move: target=" + Ogre::StringConverter::toString( move ) );
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
         place_finder_ignore.clear();
         m_EntitiesSelected[ i ]->SetMovePath( AStarFinder( m_EntitiesSelected[ i ], move.x, move.y ) );
+
+        LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( m_EntitiesSelected[ i ] ) + ":" );
+        std::vector< Ogre::Vector3 > path = m_EntitiesSelected[ i ]->GetMovePath();
+        for( size_t j = 0; j < path.size(); ++j )
+        {
+            LOG_ERROR( "        " + Ogre::StringConverter::toString( path[ j ] ) );
+        }
 
         std::vector< Ogre::Vector3 > occupation_old = m_EntitiesSelected[ i ]->GetOccupation();
         std::vector< Ogre::Vector3 > occupation;
         if( occupation_old.size() > 0 )
         {
             occupation.push_back( occupation_old[ 0 ] );
+            LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( occupation_old[ 0 ] ) );
             Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
             if( pos != occupation_old[ 0 ] )
             {
+                LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( pos ) );
                 occupation.push_back( pos );
             }
             m_EntitiesSelected[ i ]->SetOccupation( occupation );
