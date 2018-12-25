@@ -13,13 +13,13 @@ public:
 
     void SetMovePath( std::vector< Ogre::Vector3 >& move_path );
     const std::vector< Ogre::Vector3 >& GetMovePath() const;
-    void SetPosition( const Ogre::Vector3& pos );
-
-    Ogre::Vector3 GetMoveNextPosition() const;
-    Ogre::Vector3 GetMoveEndPosition() const;
+    Ogre::Vector3 GetMoveNext() const;
+    void SetMoveEnd( const Ogre::Vector3& end );
+    const Ogre::Vector3& GetMoveEnd() const;
 
 private:
     std::vector< Ogre::Vector3 > m_MovePath;
+    Ogre::Vector3 m_MoveEnd;
 };
 
 

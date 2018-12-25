@@ -18,16 +18,7 @@ EntityMovable::~EntityMovable()
 void
 EntityMovable::SetMovePath( std::vector< Ogre::Vector3 >& move_path )
 {
-    if( m_MovePath.size() != 0 )
-    {
-        Ogre::Vector3 pos = m_MovePath.back();
-        m_MovePath = move_path;
-        m_MovePath.push_back( pos );
-    }
-    else
-    {
-        m_MovePath = move_path;
-    }
+    m_MovePath = move_path;
 }
 
 
@@ -40,40 +31,28 @@ EntityMovable::GetMovePath() const
 
 
 
-void
-EntityMovable::SetPosition( const Ogre::Vector3& pos )
-{
-    if( m_MovePath.size() != 0 )
-    {
-        if( m_MovePath.back() == pos )
-        {
-            m_MovePath.pop_back();
-        }
-    }
-
-    Entity::SetPosition( pos );
-}
-
-
-
 Ogre::Vector3
-EntityMovable::GetMoveNextPosition() const
+EntityMovable::GetMoveNext() const
 {
     if( m_MovePath.size() != 0 )
     {
         return m_MovePath.back();
     }
-    return GetPosition();
+    return Ogre::Vector3( 0, 0, -1 );
+}
+
+
+
+void
+EntityMovable::SetMoveEnd( const Ogre::Vector3& end )
+{
+    m_MoveEnd = end;
 }
 
 
 
 Ogre::Vector3
-EntityMovable::GetMoveEndPosition() const
+EntityMovable::GetMoveEnd() const
 {
-    if( m_MovePath.size() != 0 )
-    {
-        return m_MovePath.front();
-    }
-    return GetPosition();
+    return m_MoveEnd;
 }
