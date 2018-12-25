@@ -552,12 +552,15 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
 const bool
 EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
 {
+    LOG_ERROR( "IsPassable x=" + Ogre::StringConverter::toString( x ) + ", y=" + Ogre::StringConverter::toString( y ) );
+
     // we use self position collision to not to move to same point as we already stand
     if( entity != NULL )
     {
         Ogre::Vector3 pos = entity->GetPosition();
         if( ( pos.x == x ) && ( pos.y == y ) )
         {
+            LOG_ERROR( "    entity pos - return false" );
             return false;
         }
     }
@@ -566,6 +569,7 @@ EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
     {
         if( ( place_finder_ignore[ i ].x == x ) && ( place_finder_ignore[ i ].y == y ) )
         {
+            LOG_ERROR( "    ignored place - return false" );
             return false;
         }
     }
@@ -581,12 +585,15 @@ EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
                 {
                     if( ( occupation[ j ].x == x ) && ( occupation[ j ].y == y ) )
                     {
+                        LOG_ERROR( "    text occupation " + Ogre::StringConverter::toString( i ) + ": "  + Ogre::StringConverter::toString( occupation[ j ] ) );
                         return false;
                     }
                 }
             }
         }
+        LOG_ERROR( "    return true" );
         return true;
     }
+    LOG_ERROR( "    not passable on map - return false" );
     return false;
 }
