@@ -13,6 +13,9 @@
 
 template<>EntityManager *Ogre::Singleton< EntityManager >::msSingleton = NULL;
 
+ConfigVar cv_debug_move( "debug_move", "Draw movement debug", "false" );
+ConfigVar cv_debug_collision( "debug_collision", "Draw collision", "false" );
+
 std::vector< Ogre::Vector3 > place_finder_ignore;
 
 
@@ -98,32 +101,33 @@ EntityManager::Update()
 
                 Ogre::Vector3 end = m_EntitiesMovable[ i ]->GetMoveEnd();
 
-                LOG_ERROR( "Update for entity " + Ogre::StringConverter::toString( i ) + ": cur_pos=" + Ogre::StringConverter::toString( cur ) + ", final_pos=" + Ogre::StringConverter::toString( end ) );
+                //LOG_ERROR( "Update for entity " + Ogre::StringConverter::toString( i ) + ": cur_pos=" + Ogre::StringConverter::toString( cur ) + ", final_pos=" + Ogre::StringConverter::toString( end ) );
 
                 // if we still has move segments to move
                 if( move_path.size() != 0 )
                 {
-                    next = m_EntitiesMovable[ i ]->GetMoveNext();
                     place_finder_ignore.clear();
-                    m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( m_EntitiesMovable[ i ], end.x, end.y ) );
+                    m_EntitiesMovable[ i ]->SetMovePath( AStarFinder( cur, end, m_EntitiesMovable[ i ] ) );
 
-                    LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( m_EntitiesMovable[ i ] ) + ":" );
-                    std::vector< Ogre::Vector3 > path = m_EntitiesMovable[ i ]->GetMovePath();
-                    for( size_t j = 0; j < path.size(); ++j )
-                    {
-                        LOG_ERROR( "        " + Ogre::StringConverter::toString( path[ j ] ) );
-                    }
+                    //LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( m_EntitiesMovable[ i ] ) + ":" );
+                    //std::vector< Ogre::Vector3 > path = m_EntitiesMovable[ i ]->GetMovePath();
+                    //for( size_t j = 0; j < path.size(); ++j )
+                    //{
+                        //LOG_ERROR( "        " + Ogre::StringConverter::toString( path[ j ] ) );
+                    //}
+
+                    next = m_EntitiesMovable[ i ]->GetMoveNext();
 
                     std::vector< Ogre::Vector3 > occupation;
                     occupation.push_back( cur );
                     occupation.push_back( next );
-                    LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( cur ) );
-                    LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( next ) );
+                    //LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( cur ) );
+                    //LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( next ) );
                     m_EntitiesMovable[ i ]->SetOccupation( occupation );
                 }
                 else
                 {
-                    LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( next ) );
+                    //LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( next ) );
                     std::vector< Ogre::Vector3 > occupation;
                     occupation.push_back( next );
                     m_EntitiesMovable[ i ]->SetOccupation( occupation );
@@ -146,39 +150,44 @@ EntityManager::Update()
 void
 EntityManager::UpdateDebug()
 {
-    for( size_t i = 0; i < m_Entities.size(); ++i )
+    if( cv_debug_collision.GetB() == true )
     {
-        std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOccupation();
-        for( size_t j = 0; j < occupation.size(); ++j )
+        for( size_t i = 0; i < m_Entities.size(); ++i )
         {
-            Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( occupation[ j ].x - 0.5f, occupation[ j ].y - 0.5f, 0 ) );
-            Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( occupation[ j ].x + 0.5f, occupation[ j ].y + 0.5f, 0 ) );
-            DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 0.5f ) );
-            DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+            std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOccupation();
+            for( size_t j = 0; j < occupation.size(); ++j )
+            {
+                Ogre::Vector3 pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( occupation[ j ].x - 0.5f, occupation[ j ].y - 0.5f, 0 ) );
+                Ogre::Vector3 pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( occupation[ j ].x + 0.5f, occupation[ j ].y + 0.5f, 0 ) );
+                DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 0.5f ) );
+                DEBUG_DRAW.Quad( pos_s.x, pos_s.y, pos_e.x, pos_s.y, pos_e.x, pos_e.y, pos_s.x, pos_e.y );
+            }
         }
-
     }
 
-    for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
+    if( cv_debug_move.GetB() == true )
     {
-        Ogre::Vector3 pos = m_EntitiesMovable[ i ]->GetPosition();
-        std::vector< Ogre::Vector3 > path = m_EntitiesMovable[ i ]->GetMovePath();
-        for( size_t i = 0; i < path.size(); ++i )
+        for( size_t i = 0; i < m_EntitiesMovable.size(); ++i )
         {
-            Ogre::Vector3 pos_s;
-            Ogre::Vector3 pos_e;
-            if( i == 0 )
+            Ogre::Vector3 pos = m_EntitiesMovable[ i ]->GetPosition();
+            std::vector< Ogre::Vector3 > path = m_EntitiesMovable[ i ]->GetMovePath();
+            for( size_t i = 0; i < path.size(); ++i )
             {
-                pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( pos.x, pos.y, 0 ) );
-                pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path.back().x, path.back().y, 0 ) );
+                Ogre::Vector3 pos_s;
+                Ogre::Vector3 pos_e;
+                if( i == 0 )
+                {
+                    pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( pos.x, pos.y, 0 ) );
+                    pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path.back().x, path.back().y, 0 ) );
+                }
+                else
+                {
+                    pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i - 1 ].x, path[ i - 1 ].y, 0 ) );
+                    pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i ].x, path[ i ].y, 0 ) );
+                }
+                DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
+                DEBUG_DRAW.Line( pos_s.x, pos_s.y, pos_e.x, pos_e.y );
             }
-            else
-            {
-                pos_s = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i - 1 ].x, path[ i - 1 ].y, 0 ) );
-                pos_e = CameraManager::getSingleton().ProjectPointToScreen( Ogre::Vector3( path[ i ].x, path[ i ].y, 0 ) );
-            }
-            DEBUG_DRAW.SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
-            DEBUG_DRAW.Line( pos_s.x, pos_s.y, pos_e.x, pos_e.y );
         }
     }
 
@@ -325,41 +334,54 @@ EntityManager::SetEntitySelection( const Ogre::Vector3& start, const Ogre::Vecto
 void
 EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 {
-    LOG_ERROR( "Start move: target=" + Ogre::StringConverter::toString( move ) );
+    //LOG_ERROR( "Start move: target=" + Ogre::StringConverter::toString( move ) );
     for( size_t i = 0; i < m_EntitiesSelected.size(); ++i )
     {
         m_EntitiesSelected[ i ]->SetMoveEnd( move );
 
-        place_finder_ignore.clear();
-        std::vector< Ogre::Vector3 > move_path_new = AStarFinder( m_EntitiesSelected[ i ], move.x, move.y )
-
-        // if segment not finished add new segment to it
         std::vector< Ogre::Vector3 > move_path = m_EntitiesSelected[ i ]->GetMovePath();
+        Ogre::Vector3 start;
         if( move_path.size() != 0 )
         {
-            Ogre::Vector3 pos = move_path.back();
+            start = move_path.back();
+        }
+        else
+        {
+            start = m_EntitiesSelected[ i ]->GetPosition();
+        }
+
+        place_finder_ignore.clear();
+        std::vector< Ogre::Vector3 > move_path_new = AStarFinder( start, move, m_EntitiesSelected[ i ] );
+
+        // if segment not finished add new segment to it
+        if( move_path.size() != 0 )
+        {
             move_path = move_path_new;
-            move_path.push_back( pos );
+            move_path.push_back( start );
+        }
+        else
+        {
+            move_path = move_path_new;
         }
         m_EntitiesSelected[ i ]->SetMovePath( move_path );
 
-        LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( i ) + ":" );
-        std::vector< Ogre::Vector3 > path = m_EntitiesSelected[ i ]->GetMovePath();
-        for( size_t j = 0; j < path.size(); ++j )
-        {
-            LOG_ERROR( "        " + Ogre::StringConverter::toString( path[ j ] ) );
-        }
+        //LOG_ERROR( "    path for entity " + Ogre::StringConverter::toString( i ) + ":" );
+        //std::vector< Ogre::Vector3 > path = m_EntitiesSelected[ i ]->GetMovePath();
+        //for( size_t j = 0; j < path.size(); ++j )
+        //{
+            //LOG_ERROR( "        " + Ogre::StringConverter::toString( path[ j ] ) );
+        //}
 
         std::vector< Ogre::Vector3 > occupation_old = m_EntitiesSelected[ i ]->GetOccupation();
         std::vector< Ogre::Vector3 > occupation;
         if( occupation_old.size() > 0 )
         {
             occupation.push_back( occupation_old[ 0 ] );
-            LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( occupation_old[ 0 ] ) );
-            Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNextPosition();
-            if( pos != occupation_old[ 0 ] )
+            //LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( occupation_old[ 0 ] ) );
+            Ogre::Vector3 pos = m_EntitiesSelected[ i ]->GetMoveNext();
+            if( pos.z != -1 )
             {
-                LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( pos ) );
+                //LOG_ERROR( "    occupation " + Ogre::StringConverter::toString( pos ) );
                 occupation.push_back( pos );
             }
             m_EntitiesSelected[ i ]->SetOccupation( occupation );
@@ -370,23 +392,22 @@ EntityManager::SetEntitySelectionMove( const Ogre::Vector3& move )
 
 
 std::vector< Ogre::Vector3 >
-EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) const
+EntityManager::AStarFinder( const Ogre::Vector3& start, const Ogre::Vector3& end, EntityMovable* self ) const
 {
     std::vector< Ogre::Vector3 > move_path;
 
-    if( entity == NULL )
+    if( self == NULL )
     {
         return move_path;
     }
 
-    Ogre::Vector3 pos_e = PlaceFinder( entity, x, y );
+    Ogre::Vector3 pos_e = PlaceFinder( end, self );
     if( pos_e.z == -1 )
     {
         return move_path;
     }
 
-    Ogre::Vector3 pos_s = entity->GetMoveNext();
-    if( pos_s.z == -1 )
+    if( start == pos_e )
     {
         return move_path;
     }
@@ -409,7 +430,7 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
         }
     }
 
-    AStarNode* start_node = grid[ pos_s.x * 100 + pos_s.y ];
+    AStarNode* start_node = grid[ start.x * 100 + start.y ];
     start_node->opened = true;
 
     std::vector< AStarNode* > open_list;
@@ -439,35 +460,35 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
         }
 
         std::vector< AStarNode* > neighbors;
-        if( IsPassable( entity, node->x - 1, node->y - 1 ) && IsPassable( entity, node->x, node->y - 1 ) && IsPassable( entity, node->x - 1, node->y ) )
+        if( IsPassable( Ogre::Vector3( node->x - 1, node->y - 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x, node->y - 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x - 1, node->y, 0 ), self ) )
         {
             neighbors.push_back( grid[ ( node->x - 1 ) * 100 + ( node->y -  1) ] );
         }
-        if( IsPassable( entity, node->x, node->y - 1 ) )
+        if( IsPassable( Ogre::Vector3( node->x, node->y - 1, 0 ), self ) )
         {
             neighbors.push_back( grid[ node->x * 100 + ( node->y - 1 ) ] );
         }
-        if( IsPassable( entity, node->x + 1, node->y - 1 ) && IsPassable( entity, node->x, node->y - 1 ) && IsPassable( entity, node->x + 1, node->y ) )
+        if( IsPassable( Ogre::Vector3( node->x + 1, node->y - 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x, node->y - 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x + 1, node->y, 0 ), self ) )
         {
             neighbors.push_back( grid[ ( node->x + 1 ) * 100 + ( node->y - 1 ) ] );
         }
-        if( IsPassable( entity, node->x - 1, node->y ) )
+        if( IsPassable( Ogre::Vector3( node->x - 1, node->y, 0 ), self ) )
         {
             neighbors.push_back( grid[ ( node->x - 1 ) * 100 + node->y ] );
         }
-        if( IsPassable( entity, node->x + 1, node->y ) )
+        if( IsPassable( Ogre::Vector3( node->x + 1, node->y, 0 ), self ) )
         {
             neighbors.push_back( grid[ ( node->x + 1 ) * 100 + node->y ] );
         }
-        if( IsPassable( entity, node->x - 1, node->y + 1 ) && IsPassable( entity, node->x, node->y + 1 ) && IsPassable( entity, node->x - 1, node->y ) )
+        if( IsPassable( Ogre::Vector3( node->x - 1, node->y + 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x, node->y + 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x - 1, node->y, 0 ), self ) )
         {
             neighbors.push_back( grid[ ( node->x - 1 ) * 100 + ( node->y + 1 ) ] );
         }
-        if( IsPassable( entity, node->x, node->y + 1 ) )
+        if( IsPassable( Ogre::Vector3( node->x, node->y + 1, 0 ), self ) )
         {
             neighbors.push_back( grid[ node->x * 100 + ( node->y + 1 ) ] );
         }
-        if( IsPassable( entity, node->x + 1, node->y + 1 ) && IsPassable( entity, node->x, node->y + 1 ) && IsPassable( entity, node->x + 1, node->y ) )
+        if( IsPassable( Ogre::Vector3( node->x + 1, node->y + 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x, node->y + 1, 0 ), self ) && IsPassable( Ogre::Vector3( node->x + 1, node->y, 0 ), self ) )
         {
             neighbors.push_back( grid[ ( node->x + 1 ) * 100 + ( node->y + 1 ) ] );
         }
@@ -487,7 +508,7 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
             if( neighbor->opened == false || ng < neighbor->g )
             {
                 neighbor->g = ng;
-                neighbor->h = sqrt( ( neighbor->x - x ) * ( neighbor->x - x ) + ( neighbor->y - y ) * ( neighbor->y - y ) );
+                neighbor->h = sqrt( ( neighbor->x - end.x ) * ( neighbor->x - end.x ) + ( neighbor->y - end.y ) * ( neighbor->y - end.y ) );
                 neighbor->f = neighbor->g + neighbor->h;
                 neighbor->parent = node;
 
@@ -517,7 +538,7 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
     if( move_path.size() == 0 )
     {
         place_finder_ignore.push_back( pos_e );
-        move_path = AStarFinder( entity, x, y );
+        move_path = AStarFinder( start, end, self );
     }
 
     return move_path;
@@ -526,12 +547,12 @@ EntityManager::AStarFinder( EntityMovable* entity, const int x, const int y ) co
 
 
 const Ogre::Vector3
-EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
+EntityManager::PlaceFinder( const Ogre::Vector3& pos, Entity* self ) const
 {
     std::vector< Ogre::Vector3 > searched;
     std::vector< Ogre::Vector3 > neighbors;
 
-    neighbors.push_back( Ogre::Vector3( x, y, 0 ) );
+    neighbors.push_back( pos );
 
     for( size_t i = 0; i < neighbors.size(); ++i )
     {
@@ -547,10 +568,10 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
         }
         if( j == searched.size() )
         {
-            float dist = sqrt( ( x - neighbor.x ) * ( x - neighbor.x ) + ( y - neighbor.y ) * ( y - neighbor.y ) );
+            float dist = sqrt( ( pos.x - neighbor.x ) * ( pos.x - neighbor.x ) + ( pos.y - neighbor.y ) * ( pos.y - neighbor.y ) );
             if( dist <= 5.0f )
             {
-                if( IsPassable( entity, neighbor.x, neighbor.y ) == true )
+                if( IsPassable( neighbor, self ) == true )
                 {
                     return Ogre::Vector3( neighbor.x, neighbor.y, 0 );
                 }
@@ -571,50 +592,50 @@ EntityManager::PlaceFinder( Entity* entity, const int x, const int y ) const
 
 
 const bool
-EntityManager::IsPassable( Entity* entity, const int x, const int y ) const
+EntityManager::IsPassable( const Ogre::Vector3& pos, Entity* self ) const
 {
-    LOG_ERROR( "IsPassable x=" + Ogre::StringConverter::toString( x ) + ", y=" + Ogre::StringConverter::toString( y ) );
+    //LOG_ERROR( "IsPassable x=" + Ogre::StringConverter::toString( pos.x ) + ", y=" + Ogre::StringConverter::toString( pos.y ) );
 
     // we use self position collision to not to move to same point as we already stand
-    if( entity != NULL )
+    if( self != NULL )
     {
-        Ogre::Vector3 pos = entity->GetPosition();
-        if( ( pos.x == x ) && ( pos.y == y ) )
+        Ogre::Vector3 self_pos = self->GetPosition();
+        if( self_pos == pos )
         {
-            LOG_ERROR( "    entity pos - return false" );
+            //LOG_ERROR( "    entity pos - return false" );
             return false;
         }
     }
 
     for( size_t i = 0; i < place_finder_ignore.size(); ++i )
     {
-        if( ( place_finder_ignore[ i ].x == x ) && ( place_finder_ignore[ i ].y == y ) )
+        if( place_finder_ignore[ i ] == pos )
         {
-            LOG_ERROR( "    ignored place - return false" );
+            //LOG_ERROR( "    ignored place - return false" );
             return false;
         }
     }
 
-    if( m_MapSector.GetPass( x, y ) == 0 )
+    if( m_MapSector.GetPass( pos.x, pos.y ) == 0 )
     {
         for( size_t i = 0; i < m_Entities.size(); ++i )
         {
-            if( m_Entities[ i ] != entity )
+            if( m_Entities[ i ] != self )
             {
                 std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOccupation();
                 for( size_t j = 0; j < occupation.size(); ++j )
                 {
-                    if( ( occupation[ j ].x == x ) && ( occupation[ j ].y == y ) )
+                    if( occupation[ j ] == pos )
                     {
-                        LOG_ERROR( "    text occupation " + Ogre::StringConverter::toString( i ) + ": "  + Ogre::StringConverter::toString( occupation[ j ] ) );
+                        //LOG_ERROR( "    text occupation " + Ogre::StringConverter::toString( i ) + ": "  + Ogre::StringConverter::toString( occupation[ j ] ) );
                         return false;
                     }
                 }
             }
         }
-        LOG_ERROR( "    return true" );
+        //LOG_ERROR( "    return true" );
         return true;
     }
-    LOG_ERROR( "    not passable on map - return false" );
+    //LOG_ERROR( "    not passable on map - return false" );
     return false;
 }

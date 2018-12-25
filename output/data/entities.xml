@@ -10,8 +10,8 @@
         class="Stand"
         name="House"
         collision_mask="unit"
-        occupation="-1, -1, 0;0, -1, 0;1, -1, 0;-1, 0, 0;1, 0, 0;-1, 1, 0;0, 1, 0;1, 1, 0"
-        draw_box="-2.5, -2.5, 2.5, 2.5"
+        occupation="-1, -1, 0;0, -1, 0;1, -1, 0;-1, 0, 0;0, 0, 0;1, 0, 0;-1, 1, 0;0, 1, 0;1, 1, 0"
+        draw_box="-1.5, -1.5, 1.5, 1.5"
         texture="Test2.png"
     />
 </entities>

@@ -51,7 +51,7 @@ EntityMovable::SetMoveEnd( const Ogre::Vector3& end )
 
 
 
-Ogre::Vector3
+const Ogre::Vector3&
 EntityMovable::GetMoveEnd() const
 {
     return m_MoveEnd;

@@ -53,9 +53,9 @@ private:
         bool closed;
         AStarNode* parent;
     };
-    std::vector< Ogre::Vector3 > AStarFinder( EntityMovable* entity, const int x, const int y ) const;
-    const Ogre::Vector3 PlaceFinder( Entity* entity, const int x, const int y ) const;
-    const bool IsPassable( Entity* entity, const int x, const int y ) const;
+    std::vector< Ogre::Vector3 > AStarFinder( const Ogre::Vector3& start, const Ogre::Vector3& end, EntityMovable* self ) const;
+    const Ogre::Vector3 PlaceFinder( const Ogre::Vector3& pos, Entity* self ) const;
+    const bool IsPassable( const Ogre::Vector3& pos, Entity* self ) const;
 
 private:
     Ogre::SceneManager* m_SceneManager;
