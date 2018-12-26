@@ -6,7 +6,8 @@
 
 
 Entity::Entity( Ogre::SceneNode* node ):
-    EntityTile( node )
+    EntityTile( node ),
+    m_CollisionMask( 0 )
 {
     SetColour( Ogre::ColourValue( 1, 1, 1, 1 ) );
 
@@ -50,4 +51,36 @@ const std::vector< Ogre::Vector3 >&
 Entity::GetOccupation() const
 {
     return m_Occupation;
+}
+
+
+
+void
+Entity::SetCollisionMask( const int mask )
+{
+    m_CollisionMask = mask;
+}
+
+
+
+const int
+Entity::GetCollisionMask() const
+{
+    return m_CollisionMask;
+}
+
+
+
+void
+Entity::SetAction( const Action action )
+{
+    m_Action = action;
+}
+
+
+
+const Action
+Entity::GetAction() const
+{
+    return m_Action;
 }

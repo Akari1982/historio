@@ -114,4 +114,13 @@
     <entity name="Unit" pos="2 4" />
     <entity name="Unit" pos="4 4" />
     <entity name="House" pos="10 5" />
+
+    <entity name="StoneOre" amount="50" pos="12 12" />
+    <entity name="StoneOre" amount="50" pos="12 13" />
+    <entity name="StoneOre" amount="50" pos="13 12" />
+    <entity name="StoneOre" amount="50" pos="13 13" />
+    <entity name="CopperOre" amount="50" pos="10 12" />
+    <entity name="CopperOre" amount="50" pos="10 13" />
+    <entity name="CopperOre" amount="50" pos="11 12" />
+    <entity name="CopperOre" amount="50" pos="11 13" />
 </map>

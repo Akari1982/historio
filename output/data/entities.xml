@@ -14,4 +14,21 @@
         draw_box="-1.5, -1.5, 1.5, 1.5"
         texture="Test2.png"
     />
+
+    <entity
+        class="Stand"
+        name="StoneOre"
+        collision_mask="unit"
+        occupation="0, 0, 0"
+        draw_box="-0.5, -0.5, 0.5, 0.5"
+        texture="StoneOre.png"
+    />
+    <entity
+        class="Stand"
+        name="CopperOre"
+        collision_mask=""
+        occupation="0, 0, 0"
+        draw_box="-0.5, -0.5, 0.5, 0.5"
+        texture="CopperOre.png"
+    />
 </entities>

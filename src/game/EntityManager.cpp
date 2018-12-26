@@ -243,7 +243,6 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
             Ogre::SceneNode* node = m_SceneNode->createChildSceneNode( "Entity" + m_EntityDescs[ i ].entity_class + Ogre::StringConverter::toString( UNIQUE_NODE_ID ) );
             ++UNIQUE_NODE_ID;
 
-
             if( m_EntityDescs[ i ].entity_class == "Movable" )
             {
                 entity = new EntityMovable( node );
@@ -268,6 +267,7 @@ EntityManager::AddEntityByName( const Ogre::String& name, const float x, const f
                 return;
             }
 
+            entity->SetCollisionMask( m_EntityDescs[ i ].collision_mask );
             entity->SetPosition( Ogre::Vector3( x, y, 0 ) );
             entity->SetDrawBox( m_EntityDescs[ i ].draw_box );
             entity->SetTexture( m_EntityDescs[ i ].texture );
@@ -596,15 +596,17 @@ EntityManager::IsPassable( const Ogre::Vector3& pos, Entity* self ) const
 {
     //LOG_ERROR( "IsPassable x=" + Ogre::StringConverter::toString( pos.x ) + ", y=" + Ogre::StringConverter::toString( pos.y ) );
 
-    // we use self position collision to not to move to same point as we already stand
-    if( self != NULL )
+    if( self == NULL )
     {
-        Ogre::Vector3 self_pos = self->GetPosition();
-        if( self_pos == pos )
-        {
-            //LOG_ERROR( "    entity pos - return false" );
-            return false;
-        }
+        return false;
+    }
+
+    // we use self position collision to not to move to same point as we already stand
+    Ogre::Vector3 self_pos = self->GetPosition();
+    if( self_pos == pos )
+    {
+        //LOG_ERROR( "    entity pos - return false" );
+        return false;
     }
 
     for( size_t i = 0; i < place_finder_ignore.size(); ++i )
@@ -622,13 +624,17 @@ EntityManager::IsPassable( const Ogre::Vector3& pos, Entity* self ) const
         {
             if( m_Entities[ i ] != self )
             {
-                std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOccupation();
-                for( size_t j = 0; j < occupation.size(); ++j )
+                // two entity collides if they share same flag
+                if( ( self->GetCollisionMask() & m_Entities[ i ]->GetCollisionMask() ) != 0 )
                 {
-                    if( occupation[ j ] == pos )
+                    std::vector< Ogre::Vector3 > occupation = m_Entities[ i ]->GetOccupation();
+                    for( size_t j = 0; j < occupation.size(); ++j )
                     {
-                        //LOG_ERROR( "    text occupation " + Ogre::StringConverter::toString( i ) + ": "  + Ogre::StringConverter::toString( occupation[ j ] ) );
-                        return false;
+                        if( occupation[ j ] == pos )
+                        {
+                            //LOG_ERROR( "    text occupation " + Ogre::StringConverter::toString( i ) + ": "  + Ogre::StringConverter::toString( occupation[ j ] ) );
+                            return false;
+                        }
                     }
                 }
             }
